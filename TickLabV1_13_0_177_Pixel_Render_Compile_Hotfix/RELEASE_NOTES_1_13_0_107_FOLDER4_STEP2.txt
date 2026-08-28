@@ -1,0 +1,31 @@
+TickLab v1.13.0.107 — Folder 4 Step 2 Bars Pattern + Ghost Feed Parity
+
+SCOPE LOCK
+- Based on v1.13.0.106.
+- Functional work is limited to Bars Pattern and Ghost Feed.
+- Long/Short Position, Position Forecast, Price Range, Date Range, Date & Price Range and every other TickLab subsystem are intentionally frozen.
+
+BARS PATTERN
+- Keeps 3-point construction: source start, source end, projection placement.
+- Projects the selected historical bar-by-bar price path as a connected TradingView-style pattern line.
+- Default source is Close; Open/High/Low/HL2/HLC3 source modes remain supported.
+- Preserves source candle spacing, including timeline gaps.
+- Projection can extend beyond the latest loaded candle because placement is timeline-slot based rather than clamped to the last candle index.
+- Dragging the visible copied pattern moves only the projection anchor; it does not shift/reselect the historical source range, so the copied shape remains stable.
+- Selected Bars Pattern shows hollow endpoint markers and a highlighted source-time range with start/end time chips.
+- Hit testing follows every projected line segment, so clicking anywhere on the visible copied pattern selects the parent object and restores quick edit.
+
+GHOST FEED
+- Rebuilt as a variable-anchor synthetic candle drawing tool.
+- Single click commits each next turning point.
+- Double-click finishes the drawing and suppresses the duplicate final MouseDown anchor produced by WPF double-click handling.
+- Live construction preview renders synthetic candles between committed points and the moving preview point.
+- Synthetic candle bodies/wicks are generated from the user-drawn path; real historical candles are no longer copied as the Ghost Feed geometry.
+- Each path segment ends exactly on its committed anchor while intermediate candles use deterministic candle-like variation.
+- Up/down candles use reference-style green/red translucent bodies and wicks.
+- Clicking any visible ghost candle body or wick selects the one parent Ghost Feed object and restores quick edit.
+- Body drag moves the complete multi-anchor Ghost Feed normally.
+
+VERSION
+- Application/package version: 1.13.0.107
+- Solution: TickLabV1_13_0_107.sln

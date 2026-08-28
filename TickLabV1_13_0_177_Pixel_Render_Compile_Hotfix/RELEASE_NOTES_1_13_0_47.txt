@@ -1,0 +1,46 @@
+TickLab v1.13.0.47 — Alerts, Symbol Favourites and Right-Rail Regression Fix
+
+TRADE HISTORY APPEARANCE
+- Closed-trade entry arrows and captions are always blue.
+- Closed-trade exit arrows and captions are always red.
+- BUY, SELL and EXIT caption text is approximately half the previous size.
+- Existing dashed entry-to-exit paths and symbol-wide history synchronization remain.
+
+ALERT RELIABILITY
+- Price-touch alerts evaluate the complete live candle high-low range instead of only the latest close.
+- Bid, Ask and spread offsets remain respected.
+- Alert evaluation continues on nonactive live chart contexts.
+- The bell begins immediately when an alert triggers.
+- Desktop popup behavior remains available.
+
+ALERT LINE MANAGEMENT
+- Right-click an alert horizontal line for Edit alert or Remove alert.
+- Removing an alert line deletes the saved rule and immediately removes the chart line.
+- Deleting an alert in the Alerts manager also refreshes and removes its chart line.
+- Alert lines remain draggable to change the alert price.
+
+SYMBOL FAVOURITES
+- Every symbol in the symbol selector has an empty/filled star control.
+- Starred symbols are pinned above unstarred symbols.
+- Favourites persist in %LOCALAPPDATA%\TickLab\symbol-favourites.json.
+- Searching still works across symbol, description and broker path.
+
+ENTRY-LINE SL/TP DRAG RESTORED
+- The running trade entry line remains compact: BUY/SELL, lot size and live USD P/L.
+- Dragging away from entry creates or replaces the correct SL or TP.
+- BUY: below entry creates SL; above entry creates TP.
+- SELL: above entry creates SL; below entry creates TP.
+- NEW SL / NEW TP preview appears while dragging.
+- Existing SL and TP lines remain directly draggable.
+
+DEMO TRADING HANDLE / SHARED RAIL
+- Demo Trading handle now follows the same click-versus-drag interaction pattern as Code Editor and Panel.
+- The widened 647-pixel Demo Trading panel now has a matching 647-pixel grid column.
+- The former 27-pixel mismatch no longer covers the 19-pixel shared handle strip.
+- Opening Demo Trading keeps Code Editor, Demo Trading and Panel handles visible and synchronized.
+
+PRESERVED
+- 50-symbol-point SL/TP arrow adjustment and five-times-faster hold repeat.
+- Symbol-wide running trades and saved history across charts and timeframes.
+- Simultaneous live updates on all chart contexts.
+- Approved MT5 bridges and FileBridge source files unchanged.

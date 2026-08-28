@@ -1,0 +1,32 @@
+TickLab v1.13.0.137 — First Runtime Test Checklist
+
+1. Direct old 1-second Find
+- Open Find Candle.
+- Choose 1s and a date/time that has stored raw ticks but has never been opened as a 1s chart.
+- Press Find.
+- Confirm TickLab generates a full surrounding seconds chart and centers the requested candle/time.
+
+2. Cross-timeframe exact-time anchor
+- Find a historical M1 candle using a time with seconds, for example 10:35:27.
+- Switch M1 -> 1s -> 15s -> M5 -> M30 -> H1.
+- Confirm every timeframe stays around 10:35:27 and never jumps to live.
+
+3. Historical seconds paging
+- From the found 1s area, scroll left through several pages.
+- Then scroll right through several pages.
+- Confirm new seconds candles appear from stored raw ticks in both directions without loading the whole archive or freezing.
+
+4. Anchor release rule
+- Scroll to newer data and confirm the marker/time anchor remains active.
+- Press End / Go Live / Latest.
+- Confirm the anchor is released and the chart returns to the live/latest window.
+
+5. Background marker
+- Confirm the vertical Find/marker line remains visible but behind candles and drawings.
+- Change timeframe and confirm the historical time guide remains at the same market-time location.
+
+6. Regression spot-check
+- Drawing select/drag/delete.
+- Favorites bars and top-center quick edit.
+- Emoji picker.
+- M1/H1 normal history loading.

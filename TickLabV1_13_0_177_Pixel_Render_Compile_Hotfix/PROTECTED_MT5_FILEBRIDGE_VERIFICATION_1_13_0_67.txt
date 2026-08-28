@@ -1,0 +1,12 @@
+TickLab v1.13.0.67 protected-source verification
+
+Baseline: v1.13.0.66 Recorder Performance + Playback Fix COMPILE FIX
+MT5 protected files checked: 3
+MT5 changed: 0
+TickLab.App/Gateway FileBridge files checked: 16
+Gateway/FileBridge changed: 0
+
+This update is limited to:
+- top-bar screenshot button and screenshot save integration
+- default collapsed state for the main right-side PANEL at application launch
+- version/release metadata and validation files

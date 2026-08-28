@@ -1,0 +1,4 @@
+TickLab v1.13.0.35 static validation limitation
+
+This Linux validation environment does not contain the Windows .NET 8 WPF SDK/Visual Studio toolchain.
+Therefore, source/XAML/static validation was completed here, but a real Windows Visual Studio 2022 / .NET 8 build and runtime test is still required.

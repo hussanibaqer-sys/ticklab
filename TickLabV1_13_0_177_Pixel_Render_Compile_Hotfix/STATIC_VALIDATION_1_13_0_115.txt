@@ -1,0 +1,30 @@
+TickLab v1.13.0.115 — STATIC VALIDATION
+
+RESULT
+PASS — static source/package checks completed. Windows WPF compile/runtime is not available in this Linux environment.
+
+COUNTS
+- XAML files parsed: 31
+- C# source files structurally scanned: 150
+- Targeted Folder 6 checks: 9
+- Errors: 0
+
+ROOT-FIX CHECKS
+- Folder 6 classifier now covers the entire Annotation category (TEXT AND NOTES + CONTENT), not a 10-tool hard-coded subset.
+- Locally placed CurrentChart annotation objects with default visibility settings have a recovery path into the render/hit-test enumeration if generic visibility filtering rejects them.
+- Direct renderer covers Text, Note, Price Note, Pin, Table, Callout, Comment, Price Label, Signpost, Flag, Anchored Note, Post, Idea and Image/future Annotation tools through category fallback.
+- Degenerate/missing second points use visible fallback geometry.
+- Inline Drawing Inspector now has a visible Remove button per object.
+- Inspector removal deletes matching object IDs from all chart copies/source charts and overrides stale locks.
+- External Object Tree Remove uses the same deletion path.
+
+SOURCE SCOPE VS v1.13.0.114
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+- TickLab.App/MainWindow.xaml
+- TickLab.App/MainWindow.xaml.cs
+- TickLab.App/TickLab.App.csproj
+
+No other src/ file changed.
+
+COMPILE LIMITATION
+- dotnet/MSBuild is not installed in this environment, so final Windows compile/runtime verification must be performed in Visual Studio.

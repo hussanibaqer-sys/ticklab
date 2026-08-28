@@ -1,0 +1,12 @@
+TickLab v1.13.0.155 — Static Validation
+
+PASS: built directly from v1.13.0.152 source.
+PASS: source diff limited to 3 functional files + version/title metadata.
+PASS: v153/v154 count-driven/synthetic paging modifications absent.
+PASS: protected Tick renderer/drawing smoothness files unchanged from v152.
+PASS: seconds history/aggregation/canonical archive unchanged from v152.
+PASS: MainWindow.xaml.cs (Find Candle + watchdog/integrity), Replay, Raw Tick paging/Find, FileBridge client, MT5/MQL unchanged from v152.
+PASS: changed C# delimiter/string/comment structural checks.
+PASS: MainWindow.xaml XML parse.
+PASS: TickLab.App.csproj XML parse.
+NOTE: dotnet/MSBuild/csc is unavailable in the ChatGPT runtime; Visual Studio compile/runtime is authoritative.

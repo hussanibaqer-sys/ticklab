@@ -1,0 +1,26 @@
+TickLab v1.13.0.139 — Find Candle Direct Seek / Marker / Seconds History
+
+1. Find Candle seconds direct timestamp seek
+- A historical seconds Find Candle request now uses the exact requested timestamp as a direct raw-source focus.
+- It reuses the cached raw-history filename/range index and selects only source snapshots nearest that timestamp.
+- It builds a centered seconds page from those files instead of walking backward through every historical window from the live side.
+- Missing/quiet timestamps fail quickly instead of triggering a multi-minute sequential repair scan.
+- Existing exact timestamp anchoring and normal 1-second history storage remain intact.
+
+2. Find Candle marker cleanup — all layers
+- Remove Marker now clears the persisted marker, the separate historical timestamp guide, and the thin interactive yellow selection line when they belong to the same Find Candle target.
+- The historical guide is hit-testable/selectable; clicking it selects/thickens it and Delete/Backspace removes it.
+- Right-clicking a residual guide offers Remove Find Candle marker.
+- A residual thin interactive Find Candle selection line can be removed with Delete/Backspace while Mark mode is active or by right-click > Remove Find Candle selection.
+- Manual guide cleanup also removes any persisted marker still tied to the same symbol/timestamp.
+
+3. Faster 1-second backward history scrolling
+- 1-second history paging now reads ahead three virtual pages (4,800 candles) per older-history request.
+- The raw-source page reader now reuses the cached filename/range index rather than re-enumerating the full raw-history tree on every backward page.
+- The chart can scroll through a larger already-loaded buffer before another history IO request is required.
+- The existing total virtual chart window remains bounded at 12,000 records.
+- Larger prefetch is restricted to 1s; other second timeframes retain their existing page size.
+
+Protected scope
+- MT5 bridge protocol/client, heartbeat, live capture, raw tick file format, replay, raw Tick Chart, trading, and drawing geometry were not changed.
+- Persistent/canonical history read logic was changed only where required for direct seconds lookup and indexed seconds paging.

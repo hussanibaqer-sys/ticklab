@@ -1,0 +1,21 @@
+TickLab v1.13.0.50 — First Test Checklist
+==========================================
+
+A. Exact reported M1 scenario
+1. Open the affected M1 chart and confirm saved history is available.
+2. Press Refresh and note the candle count shown in TickLab.
+3. Wait for multiple new ticks and at least one new M1 candle.
+4. Confirm the candle count never falls to 1.
+5. Confirm the chart never flashes "Connect to MT5 to load candle history".
+6. Confirm the new live candle updates at the right edge while every older candle remains visible.
+
+B. Multiple-chart regression
+1. Open at least two charts for the same symbol, preferably with different timeframes.
+2. Refresh one chart and continue clicking between charts while ticks arrive.
+3. Confirm neither chart loses its history or adopts the other chart's candle list.
+4. Maximize and restore one chart; confirm all charts retain their full loaded windows.
+
+C. Previously fixed features
+1. Confirm alerts, Demo Trading, history arrows, indicators and drawings behave exactly as in v1.13.0.49.
+2. Confirm Code Editor, Demo Trading and Panel buttons still open only their own panels.
+3. Confirm no MT5 bridge or saved-history file requires replacement.

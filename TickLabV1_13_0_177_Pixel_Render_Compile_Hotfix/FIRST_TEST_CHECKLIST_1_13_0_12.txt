@@ -1,0 +1,8 @@
+TickLab v1.13.0.12 first test checklist
+
+1. Import raw ticks and confirm the success window shows History imported successfully plus an OK button.
+2. Press OK while any remaining replay indexing continues in the background.
+3. Open Replay on a candle inside the imported tick quarter and load ticks.
+4. Right-click a chart and verify Add Alert Here is available.
+5. Open New Chart without selecting a partition; verify the floating chart has a drag grip and menu button.
+6. Right-click the floating chart surface and attach it to an empty workspace partition.

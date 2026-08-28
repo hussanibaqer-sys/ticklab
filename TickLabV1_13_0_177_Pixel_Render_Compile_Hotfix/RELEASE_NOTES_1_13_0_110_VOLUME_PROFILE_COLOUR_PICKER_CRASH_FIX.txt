@@ -1,0 +1,24 @@
+TickLab v1.13.0.110 — Volume Profile Colour Picker Crash Fix
+
+Scope: surgical hotfix only for Fixed Range Volume Profile and Anchored Volume Profile colour-picker settings.
+
+Reported runtime failure:
+- Clicking VAH, VAL, POC, volume/value-area or other profile colour swatches could throw System.InvalidOperationException before the picker opened and leave TickLab suspended under the debugger.
+
+Corrections:
+- Removed the unguarded LINQ First(...) role lookup from the profile colour-click path.
+- Resolve each profile colour role from its actual Button instance instead of a fragile Tag/string lookup.
+- Added safe profile colour-picker opening with a one-time ownerless retry if WPF rejects the owner/modal state.
+- An InvalidOperationException from the picker path is contained; the original colour is restored and the settings/chart remain usable.
+- Applied the same protected picker path to Values colour.
+- Live preview remains active after a colour is chosen.
+
+Covered profile colours:
+Up Volume, Down Volume, Value Area Up, Value Area Down, VAH, VAL, POC,
+Developing POC, Developing VA, Histogram Box, Values.
+
+Freeze rule:
+No drawing geometry, profile calculation, VWAP, Long/Short, Forecast, Bars Pattern, Ghost Feed,
+range tools, Fib/Gann, Patterns, Elliott, Cycles, MT5/history/replay code was changed.
+
+Windows WPF compile/runtime remains the user-side final gate because this environment does not contain dotnet/MSBuild.

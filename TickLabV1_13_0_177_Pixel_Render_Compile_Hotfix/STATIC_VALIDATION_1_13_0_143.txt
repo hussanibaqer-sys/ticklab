@@ -1,0 +1,24 @@
+TickLab v1.13.0.143 — Static validation
+
+PASS XML parse: src/TickLab.App/TickLab.App.csproj
+PASS XML parse: src/TickLab.App/MainWindow.xaml
+PASS token: src/TickLab.App/TickLab.App.csproj :: 1.13.0.143
+PASS token: src/TickLab.App/MainWindow.xaml :: Raw Tick Full Chart Repair
+PASS token: src/TickLab.App/Controls/TickChartControl.cs :: DrawTickOverlays
+PASS token: src/TickLab.App/Controls/TickChartControl.Drawing.cs :: ticks  ·
+PASS token: src/TickLab.App/MainWindow.RawTickChart.cs :: ReadBridgeTicksBeforeForReplayFast
+PASS DrawingGeometryKind references: 33 checked, 0 missing
+PASS protected hash unchanged: MT5 :: 46e41f9d07b326cf63c7115ba43d4f3ced0fa98ae111a28a4b586924f11ba091
+PASS protected hash unchanged: src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs :: 4febbcd3fce68905a635f5ff8134995cf20f8ca4a99472ac2ad2471149665fc8
+PASS exact changed source set: 9 expected files only
+  - TickLab.App/Controls/TickChartControl.Drawing.cs
+  - TickLab.App/Controls/TickChartControl.cs
+  - TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+  - TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+  - TickLab.App/MainWindow.ChartContexts.cs
+  - TickLab.App/MainWindow.RawTickChart.cs
+  - TickLab.App/MainWindow.xaml
+  - TickLab.App/MainWindow.xaml.cs
+  - TickLab.App/TickLab.App.csproj
+
+NOTE: dotnet/MSBuild/csc unavailable in this execution environment; compile/runtime validation must be performed in Visual Studio on Windows.

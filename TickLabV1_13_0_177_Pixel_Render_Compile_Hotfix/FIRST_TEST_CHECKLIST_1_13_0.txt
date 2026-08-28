@@ -1,0 +1,62 @@
+TickLab v1.13.0 — First Visual and Functional Test
+==================================================
+
+BUILD
+[ ] Extract to C:\TickLab\TickLabV1_13_0, outside OneDrive.
+[ ] Open TickLabV1_13_0.sln in Visual Studio 2022.
+[ ] Select Release and Rebuild Solution.
+[ ] Confirm zero C# and XAML errors.
+
+NEW SHELL
+[ ] Premium identity header and compact command row are visible.
+[ ] Left rail is narrow, centered and icon-only.
+[ ] Chart uses the full available height.
+[ ] Right DRAWINGS panel contains the selected category's complete tool list.
+[ ] Selecting another category immediately replaces that list.
+[ ] No old four-panel deck appears below the chart.
+[ ] Timeframe buttons are readable and horizontally scrollable.
+
+CHART QUALITY
+[ ] Bullish candles are green and bearish candles are red.
+[ ] Wicks, bodies, grid, crosshair and labels remain sharp at Windows display scaling.
+[ ] Zoom and scrolling stay smooth.
+[ ] Price/time positions still match MT5.
+
+FAVORITES
+[ ] Add one favorite and confirm the independent horizontal Favorites bar opens.
+[ ] Drag the Favorites bar freely.
+[ ] Add tools and confirm the bar expands horizontally.
+[ ] Drag tools left/right to reorder.
+[ ] Right-click a favorite to remove it.
+[ ] Restart and confirm position/order persist.
+
+DRAWING TOOLS
+[ ] Select Trend Line, draw once, and confirm right-click cancels an active tool.
+[ ] Single-click a drawing and confirm the compact live editor appears.
+[ ] Change line colour, width, opacity and lock state live.
+[ ] Open Settings and confirm the compact dark window previews changes instantly.
+[ ] Cancel restores the original; Apply creates one undoable change.
+
+FIBONACCI
+[ ] Draw Fibonacci Retracement and confirm coloured zones appear.
+[ ] Add, remove and reorder levels.
+[ ] Change each level's line colour and zone colour independently.
+[ ] Change each zone's fill opacity independently.
+[ ] Toggle labels/prices, line style and line width.
+[ ] Save a template, set it default, and test it on a new Fibonacci drawing.
+
+PEN / HIGHLIGHTER
+[ ] Draw an S shape with Pen; confirm the curve is smooth, not broken.
+[ ] Select the finished stroke; confirm it does not expose hundreds of points.
+[ ] Draw with Highlighter; confirm broad smooth transparent output.
+
+MAGNET / MEASURE
+[ ] Magnet button shows an active pressed state.
+[ ] With Magnet off, hold Ctrl and confirm temporary Strong snapping.
+[ ] With Magnet on, hold Ctrl and confirm temporary snapping off.
+[ ] Hold Shift and drag A-B; confirm price, pips/points, percentage, bars and duration.
+
+DATA SAFETY
+[ ] Existing M1 and tick history load without conversion.
+[ ] Live Bridge V300, History Bridge V305 and Marker V109 remain unchanged.
+[ ] Startup recent-tail checking remains bounded and does not freeze.

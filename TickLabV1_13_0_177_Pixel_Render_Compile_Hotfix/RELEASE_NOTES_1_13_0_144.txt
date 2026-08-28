@@ -1,0 +1,54 @@
+TickLab v1.13.0.144 — Shared Drawing Engine Tick Chart
+
+Purpose
+-------
+Correct the v1.13.0.143 Raw Tick drawing architecture. v143 introduced a separate TickChartControl drawing store/engine; that caused behavior to diverge from the established candle-chart drawing system (older Measure look/behavior, missing one-select/one-draw completion rule, missing middle-click removal, and no Drawing Inspector registration).
+
+What changed
+------------
+1. Removed the separate Raw Tick drawing engine
+- TickChartControl.Drawing.cs no longer owns TickDrawingState, _tickDrawings, Tick-specific Measure, Tick-specific drawing construction, Tick-specific undo/redo, or Tick-specific lock/hide/delete.
+- TickChartControl now keeps only the Raw Tick Find marker behavior that is genuinely Tick-specific.
+
+2. Reused the established CandleChartControl drawing engine on Tick Chart
+- CandleChartControl remains the single ChartDrawing object store and drawing interaction engine.
+- In Tick mode it runs transparently above TickChartControl while TickChartControl continues to render the raw tick series and own its viewport/history navigation.
+- The overlay uses the same drawing toolbar, tool construction, first-anchor preview, completion rules, selection/hit testing, quick edit, full settings, lock/hide, background placement, Delete, middle-click removal, undo/redo, Favorites behavior, Drawing Inspector, and workspace persistence paths already used by candle charts.
+
+3. Same Measure tool, Tick-specific horizontal semantics only
+- The normal modern CandleChart Measure implementation is used unchanged for its geometry/style/settings.
+- On Tick Chart its horizontal result reports tick distance instead of bars.
+- It also reports elapsed time at millisecond precision, pips, points, raw price change and percent using the same label design.
+
+4. Exact Tick coordinate adapter
+- Existing ChartDrawing anchors remain the model.
+- DrawingAnchor gains an optional StartMilliseconds field, JSON omitted when unused, preserving compatibility with existing candle drawings.
+- Tick-mode anchors store exact raw-tick milliseconds and price.
+- Raw Tick X mapping uses the same tick-index/visible-window math as TickChartControl, including the historical full-width behavior and 5,000-visible-tick ceiling.
+- Drawing body moves shift by tick index so drawings remain aligned when older history is prepended.
+- In normal candle timeframes the existing StartUnix behavior remains authoritative.
+
+5. Shared Crosshair
+- The established CandleChart crosshair is rendered on the transparent Tick drawing surface.
+- In Tick mode the vertical guide snaps to the raw tick index and time labels can show milliseconds.
+- No second Tick crosshair implementation remains.
+
+6. Inspector / persistence restored by architecture
+- Toolbar commands always target ChartRuntimeContext.Chart, including Measure, Lock, Hide, Undo, Redo and Remove Selected.
+- Drawing Inspector/Object Tree continues to read the same Chart.ChartDrawings collection, so Tick drawings are normal TickLab drawing objects instead of an isolated Tick-only list.
+
+7. Tick viewport/navigation remains native
+- Wheel scroll/zoom, plot drag, time-scale drag, price-scale drag, Home/End, Live button and Find Tick marker are delegated to TickChartControl's existing viewport math.
+- Tick chart rendering remains sequence/index based.
+
+Protected behavior retained
+---------------------------
+- v1.13.0.143 contiguous Raw Tick history paging / >30-minute history projection repair remains in place.
+- v1.13.0.143 raw-history launch fallback and historical Tick Find marker behavior remain in place.
+- 5,000 visible ticks remains the horizontal zoom-out ceiling; normal initial live Tick view remains 1,600.
+- v1.13.0.142 true-direct 1-second Find Candle path remains untouched.
+- PersistentHistoryStore.cs, CanonicalTickArchiveStore.cs, Mt5FileBridgeClient.cs and the MT5/MQL tree are unchanged from v1.13.0.143.
+
+Validation note
+---------------
+This environment has no dotnet/MSBuild/csc compiler. The source received XML parsing, delimiter/static token checks, forbidden old Tick drawing-engine reference checks, protected-file SHA-256 comparison, source-diff review and ZIP integrity validation. A normal Visual Studio restore/build and Windows runtime test is still required.

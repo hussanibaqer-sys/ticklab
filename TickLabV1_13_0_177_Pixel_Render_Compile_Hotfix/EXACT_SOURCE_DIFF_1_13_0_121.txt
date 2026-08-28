@@ -1,0 +1,24 @@
+TickLab v1.13.0.121 — EXACT SOURCE DIFF vs v1.13.0.120
+
+Changed app source files: 4
+
+1. TickLab.App/Controls/CandleChartControl.Drawing.cs
+   v120: 326f30526e4ce0c40b57ea785ed64cdbac9926bc6d030409c7790ea503d3e037
+   v121: 6475672b388c91b20b8c7b52681c474b93a9f9a2e68406b463aa83130291dd5c
+
+2. TickLab.App/MainWindow.xaml
+   v120: 37fd09a23f1484da48bb721cf445a94ddd50df193ac07f1b9044560e09c1dda1
+   v121: 187f73b4badf7b1590d53112aa65904c07cbe0d4900b5b8fd9ab65da7b7b2e28
+
+3. TickLab.App/TickLab.App.csproj
+   v120: 77d7bff2490233f44bdccccc7d71483cfe1ed0d29d00c856bd44802458b05e50
+   v121: acf66cd2e158ed43f3d4dca04c9957a13511696812cbedb37b15ca17849b06d6
+
+4. TickLab.App/Windows/DrawingMediaPickerWindow.xaml.cs
+   v120: 55ed5981e340a93a86e19748ada45b0ca631e44a8f697feaed8f6a49bdf12a1f
+   v121: 6534adbfca0b226d4573309d24c0b3aac841f3f979d108a3bfbbf52889b7dbc9
+
+Freeze checks:
+- CandleChartControl.DrawingParity.cs unchanged: True
+- DrawingToolCatalog.cs unchanged: True
+- No MT5 / Bridge / History / Replay / Gateway / Connector implementation source changed.

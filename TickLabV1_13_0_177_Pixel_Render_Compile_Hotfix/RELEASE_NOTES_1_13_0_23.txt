@@ -1,0 +1,21 @@
+TickLab v1.13.0.24 — Basic Candle Right-Edge Zoom Stability Hotfix
+
+Scope
+- This release changes only the default/basic candle chart horizontal zoom anchor.
+- Indicator, synthetic-chart, volume-analysis, replay, alert, workspace and bridge behavior is otherwise unchanged from v1.13.0.22.
+
+Fix
+- Horizontal mouse-wheel zoom keeps the current right chart boundary exactly fixed.
+- Time-scale drag zoom also keeps the right chart boundary captured at drag start.
+- Zooming adds or removes older candles only at the left side.
+- The latest/right-side candles no longer disappear and then return during repeated zoom in/out.
+- Vertical zoom remains anchored to the mouse position.
+
+Testing priority
+1. Open the basic Candles chart.
+2. Keep the latest candles visible at the right.
+3. Repeatedly zoom out to 400+ bars and zoom back in.
+4. Drag the time scale in both directions.
+5. Confirm the same right-side candle/future-space boundary never moves.
+
+No further indicator-workspace or all-chart changes are included yet.

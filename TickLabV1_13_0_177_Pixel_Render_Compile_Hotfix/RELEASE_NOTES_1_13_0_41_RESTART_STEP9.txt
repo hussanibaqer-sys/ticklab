@@ -1,0 +1,45 @@
+TickLab v1.13.0.41 — Restart Step 9 Trade Labels, History and Contrast
+
+Base
+- Built from v1.13.0.40 Restart Step 8.
+- The working simulated execution, live pricing, order processing, persistence and position-closing rules were not changed.
+
+Approved changes
+1. Near Black colour
+- Added the exact default chart shade #080808 to the shared colour palette as Near Black.
+- Near Black now appears beside the neutral colours and is recognized by the one-second colour-name tooltip.
+
+2. SL/TP preset readability
+- The demo panel is protected from application-theme colour rewriting.
+- Selected None/SL/TP presets use dark blue with white bold text.
+- Unselected presets use white with black text.
+- Hover, pressed, focused and disabled states remain readable.
+
+3. Pending-order selector readability
+- Type and Expiration selectors use white/light backgrounds with black text.
+- Dropdown entries have readable hover, selected and disabled states.
+
+4. Middle right-side slide handle
+- The separate workspace/drawings-market handle between Demo Trading and Code Editor is widened to 22 pixels.
+- Its grid channel is widened to 24 pixels while existing click, drag, keyboard and lost-capture behavior is preserved.
+
+5. Compact active trade levels
+- Exact Entry/SL/TP prices are shown in coloured price-scale tickets.
+- Entry plot label shows only Buy/Sell, lot size and running USD P/L.
+- SL and TP plot labels show compact projected USD results.
+- Existing draggable SL/TP behavior remains unchanged.
+
+6. MT5-style closed-trade history markings
+- Closed trades draw a point-to-point path from entry time/price to exit time/price.
+- Entry and exit endpoints are visibly marked.
+- The previous wide horizontal Entry/Exit history tickets are suppressed.
+- Hovering the path shows direction, lot size, entry/exit prices and times, realized P/L, close reason and historical SL/TP.
+- Markings continue to restore from the existing persistent demo history and remain distinct from active trade levels.
+
+Safety
+- No real MT5 order API was added.
+- All 19 protected MT5/FileBridge files match v1.13.0.40 byte-for-byte.
+
+Build limitation
+- This Linux environment does not contain the Windows .NET/WPF toolchain.
+- A real Visual Studio 2022 / .NET 8 Windows build and interaction test are required.

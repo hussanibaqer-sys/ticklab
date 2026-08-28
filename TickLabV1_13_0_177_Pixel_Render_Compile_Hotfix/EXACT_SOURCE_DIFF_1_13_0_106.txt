@@ -1,0 +1,30 @@
+TickLab v1.13.0.106 — EXACT SOURCE DIFF vs v1.13.0.105
+
+Changed source files: 8
+
+TickLab.App/Controls/CandleChartControl.Drawing.cs
+  v105: de73b29f5ca8692bc5e9de4051931198fecc170d2d0544d2211d11812a31c8a7
+  v106: 8054911e70fd715daca78b40c4e38733aa83c52c01b1b6e52f3f6e877c20df98
+TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+  v105: eac17cc82a7dac01ffd94136885f38f38ae40564f2bd0e7368a2ef987295fd88
+  v106: a33cdabf52f70bec6dbef0cbbb27cdd2a208c99fb55ff550213a03a0938302a7
+TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+  v105: ac5b8d64e99265ad9a6dd17b7864689b9fec48cbff8df86193686586592be7f4
+  v106: e7b7d36d772394354c93684cf1a10dd57cd03e15f5d50ec3685ba8349b65152c
+TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+  v105: 57167beee86c36dd1648200ddc63d032aa593216a06a07d1d258cbf5f1d10072
+  v106: 2215290803ad4852695bd78206d97f9f485b1b9800725ce7822c3ea22d8be8dd
+TickLab.App/MainWindow.xaml
+  v105: 2fc6103a478b09ea71727a25d29551e612094197346d72a48c52a625a10c92c9
+  v106: 27b0e4045402c309d405d3087fd40db9d60f16ec3ddf17490778ee72cddab20e
+TickLab.App/TickLab.App.csproj
+  v105: 498283e26d546cd5042595ccadd1ae4f2a2b3f9a99a131176dcaf8063a7c6757
+  v106: 527fe382560276d31cf190223bfbde1593d8d29b255ea19cdb3774d03fd33739
+TickLab.App/Windows/DrawingSettingsWindow.xaml
+  v105: 32987f9494ba1c609a76739937f4d275e1e044f1a21c716c74f174588d097859
+  v106: c68fb64b4cbfca1ee35f0caa9cbf734a67ef38c6e4018ea2bdf2f7e0bde8d4b1
+TickLab.App/Windows/DrawingSettingsWindow.xaml.cs
+  v105: 562bf2e1b1e20d02d74342e108c0b3dec7c30cfda740b7347da1581d8617bb51
+  v106: fe84042cdd938db03d0598f9a9d8fedf2a20efa5ab1788db02ff735ff116c3cd
+
+All other files under src/ are byte-identical to v1.13.0.105.

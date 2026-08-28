@@ -1,0 +1,11 @@
+TickLab v1.13.0.13 first test checklist
+
+1. Open a chart and right-click a price. Add and save the alert.
+2. Confirm a yellow/orange horizontal bell line appears.
+3. Drag the alert line vertically and release. Reopen Alert Manager and confirm the threshold changed.
+4. Move live price through the alert. Confirm the repeating bell and “Market touched that price” popup. Press OK and confirm the sound stops.
+5. Open Replay, place the vertical replay line, then click End replay before loading ticks. Confirm the line is removed.
+6. Repeat after loading/playing replay. Confirm End replay restores the live chart and removes the vertical line.
+7. Select each chart type from the top Chart Type button and verify only the selected chart changes.
+8. Restart TickLab and confirm every chart restores its own chart type.
+9. Verify workspace partitions, detached windows, colours, templates and drawing synchronization still work.

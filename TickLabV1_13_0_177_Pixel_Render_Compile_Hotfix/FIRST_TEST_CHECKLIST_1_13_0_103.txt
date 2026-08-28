@@ -1,0 +1,32 @@
+TickLab v1.13.0.103 — First Test Checklist
+
+ELLIOTT IMPULSE
+[ ] Draw all six anchors.
+[ ] Starting anchor has NO 0 label.
+[ ] Vertices display circled 1, 2, 3, 4, 5.
+[ ] Numbers/circles use exactly the wave-line colour.
+[ ] Peak circles appear above peaks and trough circles below troughs.
+
+ELLIOTT CORRECTION
+[ ] Starting anchor has no label.
+[ ] Labels are exactly (A), (B), (C).
+[ ] Labels use the wave-line colour.
+
+ELLIOTT TRIANGLE
+[ ] Starting anchor has no label.
+[ ] Labels are exactly (A), (B), (C), (D), (E).
+[ ] Labels use the wave-line colour.
+
+ELLIOTT DOUBLE COMBO
+[ ] Starting anchor has no label.
+[ ] Labels are exactly (W), (X), (Y).
+
+ELLIOTT TRIPLE COMBO
+[ ] Starting anchor has no label.
+[ ] Labels are exactly (W), (X), (Y), (X), (Z).
+
+REGRESSION
+[ ] Previously fixed Patterns still render as in v1.13.0.102.
+[ ] Gann/Fib remain unchanged.
+[ ] Cycles remain unchanged for the next folder pass.
+[ ] Completed Elliott drawings can still be selected/moved/edited.

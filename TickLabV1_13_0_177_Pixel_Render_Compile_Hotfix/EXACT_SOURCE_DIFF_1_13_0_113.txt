@@ -1,0 +1,29 @@
+TickLab v1.13.0.113 — EXACT SOURCE DIFF vs v1.13.0.112
+
+Functional scope: Folder 6 Text / Annotations only.
+Previous folders are freeze-protected by source hash comparison.
+
+Changed source files: 7
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+  v112: 38f950f3b7428ff4109142cc76d62febaf6f1c4acc510e8a5f479c9a6659e6dc
+  v113: df5a9c6137840cb7623a25c8c1feef5ed7d744a18c9559ce5c0846c829a5ab86
+- TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+  v112: d65bbc5585f6f58c326a8e03641040b9cf3ecb0f243a64f95d07aee43b326dcc
+  v113: 9352c402a33b5156e9360339c4ce66c353f93d9e78b6c803196e78db10e4ea88
+- TickLab.App/Controls/CandleChartControl.cs
+  v112: 167c23727bdd5e82ced2975f17c19a35ac9665827b718a2b2158b5fd155cd7a8
+  v113: d161bc98db1983111fe63524a5f352ea38c0d828bd6bb9251d8f00d887192a47
+- TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+  v112: 83875133c09960d7ba87db0a21c5b07490fe81701a9604b51026729705d4b5c8
+  v113: 925975a6759633de49007fdecb1922f196cdfa2eb27f8fe4ca51d17b6e54bee8
+- TickLab.App/MainWindow.xaml
+  v112: 1da2384546aa7ab15d1b8490d7a2e89693e242cfe4c37860d9b8d17edb0c13bf
+  v113: 2c7573a92f7ed17a1df1445a88ff45760fa02865238940c0a0095f791e5621d1
+- TickLab.App/MainWindow.xaml.cs
+  v112: b7cf2d9652f1198da342dae60ca316491cc28209caabb15c9eb363e8b6330a24
+  v113: 440eb0c6eaecdf171aa1b678d647d8f4c787423c68060124796c689b939dddbf
+- TickLab.App/TickLab.App.csproj
+  v112: 50d77fdaf518e96b13294d12cf35266ab0dc7592765aaa02cdfdce070d6537a7
+  v113: ccc9dc573bb3c7430c8f0a94a3fdaa910848c5f846293e78d7e9ce79f007caf1
+
+No other file under src/ differs from the v1.13.0.112 baseline.

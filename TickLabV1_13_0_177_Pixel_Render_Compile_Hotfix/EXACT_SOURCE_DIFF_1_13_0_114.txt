@@ -1,0 +1,17 @@
+TickLab v1.13.0.114 — EXACT SOURCE DIFF vs v1.13.0.113
+
+Changed source files: 4
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+  v113: df5a9c6137840cb7623a25c8c1feef5ed7d744a18c9559ce5c0846c829a5ab86
+  v114: 691baa32ec9e6c3faa8f3bfd51f5d4fb41715ed0967565cf131e7e35327dbc9d
+- TickLab.App/MainWindow.xaml
+  v113: 2c7573a92f7ed17a1df1445a88ff45760fa02865238940c0a0095f791e5621d1
+  v114: f61d5f727b5f80ed7705b7fc25018057bce82ee52f30a6c24e3b58660420acb4
+- TickLab.App/MainWindow.xaml.cs
+  v113: 440eb0c6eaecdf171aa1b678d647d8f4c787423c68060124796c689b939dddbf
+  v114: 941c9136e9766e76a5f3bd5dbc893f276ebce01703a92d884d5f9022353ab9fd
+- TickLab.App/TickLab.App.csproj
+  v113: ccc9dc573bb3c7430c8f0a94a3fdaa910848c5f846293e78d7e9ce79f007caf1
+  v114: 2fffa7f3172b3624c8f00e9731800baf62563edf211ef56e8ca0104caf7b0924
+
+No other file under src/ differs from v1.13.0.113.

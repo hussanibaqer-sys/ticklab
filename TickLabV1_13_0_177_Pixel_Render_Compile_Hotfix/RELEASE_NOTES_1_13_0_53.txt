@@ -1,0 +1,23 @@
+TickLab v1.13.0.53 — Replay Line Checkbox and Auto-load Fix
+
+CHANGED ONLY IN REPLAY MODE
+- Replaced the Set / drag replay line button with a Replay line checkbox.
+- Checking Replay line enters one-click placement mode; the user clicks the exact past candle where replay should begin.
+- The replay line is not automatically placed on the newest candle.
+- Releasing a newly placed or moved replay line updates the broker-server date/time fields and automatically loads saved raw ticks.
+- Replay loading now retains the line's exact timestamp instead of falling back to an older typed time.
+- The replay line remains visible and draggable after ticks are loaded.
+- Unchecking Replay line removes it immediately. During an active replay it safely restores the complete pre-replay chart.
+- Right-click Remove replay line also clears the checkbox.
+- Removing or moving the line while ticks are loading cancels the stale load result.
+- Normal chart panning remains available away from the replay line.
+
+PRESERVED
+- Tick-by-tick raw-tick candle construction from v1.13.0.52.
+- Step Tick, Step Candle, Play/Pause, speed control and per-chart replay isolation.
+- Full-history restoration after replay.
+- Alerts, Demo Trading, panels, drawings, indicators, bridges and history formats were not intentionally changed.
+
+VALIDATION
+- Static source/XAML/event/replay regression checks: 678 passed, 0 failed.
+- The generation environment has no Windows .NET/WPF compiler. Run Clean-Restore-Build.cmd on Windows with Visual Studio 2022 for the final compile and visual test.

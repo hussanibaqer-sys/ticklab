@@ -1,0 +1,11 @@
+TickLab v1.13.0.36 — Restart Step 5A first test
+
+1. Rebuild TickLabV1_13_0_36.sln after deleting bin and obj.
+2. Confirm no error says: The out parameter 'market' must be assigned.
+3. Confirm no warning points to TryGetIndicatorWorkspaceSource, IndicatorManagement result.Overlay, or CompleteDemoTradeLineDrag.
+4. Launch TickLab.
+5. Open a demo Buy and Sell and confirm position cards and live P/L update.
+6. Drag one SL and one TP and confirm only the matching position changes.
+7. Right-click a price chart and test Add Indicator.
+8. Open a floating chart and test the DRAG handle.
+9. Confirm live MT5 candles and history still work.

@@ -1,0 +1,233 @@
+TickLab v1.13.0.168 — Exact Source Diff vs v1.13.0.167
+
+--- /mnt/data/tl167_orig/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs	2026-08-17 15:32:33.000000000 +0000
++++ /mnt/data/tl167/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs	2026-08-19 17:26:13.483364585 +0000
+@@ -23,7 +23,7 @@
+     public static FrameworkElement CreateToolIcon(DrawingToolDefinition? tool, double size = 20, Brush? brush = null)
+     {
+         Brush stroke = brush ?? new SolidColorBrush(Color.FromRgb(203, 213, 225));
+-        var canvas = NewCanvas(size);
++        var canvas = NewCanvas(size, normalizeToolStroke: true);
+         if (tool is null)
+         {
+             AddLine(canvas, 5, 19, 19, 5, stroke, 1.8);
+@@ -427,20 +427,49 @@
+             case "circle":
+                 AddCircle(canvas, 12, 12, 8.2, stroke, Brushes.Transparent, 1.5);
+                 return true;
++            case "text":
++                // Full-size rail Text glyph built from vectors so it matches the visual
++                // footprint of the other 30 px drawing-tool icons and keeps the same
++                // one-pixel stroke grammar as the rest of the rail.
++                AddLine(canvas, 4, 4.4, 20, 4.4, stroke, 1.0);
++                AddLine(canvas, 12.4, 4.4, 12.4, 21.2, stroke, 1.0);
++                return true;
+             case "path":
+-                AddPolyline(canvas, new[] { new Point(3,18), new Point(8,7), new Point(13,15), new Point(21,5) }, stroke, 1.45);
+-                AddCircle(canvas, 3, 18, 1.6, stroke, Brushes.Transparent, 1.0);
+-                AddCircle(canvas, 8, 7, 1.6, stroke, Brushes.Transparent, 1.0);
+-                AddCircle(canvas, 13, 15, 1.6, stroke, Brushes.Transparent, 1.0);
+-                AddCircle(canvas, 21, 5, 1.6, stroke, Brushes.Transparent, 1.0);
++            {
++                // Clean angular path with small hollow construction nodes.  The final
++                // segment terminates in an arrow head, matching the tool's direction
++                // cue instead of ending in the old oversized circular point.
++                var points = new[]
++                {
++                    new Point(3.6, 18.4),
++                    new Point(8.4, 7.2),
++                    new Point(13.6, 15.2),
++                    new Point(20.6, 5.2)
++                };
++                AddAngularPolyline(canvas, points, stroke, 1.0);
++                AddCircle(canvas, 3.6, 18.4, 1.0, stroke, Brushes.Transparent, 1.0);
++                AddCircle(canvas, 8.4, 7.2, 1.0, stroke, Brushes.Transparent, 1.0);
++                AddCircle(canvas, 13.6, 15.2, 1.0, stroke, Brushes.Transparent, 1.0);
++                AddLine(canvas, 20.6, 5.2, 16.9, 6.8, stroke, 1.0);
++                AddLine(canvas, 20.6, 5.2, 19.9, 9.2, stroke, 1.0);
+                 return true;
++            }
+             case "polyline":
+-                AddPolyline(canvas, new[] { new Point(3,18), new Point(8,8), new Point(13,15), new Point(21,5) }, stroke, 1.65);
+-                AddCircle(canvas, 3, 18, 1.4, stroke, stroke, 0);
+-                AddCircle(canvas, 8, 8, 1.4, stroke, stroke, 0);
+-                AddCircle(canvas, 13, 15, 1.4, stroke, stroke, 0);
+-                AddCircle(canvas, 21, 5, 1.4, stroke, stroke, 0);
++            {
++                // Keep Polyline visually distinct from Path: no arrow, balanced zig-zag,
++                // and restrained hollow nodes instead of the old heavy filled dots.
++                var points = new[]
++                {
++                    new Point(3.6, 18.4),
++                    new Point(8.4, 8.0),
++                    new Point(13.8, 15.4),
++                    new Point(20.6, 5.6)
++                };
++                AddAngularPolyline(canvas, points, stroke, 1.0);
++                foreach (Point point in points)
++                    AddCircle(canvas, point.X, point.Y, 1.0, stroke, Brushes.Transparent, 1.0);
+                 return true;
++            }
+             case "anchored-note":
+                 AddRect(canvas, 7, 4, 13, 11, stroke, Brushes.Transparent, 1.3, 2);
+                 AddLine(canvas, 7, 15, 4, 21, stroke, 1.2);
+@@ -512,13 +541,13 @@
+                 return true;
+             case "long-position":
+                 AddRect(canvas, 4, 4, 16, 8, stroke, Brushes.Transparent, 1.25, 1.5);
+-                AddLine(canvas, 4, 13, 20, 13, stroke, 1.25);
++                AddLine(canvas, 4, 12.4, 20, 12.4, stroke, 1.0);
+                 AddPath(canvas, "M12,10 L12,5 M9,8 L12,5 L15,8", stroke, 1.2, Brushes.Transparent);
+                 AddRect(canvas, 4, 14, 16, 6, stroke, Brushes.Transparent, 0.9, 1.5);
+                 return true;
+             case "short-position":
+                 AddRect(canvas, 4, 4, 16, 6, stroke, Brushes.Transparent, 0.9, 1.5);
+-                AddLine(canvas, 4, 11, 20, 11, stroke, 1.25);
++                AddLine(canvas, 4, 10.8, 20, 10.8, stroke, 1.0);
+                 AddRect(canvas, 4, 12, 16, 8, stroke, Brushes.Transparent, 1.25, 1.5);
+                 AddPath(canvas, "M12,14 L12,19 M9,16 L12,19 L15,16", stroke, 1.2, Brushes.Transparent);
+                 return true;
+@@ -758,7 +787,7 @@
+         return canvas;
+     }
+ 
+-    private static Canvas NewCanvas(double size)
++    private static Canvas NewCanvas(double size, bool normalizeToolStroke = false)
+     {
+         var canvas = new Canvas
+         {
+@@ -770,7 +799,11 @@
+             VerticalAlignment = VerticalAlignment.Center,
+             SnapsToDevicePixels = true,
+             UseLayoutRounding = true,
+-            LayoutTransform = new ScaleTransform(size / DesignSize, size / DesignSize)
++            LayoutTransform = new ScaleTransform(size / DesignSize, size / DesignSize),
++            // For drawing-tool logos, compensate for the 24 -> requested-size transform
++            // so the final on-screen vector stroke remains one device-independent pixel.
++            // Action/quick-edit icons deliberately keep their existing stroke grammar.
++            Tag = normalizeToolStroke ? DesignSize / Math.Max(1.0, size) : null
+         };
+         // Keep the rail artwork as true WPF vectors.  Do not force aliased/nearest-neighbour
+         // rendering: at the 150% rail size that makes diagonal and curved strokes look jagged.
+@@ -778,15 +811,29 @@
+         return canvas;
+     }
+ 
++    private static double EffectiveStrokeThickness(Canvas canvas, double requestedThickness)
++    {
++        if (requestedThickness <= 0)
++            return 0;
++        return canvas.Tag is double onePixelDesignThickness
++            ? onePixelDesignThickness
++            : requestedThickness;
++    }
++
++    private static bool UsesNormalizedToolStroke(Canvas canvas) => canvas.Tag is double;
++
+     private static void AddLine(Canvas canvas, double x1, double y1, double x2, double y2, Brush stroke, double thickness)
+     {
+-        canvas.Children.Add(new Line
++        var line = new Line
+         {
+             X1 = x1, Y1 = y1, X2 = x2, Y2 = y2,
+-            Stroke = stroke, StrokeThickness = thickness,
++            Stroke = stroke, StrokeThickness = EffectiveStrokeThickness(canvas, thickness),
+             StrokeStartLineCap = PenLineCap.Flat, StrokeEndLineCap = PenLineCap.Flat,
+             SnapsToDevicePixels = true
+-        });
++        };
++        if (UsesNormalizedToolStroke(canvas) && (Math.Abs(y1 - y2) < 0.001 || Math.Abs(x1 - x2) < 0.001))
++            RenderOptions.SetEdgeMode(line, EdgeMode.Aliased);
++        canvas.Children.Add(line);
+     }
+ 
+     private static void AddPolyline(Canvas canvas, IEnumerable<Point> points, Brush stroke, double thickness)
+@@ -795,20 +842,34 @@
+         {
+             Points = new PointCollection(points),
+             Stroke = stroke,
+-            StrokeThickness = thickness,
++            StrokeThickness = EffectiveStrokeThickness(canvas, thickness),
+             StrokeLineJoin = PenLineJoin.Round,
+             StrokeStartLineCap = PenLineCap.Round,
+             StrokeEndLineCap = PenLineCap.Round
+         });
+     }
+ 
++    private static void AddAngularPolyline(Canvas canvas, IEnumerable<Point> points, Brush stroke, double thickness)
++    {
++        canvas.Children.Add(new Polyline
++        {
++            Points = new PointCollection(points),
++            Stroke = stroke,
++            StrokeThickness = EffectiveStrokeThickness(canvas, thickness),
++            StrokeLineJoin = PenLineJoin.Miter,
++            StrokeStartLineCap = PenLineCap.Flat,
++            StrokeEndLineCap = PenLineCap.Flat,
++            SnapsToDevicePixels = true
++        });
++    }
++
+     private static void AddPath(Canvas canvas, string data, Brush stroke, double thickness, Brush fill)
+     {
+         canvas.Children.Add(new System.Windows.Shapes.Path
+         {
+             Data = Geometry.Parse(data),
+             Stroke = stroke,
+-            StrokeThickness = thickness,
++            StrokeThickness = EffectiveStrokeThickness(canvas, thickness),
+             Fill = fill,
+             StrokeLineJoin = PenLineJoin.Round,
+             StrokeStartLineCap = PenLineCap.Round,
+@@ -824,7 +885,7 @@
+             Height = height,
+             Stroke = stroke,
+             Fill = fill,
+-            StrokeThickness = thickness,
++            StrokeThickness = EffectiveStrokeThickness(canvas, thickness),
+             RadiusX = radius,
+             RadiusY = radius
+         };
+@@ -841,7 +902,7 @@
+             Height = height,
+             Stroke = stroke,
+             Fill = fill,
+-            StrokeThickness = thickness
++            StrokeThickness = EffectiveStrokeThickness(canvas, thickness)
+         };
+         Canvas.SetLeft(ellipse, x);
+         Canvas.SetTop(ellipse, y);
+
+--- /mnt/data/tl167_orig/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/MainWindow.xaml	2026-08-19 15:32:50.000000000 +0000
++++ /mnt/data/tl167/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/MainWindow.xaml	2026-08-19 17:27:19.819297474 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.167 — Rail Alignment + Hover Reveal"
++        Title="TickLab v1.13.0.168 — Crisp Drawing Tool Icons"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+
+--- /mnt/data/tl167_orig/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/TickLab.App.csproj	2026-08-19 15:32:07.000000000 +0000
++++ /mnt/data/tl167/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/TickLab.App.csproj	2026-08-19 17:27:19.817835388 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.167</Version>
+-    <AssemblyVersion>1.13.0.167</AssemblyVersion>
+-    <FileVersion>1.13.0.167</FileVersion>
++    <Version>1.13.0.168</Version>
++    <AssemblyVersion>1.13.0.168</AssemblyVersion>
++    <FileVersion>1.13.0.168</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>
+
+--- /mnt/data/tl167_orig/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/VERSION.txt	2026-08-19 15:32:07.000000000 +0000
++++ /mnt/data/tl167/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/VERSION.txt	2026-08-19 17:27:19.819405123 +0000
+@@ -1 +1 @@
+-1.13.0.167
++1.13.0.168

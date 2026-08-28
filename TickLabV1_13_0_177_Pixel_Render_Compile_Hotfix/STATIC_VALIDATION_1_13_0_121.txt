@@ -1,0 +1,22 @@
+TickLab v1.13.0.121 — STATIC VALIDATION
+
+Result: 13 passed, 0 failed.
+
+PASS — All XAML parses | 31 files, errors=0
+PASS — Expected app-source scope only | changed=['TickLab.App/Controls/CandleChartControl.Drawing.cs', 'TickLab.App/MainWindow.xaml', 'TickLab.App/TickLab.App.csproj', 'TickLab.App/Windows/DrawingMediaPickerWindow.xaml.cs']
+PASS — Drawing parity implementation frozen
+PASS — Drawing tool catalog frozen
+PASS — Colour emoji vector package reference
+PASS — Chart emoji uses DrawingImage colour path
+PASS — Picker emoji uses colour TextBlock
+PASS — Media scale persisted
+PASS — Four media corner handles displayed
+PASS — Four media corners are hit-testable
+PASS — No media side/stretch handles
+PASS — Uniform resize uses single scale
+PASS — Version is 1.13.0.121
+
+XAML files: 31
+C# structural scan: 150 files, 0 delimiter failures
+
+Runtime note: Windows WPF/MSBuild is not available in this Linux environment. Visual Studio runtime testing remains required.

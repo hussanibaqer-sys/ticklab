@@ -1,0 +1,142 @@
+<Window x:Class="TickLab.Desktop.Windows.CandleHistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TickLab — All TF Candle History"
+        Width="1120" Height="720" MinWidth="920" MinHeight="580"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource WindowBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="64"/>
+        </Grid.RowDefinitions>
+        <Border Background="{StaticResource DarkHeaderBrush}">
+            <Grid Margin="18,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="All TF Candle History" Foreground="White" FontSize="18" FontWeight="SemiBold"/>
+                    <TextBlock Text="Permanent native MT5 candles — one independent file per timeframe" Foreground="#BDBDBD" FontSize="11"/>
+                </StackPanel>
+                <TextBlock x:Name="ConnectorText" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#8DB2FF"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="22">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="255"/>
+                <ColumnDefinition Width="14"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Style="{StaticResource CardBorder}" Padding="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Saved instrument folders" Style="{StaticResource SectionTitle}" Margin="0,0,0,10"/>
+                    <ListBox x:Name="SymbolsList" Grid.Row="1" SelectionChanged="SymbolsList_SelectionChanged">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <EventSetter Event="PreviewMouseRightButtonDown" Handler="SymbolItem_PreviewMouseRightButtonDown"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel LastChildFill="True" Margin="2,3">
+                                    <CheckBox DockPanel.Dock="Left" Margin="0,0,8,0" VerticalAlignment="Center"
+                                              IsThreeState="True" IsChecked="{Binding IsVisible}"
+                                              Tag="{Binding Symbol}" Click="SymbolVisibilityCheckBox_Click"
+                                              ToolTip="Checked: display saved candle history. Unchecked: keep files but hide them."/>
+                                    <TextBlock Text="{Binding Symbol}" VerticalAlignment="Center"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Open folder" Click="OpenSymbolFolder_Click"/>
+                                <MenuItem Header="Copy folder" Click="CopySymbolFolder_Click"/>
+                                <MenuItem Header="Copy path" Click="CopySymbolPath_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Delete" Click="DeleteSymbol_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                    <Grid Grid.Row="2" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+                        <Button Content="Select All" Margin="0,0,4,0" Click="ShowAllSymbols_Click"/>
+                        <Button Grid.Column="1" Content="Hide All" Margin="4,0,0,0" Click="HideAllSymbols_Click"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock x:Name="FolderTitle" Text="Select an instrument" Style="{StaticResource SectionTitle}"/>
+                            <TextBlock x:Name="FolderPathText" Margin="0,4,0,10" Foreground="{StaticResource MutedTextBrush}" TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+                        <Button Grid.Column="1" Width="120" Height="36" Margin="0,0,8,0" Content="Open Folder" Click="OpenFolderButton_Click"/>
+                        <Button Grid.Column="2" Width="190" Height="36" Style="{StaticResource AccentButton}" Content="Refresh All Candle Data" Click="RefreshAllButton_Click"/>
+                    </Grid>
+
+                    <DataGrid x:Name="TimeframesGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="False"
+                              RowHeaderWidth="0" SelectionMode="Single" CanUserAddRows="False">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="PreviewMouseRightButtonDown" Handler="TimeframeRow_PreviewMouseRightButtonDown"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Open containing folder" Click="OpenTimeframeFolder_Click"/>
+                                <MenuItem Header="Copy timeframe file" Click="CopyTimeframeFile_Click"/>
+                                <MenuItem Header="Copy path" Click="CopyTimeframePath_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Delete" Click="DeleteTimeframe_Click"/>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Display" Width="72">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  IsChecked="{Binding IsVisible}" Tag="{Binding Timeframe}"
+                                                  Click="TimeframeVisibilityCheckBox_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Timeframe" Binding="{Binding Timeframe}" Width="105" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="From" Binding="{Binding From}" Width="150" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="To" Binding="{Binding To}" Width="150" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Candles" Binding="{Binding Records}" Width="105" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="90" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock x:Name="StatusText" Grid.Row="2" Margin="0,10,0,0" Foreground="{StaticResource MutedTextBrush}"
+                               Text="Checkboxes hide history without deleting files. Right-click a selected folder or timeframe to open, copy or delete it."/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="22,0">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource MutedTextBrush}" Text="Refresh repairs missing, duplicated or incorrect native candles. Hidden files remain safely stored on disk."/>
+            <Button Grid.Column="1" Width="100" Content="Back" Click="BackButton_Click"/>
+            <Button Grid.Column="2" Width="100" Margin="8,0,0,0" Content="Close" Click="CloseButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

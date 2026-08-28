@@ -1,0 +1,8 @@
+TickLab v1.13.0.68 protected-source verification
+
+Compared with v1.13.0.67 baseline:
+- Gateway/FileBridge protected files changed: 0
+- .mq5 protected files changed: 0
+- Protected hash set: identical (16 files checked)
+
+This release adds MT5 trade-history report parsing at the Demo Trading UI/application layer only. It does not modify the MT5 candle/tick bridge or its storage protocol.

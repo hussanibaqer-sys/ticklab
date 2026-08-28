@@ -1,0 +1,14 @@
+TickLab v1.13.0.86 static validation
+
+- 30 XAML files parsed successfully as XML.
+- 149 C# source files present.
+- 433 XAML event references checked; 0 missing handlers.
+- CandleChartControl partial-method rough duplicate-signature scan: 0 duplicates.
+- Drawing tool catalog: 101 IDs, 101 unique, 0 duplicates.
+- Changed C# files passed brace-balance sanity checks.
+- Verified construction overlay call is present after chart drawing layers.
+- Verified explicit PlaceAsBackgroundBox exists in both Folder-1 and generic drawing settings.
+- Verified quick transparency uses direct opacity (left 0 -> right 1 solid).
+- Verified ray/infinite-line hit-test helpers are present.
+
+Limitation: Windows .NET/WPF MSBuild is not installed in this execution environment, so final Windows compilation must be performed on the user's PC.

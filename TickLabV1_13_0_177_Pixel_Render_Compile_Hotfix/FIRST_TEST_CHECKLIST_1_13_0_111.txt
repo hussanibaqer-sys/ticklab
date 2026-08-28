@@ -1,0 +1,36 @@
+TickLab v1.13.0.111 — First Test Checklist
+
+1. Arrow mark down
+   - Open Geometry folder. Confirm Arrow mark down icon points DOWN.
+
+2. Arrow Marker
+   - Select Arrow Marker. Click tail once, tip once. It must finish after click #2.
+   - Drag either endpoint: arrow must resize and rotate.
+   - Click the filled arrow body/head: quick edit must open.
+
+3. Path
+   - Single-click 5-6 zig-zag points. Lines must be straight between anchors.
+   - Double-click to finish. No duplicate endpoint/extra segment.
+   - Confirm final endpoint has an arrowhead.
+   - Click any segment or arrowhead: quick edit must open.
+
+4. Arc
+   - Place its 3 points. Confirm curved edge + straight closing chord + filled interior.
+   - Change line color, background color, fill transparency and line pixels. Changes must update live.
+   - Click curve, chord and fill: each must reselect the Arc.
+
+5. Curve
+   - Click endpoint A, click endpoint B. It must finish immediately after click #2.
+   - Confirm one middle handle is auto-created. Drag it to reshape the curve.
+   - Click any visible curve segment to reselect.
+
+6. Double Curve
+   - Click endpoint A, click endpoint B. It must finish immediately after click #2.
+   - Confirm two middle control handles appear automatically.
+   - Drag each middle control independently and confirm the curve changes without a doubled/parallel duplicate line.
+   - Click anywhere on the visible curve to reselect.
+
+7. Regression smoke test
+   - Briefly open/use one already-working unrelated tool. No unrelated behavior should have changed.
+
+Windows Visual Studio compile/runtime is the final gate.

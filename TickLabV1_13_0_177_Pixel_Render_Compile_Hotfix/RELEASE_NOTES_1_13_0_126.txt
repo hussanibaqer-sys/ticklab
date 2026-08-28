@@ -1,0 +1,17 @@
+TickLab v1.13.0.126 — Emoji Picker Bounds / Scrollbar / One-Shot
+
+BASE
+- Built from v1.13.0.125.
+- Preserve confirmed working Zoom/Scroll wheel toggle and emoji vector graphics/colours.
+
+FIXES
+1. Removed the redundant large bottom Emoji/Stickers/Icons tab buttons from the media picker. Toolbar entries already choose the correct media type.
+2. Emoji list has an explicit 14px visible draggable scrollbar instead of inheriting TickLab's 4px global slim scrollbar. Virtualization/recycling remains enabled.
+3. Media picker is clamped to the active chart frame and stops above the chart's 32px time-scale area; it cannot extend below the time scale or outside the active chart safe rectangle. Minimum picker size is reduced so it can fit smaller chart panes.
+4. Emoji returns to the same one-select -> one-draw lifecycle as other drawing tools. The v1.13.0.125 emoji-only repeat-placement exception and repeated-symbol reuse were removed. Explicit global Stay in drawing mode remains the only repeat-placement override, same as other tools.
+
+FROZEN
+- Emoji vector assets/colour-quality pipeline unchanged.
+- Zoom/Scroll wheel mode logic unchanged.
+- Four-corner media resize/body drag unchanged.
+- Other drawing-folder geometry/settings unchanged.

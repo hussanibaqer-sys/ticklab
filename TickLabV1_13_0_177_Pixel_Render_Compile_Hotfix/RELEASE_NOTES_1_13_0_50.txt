@@ -1,0 +1,28 @@
+TickLab v1.13.0.50 — Atomic History / Live Merge Hotfix
+=======================================================
+
+ONLY APPROVED CHANGE
+- Fixed the chart fluctuation where Refresh displayed full saved history, but the next live tick could replace it with only the current candle and briefly show the MT5 history-loading message.
+
+ROOT CAUSE
+- The visible chart, active source/display lists, and per-chart runtime context could temporarily hold different candle counts after a refresh.
+- A stale one-candle runtime list could become the live-update authority on the next bridge write.
+
+FIX
+- Every successful indexed-history load now commits source candles, display candles, paging flags, and indicator revision to the active chart context in one UI-thread operation.
+- Before active-chart live updates, inactive-chart live updates, and rolling-window integrity repairs, TickLab compares valid same-symbol history owners and keeps the largest complete snapshot authoritative.
+- A stale one-candle source/display list is repaired from the full chart/context snapshot before the new candle is merged.
+- Synthetic rendered series such as Renko, Kagi, Range and Heikin-Ashi are excluded as source-history authorities.
+- New live candles still update or append only the chart tail; older indexed candles remain untouched.
+
+UNCHANGED
+- Alerts and notification layout.
+- Demo Trading, history arrows and SL/TP behavior.
+- Code Editor, Demo Trading and Panel handles.
+- Indicators, drawings, symbol favourites and workspaces.
+- MT5 bridges, FileBridge, permanent history formats and storage behavior.
+
+BUILD NOTE
+- Static source validation is included.
+- The generation environment does not contain the Windows .NET/WPF compiler.
+- Run Clean-Restore-Build.cmd with Visual Studio 2022 on Windows for the final compiler and live-market test.

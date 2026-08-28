@@ -1,0 +1,10 @@
+TickLab v1.13.0.134 — First Runtime Test
+
+1. Open a symbol with months of stored raw ticks and select 1s.
+2. Confirm initial chart remains bounded (about 1,600 loaded; no multi-month bulk load/freeze).
+3. Scroll left beyond the previous ~30-minute wall.
+4. Confirm TickLab preloads an older page and the chart continues backward.
+5. Repeat several pages; verify the chart can continue into earlier days while memory/rendering remains bounded.
+6. Repeat with 15s, 30s, 45s and a custom seconds timeframe.
+7. Switch to M1 and H1 and confirm their normal history/zoom/scroll behavior is unchanged.
+8. Reopen 1s after older pages were visited; indexed ranges should be available from the permanent tick archive without rebuilding the whole history.

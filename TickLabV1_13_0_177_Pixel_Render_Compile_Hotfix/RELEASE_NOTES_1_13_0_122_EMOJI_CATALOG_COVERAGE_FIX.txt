@@ -1,0 +1,26 @@
+TickLab v1.13.0.122 — Emoji Catalog Coverage Fix
+
+BASE
+- Built from user-confirmed v1.13.0.121 Emoji Color / Uniform Corner Resize.
+- v1.13.0.120 shared drawing interaction baseline remains frozen.
+
+FIX
+- v1.13.0.121 used a manually curated emoji catalog and omitted standard base emoji/ZWJ sequences.
+- Added 348 missing fully-qualified base emoji entries from Unicode Emoji 17.0 emoji-test.txt.
+- The default picker now covers the complete Emoji 17.0 fully-qualified base set (excluding skin-tone permutations as separate cells to avoid thousands of near-duplicate buttons).
+- Added missing faces/emotions, people/body base sequences, animals, food, activities, travel/places, objects, symbols and flags.
+- Existing emoji entries/keys remain unchanged so saved drawings continue to decode.
+- Picker and placed chart object still use the same Emoji.Wpf color/vector renderer from v1.13.0.121.
+
+FROZEN / NOT CHANGED
+- Four-corner proportional resize behavior.
+- Body click-hold move behavior.
+- v1.13.0.120 delete/drag/selection/render fixes.
+- All non-Emoji drawing folders and their geometry/settings.
+- MT5 / FileBridge / History / Replay / Gateway / Connector source.
+
+SOURCE
+- Unicode emoji-test.txt Version 17.0 (official Unicode data, fully-qualified entries, CLDR ordering).
+
+WINDOWS NOTE
+- Final compile/runtime visual verification remains required in Visual Studio on Windows.

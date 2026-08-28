@@ -1,0 +1,5 @@
+TickLab v1.13.0.64 protected source verification
+
+Checked files: 19
+Changed protected files: 0
+Result: MT5 and Gateway/FileBridge sources are byte-for-byte unchanged from v1.13.0.63 compile-fix baseline.

@@ -1,0 +1,76 @@
+TickLab v1.13.0.27 — First Test Checklist
+
+Keep v1.13.0.26 untouched as the rollback copy.
+
+A. BUILD AND LAUNCH
+[ ] Rebuild solution with 0 errors.
+[ ] TickLab opens normally and title shows v1.13.0.27.
+[ ] Existing workspace, theme, symbol and timeframe restore.
+[ ] Existing MT5 bridge is detected without changing or recompiling it.
+
+B. PROTECTED CANDLE CHART
+[ ] Candle chart looks exactly as stable v1.13.0.26.
+[ ] Horizontal zoom remains smooth up to the 1,500-candle cap.
+[ ] Vertical-only zoom does not start a history request.
+[ ] Candles do not disappear, jump, stick or change position unexpectedly.
+
+C. HISTORY ISOLATION — MOST IMPORTANT
+[ ] Scroll left until older history loads.
+[ ] Scroll right until newer history loads.
+[ ] Alternate left/right rapidly several times.
+[ ] Older and newer loads do not cancel each other.
+[ ] No duplicate candles, gaps, blank chart, jump or frozen pending state.
+[ ] Repeat on two open charts with different symbols/timeframes.
+[ ] Loading history on Chart 1 does not change Chart 2.
+[ ] Change symbol/timeframe while a page is loading; obsolete data is not inserted.
+[ ] Home and End still open earliest/latest windows correctly.
+
+D. BUILT-IN INDICATOR COLOURS
+For several different indicator types, including a line, histogram, cloud/band and signal indicator:
+[ ] Open Properties/Edit.
+[ ] Change every available series colour.
+[ ] Change down/negative colour.
+[ ] Change fill colour and opacity.
+[ ] Change label/scale colour.
+[ ] Change levels colour, width and style.
+[ ] Change line width/style and visibility.
+[ ] Main-chart overlays and separate panes update correctly.
+[ ] Restart TickLab; all colours restore.
+
+E. TICKSCRIPT COLOURS
+[ ] Apply a TickScript indicator.
+[ ] Open Properties from its pane or Applied Indicators list.
+[ ] Change line, levels, fill, opacity, label, width, style and visibility.
+[ ] Open code editor from the Properties window.
+[ ] Restart TickLab; appearance and applied state restore on the correct chart.
+[ ] Remove it by right-click/Remove and confirm only that chart is affected.
+
+F. INDICATOR PANE BEHAVIOUR
+[ ] Vertical wheel/drag scaling is independent from price chart.
+[ ] Double-click vertical scale resets the indicator pane.
+[ ] Drag each 9px divider smoothly.
+[ ] Indicator and price right scales align at 48px.
+[ ] Crosshair and horizontal time alignment match while Sync with Price Chart is enabled.
+[ ] Turn Sync with Price Chart off.
+[ ] Indicator horizontal zoom, scroll and crosshair become independent.
+[ ] Turn sync on again; the indicator relinks to the price chart.
+[ ] Restart and confirm the sync choice restores.
+
+G. CONNECT / COPY / MOVE
+Open at least two price charts in different Workspace/Partition locations.
+[ ] Connect an indicator to another chart using Workspace → Partition → Chart.
+[ ] Edit colours on one connected copy; the other connected copy updates.
+[ ] Copy an indicator; edit the copy and confirm the source stays unchanged.
+[ ] Move an indicator; it disappears from source and appears at destination.
+[ ] Test both built-in and TickScript indicators.
+[ ] Test routing from the pane button and Applied Indicators list.
+
+H. REGRESSION CHECK
+[ ] Live candle and Bid/Ask lines continue updating.
+[ ] Replay starts, pauses, advances and stops normally.
+[ ] Alerts remain attached to the correct chart.
+[ ] Drawings remain saved and aligned.
+[ ] Multiple charts keep separate symbol/timeframe/data/indicator state.
+[ ] Close and reopen; workspace positions and settings restore.
+
+If any item fails, return the exact action, chart, symbol, timeframe, error text and a screenshot. Keep the v1.13.0.26 package for immediate rollback.

@@ -1,0 +1,25 @@
+TickLab v1.13.0.54 intended source scope
+
+Replay implementation:
+- src/TickLab.App/Windows/MarketReplayWindow.cs
+- src/TickLab.App/MainWindow.AlertsReplay.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+
+Release identity/build:
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+- VERSION.txt
+- TickLabV1_13_0_54.sln
+- Clean-Restore-Build.cmd
+
+Validation/documentation:
+- tools/validate_source_1_13_0_54.py
+- VALIDATION_REPORT_1_13_0_54.txt
+- RELEASE_NOTES_1_13_0_54.txt
+- FIRST_TEST_CHECKLIST_1_13_0_54.txt
+- CHANGE_SCOPE_1_13_0_54.txt
+- EXACT_FILE_DIFF_1_13_0_54.txt
+- SOURCE_MANIFEST_SHA256_1_13_0_54.txt
+- MANIFEST_VERIFICATION_1_13_0_54.txt
+
+No intentional changes were made to MT5 bridges, FileBridge history storage, Demo Trading, alerts, indicators, drawings or right-side panel behavior.

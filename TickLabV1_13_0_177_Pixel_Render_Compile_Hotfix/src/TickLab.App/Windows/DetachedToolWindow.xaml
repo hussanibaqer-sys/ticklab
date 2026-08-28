@@ -1,0 +1,62 @@
+<Window x:Class="TickLab.Desktop.Windows.DetachedToolWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TickLab Tool"
+        Width="1320"
+        Height="780"
+        MinWidth="820"
+        MinHeight="420"
+        WindowStartupLocation="Manual"
+        ShowInTaskbar="True"
+        Background="{StaticResource WindowBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="{StaticResource DarkHeaderBrush}"
+                BorderBrush="#273449"
+                BorderThickness="0,0,0,1">
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <Border Width="24"
+                            Height="24"
+                            CornerRadius="6"
+                            Background="{StaticResource AccentBrush}">
+                        <TextBlock Text="T"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Bold"/>
+                    </Border>
+                    <TextBlock x:Name="DetachedTitleText"
+                               Margin="8,0,0,0"
+                               VerticalAlignment="Center"
+                               FontWeight="SemiBold"
+                               Text="TickLab Tool"
+                               Foreground="White"/>
+                    <TextBlock Margin="10,0,0,0"
+                               VerticalAlignment="Center"
+                               Foreground="#BDBDBD"
+                               Text="Detached — drag this window to another display"/>
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        Content="Dock into TickLab"
+                        Style="{StaticResource AccentButton}"
+                        Click="DockButton_Click"/>
+            </Grid>
+        </Border>
+
+        <ContentControl x:Name="ToolContent"
+                        Grid.Row="1"/>
+    </Grid>
+</Window>

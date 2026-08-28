@@ -1,0 +1,14 @@
+Exact TickLab.App source files changed from v1.13.0.90 to v1.13.0.91:
+- Controls/CandleChartControl.Drawing.cs
+- Controls/CandleChartControl.DrawingParity.cs
+- Core/Drawing/DrawingParityDefaults.cs
+- MainWindow.xaml
+- TickLab.App.csproj
+- Windows/TradingViewFibGannSettingsWindow.xaml
+- Windows/TradingViewFibGannSettingsWindow.xaml.cs
+
+Protected implementation scopes unchanged:
+- src/TickLab.App/Gateway/FileBridge/**
+- src/TickLab.App/Core/History/**
+- src/TickLab.App/Core/Replay/**
+- MT5/**

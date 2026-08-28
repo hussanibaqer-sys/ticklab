@@ -1,0 +1,18 @@
+TickLab v1.13.0.53 exact file differences from v1.13.0.52
+
+added    CHANGE_SCOPE_1_13_0_53.txt
+modified Clean-Restore-Build.cmd
+added    FIRST_TEST_CHECKLIST_1_13_0_53.txt
+added    RELEASE_NOTES_1_13_0_53.txt
+modified src/TickLab.App/Controls/CandleChartControl.cs
+modified src/TickLab.App/MainWindow.AlertsReplay.cs
+modified src/TickLab.App/MainWindow.ChartContexts.cs
+modified src/TickLab.App/MainWindow.xaml
+modified src/TickLab.App/MainWindow.xaml.cs
+modified src/TickLab.App/TickLab.App.csproj
+modified src/TickLab.App/Windows/MarketReplayWindow.cs
+removed  TickLabV1_13_0_52.sln
+added    TickLabV1_13_0_53.sln
+added    tools/validate_source_1_13_0_53.py
+added    VALIDATION_REPORT_1_13_0_53.txt
+modified VERSION.txt

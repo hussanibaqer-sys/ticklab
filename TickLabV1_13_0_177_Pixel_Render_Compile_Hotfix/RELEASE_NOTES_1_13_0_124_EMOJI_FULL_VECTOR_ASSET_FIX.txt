@@ -1,0 +1,44 @@
+TickLab v1.13.0.124 — Emoji Full Vector Asset Fix
+
+BASE
+- Built from v1.13.0.123.
+- Preserves v1.13.0.120 global drawing interaction baseline.
+- Preserves v1.13.0.121 Emoji/Icon/Sticker 4-corner proportional resize and body-drag movement.
+- Preserves v1.13.0.123 lazy/virtualized picker performance work.
+
+ROOT CAUSE FIXED
+- The Emoji catalog was complete, but many cells still depended on the local Windows emoji font.
+- On PCs whose Segoe UI Emoji build does not contain a sequence, WPF displayed a tofu/empty rectangle.
+- v1.13.0.124 removes the system-font dependency for Emoji-folder previews and chart rendering.
+
+FULL OFFLINE VECTOR ARTWORK
+- TickLab now bundles vector artwork for all 3,944 Emoji 17 fully-qualified catalog sequences.
+- Every catalog mark resolves to a bundled SVG entry: 3,944 / 3,944, 0 missing.
+- No .ttf/.otf/.woff font files are included.
+- 3,624 assets use native Twemoji color vector layers.
+- 320 newer/unsupported sequences use locally generated vector-path artwork from Noto Color Emoji rendering.
+- Picker and chart use the exact same bundled asset loader, so a menu item cannot render as a Windows missing-glyph rectangle.
+
+PERFORMANCE
+- The vector bundle is one compressed application resource.
+- It is opened once.
+- Individual emoji DrawingImages are parsed/cached only when visible/used.
+- Existing virtualized/recycled row picker remains in place.
+
+FROZEN / NOT CHANGED
+- DrawingToolCatalog.cs unchanged from v1.13.0.123.
+- CandleChartControl.DrawingParity.cs unchanged from v1.13.0.123.
+- Existing shared draw completion/selection/drag/delete behavior is not rewritten.
+- No other drawing-folder geometry/settings changed.
+
+VALIDATION
+- 3,944 unique Emoji catalog marks.
+- 3,944 bundled SVG entries.
+- 0 catalog entries without bundled artwork.
+- 0 unexpected SVG entries.
+- All bundled SVG XML parses.
+- No raster <image> tags in bundled SVGs.
+- No Emoji.Wpf code/package dependency remains.
+- No previous OpenMoji-only fallback path remains.
+- 31 XAML files parse.
+- Windows WPF/MSBuild is unavailable in this environment; final compile/runtime remains the user's Visual Studio gate.

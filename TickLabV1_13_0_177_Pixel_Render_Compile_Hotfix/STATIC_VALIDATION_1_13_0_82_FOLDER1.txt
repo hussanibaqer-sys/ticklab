@@ -1,0 +1,12 @@
+TickLab 1.13.0.82 Folder 1 static validation
+XAML files parsed: 30
+C# files scanned: 149
+XAML parse errors: 0
+XAML event handlers referenced: 270
+Missing event handlers: 0
+Prohibited real-trade phrase scan MainWindow.xaml.cs: PASS
+Prohibited real-trade phrase scan CandleChartControl.Drawing.cs: PASS
+Prohibited real-trade phrase scan CandleChartControl.DrawingParity.cs: PASS
+Prohibited real-trade phrase scan TradingViewLineSettingsWindow.xaml.cs: PASS
+dotnet/MSBuild availability: NOT AVAILABLE IN THIS CONTAINER
+Result: STATIC PASS

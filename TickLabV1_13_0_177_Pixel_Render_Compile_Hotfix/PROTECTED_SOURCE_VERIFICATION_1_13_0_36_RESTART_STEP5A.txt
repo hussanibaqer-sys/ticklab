@@ -1,0 +1,22 @@
+Protected files compared: 18
+Protected files unchanged: 18
+Protected files changed/missing: 0
+
+OK  src/TickLab.App/Core/History/HistoryIntegrityService.cs
+OK  src/TickLab.App/Core/History/DataRangeCoordinator.cs
+OK  src/TickLab.App/Gateway/FileBridge/HistoryVisibilityStore.cs
+OK  src/TickLab.App/Gateway/FileBridge/TickArchiveCandleCache.cs
+OK  src/TickLab.App/Gateway/FileBridge/LocalCandleHistoryCache.cs
+OK  src/TickLab.App/Gateway/FileBridge/Mt5ConnectorSummary.cs
+OK  src/TickLab.App/Gateway/FileBridge/ExternalHistoryStore.cs
+OK  src/TickLab.App/Gateway/FileBridge/Mt5HistoryStatus.cs
+OK  src/TickLab.App/Gateway/FileBridge/TemporaryHistoryStore.cs
+OK  src/TickLab.App/Gateway/FileBridge/NativeCandleArchiveStore.cs
+OK  src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+OK  src/TickLab.App/Gateway/FileBridge/Mt5Paths.cs
+OK  src/TickLab.App/Gateway/FileBridge/MarkerExchangeService.cs
+OK  src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+OK  src/TickLab.App/Gateway/FileBridge/CsvLineParser.cs
+OK  src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+OK  src/TickLab.App/Gateway/FileBridge/Mt5ProtocolModels.cs
+OK  src/TickLab.App/Gateway/FileBridge/Mt5SymbolInfo.cs

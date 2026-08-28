@@ -1,0 +1,19 @@
+TickLab v1.13.0.78 — First Test Checklist
+
+1. Extract outside OneDrive when possible, for example C:\TickLab\TickLabV1_13_0_78_Drawing_Toolbar_Parity_Overhaul.
+2. Open TickLabV1_13_0_78.sln in Visual Studio 2022 and Build Solution.
+3. Launch TickLab and verify the left rail icons are sharp in both Light and Dark themes with no blur/shadow on the rail or drawing popups.
+4. Open every drawing category and confirm every listed tool can be selected.
+5. Test Trend Line: midpoint, arrows, labels, angle/statistics, exact coordinates and visibility.
+6. Test Fib Extension and Trend-Based Fib Time using all three anchors.
+7. Compare Classic / Schiff / Modified Schiff / Inside Pitchfork geometry.
+8. Test Regression source/deviation/Pearson controls and AVWAP bands.
+9. Test Long/Short Position account/risk/leverage/quantity calculations.
+10. Test Bars Pattern in bar-stick and source-line modes, Mirror and Flip.
+11. Test Fixed/Anchored Volume Profile POC/value area/up-down volume.
+12. Test Pin/Table/Price Note/Signpost/Anchored Note.
+13. Test Weak/Strong Magnet and Ctrl temporary reversal.
+14. Test Keep Drawing, Lock All, Hide, Object Tree, Undo/Redo, Remove and Zoom In.
+15. Create two charts and test all five drawing synchronization scopes.
+16. Save/reopen workspace and confirm drawings, styles, templates, visibility and default sync mode restore.
+17. Verify Replay, Tick chart, Demo Trading, MT5 history/reporting and Recorder still behave as in v1.13.0.69.

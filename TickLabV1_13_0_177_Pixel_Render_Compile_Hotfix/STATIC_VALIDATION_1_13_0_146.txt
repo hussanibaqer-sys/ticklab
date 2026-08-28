@@ -1,0 +1,10 @@
+XML parse OK: src/TickLab.App/TickLab.App.csproj
+XML parse OK: src/TickLab.App/MainWindow.xaml
+Delimiter balance OK: src/TickLab.App/Controls/TickChartControl.cs
+Delimiter balance OK: src/TickLab.App/Controls/CandleChartControl.RawTickDrawing.cs
+Required token present: DrawCachedTickSeries
+Required token present: TickLayoutCacheKey
+Required token present: TickSeriesCacheKey
+Required token present: BuildSeriesGeometry
+Required token present: UpdateExternalPointerInteraction
+Raw Tick overlay visible-slot per-frame LINQ allocation removed.

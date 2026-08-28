@@ -1,0 +1,36 @@
+TickLab v1.13.0.46 — Combined Five-Part Fix
+
+TRADE HISTORY ON PRICE CHART
+- Stored demo-trade timestamps now include MT5 broker-server Unix time.
+- Older UTC-only history records are migrated into the current broker-server clock domain when loaded.
+- BUY/SELL entry arrows, EXIT arrows and the dashed entry-to-exit path render on every matching-symbol chart and timeframe.
+- Historical prices participate in auto-scale only while their trade time range overlaps the visible candles.
+- The persistent History on chart tick box remains available in Demo Trading.
+
+SL / TP EDITOR
+- Removed the Enter points right-click path.
+- Add/Modify SL and TP now open one exact-price editor.
+- One up/down click adjusts exactly 50 symbol points.
+- Holding an arrow repeats at five times the former speed.
+- A missing SL or TP starts from the position entry price.
+- Existing SL and TP chart lines remain directly draggable.
+
+ENTRY LINE
+- Removed entry-line dragging and SL/TP creation from the entry line.
+- The entry line is informational only: BUY/SELL, lot size and live USD P/L.
+
+DEMO PANEL WIDTH
+- Expanded the Demo Trading preferred width by about 0.7 cm.
+- Expanded the open-position and history P/L columns so values are not clipped.
+
+SIMULTANEOUS MULTI-CHART LIVE DATA
+- Every non-replay chart context for the bridge symbol owns and updates its own live candle tail.
+- Clicking another chart no longer transfers live-update ownership away from the previous chart.
+- Same-symbol charts continue updating across different timeframes and floating/detached chart contexts.
+- Replay freezes only its own pane; other live panes continue moving.
+
+PRESERVED
+- Shared Code Editor / Demo Trading / Panel handle rail.
+- Symbol-wide active trades and saved history.
+- Demo-account backup and startup null protection.
+- Approved MT5 bridges and FileBridge sources unchanged.

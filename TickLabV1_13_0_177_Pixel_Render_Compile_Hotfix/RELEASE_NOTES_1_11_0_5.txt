@@ -1,0 +1,15 @@
+TickLab v1.11.0.5 — Range-filtered tick archive cancellation hotfix
+
+Fixes
+- Startup recent-tail tick verification no longer parses historical 30-minute CSV files outside the requested range.
+- Old daily live tick CSV files outside the requested range are skipped as well.
+- Watchdog cancellation is cooperative and does not throw OperationCanceledException from CanonicalTickArchiveStore.
+- Completed tick source files are checkpointed even when the foreground budget ends.
+- A later pass continues at the first unfinished file instead of repeating completed work.
+- Startup tick finalization uses a 15-second foreground budget; manual full operations retain the longer budget.
+- The chart is released without waiting for remaining tick indexing.
+
+Protected components
+- TickLabLiveBridge_V300.mq5 unchanged.
+- TickLabHistoryBridge_V305.mq5 unchanged.
+- TickLabCandleMarkerExchange_V109.mq5 unchanged.

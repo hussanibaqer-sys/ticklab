@@ -1,0 +1,21 @@
+TickLab v1.13.0.130 — Static Validation
+
+RESULT: PASS for targeted hotfix checks.
+
+Validated:
+- Exact app-source diff vs v1.13.0.129 is limited to 3 files:
+  1. TickLab.App/Windows/TradingViewLineSettingsWindow.xaml.cs (functional crash fix)
+  2. TickLab.App/MainWindow.xaml (version/title only)
+  3. TickLab.App/TickLab.App.csproj (version only)
+- 31/31 XAML files parse successfully.
+- TradingViewLineSettingsWindow.xaml.cs delimiter counts are balanced.
+- VisibilityRangeSlider_ValueChanged has an _loading construction guard.
+- RefreshVisibilityRangeLabels independently guards all 6 label/slider pairs.
+- Constructor retains explicit RefreshVisibilityRangeLabels() after _loading=false.
+- v1.13.0.129 CandleChartControl.Drawing.cs is byte-identical.
+- v1.13.0.129 MainWindow.xaml.cs is byte-identical.
+- Favorites Tabs / Quick Edit top-center implementation is therefore preserved.
+
+Environment limitation:
+- Windows WPF/.NET runtime compilation is not available in this container.
+- Visual Studio on Windows remains the final compile/runtime gate.

@@ -1,0 +1,22 @@
+TickLab v1.13.0.17 — Fixed-Pitch Candle Zoom Repair
+
+Candle renderer
+- All detailed candles in one frame now use one identical physical-pixel body width.
+- Detailed zoom levels use a locked integer slot pitch, so candle spacing cannot alternate by one pixel.
+- Odd physical-pixel body widths provide a true centre column for every wick.
+- Wick and body are generated from the same final physical-pixel centre.
+- Zooming or resizing recomputes the lattice only when needed, preventing frame-to-frame width flicker.
+- Far zoom-out uses one-pixel OHLC summaries on a fixed two-pixel lattice, leaving one guaranteed pixel between columns.
+- Consecutive same-colour compressed candles can no longer merge into random thick blocks.
+
+Preserved
+- Compact approximately 3-pixel normal candle gap.
+- 1,500-candle horizontal zoom-out limit.
+- Alerts, replay, standard/synthetic charts, TPO, Session Volume Profile and Volume Footprint.
+- MT5 bridge protocol and MQL5 source files.
+
+Build
+- Close TickLab and Visual Studio.
+- Delete bin and obj.
+- Open TickLabV1_13_0_17.sln.
+- Clean Solution, then Rebuild Solution.

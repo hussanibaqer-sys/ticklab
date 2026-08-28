@@ -1,0 +1,31 @@
+TickLab v1.11.1.2 — Centered Drawing Toolbar Hotfix
+=====================================================
+
+Problem fixed
+-------------
+The drawing category folder arrows could be clipped by the vertical ScrollViewer strip. This also made the tools look shifted left and left unused space on the right side of the rail.
+
+Changes
+-------
+- Removed the separate full-height arrow column from every category button.
+- Each category is now one centered 44 x 44 button.
+- Added a small overlaid chevron at the lower-right of the category button.
+- Clicking the main icon activates the last-used tool in that category.
+- Clicking the chevron opens the complete category folder inside the chart workspace.
+- Increased main category icon size from 19 to 24.
+- Increased action icon size from 19 to 22.
+- Increased category-palette tool icons from 18 to 21.
+- Reduced the drawing rail scrollbar reservation to 3 pixels with no side margin.
+- Centered category and action buttons explicitly.
+- Corrected header and collapse-button margins so they fit inside the 52-pixel rail.
+
+Protected components
+--------------------
+- TickLab Live Bridge V300 unchanged.
+- TickLab History Bridge V305 unchanged.
+- TickLab Candle Marker V109 unchanged.
+- Candle and tick storage formats unchanged.
+
+Build note
+----------
+A Windows Visual Studio Release rebuild is required.

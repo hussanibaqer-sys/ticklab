@@ -1,0 +1,18 @@
+TickLab v1.13.0.21 — 38 MT5 Indicators + Stable All-Chart Zoom
+
+INDICATORS
+- Adds all 38 MT5 built-in indicators in Trend, Oscillators, Volumes and Bill Williams groups.
+- Native multi-buffer calculations, main-chart overlays and independent indicator panes.
+- MT5-style Parameters, Levels, Scale, Visualization and Style settings.
+- Applied-price choices, MA methods, volume source, shifts, line styles, widths, colours and timeframe visibility.
+- Indicator panes share chart time axis, scrolling, zoom and crosshair.
+- Per-chart, workspace, floating-pane and chart-template persistence.
+- Indicator alerts can target individual visible buffers.
+- Replay recalculates only from replay-visible data.
+
+ALL-CHART ZOOM
+- Standard, synthetic, TPO, Session Volume Profile and Volume Footprint renderers use the default candle chart's stable full-width physical-pixel slot grid.
+- Removes independent fractional right-edge positioning that caused bars, lines and symbols to disappear and return during zoom.
+- Preserves the v1.13.0.20 default-candle behavior.
+
+MT5 bridge files and protocol are unchanged.

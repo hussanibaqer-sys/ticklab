@@ -1,0 +1,25 @@
+TickLab v1.12.0 — Professional Analysis Workspace
+
+ACTUAL DESKTOP LAYOUT REBUILD
+- Rebuilt MainWindow around the approved professional dark workspace.
+- Added permanent horizontal Favorites bar below the top command bar.
+- Favorite tools activate directly, reorder by horizontal drag, and remove by right-click.
+- Kept the thin left category rail and non-draggable in-chart tool flyouts.
+- Added integrated right Object Tree with real drawing selection, hide/show, lock/unlock, settings, layer movement and removal.
+- Added Market tab preserving the existing MT5 watchlist and overview.
+- Added lower workspace cards for advanced drawing settings, live preview, manual marker/find-candle and import/export marker operations.
+- Preserved the bottom horizontally scrollable timeframe strip.
+- Converted the application resource palette to a restrained dark TickLab theme.
+- Increased default window to 1500x900 while keeping scalable minimum dimensions.
+
+PRESERVED
+- Existing chart engine and candle renderer.
+- History and tick synchronization fixes through v1.11.0.5.
+- Drawing, magnet, measurement, templates, Fibonacci-level and quick-edit engines.
+- Workspace persistence and startup safeguards.
+- Live Bridge V300, History Bridge V305 and Marker V109 byte-for-byte.
+- Permanent M1 and tick formats.
+
+BUILD NOTE
+- The source passed static/XAML/event/package checks in the generation environment.
+- A Windows Visual Studio Release build and display-scaling test are still required.

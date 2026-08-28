@@ -1,0 +1,9 @@
+Changed app source/resources vs v1.13.0.124:
+1. src/TickLab.App/Assets/Emoji/emoji-vector-assets.zip
+2. src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+3. src/TickLab.App/Controls/CandleChartControl.cs
+4. src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs
+5. src/TickLab.App/MainWindow.xaml
+6. src/TickLab.App/MainWindow.xaml.cs
+7. src/TickLab.App/TickLab.App.csproj
+8. src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml

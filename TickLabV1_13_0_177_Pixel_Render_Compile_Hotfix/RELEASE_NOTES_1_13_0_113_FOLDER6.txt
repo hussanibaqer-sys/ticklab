@@ -1,0 +1,68 @@
+TickLab v1.13.0.113 — Folder 6 Text / Annotations TradingView Parity
+
+BASE
+- Built from v1.13.0.112 Path Sharp Segments / Arrow Hotfix.
+- All previous drawing folders and non-drawing TickLab systems remain frozen.
+
+CURRENT FOLDER FIXES
+1. Text
+- One-click plain text.
+- Clean TradingView-style selected text outline.
+- Text colour and font size quick controls.
+- Anchor control included because it is shown in the supplied TradingView Text screenshot.
+
+2. Note
+- Two-click anchored custom text.
+- First point is chart anchor; second point positions the note.
+- Straight leader line and editable note box.
+
+3. Price Note
+- Two-click anchored automatic price note.
+- Straight leader from price anchor to price bubble.
+- Price uses symbol/candle digits and thousands formatting; no raw excessive decimals and no appended “Note”.
+
+4. Pin
+- One-click teardrop/map-pin marker with circular centre.
+- Editable text box above the marker.
+- Anchor control included because it is shown in the supplied TradingView Pin screenshot.
+
+5. Table
+- Blank 2-row × 3-column editable grid by default.
+- Click a cell and type directly on the chart.
+- Selected cell highlight plus insertion caret.
+- Tab advances cell; Enter advances row; Backspace edits active cell.
+- Add Column and Add Row quick actions.
+- Four-corner table resize handles.
+- Anchor control included because it is shown in the supplied TradingView Table screenshot.
+
+6. Callout
+- Two-click filled/tapered callout from chart anchor to rounded editable text bubble.
+
+7. Comment
+- One-click compact rounded speech/comment bubble with pointer tail and editable text.
+
+8. Price Label
+- One-click compact attached price bubble with short pointer.
+- Correct symbol-digit price formatting.
+
+9. Signpost
+- One-click editable signpost label with notch and vertical post extending to the chart time axis.
+
+10. Flag
+- One-click compact flag-on-pole visual matching the supplied reference direction/shape more closely.
+
+FOLDER-WIDE SELECTION
+- Clicking visible text, labels, bubbles, leaders, fills, table body/cells/borders, signpost/post or flag resolves to the parent drawing.
+- No hidden-anchor hunting should be required to select, modify or delete these tools.
+
+QUICK EDIT
+- Tool-relevant line/fill/text controls retained.
+- Text colour and relevant font-size controls added.
+- Anchor is intentionally restricted to Text, Pin and Table based on the supplied screenshots.
+
+VALIDATION
+- 24 static checks passed, 0 failed.
+- 31 XAML files parse.
+- 150 C# files pass structural scanning.
+- Exactly 7 intended source files changed vs v1.13.0.112.
+- Windows Visual Studio compile/runtime test remains required.

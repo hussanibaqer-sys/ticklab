@@ -1,0 +1,7 @@
+Changed from v1.13.0.109:
+TickLabV1_13_0_109.sln
+TickLabV1_13_0_110.sln
+VERSION.txt
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/TickLab.App.csproj
+src/TickLab.App/Windows/DrawingSettingsWindow.xaml.cs

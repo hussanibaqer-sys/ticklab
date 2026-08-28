@@ -1,0 +1,33 @@
+TICKLAB v1.13.0.34 — FIRST TEST CHECKLIST
+
+BUILD
+[ ] Delete bin and obj.
+[ ] Open TickLabV1_13_0_34.sln and Rebuild Solution.
+[ ] Confirm zero errors.
+
+SYMBOL PICKER
+[ ] Open symbol picker.
+[ ] Confirm the vertical scrollbar is visible and draggable.
+[ ] Search and open an exact symbol.
+
+EMPTY WORKSPACE ADD MENU
+[ ] Divide a workspace and right-click an empty partition.
+[ ] Confirm Add -> Chart and Add -> Indicator.
+[ ] Add Chart: select a symbol and confirm it opens in the exact right-clicked partition.
+[ ] Add Indicator: confirm the Indicator Selection window uses that exact partition as Place Address.
+
+DEMO TRADING
+[ ] Open DEMO TRADE from the right edge.
+[ ] Confirm the panel says simulation only.
+[ ] Confirm balance starts at $1,000,000.
+[ ] Open Buy and Sell demo positions from a chart with live data.
+[ ] Test SL and TP presets, manual SL, Breakeven +10, close selected, and close all.
+[ ] Confirm balance/equity/floating P/L update.
+[ ] Restart TickLab and confirm demo balance, open positions, and history restore.
+[ ] Reset and confirm the account returns to $1,000,000 after confirmation.
+[ ] Confirm no real MT5 order is placed.
+
+REGRESSION
+[ ] Existing chart indicators still work.
+[ ] Independent workspace indicators and Sync still work.
+[ ] MT5 bridge, history, live candles, drawing tools, alerts and replay still work.

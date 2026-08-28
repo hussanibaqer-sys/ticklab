@@ -1,0 +1,5 @@
+TickLab v1.13.0.135 exact source diff from v1.13.0.134
+Files /mnt/data/tl134/TickLabV1_13_0_134_Seconds_OnDemand_RawTick_Paging/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs and /mnt/data/tl135/TickLabV1_13_0_135_Seconds_Unlimited_RawTick_History/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs differ
+Files /mnt/data/tl134/TickLabV1_13_0_134_Seconds_OnDemand_RawTick_Paging/src/TickLab.App/MainWindow.xaml and /mnt/data/tl135/TickLabV1_13_0_135_Seconds_Unlimited_RawTick_History/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/tl134/TickLabV1_13_0_134_Seconds_OnDemand_RawTick_Paging/src/TickLab.App/MainWindow.xaml.cs and /mnt/data/tl135/TickLabV1_13_0_135_Seconds_Unlimited_RawTick_History/src/TickLab.App/MainWindow.xaml.cs differ
+Files /mnt/data/tl134/TickLabV1_13_0_134_Seconds_OnDemand_RawTick_Paging/src/TickLab.App/TickLab.App.csproj and /mnt/data/tl135/TickLabV1_13_0_135_Seconds_Unlimited_RawTick_History/src/TickLab.App/TickLab.App.csproj differ

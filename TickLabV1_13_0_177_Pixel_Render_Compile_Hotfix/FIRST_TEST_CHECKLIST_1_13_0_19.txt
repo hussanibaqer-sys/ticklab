@@ -1,0 +1,8 @@
+TickLab v1.13.0.19 first test
+
+1. Open a candle chart at default zoom.
+2. Move the mouse/crosshair without dragging: plot edges must not move.
+3. Zoom in and out around the mouse cursor: the chart wall and scales must stay fixed.
+4. Drag left/right through history: candles move through fixed slots; the plot itself must not slide.
+5. Confirm full candle bodies remain visible at 400 bars.
+6. Confirm wick/body centering and uniform gaps remain correct.

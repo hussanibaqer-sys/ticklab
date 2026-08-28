@@ -1,0 +1,22 @@
+TickLab v1.13.0.63 — Raw Tick Chart + Alert Contrast
+
+Scope
+-----
+Raw-tick chart/timeframe and alert-window readability. Existing candle timeframes, Replay, trading, panels, indicators, history storage and MT5 EA sources are preserved.
+
+Changes
+-------
+1. New built-in Tick timeframe appears immediately before 1s.
+2. Tick is a true raw Bid/Ask chart, not a synthetic candle timeframe.
+3. Raw Tick history reads TickLab's permanent ticks.tlt archive and pages older data as the chart is moved left.
+4. Live raw ticks are read from the existing MT5 bridge tick stream without changing the MT5 bridge EA.
+5. Tick chart supports independent horizontal/vertical zoom, drag scrolling, time scale, price scale, Home/End navigation and live-follow.
+6. Bid and Ask are rendered independently and preserve source order for ticks sharing the same millisecond.
+7. Chart Settings adds Bid tick colour/pixels and Ask tick colour/pixels beside candle appearance controls.
+8. Alert manager/editor now re-apply the active TickLab theme and explicit high-contrast list/tab surfaces, removing white-on-white UI.
+9. Raw Tick contexts are isolated from the 1-second candle integrity/live projection paths.
+
+Validation
+----------
+Run tools\validate_source_1_13_0_63.py for static/regression checks.
+The generation environment has no Windows/.NET WPF compiler; final compilation and live MT5 testing must be done in Visual Studio 2022 on Windows.

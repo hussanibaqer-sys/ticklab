@@ -1,0 +1,36 @@
+TickLab v1.13.0.86 — Drawing interaction / background-layer correction
+
+Base: v1.13.0.85 Cursor + Lines correction.
+
+This build fixes the user-reported drawing interaction defects without moving on to another toolbox folder.
+
+1. Construction anchors / live drawing
+- Point #1 is rendered immediately after the first chart click.
+- Committed construction points stay visible while the object is still being built.
+- The moving preview point stays visible before completion.
+- A dashed live guide connects the last committed anchor to the current preview point.
+- Construction anchors are rendered in a final top overlay so candles/fills cannot hide them.
+- Dense Brush/Highlighter input is protected from showing hundreds of anchor dots; only useful endpoints are shown.
+
+2. Reselecting completed drawings
+- Increased drawing hit tolerance.
+- Ray and Extended Line visible extensions are now hit-testable.
+- Extended Trend Line portions are hit-testable according to left/right extension settings.
+- Horizontal Ray and Cross Line hit testing now follows their rendered geometry.
+- Channel/Pitchfork/Regression selection is more forgiving within their visible construction area.
+- Normal blank-chart click still deselects a drawing; clicking the drawing again restores its edit handles.
+
+3. Transparent -> Solid direction
+- The line quick-toolbar transparency slider now runs left = transparent, right = completely solid.
+- Folder-1 line settings use the same left-transparent/right-solid direction.
+- Generic drawing settings are labelled consistently as Transparent -> Solid.
+- Live preview remains enabled while the slider moves.
+
+4. Place as background
+- Added “Place as background (behind candles)” to Folder-1 line settings.
+- Added the same option to the generic settings used by the other drawing tools.
+- Added Place as background / Remove from background to object context menus.
+- Added the option to the Folder-1 selected-object “...” quick menu.
+- Background objects render below candles while selected edit handles remain visible above the chart.
+
+No broker connection or real-trade placement functionality was added.

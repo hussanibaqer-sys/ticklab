@@ -1,0 +1,17 @@
+TickLab v1.13.0.122 — exact TickLab.App source diff vs v1.13.0.121
+
+Changed files: 3
+
+1. Core/Drawing/DrawingMediaCatalog.cs
+   v121: e42b3e0ca861882e3cc2b358c217437d41722fd1eb5d4b404caf1d3abdfa4bd1
+   v122: 10fcdd2835facef3aa0aa5999874194e058ca1abec14a4c56093617155a64eff
+2. MainWindow.xaml
+   v121: 187f73b4badf7b1590d53112aa65904c07cbe0d4900b5b8fd9ab65da7b7b2e28
+   v122: ed92318edc05e09002f02e653531d4fd1a91ecef823f2b91f1b14fb102d67bc9
+3. TickLab.App.csproj
+   v121: acf66cd2e158ed43f3d4dca04c9957a13511696812cbedb37b15ca17849b06d6
+   v122: c2a707c21da3447ffea3d4d7ad35b96f51fbb225e7bda2d7b1d9de3e5a796287
+
+Functional change is limited to Core/Drawing/DrawingMediaCatalog.cs (Emoji catalog coverage).
+MainWindow.xaml and TickLab.App.csproj are version/title metadata only.
+CandleChartControl.Drawing.cs, CandleChartControl.DrawingParity.cs, DrawingToolCatalog.cs, and DrawingMediaPickerWindow.xaml.cs are byte-identical to v1.13.0.121.

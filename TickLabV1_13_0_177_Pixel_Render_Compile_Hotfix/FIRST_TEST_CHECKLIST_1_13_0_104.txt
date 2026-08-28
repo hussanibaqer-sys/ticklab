@@ -1,0 +1,31 @@
+TickLab v1.13.0.104 — FIRST TEST CHECKLIST
+
+1. CYCLIC LINES
+- Draw Cyclic Lines with visible spacing.
+- Zoom out horizontally to TickLab's maximum allowed zoom-out.
+- Confirm repetitions continue across the full visible chart, not just a fixed small count.
+- Scroll far left and far right.
+- Confirm old off-screen repetitions disappear from rendering and new visible repetitions appear with exactly the same phase/spacing.
+- Click a repeated line far from the two original anchors.
+- Confirm the Cyclic Lines object becomes selected and the quick-edit toolbar appears.
+- Use Delete from quick edit and confirm the whole cycle object disappears.
+
+2. TIME CYCLES / CIRCLES
+- Draw the cycle circles as before and confirm their shape/spacing has not changed.
+- Zoom out and scroll horizontally.
+- Confirm visible circles continue across the current chart range and are generated/removed as the viewport changes.
+- Click a circle far away from the original anchor pair.
+- Confirm the parent Time Cycles object is selected and quick edit appears.
+
+3. SINE LINE
+- Place its two points.
+- Confirm the sine wave continues beyond both anchors across the visible chart instead of stopping between the points.
+- Zoom out and scroll left/right; phase and spacing must not jump.
+- Click the sine curve on a crest, trough, and steep side far from the original anchors.
+- Each click must select the same Sine Line object and open/restore quick edit.
+- Test style/color/width changes and Delete through quick edit.
+
+4. REGRESSION SAFETY
+- Quickly check one Pattern and one Elliott tool from v1.13.0.103 to confirm they still render normally.
+- Quickly check Gann Box/Gann Fan and Fib Retracement to confirm no visible regression.
+- Confirm MT5/history/replay operation is unaffected.

@@ -1,0 +1,43 @@
+TickLab v1.13.0.68 — First Test Checklist
+
+1. Build
+   - Open TickLabV1_13_0_68.sln in Visual Studio 2022.
+   - Build normally.
+
+2. Demo Trade History
+   - Open DEMO TRADING.
+   - Confirm there is no History on chart checkbox in the title/header.
+   - Open Trade history.
+   - Confirm Project demo history on chart is present there.
+   - Tick/untick it and confirm demo historical markings show/hide.
+   - Press Open Report and confirm the report window opens, scrolls and zooms.
+
+3. MT5 Trade History folder
+   - Open DEMO TRADING > MT5 trade history.
+   - Press Open Folder.
+   - Paste a standard MT5 HTML report/history file, or CSV/TSV/TXT copied trade-history table, into Documents\TickLab\MT5 Trade History.
+   - Press Refresh.
+   - Confirm the file appears by name.
+
+4. MT5 projection
+   - Tick Project on chart for that file.
+   - Open a TickLab chart using the same symbol as the imported trades.
+   - Confirm BUY/SELL entry and EXIT history paths appear at imported timestamps/prices.
+   - Untick Project on chart and confirm those markings disappear immediately.
+   - Restart TickLab and confirm the projection tick state is remembered.
+
+5. MT5 report
+   - Press Open Report beside the imported file.
+   - Confirm summary metrics populate from the imported data.
+   - Confirm balance/realized-equity, drawdown, daily P/L, trades/day, symbol, monthly and trade-sequence graphs render.
+   - Confirm Zoom -, Reset, Zoom + and Ctrl+mouse-wheel work.
+   - Confirm vertical/horizontal scrolling works.
+   - Confirm the trade table can be sorted and searched.
+   - If the report contains balance/deposit/withdrawal rows, confirm those appear in the cash-flow section.
+
+6. Regression
+   - Recorder still records without chart freezes.
+   - Screenshot top-bar button still works.
+   - Replay and ultra speeds still work.
+   - Tick chart still works.
+   - MT5 bridge/history import still works normally.

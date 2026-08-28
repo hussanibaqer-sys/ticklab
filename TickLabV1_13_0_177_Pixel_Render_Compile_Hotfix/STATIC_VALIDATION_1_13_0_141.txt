@@ -1,0 +1,7 @@
+TickLab v1.13.0.141 static validation
+- All 31 XAML files plus TickLab.App.csproj parsed as XML successfully.
+- Changed C# files passed balanced-brace lexical validation.
+- Required Tick option, Tick Find path, Finding contrast style, historical Tick state, and 5000 visible-tick ceiling were verified in source.
+- Gateway/FileBridge files were compared byte-for-byte with v1.13.0.140 and are unchanged.
+- Exact source diff is included as EXACT_SOURCE_DIFF_1_13_0_141.txt.
+- This ChatGPT environment has no dotnet/MSBuild/csc, so Windows Visual Studio restore/build/runtime validation is still required.

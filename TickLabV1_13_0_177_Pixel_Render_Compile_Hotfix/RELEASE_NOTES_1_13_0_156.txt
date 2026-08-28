@@ -1,0 +1,18 @@
+TickLab v1.13.0.156 — Tick Find Local Continuity
+
+BASE
+- Built directly from v1.13.0.155 — Synthetic Seconds Lock.
+- Preserves v1.13.0.152 Tick render + drawing smoothness and the v1.13.0.155 synthetic-seconds lock.
+
+ONLY FUNCTIONAL CHANGE
+- Fix the artificial multi-hour timestamp hole / giant Tick move that could appear immediately beside a Tick Find marker.
+- The target-local tick block already returned by Find remains authoritative around the marker instead of being discarded.
+- Older/newer presentation sides are extended from the same target-local raw-history source first.
+- A canonical archive side is used only when that side has no local/raw ticks at all.
+- Raw expansion candidates are accepted only when they preserve or improve the tick nearest the marker.
+- Immediate raw preload is limited to the current Tick visible count (1600–5000), avoiding a large new Find preload.
+
+PROTECTED
+- FindRawTickAsync search/resolution logic itself is unchanged.
+- Normal Candle Finder is unchanged.
+- Seconds history/aggregation, canonical archive implementation, Replay, watchdog/integrity agents, FileBridge/MT5/MQL, Tick paging, Tick renderer/drawing smoothness, synthetic-seconds lock and all other chart types are unchanged.

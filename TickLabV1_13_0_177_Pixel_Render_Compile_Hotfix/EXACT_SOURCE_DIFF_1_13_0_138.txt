@@ -1,0 +1,24 @@
+Functional source changes from v1.13.0.137:
+- src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+  Added bounded direct seconds-candle projection from completed historical raw-tick snapshots.
+- src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+  Added direct-source fallback/merge to seconds on-demand paging; Tick History summaries now expose actual stored tick coverage.
+- src/TickLab.App/MainWindow.xaml.cs
+  Seconds Find Candle accepts a date/time anchor inside a surrounding raw-tick window even when that exact quiet second has no candle.
+- src/TickLab.App/Windows/TickHistoryWindow.xaml
+  Actual From / Actual To wording and explanatory subtitle.
+- src/TickLab.App/Windows/TickHistoryWindow.xaml.cs
+  Displays actual first/last stored tick timestamps.
+
+Metadata only:
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+
+Protected files verified byte-identical to v137:
+- src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+- src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+- src/TickLab.App/Controls/EmojiVectorAssets.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+- src/TickLab.App/Core/Replay/MarketReplayEngine.cs

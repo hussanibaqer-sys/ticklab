@@ -1,0 +1,31 @@
+TickLab v1.13.0.108 exact source diff vs v1.13.0.107
+
+Changed source files: 9
+
+CHANGED: src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+  v107 SHA-256: 5e8c471d6b494568b5221d06df87f6d8099648be4bb4b8ec6b62df88e09bb4c1
+  v108 SHA-256: 4050d9890a052c2be8dea4dba512b6a134f150e96fca76c1f2a76a71ee0dd464
+CHANGED: src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+  v107 SHA-256: f37bccc5dd82ece060c4ebd74dbd224459ddb3c6aad5e79aa17b4c1625b4c8f8
+  v108 SHA-256: 32a3f4ec8e29f23bd73f9dd8299f8e265afc107686c08dc329a5fd44bb1f1d45
+CHANGED: src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+  v107 SHA-256: a16c0e2a42947f1bfc028f45d771e3f134eb64eb5e1c406211e84a81682969b4
+  v108 SHA-256: 54c6192826f69417be423a1448e898635129db67f744744a5ee9fbb72cf79ff1
+CHANGED: src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+  v107 SHA-256: 67a3f2cc38d9ff2b527c4928a09402ea2d500969056e3fe518fa68e1b0afe50c
+  v108 SHA-256: 71f45a23daf8b80f5662e44127633c1b92a3ab699f3b83cd7029883ae84a6343
+CHANGED: src/TickLab.App/MainWindow.xaml
+  v107 SHA-256: 45dba24ac96bb05ada5746afaa9432c83338c02e55e26563d8ff1baee5a1f226
+  v108 SHA-256: c22d19d7a94d58877b9ff03d99af01f5b800c63e6134e224ab484e5d25465b61
+CHANGED: src/TickLab.App/MainWindow.xaml.cs
+  v107 SHA-256: e1ca3c401d91d2e5916d8cdba0fc735292ad4920a47ba3d7393d06039715a507
+  v108 SHA-256: 02bec6f06523fa21f627d2c52ec2290583fc6d3750c0e998fab1b2d9e5817d26
+CHANGED: src/TickLab.App/TickLab.App.csproj
+  v107 SHA-256: 87a5f5063580dfc6e14c77819f28f746973b79d5413d3c384655c562fbda54d4
+  v108 SHA-256: 0ed45fa0c3d9f394a47c7528d482d12c5c568b2a5736f40eb12cfbd1ee6dfcdc
+CHANGED: src/TickLab.App/Windows/DrawingSettingsWindow.xaml
+  v107 SHA-256: c68fb64b4cbfca1ee35f0caa9cbf734a67ef38c6e4018ea2bdf2f7e0bde8d4b1
+  v108 SHA-256: 5b052613010a43b70a19231e4ad0501ca87aac99d2b7224d2076a4333dd080b5
+CHANGED: src/TickLab.App/Windows/DrawingSettingsWindow.xaml.cs
+  v107 SHA-256: fe84042cdd938db03d0598f9a9d8fedf2a20efa5ab1788db02ff735ff116c3cd
+  v108 SHA-256: 170dd5e3271ccfb313656229d26a237438d4975ac04a679d3e3c69bf84de735a

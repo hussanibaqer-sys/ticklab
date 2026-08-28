@@ -1,0 +1,20 @@
+TickLab v1.13.0.150 — Static Validation
+
+Result: PASS for available static checks.
+Authoritative Windows/Visual Studio compile and runtime test is still required because this environment has no dotnet/MSBuild/csc.
+
+Validated:
+- C# delimiter/string/comment balance passed for every changed .cs file.
+- MainWindow.xaml XML parse passed.
+- TickLab.App.csproj XML parse passed.
+- Exactly 9 files differ from v1.13.0.149.
+- MainWindow.xaml.cs is byte-for-byte unchanged, protecting normal Candle Finder logic.
+- FindRawTickAsync method is byte-for-byte unchanged, protecting v149 Tick Find behavior.
+- Mt5FileBridgeClient.cs is byte-for-byte unchanged.
+- Entire MT5/MQL folder is byte-for-byte unchanged.
+- ReadSecondCandlesOnDemand contains no foreground SyncTickArchivesFromBridgeFolder call.
+- replay_source_index_v3.json is present; v147 v2 index is migration input only.
+- Canonical segment list / canonical coverage / bridge coverage caches are present.
+- Tick newer paging no longer Distinct()+sorts the complete accumulated TickHistory.
+- Live Tick refresh has an active viewport-interaction guard.
+- Project/title version tokens are 1.13.0.150.

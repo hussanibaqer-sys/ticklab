@@ -1,0 +1,20 @@
+TickLab v1.13.0.119 — FIRST TEST CHECKLIST
+
+1. Draw one Trend Line.
+   - After the second click completes it, moving/clicking again must NOT start another Trend Line.
+2. Click the completed line body and drag it.
+   - The entire drawing must move.
+3. Drag point A, then point B.
+   - Each endpoint must edit directly.
+4. Draw a 3-point tool and drag A/B/C.
+   - Every visible control point must be editable.
+5. Left-click empty chart space.
+   - Selected drawing must deselect exactly as before.
+6. Select an unlocked drawing and press the mouse wheel / middle button over it.
+   - Drawing must be removed.
+7. Select an unlocked drawing and click Remove in the quick-edit toolbar.
+   - Drawing must be removed and quick toolbar must close.
+8. Draw Callout.
+   - Tail must connect directly into the rounded rectangle with no visible gap.
+9. Regression check one Fib/Gann tool and one Cycles/Patterns tool.
+   - Rendering/geometry/settings must remain unchanged from v1.13.0.118.

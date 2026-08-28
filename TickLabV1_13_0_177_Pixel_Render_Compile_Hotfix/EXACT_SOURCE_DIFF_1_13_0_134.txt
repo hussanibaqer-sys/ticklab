@@ -1,0 +1,21 @@
+TickLab v1.13.0.134 exact source diff from v1.13.0.133
+
+TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+  v133: 8c6fabaa868f8da41c2cdaef65bafd34de28d1695717acb27161ed8e4383bded
+  v134: 16599b0f46bd209fc2ae243159aae7b96f0bbc91932fb9bf1d256f5714f76931
+
+TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+  v133: 2d951b778792a22ecf17c296c9a116326b4cd47870019a5ee34c26b140cb8d5e
+  v134: ac0000d9f3ff1dd220a378a297af61c42bca63a9d2933ce1fc17322ceeb86d09
+
+TickLab.App/MainWindow.xaml
+  v133: 6bd7f1ab43f91c2e91cb614b943e463feb35eed34c35a973ced69a7cf3ddc446
+  v134: 92d4ee10aaa625a1250191a7f66be4f0ac2c8b6d448a7ec820c09d4f1959c096
+
+TickLab.App/MainWindow.xaml.cs
+  v133: 415628e8090e0c9f16a130a8560154c2eb975a1292a3bd1cb2c915bf2a25ccff
+  v134: a7e870a0cc1a65a4be2e1b3d3c6a208831b35371a725a11a1719f29a79542e20
+
+TickLab.App/TickLab.App.csproj
+  v133: 88ddca48fcf58ff578964107ac6812f0fda6e6f57527675130adc54bca0a06bb
+  v134: 5f5244193fc7a50febb522d54db3328abbc70439fada0b67065044cf1d366921

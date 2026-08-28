@@ -1,0 +1,5 @@
+FINAL BASELINE DECLARATION
+
+TickLab v1.13.0.157 is a clean version-number promotion of the user-confirmed working v1.13.0.156 build.
+No functional implementation was intentionally changed.
+Use this build as the source baseline for all future modifications.

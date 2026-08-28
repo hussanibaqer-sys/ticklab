@@ -1,0 +1,53 @@
+TickLab v1.13.0.88 — Pitchfork / Settings Stability
+===================================================
+Base: v1.13.0.87 — Folder 1 Interaction Parity
+Scope: Folder 1 only + shared drawing-settings opening path required to stop UI blocking.
+
+FIXES IN THIS BUILD
+
+1. Drawing settings no longer block/freeze TickLab
+- Replaced the drawing-settings ShowDialog() flow with modeless Show().
+- Applies to Folder-1 TradingView-style settings and the generic settings used by other drawing tools.
+- Main chart/app remains interactive while Settings is open.
+- Live preview is preserved.
+- Cancel or X restores the exact pre-edit drawing.
+- OK/Apply commits the edited drawing as one clean update.
+- Only one drawing-settings window is active at a time.
+
+2. Pitchfork reference colors / levels
+- Pitchfork median default is TradingView red (#F23645).
+- Added the reference 9 additional-level rows:
+  0.25, 0.382, 0.5, 0.618, 0.75, 1, 1.5, 1.75, 2.
+- Default enabled levels follow the supplied reference: 0.5 and 1.
+- Each level has its own reference palette color instead of generic blue.
+- Pitchfork Settings now shows the per-level colors as clickable color swatches.
+- Added/connected Use one color.
+- Extend label corrected to "Extend lines".
+- Background remains independently controllable with opacity/live preview.
+
+3. Pitchfork construction / completed geometry
+- A-B red first segment is retained on completed Original, Schiff, Modified Schiff and Inside pitchforks.
+- Schiff and Modified Schiff no longer lose the A-B segment when point C completes the drawing.
+- Inside Pitchfork was rebuilt from the supplied video rather than using a half-width standard-pitchfork approximation:
+  * A-B is retained.
+  * O = midpoint(A-B).
+  * O-C defines the fork direction.
+  * B-C forms the fork mouth.
+  * Median starts at midpoint(B-C) and runs parallel to O-C.
+  * Enabled level rails remain parallel to that direction.
+  * O-C construction leg remains visible as in the reference.
+
+4. Disjoint Channel correction retained in this batch
+- Points 1-2 establish the first angle.
+- Point 3 is constrained horizontally during construction.
+- The second rail uses the exact horizontally mirrored/opposite slope (for example +45° -> -45°).
+- Completed object remains a normal movable chart drawing.
+
+NOT CHANGED
+- No Folder 2 work.
+- No MT5 bridge/history/replay/connector logic.
+- No broker connection or real order placement.
+
+VALIDATION
+- Static checks: 599 passed, 0 failed.
+- Windows compile/runtime unavailable in the packaging environment; run Clean-Restore-Build.cmd on Windows and then test against the reference video.

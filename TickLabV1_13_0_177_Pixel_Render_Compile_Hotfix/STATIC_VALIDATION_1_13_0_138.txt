@@ -1,0 +1,16 @@
+Static validation (Linux source inspection; Windows WPF build/runtime not available here)
+
+PASS
+- 31/31 XAML files XML-parsed successfully.
+- All 4 functionally changed C# files have balanced braces and parentheses.
+- v1.13.0.138 Version / AssemblyVersion / FileVersion markers present.
+- Direct raw-source projection is bounded by requested maximumRecords and selected historical source window.
+- Direct raw-source projection respects excluded/hidden tick segment keys.
+- Canonical ticks remain merge-priority over direct bridge source candles.
+- Seconds Find Candle retains date/time anchor semantics for quiet seconds.
+- Tick History Actual From/To reads physical ticks.tlt coverage rather than nominal quarter folder dates.
+- Protected drawing/emoji/chart-context/FileBridge/replay files byte-identical to v137.
+
+Final compile/runtime gate
+- Build in Visual Studio on Windows.
+- Test actual historical raw-tick files for the selected MT5 connector/symbol.

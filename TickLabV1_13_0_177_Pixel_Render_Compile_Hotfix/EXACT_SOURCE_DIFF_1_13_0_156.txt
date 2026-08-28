@@ -1,0 +1,11 @@
+TickLab v1.13.0.156 — Exact Source Diff vs v1.13.0.155
+
+Functional source files changed:
+1. src/TickLab.App/MainWindow.RawTickChart.cs
+   - BuildTickFindPresentationWindowAsync now preserves the target-local Find neighborhood and extends raw history first; canonical is side fallback only when local/raw data is absent.
+
+Version/title metadata changed:
+2. src/TickLab.App/MainWindow.xaml
+3. src/TickLab.App/TickLab.App.csproj
+
+No other source files differ from v1.13.0.155.

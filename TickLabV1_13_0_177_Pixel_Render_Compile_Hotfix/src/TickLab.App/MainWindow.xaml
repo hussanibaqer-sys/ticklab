@@ -1,0 +1,1099 @@
+<Window x:Class="TickLab.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+        xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+        Title="TickLab v1.13.0.177 — Pixel Render Compile Hotfix"
+        Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource WindowBrush}"
+        Loaded="MainWindow_Loaded" Closing="MainWindow_Closing"
+        PreviewKeyDown="MainWindow_PreviewKeyDown"
+        PreviewMouseLeftButtonDown="MainWindow_PreviewMouseLeftButtonDown"
+        UseLayoutRounding="True" SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="ClearType">
+    <Grid Background="{StaticResource WindowBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="38"/>
+        </Grid.RowDefinitions>
+
+        <!-- Unified workspace and timeframe bar. Native Windows controls remain in the normal title bar. -->
+        <Border Grid.Row="0" Background="#060606" BorderBrush="#292929" BorderThickness="0,0,0,1">
+            <Grid Margin="12,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,12,0">
+                    <Grid Width="31" Height="28" Margin="0,0,7,0">
+                        <Path Data="M 2,4 L 26,4 L 23,9 L 15,9 L 10,25 L 4,25 L 9,9 L 0,9 Z" Fill="#7C3AED"/>
+                        <Path Data="M 15,10 L 21,10 L 18,21 L 28,21 L 26,25 L 11,25 Z" Fill="#46A5FF"/>
+                    </Grid>
+                    <TextBlock Text="TickLab" Foreground="White" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Grid.Column="1" x:Name="NewChartButton" Style="{StaticResource DarkToolbarButton}" Width="36" Padding="0"
+                        ToolTip="New Chart" Click="NewChartButton_Click"/>
+                <Button Grid.Column="2" x:Name="LayoutButton" Style="{StaticResource DarkToolbarButton}" Width="36" Padding="0" ToolTip="Layout" Tag="Layout" Click="PlannedFeatureButton_Click"/>
+                <Button Grid.Column="3" x:Name="IndicatorsTopButton" Style="{StaticResource DarkToolbarButton}" Width="36" Padding="0" ToolTip="Indicators" Click="IndicatorsButton_Click"/>
+                <Button Grid.Column="4" x:Name="AlertsButton" Style="{StaticResource DarkToolbarButton}" Width="36" Padding="0" ToolTip="Alerts" Click="AlertsButton_Click"/>
+                <Button Grid.Column="5" x:Name="ReplayButton" Style="{StaticResource DarkToolbarButton}" Width="36" Padding="0" ToolTip="Replay" Click="ReplayButton_Click"/>
+                <Button Grid.Column="6" x:Name="ChartTypeButton" Style="{StaticResource DarkToolbarButton}" Width="38" Padding="0" ToolTip="Chart type for the selected chart" Click="ChartTypeButton_Click"/>
+                <Button Grid.Column="7" x:Name="ConnectionsTopButton" Style="{StaticResource DarkToolbarButton}" Width="36" Padding="0" ToolTip="MT5 Connections" Click="ConnectionsButton_Click"/>
+
+                <Border x:Name="SymbolSearchBorder" Grid.Column="9" Margin="2,5,6,5" MinWidth="225" MinHeight="42"
+                        Padding="12,0" CornerRadius="11" BorderThickness="1"
+                        Cursor="Hand" ToolTip="Search all instruments available in MT5"
+                        MouseLeftButtonUp="SymbolSearchBorder_MouseLeftButtonUp"
+                        UseLayoutRounding="True" SnapsToDevicePixels="False">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="{DynamicResource PanelAltBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource BorderStrongBrush}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource ControlHoverBrush}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid ClipToBounds="False">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBlock Text="⌕" Foreground="{DynamicResource MutedTextBrush}" FontSize="21" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="TopSymbolText" Grid.Column="1" Text="Search instruments" Foreground="{DynamicResource TextBrush}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center" Margin="10.5,0" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="2" Text="⌄" Foreground="{DynamicResource MutedTextBrush}" FontSize="18" VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="10" Margin="0,4,4,4">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <ScrollViewer x:Name="TimeframeScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled"
+                                  CanContentScroll="False" PanningMode="HorizontalOnly" PreviewMouseWheel="TimeframeScrollViewer_PreviewMouseWheel">
+                        <StackPanel x:Name="TimeframeButtonsPanel" Orientation="Horizontal" VerticalAlignment="Center"/>
+                    </ScrollViewer>
+                    <Button x:Name="MakeTimeframeButton" Grid.Column="1" Style="{StaticResource DarkToolbarButton}" Width="45" Height="42" MinHeight="42" Padding="0" FontSize="18" Content="＋"
+                            ToolTip="Create timeframe" Click="MakeTimeframeButton_Click"/>
+                </Grid>
+
+                <StackPanel Grid.Column="11" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="RefreshTopButton" Style="{StaticResource DarkToolbarButton}" Width="32" Padding="0" ToolTip="Refresh chart" Click="RefreshButton_Click"/>
+                    <Button x:Name="MarkersTopButton" Style="{StaticResource DarkToolbarButton}" Width="32" Padding="0" ToolTip="Markers" Click="MarkersButton_Click"/>
+                    <Button x:Name="ThemeButton" Style="{StaticResource DarkToolbarButton}" Width="32" Padding="0" ToolTip="Toggle dark or light application theme" Click="ThemeButton_Click"/>
+                    <Button x:Name="SettingsTopButton" Style="{StaticResource DarkToolbarButton}" Width="32" Padding="0" ToolTip="Chart settings for the selected chart" Click="SettingsButton_Click"/>
+                    <Button x:Name="OpenFolderTopButton" Style="{StaticResource DarkToolbarButton}" Width="32" Padding="0" ToolTip="Open MT5 bridge data folder" Click="OpenFolderButton_Click"/>
+                    <Button x:Name="CodePanelButton" Style="{StaticResource DarkToolbarButton}" Width="34" Padding="0" ToolTip="Show or hide the right-side Code Editor" Click="CodePanelButton_Click"/>
+                    <Button x:Name="RecorderButton" Style="{StaticResource DarkToolbarButton}" Width="34" Padding="0" ToolTip="TickLab screen recorder" Click="RecorderButton_Click"/>
+                    <Button x:Name="ScreenshotButton" Style="{StaticResource DarkToolbarButton}" Width="34" Padding="0" ToolTip="Save TickLab screenshot" Click="ScreenshotButton_Click"/>
+                    <Button x:Name="RestoreToolButton" Style="{StaticResource DarkToolbarButton}" Width="32" Padding="0" ToolTip="Restore minimized indicator/tool panel"
+                            Visibility="Collapsed" Click="RestoreToolButton_Click"/>
+                    <TextBlock x:Name="TopTimeframeText" Visibility="Collapsed"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Full-height charting workspace -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="53"/>
+                <ColumnDefinition x:Name="DrawingPaletteColumn" Width="0" MinWidth="0" MaxWidth="420"/>
+                <ColumnDefinition x:Name="DrawingPaletteSplitterColumn" Width="0"/>
+                <ColumnDefinition Width="*" MinWidth="420"/>
+                <!-- About 0.5 cm at 96 DPI. The 24 px handles slightly overlap this 19 px strip. -->
+                <ColumnDefinition x:Name="RightHandleStripColumn" Width="19" MinWidth="19" MaxWidth="19"/>
+                <ColumnDefinition x:Name="RightWorkspaceColumn" Width="0" MinWidth="0" MaxWidth="620"/>
+                <ColumnDefinition x:Name="CodeEditorSplitterColumn" Width="0"/>
+                <ColumnDefinition x:Name="CodeEditorColumn" Width="0" MinWidth="0" MaxWidth="760"/>
+                <ColumnDefinition x:Name="DemoTradeColumn" Width="0" MinWidth="0" MaxWidth="647"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Full-height centered drawing rail. The scroll bar is hidden so it never pushes icons off-centre. -->
+            <Border Grid.Column="0" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,1,0" Effect="{x:Null}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="DrawingToolbarScrollUpButton" Grid.Row="0" Style="{StaticResource DrawingRailButton}" Width="40" Height="20" MinHeight="20" Padding="0" Margin="0" Content="⌃" Visibility="Collapsed"
+                            ToolTip="Scroll drawing toolbar up" Foreground="#7890AA" Background="Transparent" BorderBrush="Transparent"
+                            HorizontalAlignment="Left" Click="DrawingToolbarScrollUpButton_Click"/>
+                    <ScrollViewer x:Name="DrawingToolbarScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+                                  CanContentScroll="False" PanningMode="VerticalOnly" Focusable="False">
+                        <StackPanel x:Name="DrawingToolbarPanel" Width="44.5" HorizontalAlignment="Left" Margin="8.5,3,0,3">
+                            <StackPanel x:Name="DrawingCategoryButtonsPanel" Width="44.5" HorizontalAlignment="Left"/>
+                            <Button x:Name="DrawingBrushButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Brush, pen and highlighter" Click="DrawingBrushButton_Click" Visibility="Collapsed"/>
+                            <Border Width="26" Height="1" Background="{DynamicResource BorderBrush}" Margin="5,4,0,6" HorizontalAlignment="Left" SnapsToDevicePixels="True"/>
+                            <Button x:Name="DrawingFavoritesButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Favorites Tabs On/Off — drawing tools + timeframes" Click="DrawingFavoritesButton_Click"/>
+                            <Button x:Name="DrawingMeasureButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Measure — click A, then click B; Shift may be released after A" Click="DrawingMeasureButton_Click" PreviewMouseRightButtonUp="DrawingMeasureButton_MouseRightButtonUp"/>
+                            <Button x:Name="DrawingZoomButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Mouse wheel: Zoom mode" Click="DrawingZoomButton_Click"/>
+                            <Button x:Name="DrawingMagnetButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Magnet" Click="DrawingMagnetButton_Click" MouseRightButtonUp="DrawingMagnetButton_MouseRightButtonUp"/>
+                            <Button x:Name="StayDrawingModeButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Keep drawing" Click="StayDrawingModeButton_Click"/>
+                            <Button x:Name="DrawingLockButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Lock all drawings" Click="DrawingLockButton_Click"/>
+                            <Button x:Name="DrawingHideButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Hide all drawings" Click="DrawingHideButton_Click"/>
+                            <Button x:Name="DrawingObjectTreeButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Object Tree" Click="DrawingObjectTreeButton_Click"/>
+                            <Button x:Name="DrawingSyncButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Synchronize drawings" Click="DrawingSyncButton_Click" MouseRightButtonUp="DrawingSyncButton_MouseRightButtonUp"/>
+                            <Button x:Name="DrawingUndoButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Undo" Click="DrawingUndoButton_Click"/>
+                            <Button x:Name="DrawingRedoButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Redo" Click="DrawingRedoButton_Click"/>
+                            <Button x:Name="DrawingRemoveButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Remove selected drawing" Click="DrawingRemoveSelectedButton_Click"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Button x:Name="DrawingToolbarScrollDownButton" Grid.Row="2" Style="{StaticResource DrawingRailButton}" Width="40" Height="20" MinHeight="20" Padding="0" Margin="0" Content="⌄" Visibility="Collapsed"
+                            ToolTip="Scroll drawing toolbar down" Foreground="#7890AA" Background="Transparent" BorderBrush="Transparent"
+                            HorizontalAlignment="Left" Click="DrawingToolbarScrollDownButton_Click"/>
+                    <Button x:Name="DrawingToolbarCollapseButton" Grid.Row="3" Style="{StaticResource DrawingRailButton}" Width="36" Height="24" MinHeight="24" Padding="0" Margin="8.5,3,0,5" Content="‹"
+                            Foreground="#A0A0A0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left"
+                            Click="DrawingToolbarCollapseButton_Click"/>
+                </Grid>
+            </Border>
+
+            <!-- Scrollable category tool window beside the drawing rail. -->
+            <Border x:Name="DrawingCategoryPaletteBorder" Grid.Column="3" Margin="4,5,0,5" Width="265" MaxHeight="720"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="250"
+                    Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderStrongBrush}"
+                    BorderThickness="1" CornerRadius="4" Visibility="Collapsed" Effect="{x:Null}"
+                    SnapsToDevicePixels="True" UseLayoutRounding="True">
+                <Grid>
+                    <Grid.RowDefinitions><RowDefinition Height="0"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                    <Border Grid.Row="0" Background="{DynamicResource PanelAltBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" CornerRadius="7,7,0,0" Effect="{x:Null}">
+                        <Grid Margin="9,0,7,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition Width="*"/><ColumnDefinition Width="28"/></Grid.ColumnDefinitions>
+                            <Border x:Name="DrawingCategoryPaletteIconHost" Width="26" Height="26" CornerRadius="5" Background="{DynamicResource ElevatedBrush}" Effect="{x:Null}"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="DrawingCategoryPaletteTitle" Grid.Column="1" Text="Drawing tools" Margin="8,0" VerticalAlignment="Center"
+                                       Foreground="{DynamicResource TextBrush}" FontWeight="SemiBold" FontSize="11.5" TextTrimming="CharacterEllipsis"/>
+                            <Button Grid.Column="2" Width="26" Height="26" MinHeight="26" Padding="0" Content="×" ToolTip="Close tool window"
+                                    Background="Transparent" BorderBrush="Transparent" Click="CloseDrawingCategoryPaletteButton_Click"/>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions><RowDefinition Height="0"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                        <TextBox x:Name="DrawingCategoryPaletteSearchBox" Grid.Row="0" Visibility="Collapsed" TextChanged="DrawingCategoryPaletteSearchBox_TextChanged"/>
+                        <ScrollViewer x:Name="DrawingCategoryPaletteScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="4,4,4,4"
+                                      CanContentScroll="False" PanningMode="VerticalOnly">
+                            <StackPanel x:Name="DrawingCategoryPaletteRowsPanel"/>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <GridSplitter x:Name="DrawingPaletteSplitter" Grid.Column="2" Width="0" HorizontalAlignment="Stretch" ResizeDirection="Columns"
+                          ResizeBehavior="PreviousAndNext" Background="#303030" Visibility="Collapsed"/>
+
+            <!-- Central chart -->
+            <Grid Grid.Column="3" Margin="8,7,7,7">
+                <Grid.RowDefinitions><RowDefinition Height="0"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+
+                <Border x:Name="MainChartHeaderBorder" Grid.Row="0" Visibility="Collapsed" Background="#0A0A0A" BorderBrush="#2C2C2C" BorderThickness="1,1,1,0" CornerRadius="7,7,0,0">
+                    <Grid Margin="10,0">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="12"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBlock x:Name="ChartTitleText" Text="Main Chart" Foreground="#EAF1FA" FontWeight="SemiBold" FontSize="11.5" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="ChartOhlcText" Grid.Column="2" Text="Connect MT5 to load OHLC data" Foreground="#A0A0A0" FontSize="10.5" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock x:Name="ChartCountLabelText" Text="CANDLES " Foreground="#60738B" FontSize="9.5"/>
+                            <TextBlock x:Name="CandleCountText" Text="0" Foreground="#C0C0C0" FontSize="9.5" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid x:Name="WorkspacePartitionGrid" Grid.Row="1" ClipToBounds="True" PreviewMouseLeftButtonDown="WorkspacePartitionGrid_PreviewMouseLeftButtonDown">
+                    <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition x:Name="ToolSplitterRow" Height="0"/><RowDefinition x:Name="ToolPartitionRow" Height="0"/></Grid.RowDefinitions>
+                    <ContentControl x:Name="WorkspacePageHost" Grid.Row="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <Grid x:Name="MainChartPaneRoot" ClipToBounds="True">
+                        <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition x:Name="PrimaryIndicatorSplitterRow" Height="0"/><RowDefinition x:Name="PrimaryIndicatorRow" Height="0"/></Grid.RowDefinitions>
+                        <Border Grid.Row="0" Background="{StaticResource ChartBrush}" BorderBrush="#2C2C2C" BorderThickness="1">
+                            <Grid>
+                                <controls:CandleChartControl x:Name="PrimaryCandleChart" AllowDrop="True" Drop="CandleChart_Drop"/>
+                                <controls:TickChartControl x:Name="PrimaryTickChart" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- Subtle in-chart TickLab wordmark, kept clear of the price and time scales. -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="18,0,0,50" IsHitTestVisible="False" Opacity="0.88" Panel.ZIndex="12">
+                            <Grid Width="35" Height="27" Margin="0,0,7,0">
+                                <Path Data="M 2,3 L 31,3 L 28,8 L 18,8 L 13,25 L 6,25 L 11,8 L 0,8 Z" Fill="#7C3AED"/>
+                                <Path Data="M 18,9 L 24,9 L 21,21 L 34,21 L 31,25 L 14,25 Z" Fill="#46A5FF"/>
+                            </Grid>
+                            <TextBlock Text="TickLab" Foreground="#F3F7FC" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <!-- Selected drawing contextual toolbar: intentionally compact, matching the
+                             reference behaviour where selecting an object exposes only its most-used controls. -->
+                        <Border x:Name="DrawingQuickEditBar" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Padding="4,3"
+                                Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderStrongBrush}" BorderThickness="1" CornerRadius="5" Visibility="Collapsed" Panel.ZIndex="80"
+                                Effect="{x:Null}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                            <Border.Resources>
+                                <Style x:Key="QuickEditComboItemStyle" TargetType="ComboBoxItem">
+                                    <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+                                    <Setter Property="Background" Value="{DynamicResource MenuBrush}"/>
+                                    <Setter Property="Padding" Value="7,4"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ComboBoxItem">
+                                                <Border x:Name="QuickItemBorder" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="QuickItemBorder" Property="Background" Value="{DynamicResource MenuHoverBrush}"/>
+                                                        <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="QuickItemBorder" Property="Background" Value="{DynamicResource SelectionBrush}"/>
+                                                        <Setter Property="Foreground" Value="{DynamicResource SelectionTextBrush}"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Foreground" Value="{DynamicResource DisabledTextBrush}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Border.Resources>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock x:Name="QuickGripText" Text="⠿" Width="22" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{DynamicResource MutedTextBrush}" FontSize="15" Cursor="SizeAll" ToolTip="Drag toolbar" PreviewMouseLeftButtonDown="QuickGripText_PreviewMouseLeftButtonDown" PreviewMouseMove="QuickGripText_PreviewMouseMove" PreviewMouseLeftButtonUp="QuickGripText_PreviewMouseLeftButtonUp"/>
+                                <Button x:Name="QuickTemplateButton" Width="29" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" ToolTip="Templates" Click="QuickTemplateButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickCloneButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" Content="▦+" FontSize="10" ToolTip="Clone" Click="QuickCloneButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickTableColumnButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" Content="⊕C" FontSize="10" ToolTip="Add table column" Click="QuickTableColumnButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickTableRowButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" Content="⊕R" FontSize="10" ToolTip="Add table row" Click="QuickTableRowButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickLineColorButton" settings:ThemeColorScope.PreserveExactColors="True" Width="31" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" FontSize="16"
+                                        ToolTip="Line colour" Click="QuickLineColorButton_Click"/>
+                                <Button x:Name="QuickFillColorButton" settings:ThemeColorScope.PreserveExactColors="True" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,4,0"
+                                        ToolTip="Fill colour" Click="QuickFillColorButton_Click"/>
+                                <Button x:Name="QuickBackgroundColorButton" settings:ThemeColorScope.PreserveExactColors="True" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,4,0"
+                                        ToolTip="Text background" Click="QuickBackgroundColorButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickTextColorButton" settings:ThemeColorScope.PreserveExactColors="True" Width="28" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" Content="T" FontSize="14" ToolTip="Text colour" Click="QuickTextColorButton_Click" Visibility="Collapsed"/>
+                                <ComboBox x:Name="QuickFontSizeBox" Width="48" Height="27" MinHeight="27" Margin="0,0,3,0" ToolTip="Font size" ItemContainerStyle="{StaticResource QuickEditComboItemStyle}" SelectionChanged="QuickFontSizeBox_SelectionChanged" Visibility="Collapsed"/>
+                                <Button x:Name="QuickTextButton" Width="28" Height="27" MinHeight="27" Padding="0" Margin="0,0,3,0" Content="T̲" FontSize="15" ToolTip="Text" Click="QuickTextButton_Click" Visibility="Collapsed"/>
+                                <ComboBox x:Name="QuickLineWidthBox" Width="47" Height="27" MinHeight="27" Margin="0,0,3,0" ToolTip="Line width" ItemStringFormat="{}{0:0.#}px" ItemContainerStyle="{StaticResource QuickEditComboItemStyle}" SelectionChanged="QuickLineWidthBox_SelectionChanged"/>
+                                <ComboBox x:Name="QuickLineStyleBox" Width="52" Height="27" MinHeight="27" Margin="0,0,3,0" ToolTip="Line style" ItemContainerStyle="{StaticResource QuickEditComboItemStyle}" SelectionChanged="QuickLineStyleBox_SelectionChanged"/>
+                                <Slider x:Name="QuickOpacitySlider" Visibility="Collapsed" Width="64" Minimum="0" Maximum="1" TickFrequency="0.05" ToolTip="Transparent ←  drag  → Solid" ValueChanged="QuickOpacitySlider_ValueChanged" PreviewMouseLeftButtonUp="QuickEditSlider_MouseLeftButtonUp"/>
+                                <ToggleButton x:Name="QuickFillToggle" Visibility="Collapsed" Width="38" Height="27" Margin="4,0" Content="Fill" Checked="QuickFillToggle_Changed" Unchecked="QuickFillToggle_Changed"/>
+                                <Slider x:Name="QuickFillOpacitySlider" Visibility="Collapsed" Width="54" Minimum="0" Maximum="1" TickFrequency="0.05" ValueChanged="QuickFillOpacitySlider_ValueChanged" PreviewMouseLeftButtonUp="QuickEditSlider_MouseLeftButtonUp"/>
+                                <TextBox x:Name="QuickTextBox" Width="116" Height="27" MinHeight="27" Margin="1,0,4,0" Padding="6,3" ToolTip="Text" TextChanged="QuickTextBox_TextChanged"/>
+                                <Button x:Name="QuickSettingsButton" Width="28" Height="27" MinHeight="27" Padding="0" Margin="0,0,2,0" ToolTip="Settings" Click="QuickSettingsButton_Click"/>
+                                <Button x:Name="QuickVisualOrderButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,2,0" Content="◇" ToolTip="Visual order" Click="QuickVisualOrderButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickAlertButton" Width="28" Height="27" MinHeight="27" Padding="0" Margin="0,0,2,0" Content="◴+" ToolTip="Add alert" Click="QuickAlertButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickAnchorButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,2,0" Content="⚓" FontSize="14" ToolTip="Anchor position" Click="QuickAnchorButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickLockButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,2,0" ToolTip="Lock or unlock" Click="QuickLockButton_Click"/>
+                                <Button x:Name="QuickDeleteButton" Width="27" Height="27" MinHeight="27" Padding="0" Margin="0,0,1,0" ToolTip="Remove drawing" Click="QuickDeleteButton_Click"/>
+                                <Button x:Name="QuickMoreButton" Width="31" Height="27" MinHeight="27" Padding="0" Margin="1,0,0,0" Content="•••" ToolTip="More" Click="QuickMoreButton_Click" Visibility="Collapsed"/>
+                                <Button x:Name="QuickCloseButton" Width="24" Height="27" MinHeight="27" Padding="0" ToolTip="Close" Click="CloseQuickEditButton_Click"/>
+                            </StackPanel>
+                        </Border>
+                        <GridSplitter x:Name="PrimaryIndicatorSplitter" Grid.Row="1" Height="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                      ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" Background="#444444"
+                                      Cursor="SizeNS" ShowsPreview="False" ToolTip="Drag up or down to resize the indicator area" Visibility="Collapsed"/>
+                        <ContentControl x:Name="PrimaryIndicatorHost" Grid.Row="2" Visibility="Collapsed"
+                                        HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                    </Grid>
+                    </ContentControl>
+
+                    <GridSplitter x:Name="ToolPartitionSplitter" Grid.Row="1" Height="5" HorizontalAlignment="Stretch" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" Background="#303030" Visibility="Collapsed"/>
+                    <Border x:Name="ToolPartitionBorder" Grid.Row="2" MinHeight="180" Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Visibility="Collapsed" MouseRightButtonDown="ToolPartitionBorder_MouseRightButtonDown">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition x:Name="ToolHeaderRow" Height="34"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                            <Border Grid.Row="0" Background="{DynamicResource PanelAltBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1">
+                                <Grid Margin="9,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"><TextBlock x:Name="ToolPartitionTitleText" Text="Tool" FontWeight="SemiBold"/><TextBlock x:Name="ToolPartitionModeText" Margin="10,0,0,0" Foreground="{DynamicResource MutedTextBrush}" Text="Docked inside chart"/></StackPanel>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal"><Button Width="30" Height="24" MinHeight="24" Padding="0" Content="—" Click="MinimizeToolButton_Click"/><Button Width="30" Height="24" MinHeight="24" Padding="0" Content="↗" Click="DetachToolButton_Click"/><Button Width="30" Height="24" MinHeight="24" Padding="0" Content="×" Click="CloseToolButton_Click"/></StackPanel>
+                                </Grid>
+                            </Border>
+                            <ContentControl x:Name="DockedToolContent" Grid.Row="1"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+            </Grid>
+
+            <!-- Resizable object, drawing inspector and market workspace. -->
+            <Border x:Name="RightWorkspaceBorder" Grid.Column="5" Margin="0,7,7,7" Background="{DynamicResource WindowBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="7" Visibility="Collapsed">
+                <TabControl x:Name="RightWorkspaceTabs">
+                    <TabItem Header="DRAWINGS">
+                        <Grid Margin="8">
+                            <Border Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="6">
+                                <Grid Margin="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="DRAWING INSPECTOR" Foreground="{DynamicResource MutedTextBrush}" FontSize="9.5" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="InlineInspectorTitleText" Grid.Row="1" Text="No drawing selected" Foreground="{DynamicResource TextBrush}" FontSize="12.5" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                    <Grid Grid.Row="2" Margin="0,7,0,6">
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                        <Border x:Name="InlineInspectorLineSwatch" Width="24" Height="18" CornerRadius="4" Background="#5A5A5A" BorderBrush="{DynamicResource BorderStrongBrush}" BorderThickness="1" ToolTip="Line colour"/>
+                                        <Border x:Name="InlineInspectorFillSwatch" Grid.Column="1" Width="24" Height="18" CornerRadius="4" Margin="5,0,0,0" Background="#1A1A1A" BorderBrush="{DynamicResource BorderStrongBrush}" BorderThickness="1" ToolTip="Fill colour"/>
+                                        <TextBlock x:Name="InlineInspectorMetaText" Grid.Column="2" Text="Select a drawing to inspect style and levels" Foreground="{DynamicResource MutedTextBrush}" FontSize="9.5" VerticalAlignment="Center" Margin="8,0,0,0" TextTrimming="CharacterEllipsis"/>
+                                    </Grid>
+                                    <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                        <StackPanel x:Name="InlineInspectorLevelsPanel"/>
+                                    </ScrollViewer>
+                                    <WrapPanel Grid.Row="4" Margin="0,7,0,0">
+                                        <Button Content="Settings" Height="28" MinHeight="28" Click="QuickSettingsButton_Click"/>
+                                        <Button Content="Template" Height="28" MinHeight="28" Click="QuickTemplateButton_Click"/>
+                                        <Button Content="Objects" Height="28" MinHeight="28" Click="DrawingObjectTreeButton_Click"/>
+                                    </WrapPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Header="OBJECTS">
+                        <Grid Margin="8">
+                            <Grid.RowDefinitions><RowDefinition Height="34"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                            <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                <TextBox Height="28" MinHeight="28" Padding="8,3" Text="Search objects" IsReadOnly="True" Foreground="{DynamicResource MutedTextBrush}" Background="{DynamicResource ControlBrush}"/>
+                                <Button Grid.Column="1" Width="29" Height="28" MinHeight="28" Padding="0" Content="↗" Click="DrawingObjectTreeButton_Click"/>
+                            </Grid>
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,6,0,0"><StackPanel x:Name="InlineDrawingObjectTreePanel"/></ScrollViewer>
+                        </Grid>
+                    </TabItem>
+
+                    <TabItem Header="MARKETS">
+                        <Grid Margin="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="34"/>
+                                <RowDefinition Height="36"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="190"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBox x:Name="MarketSearchBox" Grid.Row="0" Height="30" MinHeight="30" Padding="9,4"
+                                     ToolTip="Search all MT5 instruments" TextChanged="MarketSearchBox_TextChanged"/>
+
+                            <ScrollViewer x:Name="MarketFilterScrollViewer" Grid.Row="1"
+                                          HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled"
+                                          PanningMode="HorizontalOnly" Margin="0,3,0,3"
+                                          PreviewMouseWheel="MarketFilterScrollViewer_PreviewMouseWheel"
+                                          PreviewMouseLeftButtonDown="MarketFilterScrollViewer_PreviewMouseLeftButtonDown"
+                                          PreviewMouseMove="MarketFilterScrollViewer_PreviewMouseMove"
+                                          PreviewMouseLeftButtonUp="MarketFilterScrollViewer_PreviewMouseLeftButtonUp"
+                                          LostMouseCapture="MarketFilterScrollViewer_LostMouseCapture">
+                                <StackPanel x:Name="MarketFilterPanel" Orientation="Horizontal"/>
+                            </ScrollViewer>
+
+                            <DataGrid x:Name="WatchlistGrid" Grid.Row="2" AutoGenerateColumns="False" HeadersVisibility="Column"
+                                      RowHeaderWidth="0" ColumnHeaderHeight="28" IsReadOnly="True"
+                                      SelectionChanged="WatchlistGrid_SelectionChanged"
+                                      MouseDoubleClick="WatchlistGrid_MouseDoubleClick"
+                                      ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="" Width="34">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="26" Height="24" Padding="0" Margin="0"
+                                                        Tag="{Binding Symbol}" Content="{Binding StarGlyph}"
+                                                        Background="Transparent" BorderBrush="Transparent"
+                                                        ToolTip="Add or remove favourite"
+                                                        Click="MarketFavourite_Click"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*"/>
+                                    <DataGridTextColumn Header="Last" Binding="{Binding Last}" Width="72"/>
+                                    <DataGridTextColumn Header="Spread" Binding="{Binding Spread}" Width="58"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Border Grid.Row="3" Margin="0,7,0,0" Padding="10" Background="#0A0A0A" BorderBrush="#323232" BorderThickness="1" CornerRadius="6">
+                                <StackPanel>
+                                    <TextBlock x:Name="SymbolDetailsTitle" Text="Market Overview" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock x:Name="SymbolDescriptionText" Margin="0,3,0,7" Text="Select an MT5 connection" Foreground="#A0A0A0"/>
+                                    <TextBlock x:Name="LastPriceText" Text="—" FontSize="21" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="PriceChangeText" Text="—" Foreground="#A0A0A0"/>
+                                    <Separator Margin="0,7"/>
+                                    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Data state" Foreground="#A0A0A0"/><TextBlock x:Name="MarketStateText" Grid.Column="1" Text="Connect MT5" Foreground="#F5B544"/></Grid>
+                                    <TextBlock Text="Broker" Foreground="#A0A0A0" Margin="0,5,0,0"/><TextBlock x:Name="BrokerText" Margin="0,2,0,0" Text="—" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Border>
+
+            <GridSplitter x:Name="CodeEditorSplitter" Grid.Column="6" Width="5" HorizontalAlignment="Stretch" ResizeDirection="Columns"
+                          ResizeBehavior="PreviousAndNext" Background="#303030" Visibility="Collapsed"/>
+
+            <Border x:Name="CodeEditorPanelBorder" Grid.Column="7" Margin="0,7,7,7" Background="#080808" BorderBrush="#2C2C2C"
+                    BorderThickness="1" CornerRadius="7" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions><RowDefinition Height="36"/><RowDefinition Height="*"/><RowDefinition Height="30"/></Grid.RowDefinitions>
+                    <Border Grid.Row="0" Background="#0D1929" BorderBrush="#2C2C2C" BorderThickness="0,0,0,1" CornerRadius="7,7,0,0">
+                        <Grid Margin="9,0,5,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="CODE EDITOR" Foreground="#DCE8F7" FontWeight="SemiBold" FontSize="10.5"/>
+                                <TextBlock x:Name="InlineCodeEditorStatusText" Text="Ready" Foreground="#7890AA" FontSize="9.5" Margin="10,0,0,0"/>
+                            </StackPanel>
+                            <Button Grid.Column="1" Width="24" Height="22" MinHeight="22" Padding="0" Content="×" ToolTip="Hide Code Editor"
+                                    Background="Transparent" BorderBrush="Transparent" Click="CloseCodePanelButton_Click"/>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="1" Margin="8">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="New Indicator" Height="28" MinHeight="28" Padding="8,2" Click="InlineCodeNewIndicatorButton_Click"/>
+                            <Button Content="New EA" Height="28" MinHeight="28" Padding="8,2" Margin="5,0,0,0" Click="InlineCodeNewEaButton_Click"/>
+                            <Button Content="Compile &amp; Save" Height="28" MinHeight="28" Padding="8,2" Margin="5,0,0,0" Background="#2458D6" Click="InlineCodeCompileButton_Click"/>
+                        </StackPanel>
+                        <Grid Grid.Row="1" Margin="0,7,0,7">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="130"/></Grid.ColumnDefinitions>
+                            <TextBox x:Name="InlineCodeNameBox" Height="28" MinHeight="28" Padding="7,3" Text="My Indicator"/>
+                            <ComboBox x:Name="InlineCodeKindBox" Grid.Column="1" Height="28" MinHeight="28" Margin="6,0,0,0" DisplayMemberPath="Label"/>
+                        </Grid>
+                        <TextBox x:Name="InlineCodeEditorBox" Grid.Row="2" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                 TextWrapping="NoWrap" FontFamily="Consolas" FontSize="12" Padding="8" Background="#050B14" Foreground="#E6EEF8"
+                                 BorderBrush="#2B405D" CaretBrush="White" SpellCheck.IsEnabled="False"/>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,7,0,0">
+                            <Button Content="Open full editor" Height="27" MinHeight="27" Padding="8,2" Click="OpenFullCodeEditorButton_Click"/>
+                            <Button Content="Open scripts folder" Height="27" MinHeight="27" Padding="8,2" Margin="5,0,0,0" Click="InlineCodeOpenFolderButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock x:Name="InlineCodeFooterText" Grid.Row="2" Text="F5 or Ctrl+S compiles in the full editor" Foreground="#A0A0A0" FontSize="9.5" Margin="9,0" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+
+            <!-- One synchronized rail. Because it sits between the star-sized chart and every right panel column,
+                 opening or resizing any panel moves all three handles together to the leftmost visible panel edge. -->
+            <Grid x:Name="RightHandleRail" Grid.Column="4" Panel.ZIndex="7000" HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch" ClipToBounds="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <GridSplitter x:Name="RightWorkspaceSplitter" Width="0" Height="0" Visibility="Collapsed" IsHitTestVisible="False"/>
+
+                <Button x:Name="CodeEditorSlideButton" Grid.Row="1" Width="24" Height="130" MinHeight="130" Padding="0" Margin="0"
+                        HorizontalAlignment="Center"
+                        ToolTip="Click to open or close Code Editor; drag left or right to resize"
+                        Foreground="White" Background="#173F70" BorderBrush="#6B93C5" BorderThickness="1"
+                        Cursor="SizeWE" Click="CodeEditorSlideButton_Click"
+                        PreviewMouseLeftButtonDown="CodeEditorHandle_PreviewMouseLeftButtonDown"
+                        PreviewMouseMove="CodeEditorHandle_PreviewMouseMove"
+                        PreviewMouseLeftButtonUp="CodeEditorHandle_PreviewMouseLeftButtonUp"
+                        LostMouseCapture="CodeEditorHandle_LostMouseCapture"
+                        PreviewKeyDown="CodeEditorHandle_PreviewKeyDown">
+                    <TextBlock Text="C&#x0a;O&#x0a;D&#x0a;E&#x0a;&#x0a;E&#x0a;D&#x0a;I&#x0a;T&#x0a;O&#x0a;R"
+                               TextAlignment="Center" FontSize="8" FontWeight="SemiBold" LineHeight="9.2"
+                               Margin="0" ClipToBounds="False"/>
+                </Button>
+
+                <Button x:Name="DemoTradeSlideButton" Grid.Row="3" Width="24" Height="146" MinHeight="146" Padding="0" Margin="0"
+                        HorizontalAlignment="Center"
+                        Background="#15243A" Foreground="White" BorderBrush="#5E84B6" BorderThickness="1"
+                        Cursor="SizeWE" ToolTip="Click or drag left to open Demo Trading" Click="DemoTradeSlideButton_Click"
+                        PreviewMouseLeftButtonDown="DemoTradeSlideButton_PreviewMouseLeftButtonDown"
+                        PreviewMouseMove="DemoTradeSlideButton_PreviewMouseMove"
+                        PreviewMouseLeftButtonUp="DemoTradeSlideButton_PreviewMouseLeftButtonUp"
+                        LostMouseCapture="DemoTradeSlideButton_LostMouseCapture"
+                        PreviewKeyDown="DemoTradeSlideButton_PreviewKeyDown">
+                    <TextBlock Text="D&#x0a;E&#x0a;M&#x0a;O&#x0a;&#x0a;T&#x0a;R&#x0a;A&#x0a;D&#x0a;I&#x0a;N&#x0a;G"
+                               TextAlignment="Center" FontSize="8.2" FontWeight="SemiBold" LineHeight="9.2"/>
+                </Button>
+
+                <Button x:Name="RightWorkspaceToggleButton" Grid.Row="5" Width="24" Height="86" MinHeight="86" Padding="0" Margin="0"
+                        HorizontalAlignment="Center"
+                        ToolTip="Click to open or close the workspace panel; drag left or right to resize"
+                        Foreground="White" Background="#15243A" BorderBrush="#5E84B6" BorderThickness="1"
+                        Cursor="SizeWE" Click="RightWorkspaceToggleButton_Click"
+                        PreviewMouseLeftButtonDown="RightWorkspaceHandle_PreviewMouseLeftButtonDown"
+                        PreviewMouseMove="RightWorkspaceHandle_PreviewMouseMove"
+                        PreviewMouseLeftButtonUp="RightWorkspaceHandle_PreviewMouseLeftButtonUp"
+                        LostMouseCapture="RightWorkspaceHandle_LostMouseCapture"
+                        PreviewKeyDown="RightWorkspaceHandle_PreviewKeyDown">
+                    <TextBlock Text="P&#x0a;A&#x0a;N&#x0a;E&#x0a;L" TextAlignment="Center" FontSize="8.5" FontWeight="SemiBold" LineHeight="11"/>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <!-- Slim persistent workspace selector dock. -->
+        <!-- Strictly simulated trading. This panel never sends MT5 orders. -->
+        <Grid x:Name="DemoTradeDock" Grid.Row="1" Width="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Panel.ZIndex="5000" ClipToBounds="True">
+            <Grid.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="#9AA8B8"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#E3EAF2"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="BorderBrush" Value="#6F8196"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#D2DCE8"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#E9EDF2"/>
+                            <Setter Property="Foreground" Value="#657180"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style x:Key="DemoPresetButtonStyle" TargetType="Button">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="#919CAA"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="MinHeight" Value="26"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="PresetBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      TextElement.Foreground="{TemplateBinding Foreground}"
+                                                      TextElement.FontWeight="{TemplateBinding FontWeight}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="PresetBorder" Property="BorderBrush" Value="#4D6F98"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="PresetBorder" Property="Background" Value="#173F70"/>
+                                        <Setter TargetName="PresetBorder" Property="BorderBrush" Value="#0D2C52"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter TargetName="PresetBorder" Property="BorderBrush" Value="#2B5685"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" Value="#E9EDF2"/>
+                                        <Setter Property="Foreground" Value="#657180"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="DemoLightComboBoxItemStyle" TargetType="ComboBoxItem">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Padding" Value="7,4"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#DCE8F6"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#C9DCF2"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#E9EDF2"/>
+                            <Setter Property="Foreground" Value="#657180"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <DataTemplate x:Key="DemoLightComboBoxTextTemplate">
+                    <TextBlock Text="{Binding}" Foreground="Black" Background="Transparent"/>
+                </DataTemplate>
+
+                <Style x:Key="DemoLightComboBoxStyle" TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="#919CAA"/>
+                    <Setter Property="ItemContainerStyle" Value="{StaticResource DemoLightComboBoxItemStyle}"/>
+                    <Setter Property="ItemTemplate" Value="{StaticResource DemoLightComboBoxTextTemplate}"/>
+                    <Setter Property="TextElement.Foreground" Value="Black"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+
+                <Style x:Key="DemoTabItemStyle" TargetType="TabItem">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="#E3E8EE"/>
+                    <Setter Property="BorderBrush" Value="#A8B3C0"/>
+                    <Setter Property="Padding" Value="10,5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border x:Name="TabBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="4,4,0,0" Margin="1,0,1,0">
+                                    <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="TabBorder" Property="Background" Value="#D4E1F0"/><Setter Property="Foreground" Value="Black"/></Trigger>
+                                    <Trigger Property="IsSelected" Value="True"><Setter TargetName="TabBorder" Property="Background" Value="#214E80"/><Setter TargetName="TabBorder" Property="BorderBrush" Value="#173A61"/><Setter Property="Foreground" Value="White"/><Setter Property="FontWeight" Value="SemiBold"/></Trigger>
+                                    <Trigger Property="IsEnabled" Value="False"><Setter TargetName="TabBorder" Property="Background" Value="#E8ECF1"/><Setter Property="Foreground" Value="#687483"/></Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="DemoListBoxItemStyle" TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,4"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border x:Name="ItemBorder" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextElement.Foreground="{TemplateBinding Foreground}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="ItemBorder" Property="Background" Value="#E3EDF8"/><Setter Property="Foreground" Value="Black"/></Trigger>
+                                    <Trigger Property="IsSelected" Value="True"><Setter TargetName="ItemBorder" Property="Background" Value="#C9DCF2"/><Setter TargetName="ItemBorder" Property="BorderBrush" Value="#6F91B8"/><Setter Property="Foreground" Value="Black"/></Trigger>
+                                    <Trigger Property="IsEnabled" Value="False"><Setter TargetName="ItemBorder" Property="Background" Value="#EEF1F5"/><Setter Property="Foreground" Value="#687483"/></Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="DemoDataGridRowStyle" TargetType="DataGridRow">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="1"><Setter Property="Background" Value="#F1F4F7"/></Trigger>
+                        <Trigger Property="IsMouseOver" Value="True"><Setter Property="Background" Value="#E3EDF8"/><Setter Property="Foreground" Value="Black"/></Trigger>
+                        <Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="#C9DCF2"/><Setter Property="Foreground" Value="Black"/></Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style x:Key="DemoDataGridCellStyle" TargetType="DataGridCell">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="#D7DEE7"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True"><Setter Property="Foreground" Value="Black"/><Setter Property="Background" Value="Transparent"/></Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style x:Key="DemoDataGridHeaderStyle" TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#DCE3EB"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="#AAB5C2"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+
+            <Border x:Name="DemoTradePanel"
+                    settings:ThemeColorScope.PreserveExactColors="True"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Margin="3,7,7,7"
+                    Background="#F4F6F8"
+                    BorderBrush="#6E829A"
+                    BorderThickness="1"
+                    CornerRadius="7"
+                    Visibility="Visible"
+                    ClipToBounds="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="44"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Background="#101B2B" BorderBrush="#2E496D" BorderThickness="0,0,0,1" CornerRadius="7,7,0,0">
+                        <Grid Margin="10,0,6,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="DEMO / FAKE MT5-STYLE TRADING" Foreground="#F5C451" FontWeight="Bold" FontSize="13"/>
+                                <TextBlock Text="Simulation only — no real broker order API" Foreground="#D7E2EF" FontSize="9.5"/>
+                            </StackPanel>
+                            <Button Grid.Column="2" Width="28" Height="26" MinHeight="26" Padding="0" Content="×" ToolTip="Close demo panel" Click="DemoTradeCloseButton_Click"/>
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Row="1" Margin="10,8,10,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Margin="0,0,3,0" Padding="6" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="4">
+                            <StackPanel><TextBlock Text="Balance" Foreground="#4C5968" FontSize="9"/><TextBlock x:Name="DemoBalanceText" Text="$1,000,000.00" Foreground="Black" FontWeight="SemiBold" FontSize="10.5"/></StackPanel>
+                        </Border>
+                        <Border Grid.Column="1" Margin="2,0" Padding="6" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="4">
+                            <StackPanel><TextBlock Text="Equity" Foreground="#4C5968" FontSize="9"/><TextBlock x:Name="DemoEquityText" Text="$1,000,000.00" Foreground="Black" FontWeight="SemiBold" FontSize="10.5"/></StackPanel>
+                        </Border>
+                        <Border Grid.Column="2" Margin="2,0" Padding="6" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="4">
+                            <StackPanel><TextBlock Text="Floating P/L" Foreground="#4C5968" FontSize="9"/><TextBlock x:Name="DemoFloatingText" Text="$0.00" Foreground="#146B42" FontWeight="SemiBold" FontSize="10.5"/></StackPanel>
+                        </Border>
+                        <Border Grid.Column="3" Margin="2,0" Padding="6" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="4">
+                            <StackPanel><TextBlock Text="Realized P/L" Foreground="#4C5968" FontSize="9"/><TextBlock x:Name="DemoRealizedText" Text="$0.00" Foreground="Black" FontWeight="SemiBold" FontSize="10.5"/></StackPanel>
+                        </Border>
+                        <Border Grid.Column="4" Margin="3,0,0,0" Padding="6" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="4">
+                            <StackPanel><TextBlock Text="Margin est." Foreground="#4C5968" FontSize="9"/><TextBlock x:Name="DemoMarginText" Text="$0.00" Foreground="Black" FontWeight="SemiBold" FontSize="10.5"/></StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="10,2,10,5">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock x:Name="DemoCurrentSymbolText" Text="Select a chart" Foreground="Black" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="DemoCurrentPriceText" Text="No market price" Foreground="#4C5968" FontSize="10"/>
+                            <TextBlock x:Name="DemoTradeStatusText" Text="Ready for simulated trading." Foreground="#146B42" FontSize="9.5" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <Button Grid.Column="1" Width="142" Height="30" Margin="8,0,0,0" Content="Reset to $1,000,000" Click="DemoResetButton_Click"/>
+                    </Grid>
+
+                    <TabControl Grid.Row="3" Margin="10,0,10,6" Background="White" Foreground="Black" ItemContainerStyle="{StaticResource DemoTabItemStyle}">
+                        <TabItem Header="Order">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="#F3F5F8">
+                                <StackPanel Margin="9">
+                                    <Border Padding="8" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="5">
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="90"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                                <TextBlock Text="Volume" Foreground="Black" VerticalAlignment="Center" Margin="0,0,7,0"/>
+                                                <TextBox x:Name="DemoLotBox" Grid.Column="1" Text="0.02" Height="28" Padding="5" Background="White" Foreground="Black" TextChanged="DemoOrderInput_Changed"/>
+                                                <TextBlock Grid.Column="2" Text="Market Buy uses Ask · Market Sell uses Bid" Foreground="#4C5968" FontSize="9.5" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                                            </Grid>
+
+                                            <StackPanel x:Name="DemoSlPresetPanel" Orientation="Horizontal" Margin="0,8,0,0">
+                                                <TextBlock Text="SL" Foreground="Black" Width="38" VerticalAlignment="Center"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="None" Tag="NONE" Margin="2,0" Padding="7,3" Click="DemoSlPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="50" Tag="50" Margin="2,0" Padding="8,3" Click="DemoSlPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="100" Tag="100" Margin="2,0" Padding="8,3" Click="DemoSlPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="200" Tag="200" Margin="2,0" Padding="8,3" Click="DemoSlPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="300" Tag="300" Margin="2,0" Padding="8,3" Click="DemoSlPreset_Click"/>
+                                                <TextBox x:Name="DemoManualSlBox" Width="108" Height="26" Margin="7,0,0,0" Padding="4" ToolTip="Optional exact SL price" Background="White" Foreground="Black" TextChanged="DemoOrderInput_Changed"/>
+                                            </StackPanel>
+                                            <TextBlock x:Name="DemoSelectedSlText" Text="SL: none" Foreground="#4C5968" FontSize="9" Margin="40,2,0,0"/>
+
+                                            <StackPanel x:Name="DemoTpPresetPanel" Orientation="Horizontal" Margin="0,6,0,0">
+                                                <TextBlock Text="TP" Foreground="Black" Width="38" VerticalAlignment="Center"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="None" Tag="NONE" Margin="2,0" Padding="7,3" Click="DemoTpPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="500" Tag="500" Margin="2,0" Padding="7,3" Click="DemoTpPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="1000" Tag="1000" Margin="2,0" Padding="7,3" Click="DemoTpPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="1500" Tag="1500" Margin="2,0" Padding="7,3" Click="DemoTpPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="2000" Tag="2000" Margin="2,0" Padding="7,3" Click="DemoTpPreset_Click"/>
+                                                <Button Style="{StaticResource DemoPresetButtonStyle}" Content="3000" Tag="3000" Margin="2,0" Padding="7,3" Click="DemoTpPreset_Click"/>
+                                                <TextBox x:Name="DemoManualTpBox" Width="91" Height="26" Margin="6,0,0,0" Padding="4" ToolTip="Optional exact TP price" Background="White" Foreground="Black" TextChanged="DemoOrderInput_Changed"/>
+                                            </StackPanel>
+                                            <TextBlock x:Name="DemoSelectedTpText" Text="TP: none" Foreground="#4C5968" FontSize="9" Margin="40,2,0,0"/>
+
+                                            <TextBlock x:Name="DemoOrderPreviewText" Text="Select a chart to preview order values." Foreground="#263240" FontSize="9.5" TextWrapping="Wrap" Margin="0,7,0,0"/>
+                                            <Grid Margin="0,8,0,0">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                                <Button Grid.Column="0" Height="38" Margin="0,0,4,0" Content="BUY MARKET (DEMO)" Background="#176B3A" Foreground="White" FontWeight="Bold" Click="DemoBuyButton_Click"/>
+                                                <Button Grid.Column="1" Height="38" Margin="4,0,0,0" Content="SELL MARKET (DEMO)" Background="#8B2F39" Foreground="White" FontWeight="Bold" Click="DemoSellButton_Click"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <Border Margin="0,8,0,0" Padding="8" Background="White" BorderBrush="#C8D1DC" BorderThickness="1" CornerRadius="5">
+                                        <StackPanel>
+                                            <TextBlock Text="Pending order" Foreground="Black" FontWeight="SemiBold"/>
+                                            <Grid Margin="0,6,0,0">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="115"/><ColumnDefinition Width="*"/><ColumnDefinition Width="110"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                                <TextBlock Text="Type" Foreground="#4C5968" VerticalAlignment="Center"/>
+                                                <ComboBox x:Name="DemoOrderTypeCombo" Grid.Column="1" Height="28" Style="{StaticResource DemoLightComboBoxStyle}" SelectionChanged="DemoOrderInput_Changed"/>
+                                                <TextBlock Grid.Column="2" Text="Entry / trigger" Foreground="#4C5968" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                                                <TextBox x:Name="DemoPendingEntryBox" Grid.Column="3" Height="28" Padding="5" Background="White" Foreground="Black" TextChanged="DemoOrderInput_Changed"/>
+                                            </Grid>
+                                            <Grid Margin="0,5,0,0">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="115"/><ColumnDefinition Width="*"/><ColumnDefinition Width="110"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                                <TextBlock Text="Stop-limit price" Foreground="#4C5968" VerticalAlignment="Center"/>
+                                                <TextBox x:Name="DemoStopLimitBox" Grid.Column="1" Height="28" Padding="5" Background="White" Foreground="Black" ToolTip="Required for Buy/Sell Stop Limit" TextChanged="DemoOrderInput_Changed"/>
+                                                <TextBlock Grid.Column="2" Text="Expiration" Foreground="#4C5968" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                                                <ComboBox x:Name="DemoExpirationModeCombo" Grid.Column="3" Height="28" Style="{StaticResource DemoLightComboBoxStyle}" SelectionChanged="DemoOrderInput_Changed"/>
+                                            </Grid>
+                                            <Grid Margin="0,5,0,0">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="115"/><ColumnDefinition Width="*"/><ColumnDefinition Width="110"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                                <TextBlock Text="Expiration date" Foreground="#4C5968" VerticalAlignment="Center"/>
+                                                <DatePicker x:Name="DemoExpirationDatePicker" Grid.Column="1" Height="28" SelectedDateChanged="DemoOrderInput_Changed"/>
+                                                <TextBlock Grid.Column="2" Text="Time (HH:mm)" Foreground="#4C5968" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                                                <TextBox x:Name="DemoExpirationTimeBox" Grid.Column="3" Text="23:59" Height="28" Padding="5" Background="White" Foreground="Black" TextChanged="DemoOrderInput_Changed"/>
+                                            </Grid>
+                                            <Grid Margin="0,8,0,0">
+                                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                                <Button x:Name="DemoPlacePendingButton" Height="34" Content="Place pending order" Background="#2B5685" Foreground="White" FontWeight="SemiBold" Click="DemoPlacePendingButton_Click"/>
+                                                <Button x:Name="DemoCancelPendingEditButton" Grid.Column="1" Height="34" Width="105" Margin="7,0,0,0" Content="Cancel edit" Visibility="Collapsed" Click="DemoCancelPendingEditButton_Click"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <TabItem Header="Open positions">
+                            <Grid Background="#F3F5F8">
+                                <Grid.RowDefinitions><RowDefinition Height="36"/><RowDefinition Height="*"/><RowDefinition Height="36"/></Grid.RowDefinitions>
+                                <Grid Margin="9,0">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="DemoOpenPositionCountText" Text="0 open positions" Foreground="#151B24" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="Buy closes on Bid · Sell closes on Ask" Foreground="#4D5D70" FontSize="9.5" VerticalAlignment="Center"/>
+                                </Grid>
+                                <ListBox x:Name="DemoOpenPositionsGrid" Grid.Row="1" SelectionMode="Single" Background="White" Foreground="Black" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource DemoListBoxItemStyle}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="5,3" Padding="8" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="#" Foreground="#637083" FontWeight="Bold"/><TextBlock Text="{Binding Id}" Foreground="#1C2633" FontWeight="Bold"/>
+                                                        <TextBlock Text="  "/><TextBlock Text="{Binding Symbol}" Foreground="#1C2633" FontWeight="Bold"/><TextBlock Text=" · " Foreground="#637083"/><TextBlock Text="{Binding Timeframe}" Foreground="#637083"/>
+                                                        <TextBlock Text="   "/><TextBlock Text="{Binding Direction}" Foreground="#126A3A" FontWeight="Bold"/><TextBlock Text="  Lot " Foreground="#637083"/><TextBlock Text="{Binding Volume, StringFormat=0.00}" Foreground="#1C2633"/>
+                                                    </StackPanel>
+                                                    <Button Grid.Column="1" Width="25" Height="23" MinHeight="23" Padding="0" Margin="8,0,0,0" Content="×" Tag="{Binding}" Background="#A92E3B" Foreground="White" FontWeight="Bold" ToolTip="Close this position now at live Bid/Ask" Click="DemoClosePositionButton_Click"/>
+                                                    <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,6,0,0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="1.55*" MinWidth="108"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackPanel><TextBlock Text="Entry" Foreground="#637083" FontSize="9"/><TextBlock Text="{Binding EntryPrice}" Foreground="#111820"/></StackPanel>
+                                                        <StackPanel Grid.Column="1"><TextBlock Text="Bid" Foreground="#637083" FontSize="9"/><TextBlock Text="{Binding CurrentBid}" Foreground="#111820"/></StackPanel>
+                                                        <StackPanel Grid.Column="2"><TextBlock Text="Ask" Foreground="#637083" FontSize="9"/><TextBlock Text="{Binding CurrentAsk}" Foreground="#111820"/></StackPanel>
+                                                        <StackPanel Grid.Column="3"><TextBlock Text="Points moved" Foreground="#637083" FontSize="9"/><TextBlock Text="{Binding PointsMoved, StringFormat={}{0:0.0}}" Foreground="#111820"/></StackPanel>
+                                                        <StackPanel Grid.Column="4"><TextBlock Text="SL" Foreground="#A13440" FontSize="9"/><TextBlock Text="{Binding StopLossDisplay}" Foreground="#A13440" FontWeight="SemiBold"/></StackPanel>
+                                                        <StackPanel Grid.Column="5"><TextBlock Text="TP" Foreground="#167044" FontSize="9"/><TextBlock Text="{Binding TakeProfitDisplay}" Foreground="#167044" FontWeight="SemiBold"/></StackPanel>
+                                                        <StackPanel Grid.Column="6"><TextBlock Text="LIVE P/L" Foreground="#445469" FontSize="9"/><TextBlock Text="{Binding FloatingProfit, StringFormat={}{0:C2}}" Foreground="#0A6E3C" FontSize="13" FontWeight="Bold"/></StackPanel>
+                                                    </Grid>
+                                                    <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,7,0,0">
+                                                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="82"/><ColumnDefinition Width="67"/><ColumnDefinition Width="82"/><ColumnDefinition Width="67"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                                        <TextBlock Text="Modify" Foreground="#445469" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                                        <TextBox Grid.Column="1" Text="{Binding EditSlPriceText, UpdateSourceTrigger=PropertyChanged}" Height="25" Padding="4" Background="White" Foreground="Black" ToolTip="Exact SL price"/>
+                                                        <TextBox Grid.Column="2" Text="{Binding EditSlPointsText, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="4,0" Padding="4" Background="White" Foreground="Black" ToolTip="SL points"/>
+                                                        <TextBox Grid.Column="3" Text="{Binding EditTpPriceText, UpdateSourceTrigger=PropertyChanged}" Height="25" Padding="4" Background="White" Foreground="Black" ToolTip="Exact TP price"/>
+                                                        <TextBox Grid.Column="4" Text="{Binding EditTpPointsText, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="4,0" Padding="4" Background="White" Foreground="Black" ToolTip="TP points"/>
+                                                        <Button Grid.Column="5" Content="Apply SL/TP" Tag="{Binding}" Height="25" MinHeight="25" Padding="7,2" Click="DemoApplyPositionLevelsButton_Click"/>
+                                                    </Grid>
+                                                    <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,5,0,0">
+                                                        <Button Content="Remove SL" Tag="{Binding}" Height="24" MinHeight="24" Padding="7,1" Click="DemoRemovePositionSlButton_Click"/>
+                                                        <Button Content="Remove TP" Tag="{Binding}" Height="24" MinHeight="24" Padding="7,1" Margin="5,0,0,0" Click="DemoRemovePositionTpButton_Click"/>
+                                                        <TextBlock Text="SL/TP can also be dragged on the chart ↕" Foreground="#637083" FontSize="9" VerticalAlignment="Center" Margin="9,0,0,0"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <Grid Grid.Row="2" Margin="5,3">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Margin="0,0,3,0" Content="Breakeven +10" Click="DemoBreakevenButton_Click"/>
+                                    <Button Grid.Column="1" Margin="3,0" Content="Close selected now" Click="DemoCloseSelectedButton_Click"/>
+                                    <Button Grid.Column="2" Margin="3,0,0,0" Content="Close all now" Click="DemoCloseAllButton_Click"/>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="Pending orders">
+                            <Grid Background="#F3F5F8">
+                                <Grid.RowDefinitions><RowDefinition Height="36"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                                <TextBlock x:Name="DemoPendingOrderCountText" Text="0 pending orders" Foreground="#151B24" FontWeight="SemiBold" VerticalAlignment="Center" Margin="9,0"/>
+                                <ListBox x:Name="DemoPendingOrdersGrid" Grid.Row="1" Background="White" Foreground="Black" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemContainerStyle="{StaticResource DemoListBoxItemStyle}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="5,3" Padding="8" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="5">
+                                                <Grid>
+                                                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="#" Foreground="#637083"/><TextBlock Text="{Binding Id}" FontWeight="Bold"/><TextBlock Text="  "/><TextBlock Text="{Binding OrderType}" FontWeight="Bold"/>
+                                                        <TextBlock Text=" · "/><TextBlock Text="{Binding Symbol}"/><TextBlock Text=" · Lot "/><TextBlock Text="{Binding Volume, StringFormat=0.00}"/>
+                                                    </StackPanel>
+                                                    <Button Grid.Column="1" Content="Edit" Tag="{Binding}" Height="24" MinHeight="24" Padding="8,1" Margin="6,0,0,0" Click="DemoEditPendingButton_Click"/>
+                                                    <Button Grid.Column="2" Content="×" Tag="{Binding}" Width="25" Height="24" MinHeight="24" Padding="0" Margin="5,0,0,0" Background="#A92E3B" Foreground="White" ToolTip="Cancel this pending order" Click="DemoCancelPendingButton_Click"/>
+                                                    <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,5,0,0">
+                                                        <TextBlock Text="Entry " Foreground="#637083"/><TextBlock Text="{Binding EntryPrice}"/>
+                                                        <TextBlock Text="  Stop-limit " Foreground="#637083"/><TextBlock Text="{Binding StopLimitPrice}"/>
+                                                        <TextBlock Text="  SL " Foreground="#637083"/><TextBlock Text="{Binding StopLoss}"/>
+                                                        <TextBlock Text="  TP " Foreground="#637083"/><TextBlock Text="{Binding TakeProfit}"/>
+                                                        <TextBlock Text="  Status " Foreground="#637083"/><TextBlock Text="{Binding Status}" FontWeight="SemiBold"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="Trade history">
+                            <Grid Background="#F3F5F8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <UniformGrid Grid.Row="0" Columns="7" Margin="6,6,6,3">
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Closed" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryTotalText" Text="0" Foreground="Black" FontWeight="Bold"/></StackPanel></Border>
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Profit trades" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryWinsText" Text="0" Foreground="#167044" FontWeight="Bold"/></StackPanel></Border>
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Loss trades" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryLossesText" Text="0" Foreground="#A13440" FontWeight="Bold"/></StackPanel></Border>
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Breakeven" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryBreakevenText" Text="0" Foreground="Black" FontWeight="Bold"/></StackPanel></Border>
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Winning total" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryWinningTotalText" Text="$0.00" Foreground="#167044" FontWeight="Bold"/></StackPanel></Border>
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Losing total" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryLosingTotalText" Text="$0.00" Foreground="#A13440" FontWeight="Bold"/></StackPanel></Border>
+                                    <Border Margin="2" Padding="5" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="4"><StackPanel><TextBlock Text="Net P/L" Foreground="#637083" FontSize="9"/><TextBlock x:Name="DemoHistoryNetText" Text="$0.00" Foreground="Black" FontWeight="Bold"/></StackPanel></Border>
+                                </UniformGrid>
+                                <DataGrid x:Name="DemoTradeHistoryGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" Background="White" Foreground="Black" RowBackground="White" AlternatingRowBackground="#F1F1F1" GridLinesVisibility="Horizontal" VerticalScrollBarVisibility="Visible" RowStyle="{StaticResource DemoDataGridRowStyle}" CellStyle="{StaticResource DemoDataGridCellStyle}" ColumnHeaderStyle="{StaticResource DemoDataGridHeaderStyle}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="#" Binding="{Binding Id}" Width="42"/>
+                                        <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="75"/>
+                                        <DataGridTextColumn Header="TF" Binding="{Binding Timeframe}" Width="45"/>
+                                        <DataGridTextColumn Header="Side" Binding="{Binding Direction}" Width="50"/>
+                                        <DataGridTextColumn Header="Lot" Binding="{Binding Volume, StringFormat=0.00}" Width="50"/>
+                                        <DataGridTextColumn Header="Entry" Binding="{Binding EntryPrice}" Width="72"/>
+                                        <DataGridTextColumn Header="Exit" Binding="{Binding ExitPrice}" Width="72"/>
+                                        <DataGridTextColumn Header="SL" Binding="{Binding StopLoss}" Width="68"/>
+                                        <DataGridTextColumn Header="TP" Binding="{Binding TakeProfit}" Width="68"/>
+                                        <DataGridTextColumn Header="P/L" Binding="{Binding Profit, StringFormat={}{0:C2}}" Width="106" MinWidth="106"/>
+                                        <DataGridTextColumn Header="Reason" Binding="{Binding CloseReason}" Width="100"/>
+                                        <DataGridTextColumn Header="Opened" Binding="{Binding OpenedUtc, StringFormat=g}" Width="125"/>
+                                        <DataGridTextColumn Header="Closed" Binding="{Binding ClosedUtc, StringFormat=g}" Width="125"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Grid.Row="2" Margin="5,4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox x:Name="DemoShowHistoryOnChartCheckBox" Grid.Column="0"
+                                              Content="Project demo history on chart" IsChecked="True"
+                                              VerticalAlignment="Center" Margin="3,0,10,0"
+                                              Foreground="Black" Background="Transparent"
+                                              ToolTip="Tick or untick demo trade-history entry and exit markings on matching-symbol charts"
+                                              Checked="DemoShowHistoryOnChartCheckBox_Changed"
+                                              Unchecked="DemoShowHistoryOnChartCheckBox_Changed"/>
+                                    <Button Grid.Column="1" Margin="0,0,6,0" Padding="10,3" Content="Open Report" ToolTip="Open the complete demo trading report with graphs and statistics" Click="DemoTradeOpenReportButton_Click"/>
+                                    <Button Grid.Column="2" Margin="0,0,3,0" Content="Delete selected history + markings" Click="DemoDeleteSelectedHistoryButton_Click"/>
+                                    <Button Grid.Column="3" Margin="3,0,0,0" Content="Delete ALL demo history + chart markings" Background="#A92E3B" Foreground="White" Click="DemoDeleteAllHistoryButton_Click"/>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+
+                        <TabItem Header="MT5 trade history">
+                            <Grid Background="#F3F5F8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Margin="7,7,7,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Height="28" Padding="10,3" Margin="0,0,6,0" Content="Open Folder" Click="DemoMt5HistoryOpenFolderButton_Click" ToolTip="Open Documents\TickLab\MT5 Trade History. Paste MT5 HTML, CSV, TSV or TXT history reports there."/>
+                                    <Button Grid.Column="1" Height="28" Padding="10,3" Margin="0,0,8,0" Content="Refresh" Click="DemoMt5HistoryRefreshButton_Click"/>
+                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" Foreground="#4C5968" FontSize="9.5" TextWrapping="Wrap"
+                                               Text="Paste MT5 history/report files into the folder. Tick Project on chart to show that saved history on matching-symbol charts."/>
+                                </Grid>
+                                <ListBox x:Name="DemoMt5TradeHistoryList" Grid.Row="1" Margin="7,0,7,4" Background="White" Foreground="Black" BorderBrush="#CDD5DF" BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="4,3" Padding="8" Background="White" BorderBrush="#CDD5DF" BorderThickness="1" CornerRadius="5">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <CheckBox Grid.Column="0" IsChecked="{Binding IsProjected, Mode=TwoWay}" VerticalAlignment="Center" Margin="0,0,9,0"
+                                                              Content="Project on chart" Foreground="Black"
+                                                              Checked="DemoMt5HistoryProjectionCheckBox_Changed" Unchecked="DemoMt5HistoryProjectionCheckBox_Changed"/>
+                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="SemiBold"/>
+                                                        <TextBlock Text="{Binding StatusText}" Foreground="#637083" FontSize="9.5"/>
+                                                    </StackPanel>
+                                                    <Button Grid.Column="2" Height="27" Padding="10,2" Margin="8,0,0,0" Content="Open Report" Tag="{Binding}" Click="DemoMt5HistoryOpenReportButton_Click"/>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <TextBlock x:Name="DemoMt5HistoryStatusText" Grid.Row="2" Margin="9,2,9,7" Foreground="#4C5968" FontSize="9.5" Text="No MT5 history files loaded." TextWrapping="Wrap"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
+                    <TextBlock Grid.Row="4" Margin="10,0,10,8" Text="Demo prices use TickLab Bid/Ask. This simulator never sends an MT5 trade." Foreground="#4C5968" FontSize="9" TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="2" Background="#060606" BorderBrush="#292929" BorderThickness="0,1,0,0">
+            <Grid Margin="7,3,8,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Height="30" Padding="9,0" Margin="0,0,6,0" CornerRadius="5" Background="#0D0D0D" BorderBrush="#323232" BorderThickness="1">
+                    <TextBlock Text="WORKSPACES" Foreground="#A8A8A8" FontSize="9.5" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                </Border>
+
+                <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" PanningMode="HorizontalOnly">
+                    <StackPanel x:Name="WorkspaceTabsPanel" Orientation="Horizontal" VerticalAlignment="Center"/>
+                </ScrollViewer>
+
+                <Button x:Name="AddWorkspaceButton" Grid.Column="2" Height="30" MinHeight="30" Padding="10,2" Margin="6,0,5,0" Content="＋ Workspace"
+                        ToolTip="Add a workspace using the selected division" Click="AddWorkspaceButton_Click"/>
+                <Button x:Name="DivideWorkspaceButton" Grid.Column="3" Height="30" MinHeight="30" Padding="10,2" Margin="0,0,5,0" Content="▦ Divide"
+                        ToolTip="Choose single, 2, 3, 4 or 6 partitions" Click="DivideWorkspaceButton_Click"/>
+                <Button Grid.Column="4" Height="30" MinHeight="30" Padding="10,2" Margin="0,0,10,0" Content="＋ Chart"
+                        ToolTip="Open a chart in the selected empty partition or as a floating chart" Click="NewChartButton_Click"/>
+
+                <Border Grid.Column="5" Padding="10,0" CornerRadius="5" Background="#0D0D0D" BorderBrush="#323232" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse x:Name="ConnectionDot" Width="8" Height="8" Fill="#66778D" Margin="0,0,8,0"/>
+                        <TextBlock x:Name="ConnectionText" Text="MT5 Disconnected" Foreground="#D6E2F1" FontSize="10.5" FontWeight="SemiBold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" MaxWidth="205"/>
+                        <TextBlock Text="  ▮▮▮" Foreground="#22C97A" FontSize="9" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock x:Name="StatusText" Visibility="Collapsed" Text="Ready"/>
+                <TextBlock x:Name="TickCountText" Visibility="Collapsed"/>
+                <TextBlock x:Name="BridgePathText" Visibility="Collapsed"/>
+            </Grid>
+        </Border>
+
+        <!-- Hidden compatibility hosts retained for saved workspace and existing code paths. -->
+        <StackPanel x:Name="InlineDrawingFavoritesPanel" Visibility="Collapsed"/>
+        <StackPanel Visibility="Collapsed">
+            <Button x:Name="MainChartDockButton"/>
+            <StackPanel x:Name="ChartWindowTabsPanel"/>
+        </StackPanel>
+    </Grid>
+</Window>

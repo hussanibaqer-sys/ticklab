@@ -1,0 +1,34 @@
+TickLab v1.13.0.58 — First Test Checklist
+
+BUILD
+1. Close all TickLab processes and stop Visual Studio debugging.
+2. Extract the ZIP to a normal local folder.
+3. Run Clean-Restore-Build.cmd or Visual Studio 2022 Release Rebuild.
+
+SPEED CONTROL
+4. Open Replay.
+5. Confirm the Speed selector is white with black text.
+6. Open the Speed dropdown and confirm every speed option is readable black-on-white.
+
+REPLAY START VIEWPORT
+7. Scroll to historical candles and place the yellow replay line somewhere with visible empty/chart area available to its right.
+8. Press Play once.
+9. EXPECT: the yellow candle and future candles disappear immediately.
+10. EXPECT: the remaining candles DO NOT jump/scroll to the far-right chart wall.
+11. EXPECT: the same right-side area stays clear and replay grows into it as new candles form.
+
+REVERSE / FORWARD
+12. Let Replay run long enough to form part of a candle and preferably at least one next candle.
+13. Press ◀ Reverse.
+14. EXPECT: Replay runs backward tick-by-tick; candle close/high/low/body/wicks/volume retreat correctly.
+15. EXPECT: Reverse stops at the yellow replay start and never crosses earlier than it.
+16. Press Forward ▶.
+17. EXPECT: the exact reversed raw ticks are replayed forward again, then normal unread ticks continue.
+18. Change Speed and verify the selected speed affects both Reverse and Forward.
+19. Pause with Play/Pause, then resume the selected direction.
+20. Test Step tick and Step candle after reversing; they should advance forward from the current replay position.
+
+REGRESSION
+21. Test yellow/red Replay Range and confirm red auto-stop still works.
+22. End Replay and confirm the continuously updated live chart returns immediately.
+23. Confirm MT5 live capture continued while Replay was visible.

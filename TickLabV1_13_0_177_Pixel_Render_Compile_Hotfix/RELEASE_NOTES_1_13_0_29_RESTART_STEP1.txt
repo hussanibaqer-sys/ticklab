@@ -1,0 +1,40 @@
+TickLab v1.13.0.29 — Restart Step 1: Indicator Placement and Sync
+
+BASE
+- Built directly from the user-supplied TickLab v1.13.0.28 package.
+- This is a narrow step-by-step change. No unrelated feature was added.
+
+WHAT CHANGED
+1. The Indicators window now has one new-indicator action: Properties & Apply.
+2. TickLab remembers the exact last-clicked price chart or empty workspace partition.
+3. The indicator Properties window adds a Placement tab only while adding a new indicator:
+   - Place Address: where the indicator appears.
+   - Connect Address: optional chart supplying historical/live market data.
+   - Sync with Price Chart: navigation synchronization, not disconnection.
+4. If Place Address is a price chart:
+   - The existing v1.13.0.28 on-chart indicator application path is used.
+   - Connect Address is automatically locked to that same chart.
+5. If Place Address is an empty workspace:
+   - A standalone independent indicator pane is created there.
+   - It keeps its own visible indicator-value scale and time scale.
+   - Connect Address may be left as Not connected.
+   - The pane may later be connected through its existing Connect/right-click route action.
+6. Sync behavior for a connected independent pane:
+   - ON: horizontal zoom, pan/drag, scroll, visible timestamps, crosshair and replay follow the source chart.
+   - OFF: the indicator remains connected to data but uses its own horizontal navigation.
+   - Indicator vertical/value scaling remains independent.
+
+PROTECTED/UNCHANGED
+- MT5 bridge and FileBridge
+- History loading and live capture
+- Candle rendering and chart types
+- Drawings, alerts and replay
+- Existing on-chart indicator calculation/application methods
+- Every non-step source file matched the supplied v1.13.0.28 baseline hash.
+
+VALIDATION
+- Focused restart-step validator: 589 passed, 0 failed.
+- Duplicate-method validator: 9 passed, 0 failed.
+- Bridge-write validator: 15 passed, 0 failed.
+- All XAML/project XML parsed successfully.
+- A real Windows Visual Studio 2022/.NET 8 WPF compilation and live MT5 test are still required.

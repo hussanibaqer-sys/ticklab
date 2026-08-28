@@ -1,0 +1,27 @@
+TickLab v1.13.0.57 — Replay Identity Fix
+
+Scope
+-----
+Replay-only hotfix on top of v1.13.0.56.
+
+Root cause fixed
+----------------
+Replay captured ChartRuntimeContext.IdentityGeneration before calling
+ResetContextHistoryPaging(context). That reset increments IdentityGeneration by design.
+After the asynchronous raw-tick read completed, Replay compared the old generation with
+the incremented generation and treated its own reset as a user chart change. Result:
+Replay cancelled itself every time with the target-changed/failure path.
+
+Correction
+----------
+The replay identity guard is now captured immediately AFTER ResetContextHistoryPaging.
+Real symbol/timeframe/chart changes during the asynchronous read are still rejected, but
+Replay no longer rejects its own setup.
+
+Preserved behavior
+------------------
+- Play hides the yellow candle and future candles before tick I/O.
+- Live MT5 processing continues in hidden live state.
+- Fast raw tick path and permanent binary archive fallback remain unchanged.
+- Replay Range, selectors, trading, alerts, panels, indicators, history and bridge files
+  are otherwise unchanged.

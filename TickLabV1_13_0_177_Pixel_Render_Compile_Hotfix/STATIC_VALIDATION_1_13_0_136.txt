@@ -1,0 +1,14 @@
+TickLab v1.13.0.136 Static Validation
+
+- 31/31 XAML files parsed successfully.
+- TickLab.App.csproj XML parsed successfully.
+- 154/154 C# files passed delimiter/structural scan.
+- Find Candle selector contains 1s / 15s / 30s / 45s.
+- Find Candle parser resolves second timeframes without routing them through FromNativeMt5Code.
+- Per-chart historical navigation anchor fields are present.
+- Timeframe selection calls the historical-centering path when an anchor is active.
+- Historical centering uses bounded virtual pages and BuildLocalChartResult.
+- End/latest path releases the historical anchor.
+- Version metadata is 1.13.0.136.
+
+No Windows WPF/.NET runtime is installed in the packaging environment, so Visual Studio on Windows remains the compile/runtime gate.

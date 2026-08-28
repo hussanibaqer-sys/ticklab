@@ -1,0 +1,40 @@
+TickLab v1.13.0.32 Restart Step 3 — First Test Checklist
+
+BUILD
+[ ] Delete bin and obj folders.
+[ ] Open TickLabV1_13_0_32.sln.
+[ ] Build the solution in Visual Studio 2022 using .NET 8.
+[ ] Confirm there are no compile errors or warnings introduced by this step.
+
+INDICATOR RIGHT-CLICK
+[ ] Add two or more indicators, including duplicate indicator types such as two RSI instances.
+[ ] Right-click the price chart and open Indicators.
+[ ] Confirm every indicator appears separately with Workspace, Partition, symbol and timeframe.
+[ ] Open Properties for one indicator and confirm only that instance opens.
+[ ] Remove one selected indicator and confirm the other indicators remain.
+[ ] Right-click a separate indicator pane and confirm its indicator name and exact address are shown.
+[ ] Remove that selected workspace indicator and confirm only that indicator is removed.
+
+SYMBOL SEARCH
+[ ] Open the MT5 symbol picker.
+[ ] Click the search field and type normally.
+[ ] Type an exact broker symbol and confirm it moves to the first result and becomes selected.
+[ ] Confirm the search field and every result use black text on white.
+[ ] Confirm the vertical scrollbar is visible and scrolls the complete list.
+[ ] Open the selected symbol and confirm the correct chart loads.
+
+COLOUR SETTINGS
+[ ] Open chart colour settings and confirm only swatches are visible, not hexadecimal codes.
+[ ] Open built-in indicator properties and confirm colour controls show swatches only.
+[ ] Open TickScript indicator properties and confirm colour controls show swatches only.
+[ ] Open drawing settings and confirm line, fill, text and background colours show swatches only.
+[ ] Open drawing level settings and confirm Line and Zone columns show swatches, not codes.
+[ ] Hover each swatch for about one second and confirm a colour-name tooltip appears.
+[ ] Confirm common colours show names such as White, Red, Blue, Green and Yellow.
+[ ] Confirm a non-standard slider-created colour shows Custom colour.
+[ ] Confirm choosing and saving colours still updates the chart/indicator/drawing correctly.
+
+REGRESSION
+[ ] Confirm existing on-chart indicator placement is unchanged.
+[ ] Confirm independent workspace indicator placement, connection and Sync still work.
+[ ] Confirm MT5 connection, history, live candles, zoom, scroll and drawings still work.

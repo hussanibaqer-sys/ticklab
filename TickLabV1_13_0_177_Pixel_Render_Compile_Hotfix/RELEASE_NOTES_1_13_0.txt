@@ -1,0 +1,59 @@
+TickLab v1.13.0 — Premium Charting Interface Rebuild
+====================================================
+
+This is a presentation-layer rebuild, not another toolbar relocation.
+
+NEW APPLICATION SHELL
+- Replaced the old main-window XAML with a new premium dark workspace.
+- Added a 66-pixel identity header and compact 42-pixel command row.
+- Added a 50-pixel icon-only drawing rail.
+- Kept the chart full height with no placeholder control deck below it.
+- Added a 310-pixel integrated right drawing workspace.
+- Added a live selected-drawing inspector with style and Fibonacci level previews.
+- Added a compact readable horizontal timeframe strip.
+- Retained the independent draggable horizontal Favorites bar.
+
+VISUAL SYSTEM
+- Replaced the global WPF styles with a consistent TickLab dark design system.
+- Added shared window, panel, elevated, border, text, accent, positive and negative colours.
+- Added restrained hover, pressed, selected and disabled states.
+- Added ClearType, display text formatting, device-pixel snapping and layout rounding.
+- Added slim rounded scrollbars with usable long thumbs.
+- Restyled drawing settings, drawing palette, Favorites, colour picker, symbol picker,
+  indicators and external-import windows.
+
+CHART RENDERING
+- Replaced white/black candles with professional green/red candles.
+- Updated candle width, wick borders, chart background, grid and labels.
+- Retained broker price/time accuracy and the existing chart engine.
+
+FIBONACCI / LEVEL TOOLS
+- Added FillColor and FillOpacity to each individual DrawingLevel.
+- Every enabled Fibonacci zone can render a separate colour and opacity.
+- Added zone-colour and zone-opacity editing to the level grid.
+- Retained add, remove, reorder, visibility, labels, line colour, line width and line style.
+- Added a professional multicolour default Fibonacci palette.
+- Level changes continue to preview live and work with templates/defaults.
+
+PEN / HIGHLIGHTER
+- Added freehand point simplification to prevent hundreds of editing anchors.
+- Added smooth Bezier rendering for natural curves and S-shaped strokes.
+- Added rounded caps and joins.
+- Highlighter keeps a broad transparent stroke with stronger smoothing.
+
+PRESERVED
+- Magnet, Ctrl inversion and snapped crosshair.
+- Measure / Shift-drag measurement.
+- Compact drawing quick editor.
+- Drawing context menu, templates, persistence, undo/redo and object tree.
+- Tick range filtering, cancellation checkpointing and freeze fixes.
+- Permanent M1 and raw-tick storage formats.
+
+PROTECTED COMPONENTS
+- Live Bridge V300: unchanged.
+- History Bridge V305: unchanged.
+- Marker V109: unchanged.
+
+LIMITATION
+A Windows WPF compiler is unavailable in the packaging environment. Visual Studio 2022
+Release -> Rebuild Solution remains the required final compilation and visual test.

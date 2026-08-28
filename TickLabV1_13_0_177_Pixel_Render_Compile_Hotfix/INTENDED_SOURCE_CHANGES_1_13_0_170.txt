@@ -1,0 +1,3 @@
+src/TickLab.App/MainWindow.xaml — version title + symmetric expanded drawing-rail layout only
+src/TickLab.App/MainWindow.xaml.cs — expanded rail/collapse geometry constants only
+src/TickLab.App/TickLab.App.csproj — version metadata only

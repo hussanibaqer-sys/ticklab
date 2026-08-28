@@ -1,0 +1,60 @@
+TickLab v1.13.0.143 — First runtime test
+
+1. Build / launch
+- Restore NuGet if Visual Studio requests it.
+- Build v1.13.0.143.
+- Confirm title: TickLab v1.13.0.143 — Raw Tick Full Chart Repair.
+
+2. Protect the confirmed 1-second fix first
+- Use Find Candle -> 1s on the same approximately one-month-old timestamp that became fast in v1.13.0.142.
+- It must remain fast and land on the correct second.
+
+3. Raw Tick Chart projection / more than 30 minutes
+- Open Tick Chart on the same symbol whose history files are known to contain more than 30 minutes.
+- Scroll/drag left continuously.
+- TickLab must keep loading immediately older ticks instead of stopping around 30 minutes.
+- Verify there is no missing middle or sudden splice between history pages.
+- Compare several old timestamps/prices with the saved raw history if desired.
+- Historical browsing must use the full horizontal width; the large right blank area is only allowed at the live edge.
+
+4. Tick projection appearance
+- Zoom/pan through dense and quiet periods.
+- Every tick should occupy a regular horizontal tick slot.
+- Weekend/quiet-time gaps must not stretch into huge blank horizontal holes.
+- Time labels must still reflect the real tick timestamps.
+- Zoom-out must stop at 5,000 visible ticks.
+
+5. Find Candle -> Tick
+- In Find Candle choose Tick (above 1s).
+- Search a known historical server date/time containing raw ticks.
+- It must open/retain the Raw Tick Chart, find/centre the requested second, and mark the found tick with a vertical purple line.
+- The status should show the exact found millisecond.
+- Click the marker using a cursor tool: it should select/thicken.
+- Delete/Backspace or right-click -> Remove Find Tick marker must remove it.
+- Press End / Live: TickLab should return to the true live tick window and clear the historical Find Tick marker.
+
+6. Crosshair
+- Select Cross from the drawing toolbar while Tick Chart is active.
+- Move the pointer over the plot.
+- Visible vertical + horizontal guides must follow the pointer/tick position.
+- The readout must show millisecond time plus Bid and Ask.
+
+7. Measure
+- Click Measure while Tick Chart is active.
+- Click point A and point B.
+- Confirm the overlay reports tick count, elapsed time, pips, and price delta.
+- Check pip scaling against the symbol's normal candle-chart precision.
+
+8. Drawing tools
+- Test Trend Line: first anchor must appear on the first click; live preview must follow the pointer; second click completes it.
+- Test Rectangle and one Brush/Highlighter tool.
+- Switch to Arrow/Cross cursor and click the completed drawing.
+- It must select; drag the object and an anchor.
+- Test toolbar Lock, Hide, Delete, Undo and Redo on Tick Chart.
+- Scroll older history after drawing: timestamp-anchored drawings should remain aligned to their tick time.
+
+9. Live behavior regression
+- Return to Live/End.
+- New live raw ticks should append normally.
+- Right-side breathing space is allowed at live edge only.
+- Horizontal/vertical zoom should remain smooth.

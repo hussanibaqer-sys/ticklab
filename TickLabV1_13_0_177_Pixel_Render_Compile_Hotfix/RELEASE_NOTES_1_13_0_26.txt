@@ -1,0 +1,16 @@
+TickLab v1.13.0.26 — Right-Edge Prefetch and Sticky Scroll Hotfix
+
+Root cause fixed:
+At 1,500 visible candles, the previous prefetch formula expanded to 12,000 slots—the full virtual candle window. One wheel or drag action could therefore request older and newer history simultaneously. Those async requests cancelled and replaced each other, causing right-side candles to disappear/reappear and chart scrolling to stick, pause, then jump.
+
+Repairs:
+- Replaced the unbounded 8× visible-count threshold with a bounded 256–800 slot threshold.
+- History requests are now direction-specific.
+- Vertical-only zoom never starts history prefetch.
+- Horizontal zoom requests only older history when it actually exposes more candles on the left.
+- Plot dragging requests history once on mouse-up, based on final direction.
+- Removed virtual-history requests from every mouse-move frame.
+- Crosshair movement no longer emits viewport changes.
+- Suppressed duplicate viewport updates when drag values did not change.
+
+No indicator, chart-type, replay, alert, workspace, protocol, or MQL5 bridge behavior was intentionally changed.

@@ -1,0 +1,198 @@
+TickLab v1.13.0.104 exact source diff vs v1.13.0.103
+
+Files /mnt/data/ticklab_work/v104_base/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.Drawing.cs and /mnt/data/ticklab_work/v104/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.Drawing.cs differ
+Files /mnt/data/ticklab_work/v104_base/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs and /mnt/data/ticklab_work/v104/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs differ
+Files /mnt/data/ticklab_work/v104_base/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/MainWindow.xaml and /mnt/data/ticklab_work/v104/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/ticklab_work/v104_base/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/TickLab.App.csproj and /mnt/data/ticklab_work/v104/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/TickLab.App.csproj differ
+
+Detailed cycle renderer diff:
+--- /mnt/data/ticklab_work/v104_base/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs	2026-08-11 17:45:27.000000000 +0000
++++ /mnt/data/ticklab_work/v104/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs	2026-08-11 20:48:06.807697468 +0000
+@@ -194,7 +194,7 @@
+                 return true;
+             case "sine-line":
+                 if (points.Length >= 2)
+-                    DrawParitySine(dc, drawing, points[0], points[1], pen);
++                    DrawParitySine(dc, layout.Plot, drawing, points[0], points[1], pen);
+                 return true;
+             case "sector":
+                 if (points.Length >= 3)
+@@ -2349,54 +2349,93 @@
+ 
+     private static void DrawParityCycles(DrawingContext dc, Rect plot, ChartDrawing drawing, Point[] points, Pen pen)
+     {
++        // Cycle repetitions are viewport-virtualized: the two stored anchors define
++        // the spacing, while only repetitions intersecting the current plot (plus a
++        // one-period buffer) are generated on each render. Nothing is permanently
++        // duplicated, so scrolling behaves like candle virtualization.
+         double spacing = Math.Abs(points[1].X - points[0].X);
+-        if (spacing < 2)
++        if (spacing < 0.75 || plot.Width <= 0 || plot.Height <= 0)
+             return;
+-        int count = (int)Math.Clamp(ParityOption(drawing, "Count", drawing.ToolId == "time-cycles" ? 32 : 64), 1, 512);
++
++        double originX = points[0].X;
++        double horizontalReach = drawing.ToolId == "time-cycles" ? spacing / 2.0 : 0.0;
++        double left = plot.Left - spacing - horizontalReach;
++        double right = plot.Right + spacing + horizontalReach;
++        long first = (long)Math.Floor((left - originX) / spacing);
++        long last = (long)Math.Ceiling((right - originX) / spacing);
++
++        // At TickLab's maximum horizontal zoom this is still far above the expected
++        // visible repetition count, but protects rendering from pathological anchors.
++        const long maxVisibleRepeats = 8192;
++        if (last - first + 1 > maxVisibleRepeats)
++        {
++            long middle = (first + last) / 2;
++            first = middle - maxVisibleRepeats / 2;
++            last = first + maxVisibleRepeats - 1;
++        }
++
++        dc.PushClip(new RectangleGeometry(plot));
+         if (drawing.ToolId == "time-cycles")
+         {
+             double radiusX = spacing / 2.0;
+             double radiusY = Math.Max(4, Math.Min(radiusX, plot.Height / 2.0));
+-            for (int i = 0; i < count; i++)
++            for (long index = first; index <= last; index++)
+             {
+-                double x = points[0].X + i * spacing;
+-                if (x - radiusX > plot.Right) break;
+-                if (x + radiusX >= plot.Left)
+-                    dc.DrawEllipse(null, pen, new Point(x, points[0].Y), radiusX, radiusY);
++                double x = originX + index * spacing;
++                if (x + radiusX < plot.Left || x - radiusX > plot.Right)
++                    continue;
++                dc.DrawEllipse(null, pen, new Point(x, points[0].Y), radiusX, radiusY);
+             }
+         }
+         else
+         {
+-            for (int direction = -1; direction <= 1; direction += 2)
++            for (long index = first; index <= last; index++)
+             {
+-                for (int i = direction < 0 ? 1 : 0; i < count; i++)
+-                {
+-                    double x = points[0].X + direction * i * spacing;
+-                    if (x < plot.Left - spacing || x > plot.Right + spacing) break;
+-                    dc.DrawLine(pen, new Point(x, plot.Top), new Point(x, plot.Bottom));
+-                }
++                double x = originX + index * spacing;
++                if (x < plot.Left - 0.5 || x > plot.Right + 0.5)
++                    continue;
++                dc.DrawLine(pen, new Point(x, plot.Top), new Point(x, plot.Bottom));
+             }
+         }
++        dc.Pop();
+     }
+ 
+-    private static void DrawParitySine(DrawingContext dc, ChartDrawing drawing, Point p1, Point p2, Pen pen)
++    private static void DrawParitySine(DrawingContext dc, Rect plot, ChartDrawing drawing, Point p1, Point p2, Pen pen)
+     {
+-        double width = p2.X - p1.X;
++        // The anchors define the wave period/amplitude, but the visible curve repeats
++        // across the whole viewport. This is generated per-frame rather than stored as
++        // thousands of points, so pan/zoom naturally adds and removes visible sections.
++        double anchorSpan = p2.X - p1.X;
++        if (Math.Abs(anchorSpan) < 0.75 || plot.Width <= 0)
++            return;
++
+         double amplitude = Math.Max(1, Math.Abs(p2.Y - p1.Y));
+         int cycles = (int)Math.Clamp(ParityOption(drawing, "Cycles", 2), 1, 64);
+-        int steps = Math.Clamp(cycles * 80, 120, 4096);
++        double period = Math.Abs(anchorSpan) / cycles;
++        if (period < 0.75)
++            return;
++
++        double direction = Math.Sign(anchorSpan);
++        if (direction == 0) direction = 1;
++        double left = plot.Left - period;
++        double right = plot.Right + period;
++        int steps = Math.Clamp((int)Math.Ceiling((right - left) / 1.75), 160, 8192);
++
+         var geometry = new StreamGeometry();
+         using (StreamGeometryContext ctx = geometry.Open())
+         {
+             for (int i = 0; i <= steps; i++)
+             {
+-                double t = i / (double)steps;
+-                Point p = new(p1.X + width * t, p1.Y + Math.Sin(t * Math.PI * 2.0 * cycles) * amplitude);
++                double x = left + (right - left) * (i / (double)steps);
++                double phase = ((x - p1.X) / period) * Math.PI * 2.0 * direction;
++                Point p = new(x, p1.Y + Math.Sin(phase) * amplitude);
+                 if (i == 0) ctx.BeginFigure(p, false, false); else ctx.LineTo(p, true, false);
+             }
+         }
+         geometry.Freeze();
++        dc.PushClip(new RectangleGeometry(plot));
+         dc.DrawGeometry(null, pen, geometry);
++        dc.Pop();
+     }
+ 
+     private void DrawParitySector(DrawingContext dc, ChartDrawing drawing, Point[] points, Pen pen, Brush fill, Brush textBrush)
+
+Detailed cycle hit-test diff:
+--- /mnt/data/ticklab_work/v104_base/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.Drawing.cs	2026-08-11 16:55:36.000000000 +0000
++++ /mnt/data/ticklab_work/v104/TickLabV1_13_0_103_Folder3_Elliott_Waves_TradingView_Parity/src/TickLab.App/Controls/CandleChartControl.Drawing.cs	2026-08-11 20:48:06.813192739 +0000
+@@ -4317,6 +4317,61 @@
+             return patternBest;
+         }
+ 
++        if (geometry == DrawingGeometryKind.Cycles && points.Length >= 2)
++        {
++            double spacing = Math.Abs(points[1].X - points[0].X);
++            if (spacing < 0.75)
++                return double.MaxValue;
++
++            double nearestIndex = Math.Round((point.X - points[0].X) / spacing);
++            if (drawing.ToolId == "time-cycles")
++            {
++                double radiusX = spacing / 2.0;
++                double radiusY = Math.Max(4, Math.Min(radiusX, layout.Plot.Height / 2.0));
++                double cycleBest = double.MaxValue;
++                // Adjacent ellipses can overlap the pointer horizontally, so test the
++                // nearest center and its neighbours rather than requiring anchor hits.
++                for (int offset = -2; offset <= 2; offset++)
++                {
++                    double centerX = points[0].X + (nearestIndex + offset) * spacing;
++                    cycleBest = Math.Min(cycleBest, DistanceToEllipseStroke(
++                        point, new Point(centerX, points[0].Y), radiusX, radiusY));
++                }
++                return cycleBest;
++            }
++
++            double nearestX = points[0].X + nearestIndex * spacing;
++            return Math.Abs(point.X - nearestX);
++        }
++
++        if (geometry == DrawingGeometryKind.Sine && points.Length >= 2)
++        {
++            double anchorSpan = points[1].X - points[0].X;
++            if (Math.Abs(anchorSpan) < 0.75)
++                return double.MaxValue;
++            int cycles = (int)Math.Clamp(ParityOption(drawing, "Cycles", 2), 1, 64);
++            double period = Math.Abs(anchorSpan) / cycles;
++            if (period < 0.75)
++                return double.MaxValue;
++
++            double amplitude = Math.Max(1, Math.Abs(points[1].Y - points[0].Y));
++            double direction = Math.Sign(anchorSpan);
++            if (direction == 0) direction = 1;
++
++            // Test a small horizontal neighbourhood so steep portions of the sine are
++            // just as easy to select as crests/troughs. Any visible curve segment now
++            // selects the one parent Sine Line object and restores quick edit controls.
++            double sineBest = double.MaxValue;
++            for (int dx = -8; dx <= 8; dx += 2)
++            {
++                double sampleX = point.X + dx;
++                double phase = ((sampleX - points[0].X) / period) * Math.PI * 2.0 * direction;
++                double sampleY = points[0].Y + Math.Sin(phase) * amplitude;
++                sineBest = Math.Min(sineBest, Math.Sqrt(dx * dx + Math.Pow(point.Y - sampleY, 2)));
++            }
++            return sineBest;
++        }
++
+         if (DrawingToolCatalog.Find(drawing.ToolId)?.Category == DrawingToolCategory.FibonacciGann)
+         {
+             double folder2Distance = DistanceToFibonacciGannDrawing(drawing, points, point, layout);

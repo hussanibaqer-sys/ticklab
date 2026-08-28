@@ -1,0 +1,13 @@
+TickLab v1.13.0.89 — Exact app source diff vs v1.13.0.88
+
+Controls/CandleChartControl.Drawing.cs
+Controls/CandleChartControl.DrawingParity.cs
+Core/Drawing/DrawingParityDefaults.cs
+Core/Drawing/DrawingToolCatalog.cs
+MainWindow.xaml
+MainWindow.xaml.cs
+TickLab.App.csproj
+Windows/TradingViewFibGannSettingsWindow.xaml
+Windows/TradingViewFibGannSettingsWindow.xaml.cs
+
+Protected implementation source touched: NONE for Bridge / History / Replay / MT5 / Gateway / Connector.

@@ -1,0 +1,17 @@
+TickLab v1.13.0.175 — Rail Icon Crispness + Marker Fix
+Built from: v1.13.0.174 — Icon Polish Compile Hotfix
+
+Summary
+- Fixes the remaining perceived blur on the left drawing-toolbar icons by removing the prior 24->30 (and 24->33) upscaling on the rail.
+- Restores/strengthens the bottom hover-active marker on Favorites and the lower drawing-rail buttons.
+- No intentional functional changes.
+
+Changes
+- Drawing-rail folder/tool/action icons on the main left toolbar now render at the icon factory's native 24 px size instead of 30/33 px upscaled output.
+- This removes the non-integer scale factor that was softening icon edges and causing a blurry feel on the toolbar.
+- Favorites, Measure, Zoom/Scroll, Magnet, Keep Drawing, Lock, Hide, Tree, Sync, Undo, Redo, Delete, Brush, and folder last-used tool icons all use the native-size rendering.
+- DrawingRailButton bottom marker made stronger for the light rail: height 3 -> 4, lower margin tightened, and marker brush changed to BorderStrongBrush.
+- Hover marker opacity increased and active/pressed/keyboard-focused marker opacity strengthened so Favorites and the lower rail buttons visibly show the same style of highlight/marker feedback.
+
+Unchanged intentionally
+- Drawing behavior, chart behavior, raw tick, seconds, Find Candle, Replay, FileBridge/MT5, indicators, workspace, and chart types unchanged.

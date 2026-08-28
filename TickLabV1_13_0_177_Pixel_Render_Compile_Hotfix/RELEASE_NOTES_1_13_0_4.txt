@@ -1,0 +1,46 @@
+TickLab v1.13.0.4 — Natural Drawing and Coloured Media Hotfix
+================================================================
+
+TOOL WINDOW BEHAVIOUR
+- The adjacent category window now closes automatically when the user clicks anywhere outside the category window, toolbar or its resize divider.
+- Selecting a normal tool closes the category window immediately.
+- Opening and cancelling a media picker safely restores the category list.
+
+PEN AND HIGHLIGHTER
+- Added live low-pass pointer filtering to remove small hand and mouse jitter.
+- Reduced point spacing and replaced the previous rough curve with stable midpoint quadratic Bezier rendering.
+- Added RDP point simplification followed by two-pass pen and three-pass highlighter smoothing.
+- Retained rounded line joins and caps.
+
+FUTURE CHART DRAWING
+- Drawing anchors now use continuous chart-timeline coordinates instead of clamping every point to the nearest existing candle.
+- Lines, shapes, freehand strokes, media and measurements can be placed anywhere in the visible chart plot, including far beyond the newest candle.
+- Moving, cloning and keyboard nudging preserve future timestamps.
+
+MEASUREMENT
+- Shift-click places point A.
+- Shift can then be released; the next click places point B.
+- The completed temporary measurement remains visible until the next chart click.
+- Future-space bar counts use continuous timeline slots.
+
+RIGHT WORKSPACE
+- The existing arrow handle now supports pointer drag from fully collapsed to a maximum 620-pixel width.
+- A click without dragging still collapses or restores the workspace.
+
+COLOURED MEDIA
+- Replaced the monochrome picker with a TickLab dark themed, searchable and scrollable media window.
+- Added 50 icons, 48 trading stickers and 60 emoji: 158 original scalable coloured TickLab items.
+- Added native coloured badge, sticker and cartoon-face rendering directly on the chart.
+- No proprietary TradingView artwork or files are copied.
+
+PRESERVED
+- v1.13.0.3 centred full-height toolbar and adjacent tool window.
+- Compiler, nullable-safety and duplicate-method fixes.
+- Drawing favourites, object tree, market panel, undo/redo and persistence.
+- Live Bridge V300, History Bridge V305 and Marker V109 unchanged.
+- Permanent M1 and raw-tick formats unchanged.
+
+BUILD
+- Extract outside OneDrive.
+- Open TickLabV1_13_0_4.sln in Visual Studio 2022.
+- Select Release, then Clean Solution and Rebuild Solution.

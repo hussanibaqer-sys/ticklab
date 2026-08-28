@@ -1,0 +1,35 @@
+TickLab v1.13.0.100 — Static validation
+
+PASS: 31/31 checks
+
+PASS: Version 1.13.0.100
+PASS: All 31 XAML files parse
+PASS: Gann Fan: var readingLabels = new List<(string Text, Point Point)>()
+PASS: Gann Fan: GannFanReadingBrush()
+PASS: Gann Fan: DrawGannFanReading(dc, text, point, readingBrush)
+PASS: Gann Fan: GannFanRatioLabel(level.Value)
+PASS: Gann Fan: ShowLevelReadings
+PASS: Gann Fan ratio 1/8
+PASS: Gann Fan ratio 1/4
+PASS: Gann Fan ratio 1/3
+PASS: Gann Fan ratio 1/2
+PASS: Gann Fan ratio 1/1
+PASS: Gann Fan ratio 2/1
+PASS: Gann Fan ratio 3/1
+PASS: Gann Fan ratio 4/1
+PASS: Gann Fan ratio 8/1
+PASS: Quick edit XAML: QuickEditComboItemStyle
+PASS: Quick edit XAML: MenuHoverBrush
+PASS: Quick edit XAML: SelectionTextBrush
+PASS: Quick edit XAML: ItemContainerStyle="{StaticResource QuickEditComboItemStyle}"
+PASS: Quick edit theme: QuickLineWidthBox.ClearValue(Control.ForegroundProperty)
+PASS: Quick edit theme: QuickLineStyleBox.ClearValue(Control.ForegroundProperty)
+PASS: Quick edit theme: DrawingQuickEditBar.ClearValue(Border.BackgroundProperty)
+PASS: Quick edit theme: ShowDrawingQuickEditor(_quickEditDrawing);
+PASS: Gann Box/Square renderer block byte-for-byte unchanged from v1.13.0.99
+PASS: Protected MT5/History/Replay/FileBridge/Gateway/Connector sources unchanged
+PASS: Only 4 intended app source files changed
+PASS: No DrawingLevel.LineWidth reference in CandleChartControl.DrawingParity.cs
+PASS: No DrawingLevel.LineWidth reference in CandleChartControl.Drawing.cs
+PASS: Balanced braces CandleChartControl.DrawingParity.cs
+PASS: Balanced braces MainWindow.xaml.cs

@@ -1,0 +1,24 @@
+TickLab v1.13.0.132 — Compile / Nullability Hotfix
+
+BASE
+- Built directly from v1.13.0.131 Favorites / Top Bar Refinement.
+- No Favorites behavior, top-bar behavior, drawing geometry, rendering, Emoji, Measure, MT5, History, Replay, Bridge, Gateway or Connector behavior is intentionally changed.
+
+FIXES
+1. WPF Path ambiguity
+- TopBarIconFactory now explicitly constructs System.Windows.Shapes.Path.
+- Removes the compiler ambiguity between System.Windows.Shapes.Path and System.IO.Path.
+
+2. Favorites window Owner nullability
+- Drawing Favorites and Timeframe Favorites drag handlers capture Owner once into a local Window reference.
+- The local is null-checked before use, eliminating nullable dereference warnings while preserving the same drag/clamp behavior.
+
+3. Timeframe favorite nullable projection
+- Replaced the nullable LINQ projection with an explicit null-safe lookup list before numeric/chronological sorting.
+- Ordering behavior is unchanged.
+
+VALIDATION
+- All XAML files parse.
+- C# source brace structure checked.
+- Targeted ambiguity/nullability guards passed.
+- Windows Visual Studio compilation remains the final compiler/runtime gate in this environment.

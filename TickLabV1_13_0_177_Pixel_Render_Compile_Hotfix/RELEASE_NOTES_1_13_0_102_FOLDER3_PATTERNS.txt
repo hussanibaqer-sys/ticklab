@@ -1,0 +1,30 @@
+TickLab v1.13.0.102 — Folder 3 Patterns TradingView Parity
+
+Scope locked to PATTERNS only. Elliott Waves and Cycles are intentionally unchanged.
+
+Corrected tools:
+- XABCD Pattern
+- Cypher Pattern
+- ABCD Pattern
+- Triangle Pattern
+- Three Drives Pattern
+- Head and Shoulders
+
+Key corrections:
+- Pattern point markings (X/A/B/C/D and 1/2/3/4/5/6) now inherit the drawing's line color.
+- Ratio/measurement tags inherit the same line color and use a contrasting readable foreground.
+- XABCD and Cypher now use TradingView-style translucent pattern fill and dotted harmonic guides.
+- ABCD uses the A-B-C-D zig-zag plus dotted A-C / B-D measurement guides and boxed ratios.
+- Triangle no longer renders as a crossed bow-tie; it uses A-B-C-D zig-zag, converging dotted boundaries and reference-style fill toward their intersection.
+- Three Drives uses its six-point zig-zag, line-colored point tags, and drive ratio tags.
+- Head and Shoulders uses semantic Left Shoulder / Head / Right Shoulder tags and a dotted neckline.
+- Visible pattern guide/fill geometry participates in reselection hit-testing.
+- Pattern defaults now use reference-like distinct colors while user line-color edits automatically recolor all pattern markings.
+
+Protected:
+- Elliott Wave tools unchanged.
+- Cycle tools unchanged.
+- Gann Fan/Gann Box/Gann Square renderer methods verified unchanged from v1.13.0.101.
+- Fibonacci / MT5 / History / Replay / Bridge code not modified.
+
+Windows runtime/compile validation is still required on the user's PC.

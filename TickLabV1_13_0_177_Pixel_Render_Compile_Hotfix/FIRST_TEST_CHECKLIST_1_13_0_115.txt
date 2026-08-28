@@ -1,0 +1,14 @@
+TickLab v1.13.0.115 — FIRST TEST CHECKLIST
+
+1. Build/launch and confirm the title shows v1.13.0.115.
+2. Before placing anything new, open the same chart that contains the invisible v1.13.0.113/v1.13.0.114 annotation objects. They should now become visible if they are normal Current Chart objects.
+3. Place Text. “Add text” must appear immediately at the clicked position.
+4. Place Note and Price Note with two clicks. Leader + label/bubble must appear.
+5. Place Pin, Table, Callout, Comment, Price Label, Signpost, Anchored Note and Flag. Each must visibly render.
+6. Test CONTENT: Post and Idea must visibly render. Image must render the selected image; if its local file cannot be loaded, a visible placeholder must remain instead of disappearing.
+7. Click visible parts of the objects. Selection and quick edit must work; no hidden-anchor hunting.
+8. Open Drawing Inspector/Object list. Every row should now have a visible × Remove button.
+9. Click × on one of the old invisible/stale objects. It must disappear from the list and must not reappear after chart refresh.
+10. Confirm earlier drawing folders still behave exactly as before.
+
+If step 2 or step 3 still fails, send one screenshot showing the chart plus the Drawing Inspector row for the object. That would prove the failure is below the drawing layer itself rather than in Folder 6 rendering/visibility.

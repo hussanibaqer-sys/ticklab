@@ -1,0 +1,14 @@
+TickLab v1.13.0.94 — Fib Reading Font Restore
+
+Purpose
+- Restore the clean, uniform chart-reading typography used before the contrast-halo change.
+
+Fix
+- Removed the four-direction outline/halo from DrawSmallLabel.
+- Restored Segoe UI, 10 px, normal weight for small Fib/Gann chart readings.
+- Keeps all v1.13.0.93 working Level readings / Prices on levels / Add reading / Remove reading controls unchanged.
+- No Fib/Gann geometry changes.
+- No MT5, bridge, history, replay, or trading implementation changes.
+
+Runtime gate
+- Build and test on Windows/Visual Studio. Confirm all Fib level readings and prices have the same clean visual weight.

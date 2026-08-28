@@ -1,0 +1,7 @@
+TickLab v1.13.0.150 — Protected hashes
+
+MainWindow.xaml.cs
+c7b5c38abb74eded26ad3bb833e5cc44b67ed4ea14d0a3b1592bad9a834c561a
+
+Mt5FileBridgeClient.cs
+4febbcd3fce68905a635f5ff8134995cf20f8ca4a99472ac2ad2471149665fc8

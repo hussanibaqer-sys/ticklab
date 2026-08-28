@@ -1,0 +1,5 @@
+TickLab v1.13.0.142 exact changed source files vs v1.13.0.141
+Files /mnt/data/ticklab_v141_trace/unz/TickLabV1_13_0_141_TickFind_Contrast_5000TickZoom/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs and /mnt/data/TickLabV1_13_0_142_FindCandle_True_Direct_Seek/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs differ
+Files /mnt/data/ticklab_v141_trace/unz/TickLabV1_13_0_141_TickFind_Contrast_5000TickZoom/src/TickLab.App/MainWindow.xaml and /mnt/data/TickLabV1_13_0_142_FindCandle_True_Direct_Seek/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/ticklab_v141_trace/unz/TickLabV1_13_0_141_TickFind_Contrast_5000TickZoom/src/TickLab.App/MainWindow.xaml.cs and /mnt/data/TickLabV1_13_0_142_FindCandle_True_Direct_Seek/src/TickLab.App/MainWindow.xaml.cs differ
+Files /mnt/data/ticklab_v141_trace/unz/TickLabV1_13_0_141_TickFind_Contrast_5000TickZoom/src/TickLab.App/TickLab.App.csproj and /mnt/data/TickLabV1_13_0_142_FindCandle_True_Direct_Seek/src/TickLab.App/TickLab.App.csproj differ

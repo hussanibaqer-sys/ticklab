@@ -1,0 +1,14 @@
+TickLab v1.13.0.79 — First Test Checklist
+
+1. Launch and verify existing chart/history/replay functions still open normally.
+2. Open every left drawing folder; verify subgroup headings and tool rows are visible.
+3. Draw representative 1-point, 2-point, 3-point and multi-point tools. Verify live preview while drawing and selection handles after completion.
+4. Select drawings and verify contextual quick controls plus full Settings tabs.
+5. Test Long Position and Short Position: P&L/R:R/risk data appears; verify there is no broker-connect/order-placement action in the drawing tool.
+6. Right-click several toolbox tools -> Add to Favorites. Verify the separate floating drawing Favorites bar appears.
+7. Right-click empty price chart and empty workspace -> Favorites Tabs -> Off, then On.
+8. Drag the drawing Favorites bar against every TickLab edge, resize/move TickLab, and verify the bar remains fully inside the TickLab window frame.
+9. Open Emojis. Verify bottom tabs Emojis / Stickers / Icons and all eight emoji category groups plus Recently used.
+10. Place emojis from several categories and verify they remain selectable/movable chart objects.
+11. Choose CONTENT -> Image. Test JPG/PNG (and WEBP where the installed Windows image codec supports it), transparency, OK direct placement, body move and four-corner resize.
+12. Save/reopen the workspace and verify drawings/favorites/image objects persist.

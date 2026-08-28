@@ -1,0 +1,15 @@
+TickLab v1.13.0.155 — Exact Source Diff vs v1.13.0.152
+
+Functional source files changed:
+1. src/TickLab.App/MainWindow.ChartTypes.cs
+   - Disable/reject synthetic chart types on seconds timeframes.
+2. src/TickLab.App/MainWindow.ChartContexts.cs
+   - Enforce Candles when entering/restoring a seconds timeframe with a synthetic chart type.
+3. src/TickLab.App/MainWindow.Workspaces.cs
+   - Normalize legacy saved synthetic+seconds workspace panes to Candles.
+
+Version/title metadata changed:
+4. src/TickLab.App/MainWindow.xaml
+5. src/TickLab.App/TickLab.App.csproj
+
+No other source files differ from v1.13.0.152.

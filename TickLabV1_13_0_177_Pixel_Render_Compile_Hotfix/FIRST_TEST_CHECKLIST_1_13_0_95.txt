@@ -1,0 +1,41 @@
+TickLab v1.13.0.95 — FIRST TEST CHECKLIST
+
+1) Build / launch
+[ ] Clean + restore + build with the supplied Clean-Restore-Build.cmd or Visual Studio.
+[ ] Confirm title shows v1.13.0.95.
+
+2) Gann Box — compare directly with the user's TradingView reference photo
+[ ] Draw Gann Box at a similar wide/tall proportion as the reference.
+[ ] Check 5-division grid spacing.
+[ ] Check nested quarter-ellipse arcs and their intersections/proportions.
+[ ] Check the three visible fan/diagonal rays and color placement.
+[ ] Resize the box and confirm arcs scale with both width and height rather than staying circular.
+[ ] Click a visible grid line, fan ray, or arc and confirm the drawing reselects reliably.
+
+3) Fixed Gann Square
+[ ] Draw the fixed variant diagonally.
+[ ] Confirm four corner handles appear when selected.
+[ ] Drag each of the four corners separately.
+[ ] Confirm the whole shape grows/shrinks while preserving the fixed square/diagonal relationship; it must not skew independently.
+
+4) Theme / contrast — ALL drawing-tool surfaces
+[ ] Light theme: tool flyouts, settings/edit tabs, quick-edit bar, dropdowns, menus and drawing inspector use dark readable text on light surfaces.
+[ ] Dark theme: the same surfaces use light readable text on dark surfaces.
+[ ] Hover/selected/highlight states never hide text or icons.
+[ ] Open a quick-edit ComboBox/dropdown and verify every row is readable.
+[ ] Open drawing Settings and verify tabs, grid cells, selected rows and controls remain readable.
+[ ] Open DRAWINGS / OBJECTS edit workspace and verify it changes with the active theme.
+
+5) Quick edit bar
+[ ] Select a drawing and drag the grip icon.
+[ ] Confirm the bar moves without changing the drawing or accidentally activating a command.
+[ ] Confirm it cannot be dragged completely outside the TickLab chart/application frame.
+
+6) Fibonacci regression check
+[ ] Level readings still works independently.
+[ ] Prices on levels still works independently.
+[ ] Per-level Price / Level reading checkboxes still work.
+[ ] Add reading / Remove reading still works.
+[ ] Fib reading font remains clean and consistent (no thick halo).
+
+If any Gann line/arc differs from the supplied reference photo, send a screenshot with the incorrect part marked. Do not move to Folder 3 until Folder 2 passes this comparison.

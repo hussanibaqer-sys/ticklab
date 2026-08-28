@@ -1,0 +1,8 @@
+TickLab v1.13.0.94 — First Test Checklist
+
+1. Open Fib Retracement and display several level readings and prices.
+2. Confirm 0.5 / 0.618 / 0.786 etc. all use the same clean, normal-weight font.
+3. Confirm no readings look thick/outlined compared with others.
+4. Toggle Level readings and Prices on levels independently; controls from v1.13.0.93 must still work.
+5. Test Add reading / Remove reading; typography must stay uniform after changes.
+6. Check another Fib tool and Gann Fan readings for the same clean font.

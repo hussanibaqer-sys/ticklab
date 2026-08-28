@@ -1,0 +1,23 @@
+TickLab v1.13.0.85 — Cursor + Folder 1 correction batch
+
+CURSOR / POINTER CORRECTIONS
+- Cross now renders both horizontal and vertical chart guide lines continuously.
+- Demonstration cursor samples are interpolated into one smooth temporary stroke, eliminating isolated round spots and gaps during fast movement.
+- Magic Cursor keeps the full-colour opaque wand/emoji artwork from v1.13.0.84, restores a broad plot-wide burst, and lets particles fall naturally instead of fading/evaporating in mid-air.
+
+DRAWING CONSTRUCTION CORRECTIONS
+- Cursor, Lines/Channels/Pitchforks, and general toolbox rows activate on mouse-down so tool selection is not lost to routed mouse-up/flyout-close behavior.
+- Active drawing construction now renders its anchor/control points immediately while the object is still being built, including the moving preview anchor.
+
+FOLDER 1 QUICK TOOLBAR / SETTINGS
+- Selected line quick toolbar uses a clear line-colour swatch instead of the weak/ambiguous colour button.
+- Line transparency is visible on the quick toolbar. Its scale is true transparency: 0% is opaque and 100% is transparent.
+- Quick colour/style/width/transparency edits preview directly on the selected drawing while editing.
+- Settings > Style includes line colour, style, width, arrows where applicable, Extend, Transparency, Middle point, Price labels, channel/pitchfork fill transparency and relevant tool-specific controls.
+- Settings > Text, Coordinates and Visibility remain available where applicable.
+- Visibility includes Ticks, Seconds, Minutes, Hours, Days, Weeks, Months and Ranges, with per-interval min/max controls.
+- Settings edits use the PreviewChanged path so valid changes are visible on the chart before OK.
+
+SAFETY / SCOPE
+- Broker attachment and real order placement remain excluded from the drawing layer.
+- This build is a correction pass for Cursor + Folder 1 only; later toolbox folders are not claimed as finished parity.

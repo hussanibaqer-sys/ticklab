@@ -1,0 +1,37 @@
+TickLab v1.11.1.2 Validation Report
+
+Scope
+- Drawing toolbar centering and category-folder access hotfix.
+- Main desktop source only; protected MT5 sources were not modified.
+
+Root cause confirmed
+- Each category control used a 45-pixel host split into a 34-pixel icon button and an 11-pixel full-height arrow strip.
+- The drawing rail ScrollViewer reserved width for its vertical scrollbar.
+- On narrow/high-DPI layouts the available content width became smaller than the split host, clipping the arrow strip and shifting the category icon away from the visual center.
+- Header and collapse-button margins also exceeded the 52-pixel rail width in some layouts.
+
+Corrections
+- Removed the separate full-height right arrow strip.
+- Each category now uses one centered 44 x 44 main button.
+- A 17 x 17 overlaid lower-right chevron opens the complete category folder.
+- Main icon click still activates the last-used tool for that category.
+- Category icons increased to 24 logical pixels.
+- Action icons increased to 22 logical pixels.
+- Tool icons inside category folders increased to 21 logical pixels.
+- Drawing rail scrollbar reservation reduced to 3 pixels with zero side margin.
+- Category and action controls are explicitly centered.
+- Header and collapse-button margins now fit inside the 52-pixel rail.
+
+Validation
+- Static project checks: 499 passed, 0 failed.
+- XAML parse and event-handler checks passed through tools/validate_source.py.
+- C# delimiter checks passed through tools/validate_source.py.
+- Focused checks confirm the separate category arrow column no longer exists.
+- Focused checks confirm the overlaid chevron, larger icons, centered category panel, and narrow scrollbar are present.
+- No bin, obj, or .vs folders are included.
+- Live Bridge V300 SHA-256 unchanged.
+- History Bridge V305 SHA-256 unchanged.
+- Marker V109 SHA-256 unchanged.
+
+Limitation
+- The environment does not include the Windows WPF/.NET SDK, so Visual Studio Release compilation and runtime visual testing on Windows are still required.

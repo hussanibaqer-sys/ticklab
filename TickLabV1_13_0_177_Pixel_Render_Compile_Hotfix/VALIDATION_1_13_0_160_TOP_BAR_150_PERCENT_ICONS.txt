@@ -1,0 +1,25 @@
+TickLab v1.13.0.160 — Top Bar 150% Vector Icons
+
+Base: v1.13.0.159 — Top Bar Icon Correction
+Permanent rollback baseline: v1.13.0.157 Final Baseline
+
+VALIDATION
+PASS — App.xaml XML parse
+PASS — MainWindow.xaml XML parse
+PASS — TickLab.App.csproj XML parse
+PASS — all top-bar action requested sizes changed by exactly 1.5x (19 -> 28.5, 18 -> 27)
+PASS — chart-type icon requested size changed by exactly 1.5x (20 -> 30)
+PASS — icon geometry definitions are byte-equivalent before the shared Canvas/Viewbox helper section
+PASS — MainWindow.xaml differs from v159 only in window title/version
+PASS — App.xaml is byte-for-byte unchanged
+PASS — exact source-diff allowlist contains only TopBarIconFactory.cs, MainWindow.xaml.cs, MainWindow.ChartTypes.cs, MainWindow.xaml, TickLab.App.csproj
+PASS — protected chart/history/tick/drawing/bridge source comparison
+PASS — no top-bar button x:Name/order/click-handler layout edits
+
+Rendering-quality adjustment:
+- All icons remain WPF vector geometry (no bitmap conversion).
+- Shared icon Canvas/Viewbox now explicitly uses layout rounding, pixel snapping, centered alignment and uniform scaling at the larger size.
+- No icon geometry/artwork was redesigned in this version.
+
+Environment note:
+- dotnet/MSBuild/csc are not available in the ChatGPT Linux runtime, so Windows Visual Studio compile/runtime remains authoritative.

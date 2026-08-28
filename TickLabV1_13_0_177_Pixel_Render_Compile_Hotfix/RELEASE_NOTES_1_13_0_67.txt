@@ -1,0 +1,10 @@
+TickLab v1.13.0.67 — Screenshot Button + Collapsed Panel Launch
+
+Changes
+- Added a dedicated Screenshot button directly beside the top-right Recorder button.
+- Screenshot is one-click, full-resolution TickLab-window capture saved as PNG in Videos\TickLab\Recordings.
+- Screenshot metadata is saved and an open Recorder window refreshes its media list immediately.
+- The main right-side PANEL now starts collapsed/handle-only on every TickLab launch, matching Code Editor and Demo Trading startup behavior.
+- The PANEL remains fully available through its existing click/drag handle after launch.
+- Recorder performance/playback compile fix from v1.13.0.66 is preserved.
+- No MT5 bridge, replay, chart, trading, alert, indicator, or history logic changed.

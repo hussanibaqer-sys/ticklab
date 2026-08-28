@@ -1,0 +1,20 @@
+TickLab v1.13.0.170 — Balanced Drawing Rail Gutters
+
+Base:
+- Built directly from v1.13.0.169 — Crisp Action Rail Icons.
+- v1.13.0.157 Final Baseline remains the permanent functional rollback baseline.
+
+Visual-only drawing-rail polish:
+- Expanded drawing-toolbar rail width: 57 px -> 68 px.
+- The existing 46 px internal tool strip is now centered inside the rail with exactly 11 px outer gutter on the left and 11 px outer gutter on the right.
+- Folder split rows remain 46 px wide and keep their existing 35 px primary-button + 11 px hover-only chevron geometry.
+- Favorites, Measure, Zoom, Magnet, Keep Drawing, Lock, Hide, Delete and other action buttons remain aligned to the same primary tool column because the entire 46 px content strip moves together.
+- The bottom collapse control is aligned with the same 11 px left gutter in expanded mode.
+- Collapsed rail behavior remains unchanged at 14 px.
+
+Preserved:
+- v1.13.0.169 one-pixel action icon geometry.
+- v1.13.0.168 crisp drawing-tool icon fixes.
+- v1.13.0.167 hover-only folder chevrons and theme-aware hover treatment.
+- v1.13.0.166 universal markers / last-used folder tools.
+- No drawing, chart, raw tick, seconds, Find, Replay, FileBridge/MT5, indicator, workspace or chart-type behavior changed.

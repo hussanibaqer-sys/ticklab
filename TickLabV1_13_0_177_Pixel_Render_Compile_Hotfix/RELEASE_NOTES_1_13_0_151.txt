@@ -1,0 +1,63 @@
+TickLab v1.13.0.151 — Foreground History Priority
+
+Purpose
+-------
+Remove the common ~40-second history stall affecting second charts, Raw Tick Chart,
+Tick Find and Bar Replay without disabling or weakening the Live Integrity watchdog.
+Also prevent fast Raw Tick scrolling from silently dropping an older/newer page request.
+
+Root cause addressed
+--------------------
+The background canonical tick synchronization path held CanonicalTickArchiveStore's
+shared _sync lock while parsing an entire raw CSV source, preparing/merging the quarter
+segment, and scanning the result for metadata. Foreground canonical readers used the
+same lock. When Live Integrity maintenance ran under its existing 45-second watchdog,
+foreground history consumers could wait behind one whole source import, producing the
+repeating ~40-second symptom.
+
+Architecture correction
+-----------------------
+1. Expensive raw CSV parsing runs outside the canonical read lock.
+2. Expensive existing-quarter + incoming-source merge preparation runs outside the lock.
+3. Tick-segment metadata is calculated from the prepared file outside the lock.
+4. Readers continue using the old immutable ticks.tlt while preparation is in progress.
+5. Only the final directory creation + atomic File.Move replacement + small metadata JSON
+   write occurs under _sync.
+6. Source state checkpoint writes remain short and serialized as before.
+7. Cancellation before commit discards the temporary prepared source. No half-parsed file
+   is committed.
+8. The existing watchdog schedule, 45-second timeout, integrity validation and retry
+   behavior are unchanged.
+
+Fast Tick paging correction
+---------------------------
+Raw Tick older/newer page requests are no longer silently discarded when another Tick
+page is already loading. A per-chart pending-direction flag remembers the request and
+drains it immediately after the current page completes. This targets missing windows
+caused by very fast scrolling without changing tick ordering, source selection or chart
+projection.
+
+Explicitly protected / unchanged
+--------------------------------
+- MainWindow.xaml.cs, including RunLiveIntegrityAgentAsync and its 45-second watchdog.
+- MainWindow.AlertsReplay.cs / Replay engine and Replay semantics.
+- Normal Candle Finder implementation.
+- PersistentHistoryStore.cs, including seconds aggregation rules and v150 unified catalog.
+- Mt5FileBridgeClient.cs.
+- All MT5/MQL source files.
+- Raw ticks_history_*.csv source files remain read-only.
+- v150 second-chart and Tick history catalog behavior.
+- v149 Tick Find marker/zoom/centering/navigation behavior.
+- Drawing engine and all non-history chart types.
+
+Runtime validation priority
+---------------------------
+1. Leave MT5 live for >30 seconds so Live Integrity can run, then scroll 1s/15s/30s/45s
+   history while it is active. Pages should not stall near 40–45 seconds.
+2. Find a historical Tick several hours/days back. Marker/window should appear without a
+   ~40-second archive-lock wait.
+3. Start Bar Replay at historical timestamps while live maintenance is active.
+4. Drag Raw Tick rapidly left/right through multiple page boundaries. It should catch up
+   rather than leaving a dropped page/hole.
+5. Repeatedly switch 1s <-> Tick <-> normal minute/hour charts while live.
+6. Confirm Live Integrity still reports/updates normally and no history source is modified.

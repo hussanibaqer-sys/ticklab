@@ -1,0 +1,17 @@
+TickLab v1.13.0.61 — Replay Speed + Colour Controls
+
+Scope
+-----
+Replay controls/selector rendering and alert-line colour UI only.
+
+Changes
+-------
+1. Reverse replay now re-synchronizes to the selected Speed value and uses that multiplier for its first visible reverse quantum and continuous playback.
+2. Opening Replay from the main Replay button defaults to the compact control tab. Expand/Compact remains manual afterward.
+3. START/END selector lines are snapped to a device pixel for a sharper 1px stroke.
+4. A small gap is left behind the top/bottom START and END captions so the vertical stroke never crosses the text.
+5. Expanded Replay window adds Start colour and End colour pickers. These values are stored in per-chart ChartSettings and persist with the workspace.
+6. Alerts window adds Line colour for the selected alert. Alert line/ticket colour is persisted in the alert rule.
+7. Compact Replay controls, End Replay, replay viewport behavior, v1.13.0.57 identity fix, and live-hidden replay behavior remain unchanged.
+
+Screen recording is not included.

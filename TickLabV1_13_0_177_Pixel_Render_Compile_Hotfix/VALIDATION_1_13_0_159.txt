@@ -1,0 +1,25 @@
+TickLab v1.13.0.159 — Top Bar Icon Correction
+
+BASE: v1.13.0.158 — Top Bar Visual Polish
+
+FUNCTIONAL SCOPE:
+- Icon artwork only for Screenshot, Settings, MT5 Connections, and Candles chart type.
+- No top-bar layout/order/handlers/tooltips/selection-state changes.
+- No chart/history/drawing/Find/Replay/agent/Bridge/MT5 behavior changes.
+
+SOURCE DIFF VS v1.13.0.158:
+- src/TickLab.App/Core/TopBarIconFactory.cs (four vector icons only)
+- src/TickLab.App/MainWindow.xaml (title string only)
+- src/TickLab.App/TickLab.App.csproj (version metadata only)
+
+VALIDATION:
+PASS — MainWindow.xaml XML parse
+PASS — App.xaml XML parse
+PASS — TickLab.App.csproj XML parse
+PASS — TopBarIconFactory C# structural balance
+PASS — exact source-diff allowlist
+PASS — MainWindow.xaml.cs byte-for-byte unchanged
+PASS — Raw Tick / Replay / ChartContexts / history stores / drawing engines / FileBridge byte-for-byte unchanged
+PASS — MT5/MQL tree byte-for-byte unchanged
+
+Windows Visual Studio compile/runtime remains authoritative because dotnet/MSBuild/csc is unavailable in the ChatGPT runtime.

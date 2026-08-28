@@ -1,0 +1,44 @@
+TickLab v1.13.0.104 — Folder 3 Cycles Viewport / Selection Parity
+
+SCOPE LOCK
+- Base: v1.13.0.103.
+- Cycles pass only.
+- Patterns, Elliott Waves, Fibonacci/Gann, MT5, history, replay, bridge, gateway and connector behavior intentionally left unchanged.
+
+CYCLIC LINES
+- Preserves existing line appearance and anchor spacing.
+- Removes the old finite visible-repeat loop.
+- Repetitions are now generated from the current chart viewport plus a one-period buffer.
+- Repetitions are mathematically anchored to the original two points, so pan/scroll does not shift the cycle phase.
+- Scrolling/zooming naturally adds visible repetitions and stops rendering repetitions outside the viewport, without creating permanent duplicate drawing objects.
+- Works to the chart's horizontal zoom-out range, with a high safety cap only for pathological sub-pixel spacing.
+- Clicking any visible repeated line now hit-tests back to the single parent Cyclic Lines object, restoring selection/quick-edit behavior.
+
+TIME CYCLES / CYCLIC CIRCLES
+- Preserves current ellipse/circle appearance.
+- Repetitions are viewport-generated in both horizontal directions from the anchor spacing.
+- Only ellipses intersecting the current plot are rendered.
+- Clicking any visible repeated ellipse now selects the single parent Time Cycles object; users no longer have to find an original anchor blindly.
+
+SINE LINE
+- The two anchors still define the sine wave's horizontal span/period basis and amplitude.
+- The sine curve no longer stops between the two anchor points.
+- It repeats continuously across the visible chart viewport, with one period of render buffer.
+- Rendering is clipped to the plot and generated per-frame, so scrolling/zooming adds/removes visible sections rather than storing unlimited points.
+- The phase remains anchored to the original first point while the chart scrolls.
+- Hit-testing now follows the repeated visible sine curve, including steep segments, crests and troughs.
+- Clicking any visible section selects the parent Sine Line object and restores quick-edit/edit/delete access.
+
+VALIDATION
+- 52 focused/static checks passed, 0 failed.
+- All 31 XAML files parse successfully.
+- Changed source scope is exactly 4 files:
+  * CandleChartControl.DrawingParity.cs
+  * CandleChartControl.Drawing.cs
+  * MainWindow.xaml
+  * TickLab.App.csproj
+- Synthetic viewport tests verified cycle coverage when the original anchor is far left, on-screen and far right.
+- Synthetic sine tests verified phase-period repetition.
+
+IMPORTANT
+- Windows WPF/.NET compilation and runtime interaction still need to be tested in Visual Studio on the user's PC because this environment does not include the Windows .NET/MSBuild toolchain.

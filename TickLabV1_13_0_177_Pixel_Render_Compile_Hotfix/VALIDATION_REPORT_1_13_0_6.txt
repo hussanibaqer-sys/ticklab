@@ -1,0 +1,59 @@
+TickLab v1.13.0.6 — Validation Report
+=====================================
+
+SOURCE VALIDATION
+- Static checks passed: 700
+- Static checks failed: 0
+- All XAML documents parsed successfully.
+- All XAML event handlers were resolved against their matching C# class/partial class.
+- All C# files passed delimiter, string and comment structural balancing.
+- MainWindow and CandleChartControl partial files contain no duplicate method signatures.
+- All required v1.13.0.6 solution, source, workspace and documentation files are present.
+
+PERSISTENT WORKSPACE CHECKS
+- A clean launch creates Workspace 1 with Chart 1.
+- Workspace and pane IDs use the lowest currently available positive number.
+- Single, 2-column, 3-column, 2x2 and 3x2 layouts are registered.
+- Empty partitions display centered numbers with thin solid split borders.
+- Double-click partition selection and Escape cancellation are connected.
+- Magnetic cross-window pane drag/drop is connected through a dedicated WPF data format.
+- Occupied partitions support Cancel, Swap and Replace decisions.
+- Pane controls support drag, maximize/restore, detach and close.
+- Docked workspace controls support minimize, maximize and confirmed close.
+- A minimized docked workspace remains available from its bottom tab.
+- Docked pane/workspace maximize remains inside the TickLab central workspace frame.
+- Whole-workspace detachment is connected to the tiny hover-only top-left handle.
+- Detached chart right-click Attach and Make Workspace menus are connected.
+- Detached workspaces support monitor-level minimize, maximize/restore and confirmed close.
+- Workspace tabs, Add Workspace and Divide commands are present in the slim bottom dock.
+
+POWER-CUT RECOVERY CHECKS
+- Workspace state is captured continuously by the 250 ms persistence scheduler.
+- Settings are serialized to a temporary file using FileOptions.WriteThrough.
+- The stream is explicitly flushed to disk before replacement.
+- File.Replace atomically promotes the new state while preserving a backup.
+- Backup settings are loaded when the primary state is unreadable.
+- Workspace pages, partition assignments, pane IDs, viewport, drawings, floating windows,
+  minimized/maximized state and detached geometry are included in saved preferences.
+- Window bounds are clamped to the current virtual desktop when displays change.
+
+CHART AND TOOLBAR CHECKS
+- The right chart price margin is reduced from 82 to 58 pixels.
+- The duplicate TL mark is absent from the left drawing rail.
+- Favorites remains present as a normal toolbar button without its extra frame marker.
+- Brush exposes Pen, Brush and Highlighter.
+- Freehand input uses low-pass filtering, point acceptance thresholds, simplification,
+  four/five smoothing passes and smooth Bezier rendering.
+- Existing future-space drawing, measurement, media, Favorites recovery and right panel remain present.
+
+PROTECTED COMPONENTS
+- Live Bridge V300 SHA-256 unchanged:
+  a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+- History Bridge V305 SHA-256 unchanged:
+  1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+- Marker V109 SHA-256 unchanged:
+  f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+LIMITATION
+- This Linux environment does not contain the Windows .NET 8/WPF build toolchain.
+- Visual Studio 2022 Release -> Rebuild Solution remains the final compiler and interactive UI test.

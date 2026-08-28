@@ -1,0 +1,8 @@
+TickLab v1.13.0.78 protected-source verification
+
+Compared with v1.13.0.69 History Performance + Modern Reports baseline:
+- MT5/: byte-for-byte unchanged.
+- src/TickLab.App/Gateway/FileBridge/: byte-for-byte unchanged.
+- src/TickLab.App/Gateway/: byte-for-byte unchanged.
+
+The v1.13.0.78 changes are confined to drawing/UI/version metadata files.

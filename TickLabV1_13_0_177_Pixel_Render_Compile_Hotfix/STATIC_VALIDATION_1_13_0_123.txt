@@ -1,0 +1,32 @@
+TickLab v1.13.0.123 — STATIC VALIDATION
+=======================================
+
+RESULT: PASS — 23/23 targeted checks.
+
+PASS — all 31 XAML files parse.
+PASS — all 153 C# files pass lexical delimiter/structure scan.
+PASS — DrawingMediaPicker XAML event handlers resolve.
+PASS — old eager Emoji panel/scroll path removed.
+PASS — row virtualization enabled with VirtualizingStackPanel + Recycling.
+PASS — emoji category loading is lazy.
+PASS — Sticker and Icon panels are lazy-built.
+PASS — Unicode Emoji 17 fully-qualified catalog coverage: 3944/3944; 0 missing.
+PASS — 2030 previously omitted skin-tone/multi-person variants restored.
+PASS — 13 bundled Emoji 17 OpenMoji vector fallback SVGs present.
+PASS — postponed Apple Core fallback is not included.
+PASS — all bundled fallback SVG resources parse as XML.
+PASS — chart emoji renderer checks OpenMoji vector fallback before Emoji.Wpf.
+PASS — picker preview uses lazy/cached vector conversion.
+PASS — CandleChartControl.DrawingParity.cs frozen byte-for-byte vs v1.13.0.122.
+PASS — DrawingToolCatalog.cs frozen byte-for-byte vs v1.13.0.122.
+PASS — shared CandleChartControl.Drawing.cs is unchanged except the emoji fallback hook.
+PASS — project/version identity = 1.13.0.123.
+PASS — window title = v1.13.0.123.
+PASS — solution/build script target TickLabV1_13_0_123.sln.
+PASS — Emoji.Wpf 0.3.4 dependency preserved.
+PASS — bundled OpenMoji SVG resources wired as WPF Resource items.
+PASS — no bin/, obj/ or .vs build caches packaged.
+
+ENVIRONMENT LIMIT
+Windows WPF/.NET MSBuild is not installed in this Linux packaging environment.
+Visual Studio on Windows remains the final compile/runtime gate.

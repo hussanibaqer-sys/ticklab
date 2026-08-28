@@ -1,0 +1,19 @@
+TickLab v1.13.0.92 — Static Validation
+
+PASS: Gann Box inner local renamed reverse -> boxReverse.
+PASS: Gann Box inner local renamed origin -> boxOrigin.
+PASS: Later Gann Square/Gann Square Fixed reverse/origin locals remain intact.
+PASS: nullable Candle point dereference made explicit.
+PASS: nullable role-level fill opacity branches made explicit.
+PASS: nullable price value access made safe.
+PASS: OpenIndicatorEditorRequested has an explicit invocation path.
+PASS: 31 XAML files parse successfully.
+PASS: changed C# delimiter checks passed.
+PASS: exact source changes limited to five TickLab.App source/project files.
+PASS: Gateway/FileBridge unchanged from v1.13.0.91.
+PASS: Core/History unchanged from v1.13.0.91.
+PASS: Core/Replay unchanged from v1.13.0.91.
+PASS: MT5 unchanged from v1.13.0.91.
+
+Environment limitation:
+- dotnet/MSBuild/WPF compiler is not installed in this environment; Windows Visual Studio build is the final compile validation.

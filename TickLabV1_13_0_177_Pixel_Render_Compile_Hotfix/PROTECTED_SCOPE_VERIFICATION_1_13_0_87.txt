@@ -1,0 +1,19 @@
+TickLab v1.13.0.87 — Protected Scope Verification
+===================================================
+Compared source tree directly against v1.13.0.86.
+Changed source files: 9
+
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+- TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- TickLab.App/Controls/CandleChartControl.cs
+- TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+- TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+- TickLab.App/MainWindow.xaml
+- TickLab.App/TickLab.App.csproj
+- TickLab.App/Windows/TradingViewLineSettingsWindow.xaml
+- TickLab.App/Windows/TradingViewLineSettingsWindow.xaml.cs
+
+Result:
+- Diff is confined to Folder-1 drawing interaction/parity and version/title/settings files.
+- No MT5 bridge/history/replay source path is in the changed-file list.
+- No broker attachment or real-order execution code was added by this pass.

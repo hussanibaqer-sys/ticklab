@@ -1,0 +1,11 @@
+TickLab v1.13.0.33 Restart Step 3A — First Test Checklist
+
+1. Delete bin and obj.
+2. Open TickLabV1_13_0_33.sln.
+3. Rebuild Solution.
+4. Confirm no ColorDisplayHelper errors.
+5. Confirm no unused Bool/indicator field warnings.
+6. Confirm no nullable dereference warnings from the corrected dialogs/theme access.
+7. Launch TickLab.
+8. Re-test right-click indicator Remove, symbol search, and colour tooltips.
+9. Confirm Step 2 indicator placement, connection, and Sync still work.

@@ -1,0 +1,23 @@
+TickLab v1.13.0.113 — STATIC VALIDATION
+
+Result: 24 checks passed, 0 failed.
+
+Validation performed:
+- Freeze boundary: exactly 7 intended source files differ from v1.13.0.112.
+- 31 XAML files parsed successfully.
+- 150 C# files passed delimiter/lexical structural scanning.
+- 282 XAML event-handler references resolved to methods in source.
+- Note uses exact two-point construction.
+- Price Note uses exact two-point construction.
+- Dedicated parity renderers verified for Text, Note, Pin, Table, Callout, Comment, Signpost, Price Label, Price Note and Flag.
+- Table direct cell typing is wired through CandleChartControl.OnTextInput.
+- Table add-row/add-column quick actions are wired.
+- Folder-wide visible-part selection scope includes all ten requested tools.
+- Anchor quick control is limited to Text, Pin and Table, matching the supplied TradingView screenshots.
+- Price labels use candle/symbol digits instead of raw unformatted doubles.
+- Active Table cell renders an insertion caret.
+- Selected Text uses a text-box outline rather than a detached anchor dot.
+- Application version/title updated to 1.13.0.113.
+
+Environment limitation:
+- The current Linux container does not have dotnet/MSBuild installed, so a Windows WPF compile/runtime test could not be executed here. Visual Studio on Windows remains the final compile/runtime gate.

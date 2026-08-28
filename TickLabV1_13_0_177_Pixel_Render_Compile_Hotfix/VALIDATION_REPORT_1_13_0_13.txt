@@ -1,0 +1,20 @@
+TickLab v1.13.0.13 validation report
+
+Regression baseline
+- TickLab v1.13.0.12 source suite: 881 checks passed, 0 failed.
+
+New release checks
+- TickLab v1.13.0.13 alert/replay/chart-type suite: 404 checks passed, 0 failed.
+- All WPF XAML files parsed successfully.
+- All referenced XAML event handlers were found in source.
+- C# source brace-balance audit passed.
+- Draggable alert overlay, saved threshold update, touch alert condition and modal repeating bell are connected.
+- End Replay clears the replay marker even before ticks are loaded.
+- Loading replay preserves the selected marker until End Replay.
+- Twelve standard chart renderers are connected to the selected chart only.
+- Chart type is stored in per-chart ChartSettings and therefore participates in workspace recovery and templates.
+- 1,500-candle zoom-out cap and 3-pixel candle gap remain present.
+- MT5 bridge source SHA-256 hashes match v1.13.0.12 exactly.
+
+Limitation
+- This Linux environment does not include the Windows .NET/WPF compiler. A final Clean/Rebuild in Visual Studio on Windows is still required.

@@ -1,0 +1,3 @@
+Files verified: 597
+Failures: 0
+All manifest hashes matched.

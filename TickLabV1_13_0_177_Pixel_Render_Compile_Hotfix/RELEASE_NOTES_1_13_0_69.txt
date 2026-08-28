@@ -1,0 +1,31 @@
+TickLab v1.13.0.69 — History Performance + Modern Reports
+
+Scope
+- Fix lag caused by projecting entire Demo/MT5 histories onto every chart redraw.
+- Redesign trading reports into a professional multi-page TickLab-native report experience.
+
+History projection performance
+- Full MT5 history remains loaded for reports/statistics.
+- Chart renders only trades overlapping the visible time range plus a small prefetch buffer.
+- MT5 histories build a timestamp projection index once when parsed/assigned.
+- Visible trade lookup uses indexed open/close ranges instead of rescanning the full report.
+- Viewport changes schedule a background-priority projection refresh.
+- Dense views keep all entry/exit paths but suppress auxiliary historical SL/TP lines above 600 visible trades.
+- Dense chart rendering suppresses per-trade captions above 600 trades and expensive hover scans above 1200 trades.
+- Zooming back into a smaller range restores detailed captions, SL/TP and hover information automatically.
+
+Modern reports
+- Separate pages: Summary, Profit & Loss, Long & Short, Symbols, Risks, Trades.
+- TickLab light/dark theme resources are used throughout report surfaces and custom graphs.
+- Summary KPI cards, win/loss donut, direction donut and percentage meters.
+- Balance/realized-equity, daily P/L, monthly P/L, trade-by-trade P/L, symbol P/L, symbol trade count, symbol win rate, drawdown and trades-per-day graphs.
+- Graph hover values, scrollable pages and Ctrl+mouse-wheel / toolbar zoom.
+- Complete searchable/sortable trade table and balance-operation table.
+- Symbol detail table with volume, win rate, gross profit/loss and net P/L.
+
+Protected systems
+- MT5 bridge and Gateway/FileBridge source files are unchanged.
+- Existing Replay, Tick chart, recorder, screenshot, demo execution and indicator behavior are preserved.
+
+Build note
+- Generation environment has no Windows/.NET WPF compiler. Final compilation must be run in Visual Studio 2022 on Windows.

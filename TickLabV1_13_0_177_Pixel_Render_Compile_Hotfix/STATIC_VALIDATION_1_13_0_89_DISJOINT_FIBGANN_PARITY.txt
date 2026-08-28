@@ -1,0 +1,44 @@
+TickLab v1.13.0.89 — Static Validation
+
+Result: 644 passed, 0 failed.
+
+Validated:
+- v1.13.0.89 package/solution/version/title identity
+- all XAML parses
+- XAML x:Name uniqueness
+- XAML event-handler existence
+- lexical C# punctuation/structure balance across the app source
+- drawing tool ID uniqueness
+- Disjoint Channel point-3 vertical time/X lock and mirrored second-rail geometry
+- Folder 2 light reference flyout routing
+- Folder 2 light contextual selected-object toolbar routing
+- dedicated TradingViewFibGannSettingsWindow route
+- Folder 2 settings modeless/non-blocking behavior
+- Cancel/X restore + OK accept contract
+- live per-level line/fill color swatches
+- Transparent -> Solid control direction
+- Fib/Gann multicolor level defaults
+- Fib Speed Resistance Arc semicircle-band renderer
+- Fib Wedge circular-sector-band renderer
+- fan colored-zone renderer
+- Fib/Gann visible-geometry hit testing/reselection
+- Gann square displayed handle/bounds correction
+- all 15 expected Folder 2 tool IDs present
+- exact app-source diff vs clean v1.13.0.88: 9 intended files
+- no changed Bridge/History/Replay/MT5/Gateway/Connector implementation files
+
+Actual app-source diff vs v1.13.0.88:
+1. Controls/CandleChartControl.Drawing.cs
+2. Controls/CandleChartControl.DrawingParity.cs
+3. Core/Drawing/DrawingParityDefaults.cs
+4. Core/Drawing/DrawingToolCatalog.cs
+5. MainWindow.xaml
+6. MainWindow.xaml.cs
+7. TickLab.App.csproj
+8. Windows/TradingViewFibGannSettingsWindow.xaml
+9. Windows/TradingViewFibGannSettingsWindow.xaml.cs
+
+Environment limitation:
+- dotnet/MSBuild Windows WPF compilation is not available in this Linux execution environment.
+- Therefore compile/runtime/video parity is NOT claimed from static validation.
+- User Windows compile + visual interaction testing remains required before Folder 2 can be considered frozen.

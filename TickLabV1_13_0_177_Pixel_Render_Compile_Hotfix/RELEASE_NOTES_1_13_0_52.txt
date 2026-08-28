@@ -1,0 +1,32 @@
+TickLab v1.13.0.52 — Tick Replay Vertical Line Repair
+=====================================================
+
+REPLAY LINE
+- The yellow replay-start line behaves like a drawing-style vertical line.
+- Dragging begins only when the pointer is close to the line.
+- Dragging elsewhere in the plot continues to pan the chart normally.
+- Right-click the replay line and choose Remove replay line.
+- Removing the line during active replay ends replay and restores the live chart.
+
+RAW-TICK REPLAY
+- Replay remains attached to the chart on which it was opened, even after another chart is clicked.
+- The first saved raw tick is rendered immediately after loading.
+- Play/Pause replays saved ticks according to their recorded millisecond timing and selected speed.
+- Step Tick advances one raw tick.
+- Step Candle processes the remainder of exactly one candle and stops before consuming the following candle's first tick.
+- Candle open, high, low, close, spread, tick volume and available real volume are rebuilt from raw ticks.
+
+REPLAY ISOLATION
+- Only the selected replay chart is frozen from live updates.
+- Other charts continue receiving normal live updates.
+- Older/newer paging, Refresh, Home and End cannot inject future candles into the replay chart.
+- Indicators on the replay chart calculate only from candles revealed by replay.
+- Stopping replay restores the original candle lists, paging state and viewport.
+
+PRESERVED
+- v1.13.0.51 candle-list aliasing protection remains intact.
+- Demo Trading, alerts, panel rail, drawings, symbol favourites, bridge discovery and saved-history formats were not redesigned.
+- Protected MT5 bridge and FileBridge files remain unchanged.
+
+BUILD NOTE
+The generation environment has no Windows .NET/WPF compiler. Run Clean-Restore-Build.cmd on Windows with Visual Studio 2022 for the final compiler and visual test.

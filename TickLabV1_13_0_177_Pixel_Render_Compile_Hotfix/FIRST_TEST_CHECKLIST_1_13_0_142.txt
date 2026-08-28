@@ -1,0 +1,13 @@
+TickLab v1.13.0.142 — First runtime test
+
+1. Build/restore normally in Visual Studio.
+2. Open the same symbol with saved raw-tick history.
+3. Find Candle → 1s → choose a known candle approximately one month old.
+4. Confirm Finding… appears, then the candle is located without the old multi-minute wait.
+5. Repeat the same timestamp. The second lookup should benefit from the persisted targeted filename index.
+6. Test another old timestamp on a different trading day.
+7. Test an invalid/closed-market timestamp and confirm it fails/returns quickly rather than scanning for minutes.
+8. Confirm the found historical timestamp remains anchored and timeframe switching still preserves it.
+9. Confirm Remove Marker still removes all marker layers and leftover guides remain manually deletable.
+10. Confirm normal 1s backward scrolling still loads older history.
+11. Confirm Tick Find and the Tick Chart 5000-visible-tick zoom ceiling still behave as in v1.13.0.141.

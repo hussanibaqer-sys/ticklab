@@ -1,0 +1,9 @@
+TickLab v1.13.0.6 quick compile hotfix
+
+Fixed:
+1. Removed stale DrawingToolbarLogoBorder reference after the toolbar logo was removed from XAML.
+2. Added a null-safe DetachedWorkspaceWindow.Surface accessor to prevent a possible null dereference.
+3. Confirmed ChartPaneControl.UpdateChart uses the correct six arguments.
+
+Static validator result: 700 passed, 0 failed.
+A Windows Visual Studio rebuild is still required.

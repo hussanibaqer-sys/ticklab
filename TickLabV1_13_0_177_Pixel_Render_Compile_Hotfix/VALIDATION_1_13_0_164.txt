@@ -1,0 +1,23 @@
+TickLab v1.13.0.164 — Search + Hover + Drawing Rail Polish
+
+Static validation performed in ChatGPT environment:
+PASS — App.xaml parses as XML.
+PASS — MainWindow.xaml parses as XML.
+PASS — TickLab.App.csproj parses as XML.
+PASS — MainWindow button x:Name sequence preserved from v1.13.0.163.
+PASS — MainWindow button Click handler sequence preserved from v1.13.0.163.
+PASS — Search control now uses one SymbolSearchBorder (no doubled/nested outline).
+PASS — Search outline uses CornerRadius=11 and BorderThickness=1.
+PASS — Every top-bar Button, including RestoreToolButton, uses DarkToolbarButton.
+PASS — Top-bar buttons use 42 px vertical footprint to match timeframe controls.
+PASS — DarkToolbarButton hover/pressed/focus/active states expose neutral rounded highlight + bottom marker.
+PASS — Left drawing rail category/action glyphs use 150% requested sizes.
+PASS — Drawing rail hover/pressed/active style uses neutral theme highlight + bottom marker.
+PASS — DrawingToolIconFactory no longer forces EdgeMode.Aliased / NearestNeighbor rendering.
+PASS — Protected Raw Tick/history/replay/chart/drawing/FileBridge files are byte-identical to v1.13.0.163.
+PASS — MT5 tree is byte-identical to v1.13.0.163.
+PASS — Changed C# files pass brace-balance structural checks.
+PASS — ZIP integrity test passed.
+
+Build limitation:
+- dotnet/MSBuild/csc are not installed in the ChatGPT runtime, so Windows Visual Studio remains the authoritative compiler/runtime test.

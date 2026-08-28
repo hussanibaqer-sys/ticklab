@@ -1,0 +1,34 @@
+TickLab v1.13.0.152 — First Runtime Test Checklist
+
+A. Raw Tick baseline smoothness
+[ ] Open Tick with no drawings; pan left/right continuously.
+[ ] Wheel zoom in/out repeatedly, including near the 5,000-visible-tick ceiling.
+[ ] Leave live Tick running and pan/zoom while ticks arrive.
+[ ] No breaking, freezing, large resistance or delayed catch-up.
+[ ] Settled Bid/Ask/Mid/point rendering remains visually exact.
+
+B. Tick drawings
+[ ] Draw Trend Line: first point, live preview, second point and completion stay smooth.
+[ ] Select/deselect/drag/resize a completed drawing smoothly.
+[ ] Test Measure, Brush/freehand and a multi-point tool.
+[ ] Add many completed drawings; pointer/crosshair movement stays responsive.
+[ ] Quick-edit color/style/width/transparency updates appear correctly.
+[ ] Lock/hide/background/delete/middle-click delete remain correct.
+[ ] Drawing Inspector selection/delete and undo/redo remain correct.
+[ ] Test at least one data-dependent tool such as Anchored VWAP/Regression/Volume Profile
+    while live ticks arrive; it must still update correctly.
+
+C. Protected v151 history/functionality
+[ ] 1s/15s/30s/45s older history still loads normally.
+[ ] Tick fast older/newer paging still has no holes.
+[ ] Tick Find marker/centering/zoom/history navigation unchanged.
+[ ] Normal Candle Finder unchanged.
+[ ] Bar Replay starts/operates without the old ~40-second delay.
+[ ] Leave MT5 live >60–90 seconds; watchdog/integrity agents and Bridge remain healthy.
+
+D. Other chart types
+[ ] Normal candle chart pan/zoom/drawings unchanged.
+[ ] Line/area/other chart rendering unchanged.
+[ ] Switch repeatedly Candle <-> seconds <-> Tick and confirm no regression.
+
+If any regression appears, keep v1.13.0.151 as the known-good rollback baseline.

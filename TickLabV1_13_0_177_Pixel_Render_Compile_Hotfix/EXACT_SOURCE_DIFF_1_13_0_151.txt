@@ -1,0 +1,28 @@
+TickLab v1.13.0.151 — exact baseline file changes vs v1.13.0.150
+
+Functional source:
+1. src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+   - expensive canonical import/merge preparation moved outside shared read lock
+   - atomic final segment commit remains serialized
+2. src/TickLab.App/MainWindow.RawTickChart.cs
+   - queue/drain fast older/newer Tick paging requests instead of dropping them
+3. src/TickLab.App/MainWindow.ChartContexts.cs
+   - two per-chart pending Tick paging flags + reset cleanup
+
+Version metadata only:
+4. src/TickLab.App/MainWindow.xaml
+5. src/TickLab.App/TickLab.App.csproj
+6. VERSION.txt
+
+New validation/release documents:
+- RELEASE_NOTES_1_13_0_151.txt
+- STATIC_VALIDATION_1_13_0_151.txt
+- FIRST_TEST_CHECKLIST_1_13_0_151.txt
+- EXACT_SOURCE_DIFF_1_13_0_151.txt
+
+Protected files intentionally unchanged:
+- src/TickLab.App/MainWindow.xaml.cs (watchdog + normal Candle Finder)
+- src/TickLab.App/MainWindow.AlertsReplay.cs
+- src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+- src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+- MT5/*.mq5

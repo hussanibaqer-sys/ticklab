@@ -1,0 +1,23 @@
+TickLab v1.13.0.106 — FIRST TEST CHECKLIST
+
+1. LONG POSITION
+- Select Long Position and click chart ONCE. It must immediately place a complete position.
+- Confirm no outer Target/Stop border frame; only Entry has a line.
+- Click blank chart: all details/price labels/handles disappear, but TP/SL fills + Entry line remain.
+- Click anywhere inside TP or SL fill: position reselects and edit controls return.
+- Drag Target and Stop independently to change R:R.
+- Open Settings > Style and change Target color + transparency, then Stop color + transparency independently. Verify live update.
+- Check Lines, Text, Price labels, Stats and Compact stats controls.
+
+2. SHORT POSITION
+- Repeat the same tests. Default Target must be below Entry; Stop above Entry.
+
+3. POSITION FORECAST
+- Click Point A once, Point B once. The tool must finish on click #2.
+- Before market reaches B, status must show ⏱ WAITING — On the way.
+- On historical data where candles after A have already touched B, status should show ✓ SUCCESS.
+- Drag A/B and confirm status recalculates from the market data.
+
+4. REGRESSION CHECK
+- Price Range, Date Range and Date & Price Range should behave exactly as v1.13.0.105.
+- Do not evaluate Step 2 tools in this build; they were intentionally untouched.

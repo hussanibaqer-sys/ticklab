@@ -1,0 +1,12 @@
+TickLab v1.13.0.118 — EXACT SOURCE DIFF vs v1.13.0.117
+
+Changed source files: 5
+- MainWindow.xaml.cs
+- TickLab.App.csproj
+- MainWindow.xaml
+- Controls/CandleChartControl.cs
+- Controls/CandleChartControl.Drawing.cs
+
+Tool-specific frozen files:
+- Controls/CandleChartControl.DrawingParity.cs: unchanged
+- Core/Drawing/DrawingToolCatalog.cs: unchanged

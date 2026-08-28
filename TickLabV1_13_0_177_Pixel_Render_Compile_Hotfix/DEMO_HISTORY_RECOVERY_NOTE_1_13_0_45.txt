@@ -1,0 +1,18 @@
+TickLab demo-history recovery note
+
+The v1.13.0.44 startup checkbox event could run before LoadDemoTradingState and could attempt to save the default in-memory account before the window crashed.
+
+Before launching another build, preserve this folder if it exists:
+%LOCALAPPDATA%\TickLab\DemoTrading
+
+Keep copies of:
+- demo-account.json
+- demo-account.json.bak
+- demo-account.json.tmp
+
+v1.13.0.45 loads in this order:
+1. demo-account.json
+2. demo-account.json.bak if the primary file is missing or invalid
+3. demo-account.json.tmp if both above are unavailable or invalid
+
+Important: v1.13.0.44 did not create a .bak file. If it already replaced a valid demo-account.json with an empty valid account, v1.13.0.45 cannot reconstruct deleted trades from market data. Recovery would then require an existing .tmp file, Windows Previous Versions/File History, a copied TickLab LocalAppData folder, or another backup.

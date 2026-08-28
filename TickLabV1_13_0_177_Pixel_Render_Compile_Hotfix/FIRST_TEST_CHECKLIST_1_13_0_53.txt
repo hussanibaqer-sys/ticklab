@@ -1,0 +1,36 @@
+TickLab v1.13.0.53 — First Test Checklist
+
+BUILD
+1. Close every TickLab window and stop Visual Studio debugging.
+2. Extract the project outside OneDrive when possible.
+3. Delete src\TickLab.App\bin and src\TickLab.App\obj.
+4. Open TickLabV1_13_0_53.sln and run a Release Rebuild.
+
+REPLAY LINE PLACEMENT
+1. Open a chart that has full candle history and saved raw ticks.
+2. Open Replay. Confirm no yellow line is automatically placed on the newest candle.
+3. Tick Replay line.
+4. Click one exact past candle directly on the chart.
+5. Confirm the yellow line appears on that candle, not the current candle.
+6. Confirm the Replay date/time fields change to that candle's broker-server time.
+7. Confirm TickLab begins loading ticks automatically; no separate Load ticks click should be necessary.
+8. When loading completes, confirm Play becomes available and replay begins from the chosen past candle.
+
+DRAG AND RELOAD
+1. Pause replay.
+2. Drag the yellow line to another visible past candle.
+3. Release it and confirm date/time updates and ticks automatically reload for the new position.
+4. Confirm dragging elsewhere on the chart pans normally and does not move the replay line.
+
+REMOVE AND RESTORE
+1. Untick Replay line while paused or running.
+2. Confirm the line disappears and the complete normal chart and viewport are restored.
+3. Tick it again, place it, then right-click the line and choose Remove replay line.
+4. Confirm the checkbox becomes unticked.
+5. Remove the line while ticks are still loading and confirm the stale load does not start replay afterward.
+
+REPLAY ACCURACY
+1. Press Play and confirm the candle grows tick by tick with body, wicks, spread and tick volume.
+2. Confirm Step Tick advances one tick.
+3. Confirm Step Candle completes exactly one candle.
+4. Confirm other open charts remain live.

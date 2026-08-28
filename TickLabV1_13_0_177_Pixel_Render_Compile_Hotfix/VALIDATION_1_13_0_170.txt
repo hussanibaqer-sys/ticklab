@@ -1,0 +1,13 @@
+TickLab v1.13.0.170 static validation
+
+PASS — version metadata = 1.13.0.170
+PASS — MainWindow title = TickLab v1.13.0.170 — Balanced Drawing Rail Gutters
+PASS — expanded DrawingToolbarColumn width = 68 px
+PASS — DrawingToolbarPanel content strip width = 46 px
+PASS — DrawingToolbarPanel left outer gutter = 11 px
+PASS — symmetric expanded outer gutters = 11 px left + 11 px right
+PASS — category split rows remain 46 px (35 px primary + 11 px chevron)
+PASS — action buttons remain inside the same centered 46 px strip
+PASS — expanded collapse control uses 11 px left gutter
+PASS — collapsed DrawingToolbarColumn remains 14 px
+PASS — no chart/drawing engine source files modified

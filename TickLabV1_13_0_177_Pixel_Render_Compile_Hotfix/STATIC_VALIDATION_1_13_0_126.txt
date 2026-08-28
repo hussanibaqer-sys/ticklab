@@ -1,0 +1,21 @@
+TickLab v1.13.0.126 STATIC VALIDATION
+
+PASS | Bottom media tabs hidden
+PASS | Emoji scrollbar explicitly visible
+PASS | Emoji scrollbar 14px override
+PASS | Virtualization preserved
+PASS | Chart bounds passed from active chart
+PASS | Time-scale reserve = 32
+PASS | DPI-aware chart screen clamp
+PASS | Picker bottom clamped above time scale
+PASS | Emoji repeat placement exception removed
+PASS | Normal one-shot completion active
+PASS | v125 zoom/scroll chart core frozen
+PASS | Drawing parity frozen
+PASS | Drawing catalog frozen
+PASS | Core/Drawing/DrawingMediaCatalog.cs frozen
+PASS | All 31 XAML parse
+PASS | No bin/obj/.vs cache packaged
+
+Passed: 16/16
+Windows WPF compile/runtime remains the final gate; dotnet/MSBuild is unavailable in this environment.

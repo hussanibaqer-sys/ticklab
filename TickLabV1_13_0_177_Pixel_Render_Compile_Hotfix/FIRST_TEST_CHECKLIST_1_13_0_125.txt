@@ -1,0 +1,11 @@
+TickLab v1.13.0.125 — FIRST TEST
+
+1. Open Emoji folder: it should open quickly and show a visible vertical scrollbar.
+2. Drag the scrollbar thumb through the full Emoji catalog.
+3. Open Smileys & People and inspect directional people, families, hand/person variants and newer people emoji: no gray broken/washed-out person graphics should remain.
+4. Select one emoji and click the chart repeatedly: each click should place another copy until Escape/tool change.
+5. Select a placed emoji: exactly four corner resize handles; drag body to move; drag any corner diagonally to resize proportionally.
+6. Click toolbar Zoom button: tooltip/icon switches between Zoom Mode and Scroll Mode.
+7. Zoom Mode: wheel zooms. Scroll Mode: wheel pans horizontally.
+8. Regression: draw Trend Line once, drag body/A/B, blank-click deselect, middle-click delete, quick-menu Remove.
+9. Check one Fib/Gann and one Cycle tool to ensure prior rendering/geometry is unchanged.

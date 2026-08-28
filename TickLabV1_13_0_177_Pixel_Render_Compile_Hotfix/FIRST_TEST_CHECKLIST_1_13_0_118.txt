@@ -1,0 +1,11 @@
+TickLab v1.13.0.118 — FIRST TEST CHECKLIST
+
+1. Launch and confirm title shows v1.13.0.118 — Global Drawing Render Restore.
+2. Do NOT start with Folder 6. First test one previously working simple tool, e.g. Trend Line.
+   - first point visible immediately
+   - live preview visible
+   - completed line remains visible
+3. Test one Fib/Gann or Pattern/Cycle tool that previously rendered.
+4. Then test Text from Folder 6.
+5. Open Drawing Inspector and confirm objects remain listed and delete still works.
+6. If the Hide All Drawings button had been active/stale, selecting any drawing tool should automatically restore drawing visibility.

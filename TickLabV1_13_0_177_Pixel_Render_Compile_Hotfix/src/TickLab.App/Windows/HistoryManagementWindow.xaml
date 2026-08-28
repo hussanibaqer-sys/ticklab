@@ -1,0 +1,278 @@
+<Window x:Class="TickLab.Desktop.Windows.HistoryManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TickLab — History Management"
+        Width="1180"
+        Height="760"
+        MinWidth="980"
+        MinHeight="650"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource WindowBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource DarkHeaderBrush}">
+            <Grid Margin="18,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Width="32" Height="32" CornerRadius="8" Background="{StaticResource AccentBrush}" VerticalAlignment="Center">
+                    <TextBlock Text="T" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="11,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="TickLab" Foreground="White" FontWeight="SemiBold" FontSize="17"/>
+                    <TextBlock Text="Permanent MT5 history management" Foreground="#BDBDBD" FontSize="11"/>
+                </StackPanel>
+                <TextBlock Grid.Column="2" Text="HISTORY" Foreground="#8DB2FF" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="History Management" Style="{StaticResource PageTitle}"/>
+                    <TextBlock x:Name="ConnectionText" Margin="0,5,0,0" Foreground="{StaticResource MutedTextBrush}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Style="{StaticResource SoftAccentButton}" Width="118" Content="Open folder" Click="OpenFolderButton_Click"/>
+                    <Button Style="{StaticResource SoftAccentButton}" Width="126" Content="Rescan folders" Click="RescanFoldersButton_Click"/>
+                    <Button Style="{StaticResource AccentButton}" Width="170" Content="Refresh Saved History" Click="RefreshSavedButton_Click"/>
+                    <Button Style="{StaticResource AccentButton}" Width="170" Content="Recheck History — 60 days" Margin="0" Click="RecheckHistoryButton_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="1" Style="{StaticResource CardBorder}" Margin="0,18,0,16" Padding="18">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="180"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Choose instrument" Style="{StaticResource SectionTitle}"/>
+                        <TextBlock Margin="0,3,0,9" Foreground="{StaticResource MutedTextBrush}"
+                                   Text="Search the symbols available from the selected MT5 connection."/>
+                        <ComboBox x:Name="InstrumentComboBox" IsEditable="True" IsTextSearchEnabled="True" Height="38"/>
+                    </StackPanel>
+                    <Button Grid.Column="1" Style="{StaticResource AccentButton}" Height="40" Margin="16,27,0,0"
+                            Content="＋  Add Instrument" Click="AddInstrumentButton_Click"/>
+                </Grid>
+            </Border>
+
+            <TabControl Grid.Row="2">
+                <TabItem Header="Permanent M1 + ticks">
+                    <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.12*"/>
+                    <ColumnDefinition Width="14"/>
+                    <ColumnDefinition Width="1.28*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions><RowDefinition Height="0.44*"/><RowDefinition Height="14"/><RowDefinition Height="0.56*"/></Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Style="{StaticResource CardBorder}" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition Height="50"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                            <Grid Margin="16,0">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="Added Instruments" Style="{StaticResource SectionTitle}"/>
+                                    <Border Margin="10,0,0,0" Padding="7,2" Background="#ECFDF3" CornerRadius="10">
+                                        <TextBlock Text="Saving mode" Foreground="{StaticResource PositiveBrush}" FontSize="11" FontWeight="SemiBold"/>
+                                    </Border>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="Remove stops future saving only" Foreground="{StaticResource MutedTextBrush}" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+                            <DataGrid x:Name="SavedInstrumentsGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" RowHeaderWidth="0">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Instrument" Binding="{Binding Symbol}" Width="*"/>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding State}" Width="110"/>
+                                    <DataGridTemplateColumn Header="Action" Width="165">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Style="{StaticResource DangerButton}" Margin="0" Padding="8,5"
+                                                        Content="Remove from saving" Tag="{Binding Symbol}" Click="RemoveSavingButton_Click"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="2" Style="{StaticResource CardBorder}" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions><RowDefinition Height="50"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                            <Grid Margin="16,0">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                <TextBlock Text="Saved Datasets" Style="{StaticResource SectionTitle}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Permanent until manually deleted" Foreground="{StaticResource MutedTextBrush}" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+                            <DataGrid x:Name="DatasetsGrid" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True"
+                                      SelectionMode="Single" RowHeaderWidth="0" SelectionChanged="DatasetsGrid_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="95"/>
+                                    <DataGridTextColumn Header="TF" Binding="{Binding Timeframe}" Width="78"/>
+                                    <DataGridTextColumn Header="Records" Binding="{Binding Records}" Width="110"/>
+                                    <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="95"/>
+                                    <DataGridTextColumn Header="Folders" Binding="{Binding FolderCount}" Width="80"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <GridSplitter Grid.Column="1" Width="6" HorizontalAlignment="Center" ResizeDirection="Columns" Background="#D7E0EB"/>
+
+                <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="18">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel>
+                            <TextBlock x:Name="DatasetTitleText" Text="Select a saved dataset" FontSize="19" FontWeight="SemiBold"/>
+                            <TextBlock Margin="0,4,0,0" Foreground="{StaticResource MutedTextBrush}"
+                                       Text="Choose which permanent three-month folders TickLab should load into the chart."/>
+                        </StackPanel>
+
+                        <Border Grid.Row="1" Margin="0,16,0,14" Padding="14" Background="{StaticResource PanelAltBrush}"
+                                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="8">
+                            <StackPanel>
+                                <TextBlock Text="Display Options" Style="{StaticResource SectionTitle}"/>
+                                <RadioButton x:Name="RecentRadioButton" Margin="0,10,0,0" Content="Display recent 3 months + live"
+                                             IsChecked="True" Checked="DisplayModeRadioButton_Checked"/>
+                                <TextBlock Margin="22,-2,0,2" Foreground="{StaticResource MutedTextBrush}" FontSize="11"
+                                           Text="Fast default view with current live data."/>
+                                <RadioButton x:Name="SelectedRadioButton" Content="Display selected folders" Checked="DisplayModeRadioButton_Checked"/>
+                                <TextBlock Margin="22,-2,0,2" Foreground="{StaticResource MutedTextBrush}" FontSize="11"
+                                           Text="Load only the history periods selected below."/>
+                                <RadioButton x:Name="AllRadioButton" Content="Display all saved history" Checked="DisplayModeRadioButton_Checked"/>
+                                <TextBlock Margin="22,-2,0,0" Foreground="{StaticResource MutedTextBrush}" FontSize="11"
+                                           Text="Loads the complete permanent archive for this dataset."/>
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock Grid.Row="2" Text="Saved History Folders" Style="{StaticResource SectionTitle}" Margin="0,0,0,8"/>
+
+                        <DataGrid x:Name="SegmentsGrid" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="False"
+                                  CanUserAddRows="False" RowHeaderWidth="0">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="Show" Binding="{Binding IsSelected, Mode=TwoWay}" Width="55"/>
+                                <DataGridTextColumn Header="Folder" Binding="{Binding Key}" IsReadOnly="True" Width="*"/>
+                                <DataGridTextColumn Header="From" Binding="{Binding From}" IsReadOnly="True" Width="125"/>
+                                <DataGridTextColumn Header="To" Binding="{Binding To}" IsReadOnly="True" Width="125"/>
+                                <DataGridTextColumn Header="Size" Binding="{Binding Size}" IsReadOnly="True" Width="80"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="True" Width="82"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Grid Grid.Row="4" Margin="0,14,0,0">
+                            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                            <Border Padding="12,8" Background="#EAF3FF" BorderBrush="#C8DBFF" BorderThickness="1" CornerRadius="7">
+                                <TextBlock x:Name="SummaryText" Foreground="#365A92" Text="Select a dataset to view its saved record and size summary."/>
+                            </Border>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+                                <Button Style="{StaticResource DangerButton}" Width="120" Content="Delete folder" Click="DeleteSegmentButton_Click"/>
+                                <Button Style="{StaticResource DangerButton}" Width="122" Content="Delete dataset" Click="DeleteDatasetButton_Click"/>
+                                <Button Style="{StaticResource AccentButton}" Width="122" Margin="0" Content="Apply display" Click="ApplyDisplayButton_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="External history">
+                    <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Style="{StaticResource CardBorder}" Padding="16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="Portable and downloaded history" Style="{StaticResource SectionTitle}"/>
+                                    <TextBlock Margin="0,4,0,0" Foreground="{StaticResource MutedTextBrush}" TextWrapping="Wrap"
+                                               Text="Paste TickLab dataset folders into the external folder, or import CSV/TXT M1 and tick files. Files are validated before display."/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button Style="{StaticResource SoftAccentButton}" Width="132" Content="Open external" Click="OpenExternalFolderButton_Click"/>
+                                    <Button Style="{StaticResource AccentButton}" Width="132" Content="Import file" Click="ImportExternalButton_Click"/>
+                                    <Button Style="{StaticResource AccentButton}" Width="100" Margin="0" Content="Rescan" Click="RescanExternalButton_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <DataGrid x:Name="ExternalDatasetsGrid" Grid.Row="1" Margin="0,14,0,14" AutoGenerateColumns="False"
+                                  IsReadOnly="True" SelectionMode="Single" RowHeaderWidth="0" SelectionChanged="ExternalDatasetsGrid_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="95"/>
+                                <DataGridTextColumn Header="Type" Binding="{Binding Kind}" Width="95"/>
+                                <DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="150"/>
+                                <DataGridTextColumn Header="Range" Binding="{Binding Range}" Width="190"/>
+                                <DataGridTextColumn Header="Records" Binding="{Binding Records}" Width="100"/>
+                                <DataGridTextColumn Header="Priority" Binding="{Binding Priority}" Width="72"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="105"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Border Grid.Row="2" Style="{StaticResource CardBorder}" Padding="14">
+                            <Grid>
+                                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="ToggleExternalButton" Style="{StaticResource SoftAccentButton}" Width="110" Content="Enable/disable" Click="ToggleExternalButton_Click"/>
+                                    <TextBlock Text="Whole priority" VerticalAlignment="Center" Margin="8,0,6,0"/>
+                                    <TextBox x:Name="WholePriorityTextBox" Width="64" Height="32" Text="0" VerticalContentAlignment="Center"/>
+                                    <Button Style="{StaticResource AccentButton}" Width="100" Content="Apply" Click="ApplyWholePriorityButton_Click"/>
+                                    <Button Style="{StaticResource DangerButton}" Width="110" Content="Delete dataset" Click="DeleteExternalButton_Click"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
+                                    <TextBlock Text="Date-range priority" VerticalAlignment="Center"/>
+                                    <DatePicker x:Name="PriorityStartDatePicker" Width="135" Margin="8,0,0,0"/>
+                                    <TextBlock Text="to" VerticalAlignment="Center" Margin="8,0"/>
+                                    <DatePicker x:Name="PriorityEndDatePicker" Width="135"/>
+                                    <TextBox x:Name="RangePriorityTextBox" Width="64" Height="32" Margin="8,0,0,0" Text="0" VerticalContentAlignment="Center"/>
+                                    <Button Style="{StaticResource AccentButton}" Width="110" Content="Apply range" Click="ApplyRangePriorityButton_Click"/>
+                                    <Button Style="{StaticResource SoftAccentButton}" Width="110" Margin="0" Content="Clear ranges" Click="ClearRangePriorityButton_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+            <Grid Grid.Row="3" Margin="0,16,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <TextBlock x:Name="StatusText" VerticalAlignment="Center" Foreground="{StaticResource MutedTextBrush}"
+                           Text="Saved history is permanent until you delete it."/>
+                <Button Grid.Column="1" Style="{StaticResource DangerButton}" Width="132" Content="Delete all data" Click="DeleteAllButton_Click"/>
+                <Button Grid.Column="2" Width="100" Margin="0" Content="Close" Click="CloseButton_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,24 @@
+TickLab v1.13.0.32 — Restart Step 3
+
+Scope: only the three user-approved changes were added on top of v1.13.0.31 Restart Step 2.
+
+1. Indicator right-click identification and removal
+- Right-clicking a chart now lists each applied indicator separately.
+- Every item shows the indicator name and exact Workspace → Partition → symbol · timeframe address.
+- Separate indicator panes also show their own exact placement address at the top of the right-click menu.
+- Properties and Remove selected indicator affect only that exact indicator instance.
+
+2. MT5 symbol search
+- The search field is explicitly editable and focused.
+- Exact symbol matches are sorted first and selected automatically.
+- The symbol list has a permanently visible vertical scrollbar.
+- Search field, list background, item text, selected state and hover state use white backgrounds with black text.
+
+3. Colour display
+- Raw colour codes are hidden from chart, indicator and drawing settings.
+- Normal colour controls display only the colour swatch.
+- Hovering a swatch for approximately one second shows its human-readable colour name beside the pointer.
+- Non-standard colours are labelled Custom colour.
+- The colour picker keeps custom colour support through RGB sliders without showing numeric colour codes.
+
+No MT5 bridge, FileBridge, history, candle chart, indicator calculation, Sync, replay or workspace routing logic was changed.

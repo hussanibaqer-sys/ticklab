@@ -1,0 +1,7 @@
+TickLab v1.13.0.65 protected-source verification
+
+Compared byte-for-byte against v1.13.0.64:
+- MT5 directory: 0 changed files
+- src/TickLab.App/Gateway/FileBridge directory: 0 changed files
+
+Recorder work is desktop-only and does not alter broker bridge/write behavior.

@@ -1,0 +1,70 @@
+TickLab v1.13.0.143 — Raw Tick Full Chart Repair
+
+Purpose
+-------
+Repair the Raw Tick Chart as a real historical/interactive chart surface without modifying the user's saved raw tick files and without regressing the now-confirmed 1-second Find Candle direct-seek fix from v1.13.0.142.
+
+Raw Tick history / projection repair
+------------------------------------
+1. Removed the old time-window shrinking behavior that could make a busy symbol appear limited to roughly 30 minutes of Tick Chart history.
+2. Initial Tick Chart loading now reads the newest tick-count page instead of the first records in an arbitrary wall-clock range.
+3. Backward history paging now requests the immediately preceding ticks. A 150,000-record limit can no longer leave a missing middle between one page and the next.
+4. When the canonical _ticks cache reaches its edge, TickLab directly reads the intact MT5 ticks_history_<symbol>_<start>_<end>.csv snapshots and continues backward.
+5. If the canonical cache is absent but intact ticks_history files exist, Raw Tick Chart launch now has a direct raw-history fallback instead of incorrectly showing an empty/short chart.
+6. Historical source files remain read-only. This build does not rewrite the user's original MT5 raw-history CSV snapshots.
+7. Tick Chart X positioning is now tick-sequence based: every raw tick gets one horizontal slot. Quiet periods/weekends no longer create giant blank time gaps, and dense tick bursts are no longer compressed by elapsed-time projection.
+8. Time-scale labels still show the real timestamp of the tick at each labelled horizontal position.
+9. Existing live-edge right breathing room remains only at the true live edge; historical browsing uses the complete plot width.
+10. Existing 5,000-visible-tick horizontal zoom-out ceiling remains in force; initial live view remains 1,600 ticks.
+
+Find Candle -> Tick repair
+--------------------------
+1. Tick Find uses a narrow target-centred raw-tick lookup first and widens only when the requested second is quiet/closed.
+2. It prefers the first stored raw tick in the requested second and otherwise selects the nearest available stored tick.
+3. A successful Tick Find now draws a clear vertical purple marker at the exact found millisecond and centres that tick in the Raw Tick Chart.
+4. The Find Tick marker remains attached by timestamp while history pages are prepended.
+5. The marker can be selected and deleted manually with Delete/Backspace or right-click -> Remove Find Tick marker.
+6. Returning to Live/End clears the historical Find Tick marker and reloads the true latest tick window.
+
+Crosshair / Measure
+-------------------
+1. The drawing toolbar Cross tool now activates the Tick Chart crosshair.
+2. The Tick Chart crosshair follows the pointer with a vertical tick guide and horizontal pointer-price guide while showing the nearest tick's millisecond time, Bid and Ask.
+3. Measure now works on Raw Tick Chart using tick positions as the horizontal unit.
+4. Measure reports:
+   - tick count between A and B,
+   - elapsed real time,
+   - price/pip difference,
+   - raw price delta.
+5. Tick Measure uses symbol digits/point metadata from MT5/native candle context when available so pip calculations follow the same precision convention as the normal chart.
+
+Drawing tools on Raw Tick Chart
+-------------------------------
+1. Drawing toolbar tool selection is now routed to every TickChartControl as well as CandleChartControl.
+2. Raw Tick Chart now has an interactive drawing layer with immediate first-anchor visibility and live construction preview.
+3. Fixed-anchor and variable-anchor drawing tools can be placed on tick data; brush/highlighter drag construction is supported.
+4. Completed tick drawings can be selected, moved, anchor-adjusted, locked/unlocked, hidden/shown, deleted, undone and redone.
+5. The toolbar Measure, Lock, Hide, Undo, Redo and Remove Selected actions route to the active Tick Chart when the active timeframe is Tick.
+6. Drawing anchors are timestamp/price based so prepending older tick pages does not shift completed drawings away from their market time.
+7. Find Tick marker and drawings are rendered inside the tick plot and do not paint over the scales.
+
+Protected functionality
+-----------------------
+- v1.13.0.142 one-month-old 1-second Find Candle direct seek remains protected.
+- MT5 MQL bridge source is byte-for-byte unchanged from v1.13.0.142.
+- Mt5FileBridgeClient.cs is byte-for-byte unchanged from v1.13.0.142.
+- Raw history CSV format/capture is unchanged.
+- Replay behavior keeps the old default forward reader behavior; the new reverse/take-latest mode is opt-in for Tick Chart paging only.
+
+Validation
+----------
+- Source delimiter/static checks passed for every changed C# file.
+- MainWindow.xaml and TickLab.App.csproj XML parsing passed.
+- DrawingGeometryKind references in the new Tick drawing layer were checked against the actual enum.
+- v1.13.0.143 version/title tokens verified.
+- MT5 folder and Mt5FileBridgeClient.cs protected hashes match v1.13.0.142.
+- ZIP integrity and SHA-256 are generated after packaging.
+
+Environment limitation
+----------------------
+This ChatGPT execution environment does not contain dotnet/MSBuild/csc, so the Windows WPF application cannot be compiled here. Restore/build in Visual Studio on Windows and runtime-test the checklist included with this archive.

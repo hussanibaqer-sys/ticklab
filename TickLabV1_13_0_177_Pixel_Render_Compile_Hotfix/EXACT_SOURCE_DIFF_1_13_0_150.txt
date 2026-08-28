@@ -1,0 +1,11 @@
+TickLab v1.13.0.150 — Exact source/file differences vs v1.13.0.149
+
+VERSION.txt
+RELEASE_NOTES_1_13_0_150.txt
+FIRST_TEST_CHECKLIST_1_13_0_150.txt
+src/TickLab.App/MainWindow.RawTickChart.cs
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/TickLab.App.csproj
+src/TickLab.App/Controls/TickChartControl.cs
+src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs

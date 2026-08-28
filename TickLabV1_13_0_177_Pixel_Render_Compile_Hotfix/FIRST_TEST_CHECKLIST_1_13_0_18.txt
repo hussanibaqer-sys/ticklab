@@ -1,0 +1,10 @@
+TickLab v1.13.0.19 first test checklist
+
+[ ] Default candles remain crisp and evenly spaced.
+[ ] Around 206 visible bars, candles still have full bodies and centred wicks.
+[ ] Around 300 visible bars, candle widths remain uniform.
+[ ] At 400 visible bars, candles are still bodies, not one-pixel high/low lines.
+[ ] Around 450 visible bars, bodies and wicks remain aligned.
+[ ] Only farther out (approximately 480+ bars on the same frame) does compact rendering begin.
+[ ] Zooming back in restores normal gaps without drift.
+[ ] Alerts, replay, chart types and MT5 connection still work.

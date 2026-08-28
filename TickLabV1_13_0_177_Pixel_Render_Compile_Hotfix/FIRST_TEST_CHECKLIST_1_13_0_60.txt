@@ -1,0 +1,11 @@
+TickLab v1.13.0.60 — first Replay test
+
+1. Build and open a chart with saved raw ticks.
+2. Enable Replay line: confirm START appears very small at the top and bottom of the yellow vertical line.
+3. Enable Replay range: confirm END appears very small at the top and bottom of the red vertical line.
+4. Press Play: confirm Replay collapses to the compact tab and continues normally.
+5. Confirm compact tab contains End Replay and it restores the live chart.
+6. Let replay advance several ticks, then press Reverse.
+   EXPECT: the chart changes backward immediately on the click, then continues reversing.
+7. Press Forward: confirm the reversed ticks replay forward again.
+8. Confirm Speed still shows its selected value and Line/Range/Expand remain synchronized.

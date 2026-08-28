@@ -1,0 +1,35 @@
+TickLab v1.13.0.43 — First Test Checklist
+
+A. Shared right-side handle rail
+[ ] Chart reserves a narrow strip at its right edge.
+[ ] CODE EDITOR is the top handle.
+[ ] DEMO TRADING is the middle handle.
+[ ] PANEL is the bottom handle.
+[ ] All handles are in one column and none overlaps or hides another.
+[ ] Gaps between handles are approximately 1 cm.
+[ ] Free space above and below the group looks equal.
+[ ] Open PANEL: all three handles move left together.
+[ ] Then open CODE EDITOR: all three handles remain visible at the leftmost panel edge.
+[ ] Then open DEMO TRADING: all three panels remain side by side and all handles remain reachable.
+[ ] Resize/drag each supported panel and confirm the rail follows as one unit.
+
+B. Active demo-trade synchronization
+[ ] Open two charts of the same symbol on different timeframes.
+[ ] Open a demo position with SL and TP.
+[ ] Entry, SL and TP appear on both charts.
+[ ] Open a third chart for the same symbol; the running trade appears immediately.
+[ ] Open a different symbol; the first symbol's trade does not appear there.
+[ ] Drag SL or TP on one same-symbol chart; every same-symbol chart updates.
+
+C. Saved trade-history synchronization
+[ ] Close a demo trade and confirm entry/exit history markings appear.
+[ ] Change timeframe; the saved history remains visible.
+[ ] Open another chart for the same symbol; saved history appears.
+[ ] Close all price charts, create a new chart for that symbol, and confirm saved history reappears.
+[ ] Restart TickLab and confirm saved history and any still-running positions reload.
+
+D. Regression checks
+[ ] MT5 connection and live ticks still work.
+[ ] History import/refresh still works.
+[ ] Existing chart navigation, zoom and drawings still work.
+[ ] No real trade is sent from Demo Trading.

@@ -1,0 +1,10 @@
+TickLab v1.13.0.24 validation report
+
+- Newest-candle visibility tested across 1–1,500 visible slots.
+- Strong zoom-in regression with ten future slots explicitly reproduced and prevented.
+- Newest-candle screen ratio checked through repeated zoom cycles.
+- Live-follow state checked at 1, 5, 10, 50, 110, 400 and 1,500 slots.
+- Negative future-space viewport persistence checked in source.
+- C# delimiter, duplicate partial-method, XAML parsing and event-handler checks passed.
+- MT5 bridge write-access regression checks passed.
+- No Windows WPF compiler is available in this environment; final compilation and visual verification must run in Visual Studio on Windows.

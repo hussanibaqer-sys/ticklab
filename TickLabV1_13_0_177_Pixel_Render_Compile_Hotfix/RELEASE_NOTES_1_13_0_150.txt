@@ -1,0 +1,24 @@
+TickLab v1.13.0.150 — Seconds + Tick Unified Performance
+
+Purpose
+- Fix the shared history/read contention that made seconds charts and Raw Tick Chart destabilize each other.
+- Make 1s/15s/30s/45s historical paging and Tick history navigation page-bounded, cached, and non-blocking.
+
+Changes
+- New replay_source_index_v3.json catalog can hold complete filename-range entries for multiple MT5 source roots without one root replacing another.
+- v147 replay_source_index_v2.json is migrated without thousands of per-file existence checks.
+- Complete source catalogs are cached in memory. Known ranges are reused immediately even if MT5 updates the connector folder; a missing stale range uses a tiny timestamp-local probe instead of forcing a full archive rescan.
+- Bridge historical coverage is cached, so seconds page loads do not repeatedly walk the complete raw-history tree.
+- Canonical ticks.tlt coverage and segment-file lists are cached and invalidated only when canonical segments are actually written.
+- Seconds foreground paging no longer imports/reindexes raw snapshots into ticks.tlt. It reads only the bounded raw snapshots needed for the requested page.
+- Sparse seconds pages walk progressively older bounded raw pages without global archive repair.
+- Seconds direct raw-page safety margin reduced from 1.5 pages to 1.1 pages; missing sparse data still fills from older bounded pages.
+- Range-bounded canonical repair reuses the filename-range catalog instead of recursive source-folder enumeration.
+- Tick newer paging appends already-ordered non-overlapping pages instead of Distinct()+sorting the entire accumulated Tick history.
+- Live Tick refresh pauses while the user is actively panning/zooming so interaction geometry is not invalidated mid-gesture.
+
+Protected
+- Normal Candle Finder / Find Candle search and marker workflow was not changed.
+- v149 Tick Find presentation behavior remains.
+- MT5/MQL files were not changed.
+- Raw source CSV files are read-only in foreground chart navigation.

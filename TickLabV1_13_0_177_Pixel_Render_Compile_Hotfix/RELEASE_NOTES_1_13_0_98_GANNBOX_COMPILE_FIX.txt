@@ -1,0 +1,20 @@
+TickLab v1.13.0.98 — Gann Box Compile Fix
+
+Scope: compile-only correction on top of v1.13.0.97.
+
+FIXED
+- CandleChartControl.DrawingParity.cs incorrectly referenced DrawingLevel.LineWidth in the Gann Box angle-ray renderer.
+- DrawingLevel exposes this per-level thickness property as Width.
+- Replaced the invalid level.LineWidth access with level.Width while preserving the existing fallback to drawing.Style.LineWidth.
+
+NOT CHANGED
+- Gann Box geometry/formulas/anchors/colors/arcs/rays are unchanged from v1.13.0.97.
+- Gann Fan geometry/readings are unchanged.
+- Gann Square and Gann Square Fixed are unchanged.
+- Fibonacci controls/readings are unchanged.
+- Theme/menu/hover behavior is unchanged.
+- MT5, Bridge, History, Replay, Gateway and Connector implementation code is unchanged.
+
+NOTE ON NULLABLE WARNINGS
+- The three nullable diagnostics were reported without file names or line numbers. They are warnings rather than the compile-blocking DrawingLevel error.
+- This package intentionally does not guess at unrelated nullable sites. If Visual Studio still lists them, provide file + line number for surgical cleanup.

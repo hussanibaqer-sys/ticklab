@@ -1,0 +1,9 @@
+TickLab v1.13.0.112 — First Test Checklist
+
+1. Select Path.
+2. Place 5-6 points with obvious sharp zig-zag turns.
+3. Double-click to finish.
+4. Confirm every segment between clicked points is straight — no smoothing/rounding.
+5. Confirm a visible arrowhead appears at the final endpoint and points in the direction of the final segment.
+6. Reselect the Path by clicking a middle segment.
+7. Confirm Arc, Curve, Double Curve and Arrow Marker still behave exactly as they did in v1.13.0.111.

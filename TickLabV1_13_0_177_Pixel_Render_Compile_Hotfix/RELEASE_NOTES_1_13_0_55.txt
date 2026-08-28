@@ -1,0 +1,48 @@
+TickLab v1.13.0.55 — Instant Replay Index
+
+Scope
+-----
+Replay performance and replay-window layout only. Existing chart/history, Demo Trading,
+alerts, panel rail, drawings, indicator behavior and MT5 bridge source are preserved.
+
+Replay changes
+--------------
+1. Play switches the selected chart into replay view before disk work starts.
+   - Candles strictly before the yellow Start candle remain visible.
+   - The yellow Start candle and every candle to its right are hidden immediately.
+   - Hidden candles are not deleted.
+
+2. Instant raw-tick lookup path.
+   - A lightweight persistent replay_source_index.json maps historical raw-tick
+     timestamp ranges to their small bridge source files.
+   - Building this map reads filenames/metadata only, not the quarter's tick rows.
+   - Play reads only the small raw source slice overlapping the selected start time.
+   - It does not await quarter-wide canonical conversion.
+
+3. Canonical archive warming is background-only.
+   - After replay is already able to start, the nearby slice is warmed into TickLab's
+     binary canonical archive for later binary-search reads.
+   - Canonical synchronization is bounded by minimum/maximum replay times and yields
+     between bridge source files so foreground replay is not held behind a full quarter.
+
+4. Live engine stays active while replay is visible.
+   - Incoming MT5 live closed/current candles continue into separate hidden live lists.
+   - Replay owns only the visible chart copy.
+   - End Replay reveals the continuously updated hidden live chart and restores the
+     pre-replay viewport.
+
+5. Replay Range remains bounded.
+   - Yellow line = Start, red line = End.
+   - Raw reads are limited to small progressive slices and never intentionally read
+     beyond the selected red-end candle.
+
+6. Replay window text clipping corrected.
+   - Window/minimum size increased.
+   - Status row auto-sizes and status panel has additional vertical room.
+
+Validation
+----------
+Static source validation: 696 passed, 0 failed.
+Protected MT5 bridge files match v1.13.0.54 byte-for-byte.
+The generation environment has no Windows/.NET WPF compiler, so final compilation and
+live-market timing must be tested in Visual Studio 2022 on Windows.

@@ -1,0 +1,16 @@
+TickLab v1.13.0.114 — Folder 6 Render / Inspector Delete Hotfix
+
+Runtime report fixed:
+- Folder 6 objects were being created in the drawing model and appeared in the Inspector, but could fail to produce visible chart geometry.
+- Inspector removal could target the wrong chart instance and explicit removal could be blocked by stale lock state.
+
+Hotfix:
+- Folder 6 now has a direct defensive render path before the general parity renderer.
+- Text, Note, Price Note, Pin, Table, Callout, Comment, Price Label, Signpost and Flag are all handled explicitly.
+- Old/incomplete annotation objects render a usable fallback rather than remaining invisible.
+- A renderer failure is contained to that object and leaves visible fallback geometry for selection/removal.
+- Inspector/Object Tree actions resolve the chart that owns the drawing.
+- Explicit Inspector Remove can remove stale/locked objects; normal chart lock behavior is unchanged for ordinary deletion paths.
+- Remove Selected on the rail targets the active chart.
+
+Scope: no other drawing folder or TickLab subsystem was intentionally modified.

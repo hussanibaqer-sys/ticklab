@@ -1,0 +1,873 @@
+TickLab v1.13.0.139 — exact source diff from v1.13.0.138
+
+Changed source files:
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/Controls/CandleChartControl.cs and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Controls/CandleChartControl.cs differ
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs differ
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs differ
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/MainWindow.ChartContexts.cs and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.ChartContexts.cs differ
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/MainWindow.xaml and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/MainWindow.xaml.cs and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml.cs differ
+Files /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/TickLab.App.csproj and /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/TickLab.App.csproj differ
+
+
+===== src/TickLab.App/MainWindow.xaml.cs =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/MainWindow.xaml.cs	2026-08-15 10:48:23.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml.cs	2026-08-15 18:28:11.510702118 +0000
+@@ -28,6 +28,10 @@
+     private const int MaximumChartBufferRecords = 8_000;
+     private const int ChartWindowMaximumRecords = 12_000;
+     private const int ChartWindowPageRecords = 1_600;
++    // 1-second history uses a deeper read-ahead buffer while preserving the
++    // normal visual-page size. One backward request prepares three pages, so
++    // manual history scrolling does not stop every ~1,600 seconds to redraw.
++    private const int SecondChartHistoryPageRecords = ChartWindowPageRecords * 3;
+     private const int ChartWindowSearchMultiplier = 3;
+     private const double HistoryImportWorkShare = 0.82;
+     private const int M1ChartLaunchPreviewRecords = 2_400;
+@@ -1109,8 +1113,45 @@
+     private void RemoveMarker(CandleMarker marker)
+     {
+         _candleMarkers.RemoveAll(item => string.Equals(item.Id, marker.Id, StringComparison.Ordinal));
++
++        // Find Candle can paint three related pieces: the persisted marker, the
++        // exact-time navigation guide, and the thin interactive selection line.
++        // Remove Marker must clear all of them so no ghost line survives.
++        long navigationAnchorUnix = marker.AnchorUnix ?? marker.StartUnix;
++        bool clearedInteractiveSelection = false;
++        foreach (ChartRuntimeContext context in _chartContexts.Values)
++        {
++            if (!string.Equals(context.Symbol, marker.Symbol, StringComparison.OrdinalIgnoreCase))
++                continue;
++
++            if (context.HistoricalNavigationAnchorUnix == navigationAnchorUnix)
++            {
++                context.HistoricalNavigationAnchorUnix = null;
++                context.HistoricalNavigationAnchorSymbol = string.Empty;
++                context.Chart.HistoricalNavigationAnchorUnix = null;
++            }
++
++            // The thin yellow Find Candle selector is a third, independent
++            // visual layer. Clear it when it points at the same persisted
++            // marker so Remove Marker cannot leave a selectable-looking ghost.
++            CandleMarker? interactive = context.Chart.InteractiveSelectionMarker;
++            if (interactive is not null &&
++                !interactive.Source.StartsWith("TickLabReplay", StringComparison.OrdinalIgnoreCase) &&
++                string.Equals(interactive.Symbol, marker.Symbol, StringComparison.OrdinalIgnoreCase) &&
++                string.Equals(interactive.Timeframe, marker.Timeframe, StringComparison.OrdinalIgnoreCase) &&
++                interactive.StartUnix == marker.StartUnix)
++            {
++                context.Chart.InteractiveSelectionMarker = null;
++                context.Chart.MarkerSelectionMode = false;
++                clearedInteractiveSelection = true;
++            }
++        }
++
+         RefreshChartMarkers();
+         _markerWindow?.SetMarkers(_candleMarkers);
++        if (clearedInteractiveSelection)
++            _markerWindow?.SetMarkMode(false);
++        SaveWorkspace();
+ 
+         if (!EnsureMarkerExchange())
+         {
+@@ -1148,6 +1189,55 @@
+         }
+     }
+ 
++    private void RemoveFindCandleSelection(CandleChartControl chart)
++    {
++        CandleMarker? selection = chart.InteractiveSelectionMarker;
++        if (selection is null ||
++            selection.Source.StartsWith("TickLabReplay", StringComparison.OrdinalIgnoreCase))
++        {
++            return;
++        }
++
++        chart.InteractiveSelectionMarker = null;
++        chart.MarkerSelectionMode = false;
++        if (ReferenceEquals(chart, CandleChart))
++            _markerWindow?.SetMarkMode(false);
++        StatusText.Text = "Find Candle selection marker removed.";
++    }
++
++    private void RemoveHistoricalNavigationAnchor(
++        CandleChartControl chart,
++        long anchorUnix)
++    {
++        ChartRuntimeContext context = FindChartContext(chart);
++        if (context.HistoricalNavigationAnchorUnix != anchorUnix &&
++            chart.HistoricalNavigationAnchorUnix != anchorUnix)
++        {
++            return;
++        }
++
++        // If a persisted Find Candle marker still exists at this exact anchor,
++        // remove it through the normal marker path as well. This makes the
++        // manual fallback a complete cleanup rather than merely hiding a line.
++        CandleMarker[] matchingMarkers = _candleMarkers
++            .Where(item =>
++                string.Equals(item.Symbol, context.Symbol, StringComparison.OrdinalIgnoreCase) &&
++                (item.AnchorUnix ?? item.StartUnix) == anchorUnix)
++            .ToArray();
++        if (matchingMarkers.Length > 0)
++        {
++            foreach (CandleMarker marker in matchingMarkers)
++                RemoveMarker(marker);
++            return;
++        }
++
++        context.HistoricalNavigationAnchorUnix = null;
++        context.HistoricalNavigationAnchorSymbol = string.Empty;
++        chart.HistoricalNavigationAnchorUnix = null;
++        SaveWorkspace();
++        StatusText.Text = "Find Candle marker guide removed.";
++    }
++
+     private void SaveAndRefreshMarkers()
+     {
+         _markerExchange?.SaveMarkers(_candleMarkers);
+@@ -3525,7 +3615,9 @@
+         TimeframeDefinition timeframe = context.Timeframe;
+         HistoryLoadSelection selection = _historySelection;
+         long beforeUnix = context.DisplayCandles[0].StartUnix;
+-        int pageSize = ChartWindowPageRecords;
++        int pageSize = timeframe.Unit == TimeframeUnit.Second && timeframe.Quantity == 1
++            ? SecondChartHistoryPageRecords
++            : ChartWindowPageRecords;
+ 
+         try
+         {
+
+===== src/TickLab.App/MainWindow.ChartContexts.cs =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/MainWindow.ChartContexts.cs	2026-08-15 09:29:05.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.ChartContexts.cs	2026-08-15 18:27:38.131553804 +0000
+@@ -211,6 +211,10 @@
+         chart.GoToEarliestRequested += CandleChart_GoToEarliestRequested;
+         chart.GoToLatestRequested += CandleChart_GoToLatestRequested;
+         chart.MarkerRemoveRequested += RemoveMarker;
++        chart.HistoricalNavigationAnchorRemoveRequested += anchorUnix =>
++            RemoveHistoricalNavigationAnchor(chart, anchorUnix);
++        chart.FindCandleSelectionRemoveRequested += () =>
++            RemoveFindCandleSelection(chart);
+         chart.ScrollWheelModeChanged += mode => CandleChart_ScrollWheelModeChanged(chart, mode);
+         chart.SizeChanged += (_, _) =>
+         {
+
+===== src/TickLab.App/Controls/CandleChartControl.cs =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/Controls/CandleChartControl.cs	2026-08-15 10:05:46.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Controls/CandleChartControl.cs	2026-08-15 18:28:35.056530994 +0000
+@@ -154,6 +154,7 @@
+     private IReadOnlyList<ChartTimelineGap> _timelineGaps = Array.Empty<ChartTimelineGap>();
+     private IReadOnlyList<CandleMarker> _markers = Array.Empty<CandleMarker>();
+     private long? _historicalNavigationAnchorUnix;
++    private bool _historicalNavigationAnchorSelected;
+     private CandleMarker? _contextMarker;
+     private CandleMarker? _interactiveSelectionMarker;
+     private CandleMarker? _interactiveReplayEndMarker;
+@@ -234,6 +235,8 @@
+     public event EventHandler? GoToEarliestRequested;
+     public event EventHandler? GoToLatestRequested;
+     public event Action<CandleMarker>? MarkerRemoveRequested;
++    public event Action<long>? HistoricalNavigationAnchorRemoveRequested;
++    public event Action? FindCandleSelectionRemoveRequested;
+     public event Action<ChartScrollWheelMode>? ScrollWheelModeChanged;
+     public event Action<ChartViewportSnapshot>? ViewportChanged;
+     public event Action<ChartVerticalSyncAction>? VerticalSyncAction;
+@@ -434,6 +437,7 @@
+             if (_historicalNavigationAnchorUnix == value)
+                 return;
+             _historicalNavigationAnchorUnix = value;
++            _historicalNavigationAnchorSelected = false;
+             InvalidateVisual();
+         }
+     }
+@@ -1459,6 +1463,27 @@
+         if (HandleDrawingKeyDown(e))
+             return;
+ 
++        if ((e.Key == Key.Delete || e.Key == Key.Back) &&
++            _markerSelectionMode &&
++            _interactiveSelectionMarker is not null &&
++            !IsReplayInteractiveMarker(_interactiveSelectionMarker))
++        {
++            FindCandleSelectionRemoveRequested?.Invoke();
++            e.Handled = true;
++            return;
++        }
++
++        if ((e.Key == Key.Delete || e.Key == Key.Back) &&
++            _historicalNavigationAnchorSelected &&
++            _historicalNavigationAnchorUnix.HasValue)
++        {
++            long anchorUnix = _historicalNavigationAnchorUnix.Value;
++            _historicalNavigationAnchorSelected = false;
++            HistoricalNavigationAnchorRemoveRequested?.Invoke(anchorUnix);
++            e.Handled = true;
++            return;
++        }
++
+         if (e.Key == Key.Home)
+         {
+             PushViewportUndoSnapshot();
+@@ -1758,6 +1783,8 @@
+ 
+         CandleMarker? marker = null;
+         CandleMarker? interactiveMarker = null;
++        CandleMarker? findSelectionMarker = null;
++        long? historicalNavigationAnchor = null;
+         bool selectedCandleHit = false;
+         double? contextPrice = null;
+         Point click = e.GetPosition(this);
+@@ -1765,6 +1792,10 @@
+         {
+             marker = HitTestMarker(layout, click.X);
+             interactiveMarker = HitTestReplayInteractiveMarker(layout, click.X);
++            CandleMarker? selectionHit = HitTestInteractiveSelectionMarker(layout, click.X);
++            if (selectionHit is not null && !IsReplayInteractiveMarker(selectionHit))
++                findSelectionMarker = selectionHit;
++            historicalNavigationAnchor = HitTestHistoricalNavigationAnchor(layout, click.X);
+             selectedCandleHit = IsSelectedCandleHit(layout, click);
+             if (layout.Plot.Contains(click))
+                 contextPrice = YToPrice(click.Y, layout);
+@@ -1794,6 +1825,22 @@
+             return;
+         }
+ 
++        if (findSelectionMarker is not null && marker is null)
++        {
++            var selectionMenu = new System.Windows.Controls.ContextMenu();
++            var removeSelection = new System.Windows.Controls.MenuItem
++            {
++                Header = "Remove Find Candle selection"
++            };
++            removeSelection.Click += (_, _) => FindCandleSelectionRemoveRequested?.Invoke();
++            selectionMenu.Items.Add(removeSelection);
++            ApplyFlatChartContextMenuStyle(selectionMenu);
++            ContextMenu = selectionMenu;
++            selectionMenu.IsOpen = true;
++            e.Handled = true;
++            return;
++        }
++
+         if (TryCreateLayout(out ChartLayout alertLineContextLayout) &&
+             HitTestAlertLine(alertLineContextLayout, click) is AlertLineOverlay alertLine)
+         {
+@@ -1945,6 +1992,18 @@
+             };
+             menu.Items.Add(remove);
+         }
++        else if (historicalNavigationAnchor.HasValue)
++        {
++            // Manual fallback for the exact-time Find Candle guide. If normal
++            // Remove Marker ever leaves this guide behind, it remains a real
++            // hit-testable/removable chart object instead of an orphaned line.
++            menu.Items.Add(new System.Windows.Controls.Separator());
++            long anchorUnix = historicalNavigationAnchor.Value;
++            var remove = new System.Windows.Controls.MenuItem { Header = "Remove Find Candle marker" };
++            remove.Click += (_, _) =>
++                HistoricalNavigationAnchorRemoveRequested?.Invoke(anchorUnix);
++            menu.Items.Add(remove);
++        }
+ 
+         ApplyFlatChartContextMenuStyle(menu);
+         ContextMenu = menu;
+@@ -2042,6 +2101,24 @@
+             return;
+         }
+ 
++        long? historicalAnchorHit = layout.Plot.Contains(mouse)
++            ? HitTestHistoricalNavigationAnchor(layout, mouse.X)
++            : null;
++        if (historicalAnchorHit.HasValue &&
++            !_markerSelectionMode &&
++            !DrawingPointerInputHasPriority(layout, mouse))
++        {
++            _historicalNavigationAnchorSelected = true;
++            InvalidateVisual();
++            e.Handled = true;
++            return;
++        }
++        if (_historicalNavigationAnchorSelected)
++        {
++            _historicalNavigationAnchorSelected = false;
++            InvalidateVisual();
++        }
++
+         if (BeginDemoTradeLineDrag(layout, mouse))
+         {
+             e.Handled = true;
+@@ -4195,7 +4272,7 @@
+         var brush = new SolidColorBrush(Color.FromArgb(210, 250, 204, 21));
+         if (brush.CanFreeze)
+             brush.Freeze();
+-        var pen = new Pen(brush, 2.0)
++        var pen = new Pen(brush, _historicalNavigationAnchorSelected ? 4.0 : 2.0)
+         {
+             DashStyle = DashStyles.Solid,
+             StartLineCap = PenLineCap.Flat,
+@@ -4210,6 +4287,27 @@
+             new Point(lineX, layout.Plot.Bottom));
+     }
+ 
++    private long? HitTestHistoricalNavigationAnchor(ChartLayout layout, double x)
++    {
++        if (!_historicalNavigationAnchorUnix.HasValue || Candles.Count == 0)
++            return null;
++
++        long anchorUnix = _historicalNavigationAnchorUnix.Value;
++        int index = FindNearestCandleIndexForHistoricalAnchor(anchorUnix);
++        if (index < layout.FirstIndex || index >= layout.LastExclusive)
++            return null;
++
++        int visibleIndex = index - layout.FirstIndex;
++        double markerX = GetSlotCenterDip(layout, layout.VisibleSlots[visibleIndex]);
++        double slotWidth = layout.SlotCount > 0
++            ? layout.Plot.Width / layout.SlotCount
++            : 1.0;
++        double tolerance = Math.Max(8.0, slotWidth * 0.75);
++        return Math.Abs(markerX - x) <= tolerance
++            ? anchorUnix
++            : null;
++    }
++
+     private int FindNearestCandleIndexForHistoricalAnchor(long anchorUnix)
+     {
+         int exact = FindCandleIndex(anchorUnix);
+
+===== src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs	2026-08-15 10:48:52.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs	2026-08-15 18:26:02.476364022 +0000
+@@ -1383,6 +1383,70 @@
+ 
+         IReadOnlyList<Candle> best = canonical;
+ 
++        IReadOnlyList<Candle> MergeAroundFocus(
++            IReadOnlyList<Candle> primary,
++            IReadOnlyList<Candle> secondary)
++        {
++            if (!focusBucketStart.HasValue)
++                return MergeSecondPages(primary, secondary, maximumRecords);
++
++            var merged = new SortedDictionary<long, Candle>();
++            foreach (Candle candle in secondary)
++                merged[candle.StartUnix] = candle;
++            // Canonical archive remains authoritative on duplicate buckets.
++            foreach (Candle candle in primary)
++                merged[candle.StartUnix] = candle;
++
++            Candle[] values = merged.Values.ToArray();
++            if (values.Length <= maximumRecords)
++                return values;
++
++            int low = 0;
++            int high = values.Length;
++            while (low < high)
++            {
++                int middle = low + (high - low) / 2;
++                if (values[middle].StartUnix < focusBucketStart.Value)
++                    low = middle + 1;
++                else
++                    high = middle;
++            }
++
++            int desiredLeft = maximumRecords / 2;
++            int start = Math.Clamp(low - desiredLeft, 0, values.Length - maximumRecords);
++            return values.Skip(start).Take(maximumRecords).ToArray();
++        }
++
++        // Find Candle on a seconds chart is a direct timestamp operation. Look
++        // only at the raw source snapshots nearest focusUnix and return that
++        // centered page. Never walk backward through each historical window.
++        if (focusUnix.HasValue && !cancellationToken.IsCancellationRequested)
++        {
++            foreach (string sourceFolder in GetBridgeHistoricalSourceFolders(connectorId))
++            {
++                IReadOnlyList<Candle> directFocused =
++                    _canonicalTicks.ReadHistoricalSourceCandlesAroundTimestamp(
++                        sourceFolder,
++                        GetTickArchiveFolder(connectorId, symbol),
++                        symbol,
++                        digits,
++                        point,
++                        timeframe,
++                        maximumRecords,
++                        serverUtcOffsetMinutes,
++                        focusUnix.Value,
++                        cancellationToken,
++                        excludedSegmentKeys);
++                best = MergeAroundFocus(best, directFocused);
++                if (CoversFocus(best))
++                    break;
++            }
++
++            // A missing/closed-market timestamp should fail quickly. Do not turn
++            // it into a multi-minute sequential repair scan.
++            return best;
++        }
++
+         // If a historical page is not already complete in ticks.tlt, read the
+         // exact bounded bridge snapshots directly. This removes the old
+         // ~30-minute wall caused by waiting for background canonical indexing.
+@@ -1395,6 +1459,7 @@
+             {
+                 IReadOnlyList<Candle> direct = _canonicalTicks.ReadHistoricalSourceCandles(
+                     sourceFolder,
++                    GetTickArchiveFolder(connectorId, symbol),
+                     symbol,
+                     digits,
+                     point,
+@@ -1507,6 +1572,7 @@
+             IReadOnlyList<Candle> directRepaired =
+                 _canonicalTicks.ReadHistoricalSourceCandles(
+                     selectedFolder,
++                    GetTickArchiveFolder(connectorId, symbol),
+                     symbol,
+                     digits,
+                     point,
+
+===== src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs	2026-08-15 10:48:52.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs	2026-08-15 18:26:14.133804029 +0000
+@@ -359,6 +359,7 @@
+     /// </summary>
+     public IReadOnlyList<Candle> ReadHistoricalSourceCandles(
+         string sourceFolder,
++        string targetRoot,
+         string symbol,
+         int digits,
+         double point,
+@@ -370,6 +371,7 @@
+         IReadOnlySet<string>? excludedSegmentKeys = null)
+     {
+         if (!Directory.Exists(sourceFolder) ||
++            string.IsNullOrWhiteSpace(targetRoot) ||
+             string.IsNullOrWhiteSpace(symbol) ||
+             timeframe.Unit != TimeframeUnit.Second ||
+             maximumRecords <= 0 ||
+@@ -378,72 +380,96 @@
+             return Array.Empty<Candle>();
+         }
+ 
+-        int timeframeSeconds =
+-            (int)Math.Clamp(timeframe.ToApproximateSeconds(), 1L, int.MaxValue);
+-        CanonicalHistoricalSourceWindow window = GetHistoricalSourceWindowBefore(
+-            sourceFolder,
+-            symbol,
+-            beforeUnix,
+-            timeframeSeconds,
+-            maximumRecords,
+-            cancellationToken);
+-        if (!window.HasData || cancellationToken.IsCancellationRequested)
+-            return Array.Empty<Candle>();
+-
+         string safeSymbol = Mt5Paths.SanitizeFilePart(symbol);
+-        long minimumMilliseconds = checked(window.MinimumStartUnix * 1000L);
+-        long beforeMilliseconds = checked(beforeUnix * 1000L);
+-        var candidates = new List<(string Path, long StartMilliseconds, long EndMilliseconds)>();
+-
++        long beforeMilliseconds;
++        long requiredActiveMilliseconds;
+         try
+         {
+-            foreach (string path in Directory.EnumerateFiles(
+-                         sourceFolder,
+-                         $"ticks_history_{safeSymbol}_*.csv",
+-                         SearchOption.AllDirectories))
+-            {
+-                if (cancellationToken.IsCancellationRequested)
+-                    return Array.Empty<Candle>();
+-                if (!TryGetHistoricalSourceRangeMilliseconds(
+-                        path,
+-                        out long startMilliseconds,
+-                        out long endMilliseconds) ||
+-                    endMilliseconds < minimumMilliseconds ||
+-                    startMilliseconds >= beforeMilliseconds)
+-                {
+-                    continue;
+-                }
+-
+-                candidates.Add((path, startMilliseconds, endMilliseconds));
+-            }
++            beforeMilliseconds = checked(beforeUnix * 1000L);
++            int timeframeSeconds =
++                (int)Math.Clamp(timeframe.ToApproximateSeconds(), 1L, int.MaxValue);
++            requiredActiveMilliseconds = checked(
++                Math.Max(1L, timeframeSeconds) *
++                Math.Max(1L, maximumRecords) *
++                1500L);
+         }
+-        catch (IOException)
++        catch (OverflowException)
+         {
+             return Array.Empty<Candle>();
+         }
+-        catch (UnauthorizedAccessException)
++
++        // Manual seconds-history paging uses the same cached filename-range
++        // index as replay/Find Candle. This avoids enumerating the complete raw
++        // history tree every time the user scrolls one page farther left.
++        const long EightDaysMilliseconds = 8L * 24L * 60L * 60L * 1000L;
++        long searchHalfSpan = Math.Max(EightDaysMilliseconds, requiredActiveMilliseconds * 4L);
++        long searchStartMilliseconds = Math.Max(0L, beforeMilliseconds - searchHalfSpan);
++        IReadOnlyList<string> indexedPaths = ResolveReplayHistoricalSources(
++            sourceFolder,
++            targetRoot,
++            safeSymbol,
++            searchStartMilliseconds,
++            beforeMilliseconds);
++
++        var candidates = new List<(string Path, long StartMilliseconds, long EndMilliseconds)>();
++        foreach (string path in indexedPaths)
+         {
+-            return Array.Empty<Candle>();
++            if (cancellationToken.IsCancellationRequested)
++                return Array.Empty<Candle>();
++            if (!TryGetHistoricalSourceRangeMilliseconds(
++                    path,
++                    out long startMilliseconds,
++                    out long endMilliseconds) ||
++                startMilliseconds >= beforeMilliseconds)
++            {
++                continue;
++            }
++
++            candidates.Add((path, startMilliseconds, endMilliseconds));
+         }
+ 
+         if (candidates.Count == 0)
+             return Array.Empty<Candle>();
+ 
++        candidates.Sort((left, right) =>
++            right.EndMilliseconds.CompareTo(left.EndMilliseconds));
++        var selected = new List<(string Path, long StartMilliseconds, long EndMilliseconds)>();
++        long selectedActiveMilliseconds = 0;
++        foreach (var candidate in candidates)
++        {
++            if (cancellationToken.IsCancellationRequested)
++                return Array.Empty<Candle>();
++
++            long usableEnd = Math.Min(candidate.EndMilliseconds, beforeMilliseconds - 1L);
++            if (usableEnd < candidate.StartMilliseconds)
++                continue;
++
++            selected.Add(candidate);
++            selectedActiveMilliseconds = checked(
++                selectedActiveMilliseconds +
++                Math.Max(1L, usableEnd - candidate.StartMilliseconds + 1L));
++            if (selectedActiveMilliseconds >= requiredActiveMilliseconds)
++                break;
++        }
++
++        if (selected.Count == 0)
++            return Array.Empty<Candle>();
++
++        long minimumMilliseconds = selected.Min(item => item.StartMilliseconds);
+         var buckets = new SortedDictionary<long, TickCandleBuilder>();
+         long serverNow = Mt5ServerClock.ServerNowUnix(serverUtcOffsetMinutes);
+ 
+-        foreach (var candidate in candidates
++        foreach (var candidate in selected
+                      .OrderBy(item => item.StartMilliseconds)
+                      .ThenBy(item => item.EndMilliseconds))
+         {
+             if (cancellationToken.IsCancellationRequested)
+                 return Array.Empty<Candle>();
+ 
+-            string path = candidate.Path;
+             try
+             {
+                 using var stream = new FileStream(
+-                    path,
++                    candidate.Path,
+                     FileMode.Open,
+                     FileAccess.Read,
+                     FileShare.ReadWrite | FileShare.Delete);
+@@ -521,7 +547,6 @@
+             }
+             catch (UnauthorizedAccessException)
+             {
+-                // One inaccessible source must not block the rest of the page.
+             }
+         }
+ 
+@@ -539,6 +564,250 @@
+             .ToArray();
+     }
+ 
++
++    /// <summary>
++    /// Direct Find Candle path for seconds charts. It selects the raw bridge
++    /// snapshots nearest the requested timestamp and builds a centered candle
++    /// page from only those files. It never walks backward from the live edge
++    /// or through every intervening historical window.
++    /// </summary>
++    public IReadOnlyList<Candle> ReadHistoricalSourceCandlesAroundTimestamp(
++        string sourceFolder,
++        string targetRoot,
++        string symbol,
++        int digits,
++        double point,
++        TimeframeDefinition timeframe,
++        int maximumRecords,
++        int serverUtcOffsetMinutes,
++        long focusUnix,
++        CancellationToken cancellationToken,
++        IReadOnlySet<string>? excludedSegmentKeys = null)
++    {
++        if (!Directory.Exists(sourceFolder) ||
++            string.IsNullOrWhiteSpace(targetRoot) ||
++            string.IsNullOrWhiteSpace(symbol) ||
++            timeframe.Unit != TimeframeUnit.Second ||
++            maximumRecords <= 0 ||
++            focusUnix <= 0)
++        {
++            return Array.Empty<Candle>();
++        }
++
++        string safeSymbol = Mt5Paths.SanitizeFilePart(symbol);
++        long focusMilliseconds;
++        long requiredActiveMilliseconds;
++        try
++        {
++            focusMilliseconds = checked(focusUnix * 1000L);
++            int timeframeSeconds =
++                (int)Math.Clamp(timeframe.ToApproximateSeconds(), 1L, int.MaxValue);
++            // About 1.5 pages of active source time gives Find Candle enough
++            // context on both sides while keeping IO strictly bounded.
++            requiredActiveMilliseconds = checked(
++                Math.Max(1L, timeframeSeconds) *
++                Math.Max(1L, maximumRecords) *
++                1500L);
++        }
++        catch (OverflowException)
++        {
++            return Array.Empty<Candle>();
++        }
++
++        // Reuse the lightweight filename-range index already used by replay.
++        // This makes repeated Find Candle operations an indexed timestamp lookup
++        // instead of re-enumerating or parsing the full raw-history collection.
++        const long EightDaysMilliseconds = 8L * 24L * 60L * 60L * 1000L;
++        long searchHalfSpan = Math.Max(EightDaysMilliseconds, requiredActiveMilliseconds * 4L);
++        long searchStartMilliseconds = Math.Max(0L, focusMilliseconds - searchHalfSpan);
++        long searchEndMillisecondsExclusive;
++        try
++        {
++            searchEndMillisecondsExclusive = checked(focusMilliseconds + searchHalfSpan + 1L);
++        }
++        catch (OverflowException)
++        {
++            searchEndMillisecondsExclusive = long.MaxValue;
++        }
++
++        var candidates = new List<(string Path, long StartMilliseconds, long EndMilliseconds)>();
++        IReadOnlyList<string> indexedPaths = ResolveReplayHistoricalSources(
++            sourceFolder,
++            targetRoot,
++            safeSymbol,
++            searchStartMilliseconds,
++            searchEndMillisecondsExclusive);
++        foreach (string path in indexedPaths)
++        {
++            if (cancellationToken.IsCancellationRequested)
++                return Array.Empty<Candle>();
++            if (TryGetHistoricalSourceRangeMilliseconds(
++                    path,
++                    out long startMilliseconds,
++                    out long endMilliseconds))
++            {
++                candidates.Add((path, startMilliseconds, endMilliseconds));
++            }
++        }
++
++        if (candidates.Count == 0)
++            return Array.Empty<Candle>();
++
++        static long DistanceToTimestamp(
++            (string Path, long StartMilliseconds, long EndMilliseconds) item,
++            long timestamp)
++        {
++            if (timestamp < item.StartMilliseconds)
++                return item.StartMilliseconds - timestamp;
++            if (timestamp > item.EndMilliseconds)
++                return timestamp - item.EndMilliseconds;
++            return 0;
++        }
++
++        var selected = new List<(string Path, long StartMilliseconds, long EndMilliseconds)>();
++        long selectedActiveMilliseconds = 0;
++        foreach (var candidate in candidates
++                     .OrderBy(item => DistanceToTimestamp(item, focusMilliseconds))
++                     .ThenBy(item => item.StartMilliseconds))
++        {
++            if (cancellationToken.IsCancellationRequested)
++                return Array.Empty<Candle>();
++
++            selected.Add(candidate);
++            selectedActiveMilliseconds = checked(
++                selectedActiveMilliseconds +
++                Math.Max(1L, candidate.EndMilliseconds - candidate.StartMilliseconds + 1L));
++            if (selectedActiveMilliseconds >= requiredActiveMilliseconds)
++                break;
++        }
++
++        if (selected.Count == 0)
++            return Array.Empty<Candle>();
++
++        var buckets = new SortedDictionary<long, TickCandleBuilder>();
++        long serverNow = Mt5ServerClock.ServerNowUnix(serverUtcOffsetMinutes);
++        foreach (var candidate in selected
++                     .OrderBy(item => item.StartMilliseconds)
++                     .ThenBy(item => item.EndMilliseconds))
++        {
++            if (cancellationToken.IsCancellationRequested)
++                return Array.Empty<Candle>();
++
++            try
++            {
++                using var stream = new FileStream(
++                    candidate.Path,
++                    FileMode.Open,
++                    FileAccess.Read,
++                    FileShare.ReadWrite | FileShare.Delete);
++                using var reader = new StreamReader(
++                    stream,
++                    Encoding.UTF8,
++                    detectEncodingFromByteOrderMarks: true,
++                    bufferSize: 128 * 1024);
++                _ = reader.ReadLine(); // header
++
++                while (!reader.EndOfStream)
++                {
++                    if (cancellationToken.IsCancellationRequested)
++                        return Array.Empty<Candle>();
++
++                    string? line = reader.ReadLine();
++                    if (string.IsNullOrWhiteSpace(line) ||
++                        !TryParseTick(line, symbol, out CanonicalTick tick))
++                    {
++                        continue;
++                    }
++
++                    long tickUnix = tick.TimeMilliseconds / 1000L;
++                    if (excludedSegmentKeys is not null)
++                    {
++                        string segmentKey = PersistentHistoryStore.GetSegmentKey(
++                            tickUnix,
++                            serverUtcOffsetMinutes);
++                        if (excludedSegmentKeys.Contains(segmentKey))
++                            continue;
++                    }
++
++                    long bucketStart = timeframe.GetBucketStartUnix(
++                        tickUnix,
++                        serverUtcOffsetMinutes);
++                    long bucketEnd = timeframe.GetBucketEndUnix(
++                        bucketStart,
++                        serverUtcOffsetMinutes);
++                    double price = tick.Bid > 0
++                        ? tick.Bid
++                        : tick.Last > 0
++                            ? tick.Last
++                            : tick.Ask;
++                    if (!double.IsFinite(price) || price <= 0)
++                        continue;
++
++                    int spread = tick.Bid > 0 && tick.Ask > 0 && point > 0
++                        ? Math.Max(0, (int)Math.Round((tick.Ask - tick.Bid) / point))
++                        : 0;
++
++                    if (!buckets.TryGetValue(bucketStart, out TickCandleBuilder? builder))
++                    {
++                        builder = new TickCandleBuilder(
++                            bucketStart,
++                            bucketEnd,
++                            price,
++                            spread,
++                            tick);
++                        buckets.Add(bucketStart, builder);
++                    }
++                    else
++                    {
++                        builder.Add(price, spread, tick);
++                    }
++                }
++            }
++            catch (IOException)
++            {
++                // Snapshot may be atomically replaced by MT5; continue with the
++                // other nearest files instead of turning Find Candle into a scan.
++            }
++            catch (UnauthorizedAccessException)
++            {
++            }
++        }
++
++        if (buckets.Count == 0)
++            return Array.Empty<Candle>();
++
++        Candle[] all = buckets.Values
++            .Select(builder => builder.ToCandle(
++                symbol,
++                timeframe.DisplayText,
++                digits,
++                point,
++                serverNow))
++            .OrderBy(candle => candle.StartUnix)
++            .ToArray();
++        if (all.Length <= maximumRecords)
++            return all;
++
++        long focusBucketStart = timeframe.GetBucketStartUnix(
++            focusUnix,
++            serverUtcOffsetMinutes);
++        int low = 0;
++        int high = all.Length;
++        while (low < high)
++        {
++            int middle = low + (high - low) / 2;
++            if (all[middle].StartUnix < focusBucketStart)
++                low = middle + 1;
++            else
++                high = middle;
++        }
++
++        int insertion = low;
++        int desiredLeft = maximumRecords / 2;
++        int start = Math.Clamp(insertion - desiredLeft, 0, all.Length - maximumRecords);
++        return all.Skip(start).Take(maximumRecords).ToArray();
++    }
++
+     public CanonicalTickReadResult ReadTicks(
+         string targetRoot,
+         long startMilliseconds,
+
+===== src/TickLab.App/MainWindow.xaml =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/MainWindow.xaml	2026-08-15 10:49:29.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml	2026-08-15 18:24:21.469702397 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.138 — Seconds Direct Raw History Repair"
++        Title="TickLab v1.13.0.139 — Find Candle Direct Seek / Marker / Seconds History"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+
+===== src/TickLab.App/TickLab.App.csproj =====
+--- /mnt/data/ticklab_findcandle_fix/v138/TickLabV1_13_0_138_Seconds_Direct_Raw_History_Repair/src/TickLab.App/TickLab.App.csproj	2026-08-15 10:49:29.000000000 +0000
++++ /mnt/data/ticklab_findcandle_fix/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/TickLab.App.csproj	2026-08-15 18:24:21.469309741 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.138</Version>
+-    <AssemblyVersion>1.13.0.138</AssemblyVersion>
+-    <FileVersion>1.13.0.138</FileVersion>
++    <Version>1.13.0.139</Version>
++    <AssemblyVersion>1.13.0.139</AssemblyVersion>
++    <FileVersion>1.13.0.139</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>

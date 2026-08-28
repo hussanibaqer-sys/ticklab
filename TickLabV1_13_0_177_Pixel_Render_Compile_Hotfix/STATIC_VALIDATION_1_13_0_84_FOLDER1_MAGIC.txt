@@ -1,0 +1,17 @@
+TickLab 1.13.0.84 Folder 1 Lines + Magic visual correction static validation
+XAML files parsed: 30
+C# files scanned: 149
+XAML event references checked: 427
+Missing XAML handlers: 0
+Drawing tool IDs found: 101; duplicates: 0
+opaque vector magic renderer: YES
+magic gravity fall: YES
+magic no 3.35 fade: YES
+colour wand cursor: YES
+line flyout reference width: YES
+line price/bar coordinates: YES
+line settings four tabs: YES
+inline arrow toggles: YES
+101 tool ids: YES
+dotnet/MSBuild availability: NOT AVAILABLE IN THIS CONTAINER
+Result: STATIC PASS

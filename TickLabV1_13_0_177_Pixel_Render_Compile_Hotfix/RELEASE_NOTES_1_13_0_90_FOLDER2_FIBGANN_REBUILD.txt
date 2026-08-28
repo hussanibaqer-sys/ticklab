@@ -1,0 +1,47 @@
+TickLab v1.13.0.90 — Folder 2 Fibonacci / Gann Rebuild
+
+BASE
+- Continues from v1.13.0.89.
+- Folder 1 behavior is preserved; Disjoint Channel's point-3 vertical lock has explicit regression checks.
+- No Bridge / History / Replay / MT5 / Gateway / Connector implementation source was changed.
+
+FIBONACCI REBUILD
+- Introduced a common Folder-2 level rendering model instead of one generic colour/fill.
+- Every enabled level can retain its own line colour.
+- Background band between adjacent levels inherits the colour of the line immediately above/inside that band.
+- One overall Background opacity controls all level bands: 0 = fully transparent, 1 = fully solid.
+- Level readings can be globally enabled/disabled and individually controlled with per-level Price and Reading checkboxes.
+- Reading placement controls: Left / Center / Right, Above / Middle / Below, and Inside / Outside frame.
+- Fib Retracement: sharp level lines, individual colors, colored bands, prices/readings.
+- Trend-Based Fib Extension: rebuilt 3-point A-B measurement + C origin renderer so levels cannot collapse/disappear; individual colors, bands, readings.
+- Fib Channel: per-level colored rails, bands and readings.
+- Fib Time Zone and Trend Fib Time: per-zone colored bands and readings.
+- Fib Circles: concentric colored bands and readings.
+- Fib Spiral: multi-level colored spiral ribbons/readings.
+- Fib Speed Resistance Arcs: semicircular arcs and semi-annulus colored bands rather than full circles.
+- Fib Speed Fan and Pitchfan: colored sectors and level readings.
+- Fib Wedge: nested curved sector/arc bands instead of the old straight-line approximation.
+- Added pixel-aligned stroke placement to reduce WPF sub-pixel blur on horizontal/vertical level graphics.
+
+GANN REBUILD
+- Gann Fan ratio geometry rebuilt and rays sorted by actual on-screen angle; colored zones and readings added.
+- Gann Box no longer renders a generic dense 8x8 grid or an unrelated fan.
+- Gann Box reference axes are separated: horizontal/left readings 0, 0.382, 0.618, 1; vertical/right readings 0.25, 0.5, 0.75.
+- Gann Box background zones use both axis color stacks and visible grid hit-testing follows the rendered lines.
+- Gann Square Fixed uses its top corner as the reference construction origin.
+- Gann Square uses its bottom corner as the reference construction origin.
+- Gann square variants render colored grid/fan geometry plus quarter-circle arcs instead of full-circle approximations.
+- Visible Gann grids/fans/arcs are used for reselection hit-testing.
+
+SETTINGS / TOOLBOX UI
+- Fib/Gann Settings follows TickLab's active Light/Dark theme instead of forcing a white dialog.
+- Drawing-tool selection/flyout palette follows active theme resources.
+- Selected-object contextual toolbar no longer forces a white strip with mismatched dark buttons.
+- Added/updated crisp vector icons for Fib Retracement, Trend-Based Fib Extension, Gann Box, Gann Square, Gann Square Fixed, Gann Fan, Alert and More actions.
+- Settings remain modeless, so opening a drawing's Settings does not disable/freeze the TickLab chart.
+- Cancel/X restores the pre-edit drawing; OK commits the edited drawing.
+
+VALIDATION
+- Static source validation: 681 passed, 0 failed.
+- Exact changed app source: 11 files.
+- Windows .NET/WPF compile/runtime is not available in the build environment used here, so this package is a Folder-2 Windows-test candidate, not a claim that video parity is frozen.

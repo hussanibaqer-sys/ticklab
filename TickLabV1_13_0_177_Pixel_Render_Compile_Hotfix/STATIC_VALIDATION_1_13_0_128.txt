@@ -1,0 +1,38 @@
+PASS | Version metadata 1.13.0.128
+PASS | Window title v128
+PASS | v128 solution exists
+PASS | Build script targets v128
+PASS | Measure rectangle fill restored without outline
+PASS | Measure diagonal remains removed
+PASS | Measure color/transparency editor retained
+PASS | Measure remains temporary click-to-clear
+PASS | TL wordmark reserves time-scale height
+PASS | Workspace controls hidden by default
+PASS | Workspace controls appear only on own hover
+PASS | Pane controls present but invisible by default
+PASS | Pane controls use own hover only
+PASS | Detached chart caption controls hover-only
+PASS | Detached workspace caption controls hover-only
+PASS | Above drawing layers clipped to plot
+PASS | Finite body drag constrained as a unit
+PASS | Media resize uses constrained drag point
+PASS | Rectangle has 8 handle generator
+PASS | Rectangle handle hit indices wired
+PASS | Rectangle side handles axis locked
+PASS | Rotated rectangle has 8 handle geometry
+PASS | Rotated handle hit indices wired
+PASS | Rotated side handles local-axis locked
+PASS | Rotated resize keeps corners inside plot
+PASS | Rotated bounds include all four corners
+PASS | Frozen CandleChartControl.DrawingParity.cs
+PASS | Frozen DrawingToolCatalog.cs
+PASS | Frozen EmojiVectorAssets.cs
+PASS | Frozen DrawingMediaPickerWindow.xaml
+PASS | Frozen DrawingMediaPickerWindow.xaml.cs
+PASS | All XAML parses | 31 files; bad=0
+PASS | All C# structurally balanced | 153 files; bad=0
+PASS | Source diff limited to 8 intended files | ['TickLab.App/Controls/CandleChartControl.Drawing.cs', 'TickLab.App/Controls/CandleChartControl.cs', 'TickLab.App/Controls/WorkspaceSurfaceControl.cs', 'TickLab.App/MainWindow.xaml', 'TickLab.App/MainWindow.xaml.cs', 'TickLab.App/TickLab.App.csproj', 'TickLab.App/Windows/DetachedChartWindow.xaml', 'TickLab.App/Windows/DetachedWorkspaceWindow.xaml']
+PASS | No build caches
+
+RESULT: 35/35 passed
+Environment limitation: Windows WPF/.NET SDK is unavailable in this container; Visual Studio compile/runtime remains the final gate.

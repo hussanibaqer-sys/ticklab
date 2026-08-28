@@ -1,0 +1,9 @@
+TickLab v1.13.0.26 first test — default Candles only
+
+1. Open the default Candles chart at the newest/live right side.
+2. Zoom horizontally out until 1,500 bars are visible.
+3. Continue scrolling outward for vertical-only zoom. Right-side candles must remain fixed and visible.
+4. Drag left and right repeatedly. Movement must begin immediately and stay smooth.
+5. Keep dragging near the newest side. The chart must not pause, jump, disappear, or reload both directions.
+6. Move only the crosshair. Candle layout and indicator panes must not refresh or jump.
+7. Scroll toward older history until one older page loads. The viewport anchor must remain stable.

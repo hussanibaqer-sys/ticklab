@@ -1,0 +1,12 @@
+TickLab v1.12.1 — Chart Workspace Layout Hotfix
+
+- Removed the four fixed placeholder panels below the price chart.
+- Restored the chart to full available height.
+- Removed the fixed favorites strip from the main layout.
+- Favorites now use the free-draggable horizontal favorites window.
+- Adding the first favorite opens the floating bar automatically.
+- Rebuilt tool folders as compact dark in-chart flyouts.
+- Removed large white icon tiles and corrected text contrast.
+- Reduced flyout width and row height.
+- Rebuilt timeframe chips for dark-theme readability with wider labels.
+- Preserved chart, history, tick sync, drawing, marker, and MT5 bridge behavior.

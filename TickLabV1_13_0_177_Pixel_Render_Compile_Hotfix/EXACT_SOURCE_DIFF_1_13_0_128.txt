@@ -1,0 +1,28 @@
+TickLab v1.13.0.128 — EXACT APP SOURCE DIFF vs v1.13.0.127
+
+Changed files: 8
+
+1. TickLab.App/Controls/CandleChartControl.Drawing.cs
+   v127 ca0fabde85bea506d2fc897b930599f154aef03c3fcba383d2d86099417bc234
+   v128 817d2609867de60654f61ea4c26c784204576d48e31c2a6ed9caf342dadf9d40
+2. TickLab.App/Controls/CandleChartControl.cs
+   v127 8f926552a719e2ed869cceeeaecdf57af590f7736c3ae5e065b7e730aa6493e5
+   v128 31e67c46a320cb942d82bc65430dda49566390460356419e4948af6cd37fa72b
+3. TickLab.App/Controls/WorkspaceSurfaceControl.cs
+   v127 f529df1bbeaa12a18506f0290bb99b7d14acacbe367e3cb56ac6172d630c2912
+   v128 52e8ae0bb3302c5e46306880f1fcac09f339eb3c6a3f4d23aa824c0721e5393a
+4. TickLab.App/MainWindow.xaml
+   v127 069e40ee732ddff9a3fe78b3686f5f35e45bfd2d14af710967ae125ce3123ece
+   v128 92f740762e06d6dd060bcca288ae3040ac4f3d08cba06c55f6956fa0768aae28
+5. TickLab.App/MainWindow.xaml.cs
+   v127 31884cb50420cf9e38fe2859e43ac0889e864960d8a7d3591e4ff9fb875cfbdd
+   v128 76665b040b5bffd4c73bb2e506ec10595b57dd7595fff1aa75355f92e3c7f1b3
+6. TickLab.App/TickLab.App.csproj
+   v127 60559879e49c57262b987931a328d8b2cb8433d5a8f007fbccadf96663de3c88
+   v128 d53473e30c6bac43ee5b4b66b77251d2d7a67dc0458cec9a2f5d98b9407d11c7
+7. TickLab.App/Windows/DetachedChartWindow.xaml
+   v127 f56bfb43bed43b2e2508cc1875fbbf1f19561f38db9caf96613e279ced33fd24
+   v128 3510c1078121309cfeeff06da97c7dc8dc1fcdf08303dfb3edcc7ad30fc2b6f6
+8. TickLab.App/Windows/DetachedWorkspaceWindow.xaml
+   v127 eb8640141410028aa1692e092545a84bfec02c572f2a6e7983e4713bb3f4791a
+   v128 c485816f5b94a1a8a0bc57fad402ee53dcb0dcac8946ed8d011a643b2721bf91

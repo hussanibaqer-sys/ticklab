@@ -1,0 +1,33 @@
+TickLab v1.13.0.91 — First test checklist
+
+A. Fib Retracement (test first)
+1. Open Settings.
+2. Untick "Prices on levels". Price numbers must disappear immediately while ratios remain.
+3. Retick prices, then untick "Level readings (0.5 / 0.618 / …)". Ratios must disappear while prices remain.
+4. On one row, untick Price only. Only that level's price disappears.
+5. On one row, untick Reading only. Only that level's ratio/reading disappears.
+6. Untick On. Entire level disappears.
+7. Change 0.618 to 0.700. Geometry and numeric reading should change live to 0.7/0.700 unless a custom text label is entered.
+8. Add a level, remove it, move a level up/down, change its colour.
+
+B. Background transparency
+1. Click near 25%, 50%, 70%, 90% on Background transparent→solid slider.
+2. It must move to approximately the clicked position, not jump only to 0 or 100%.
+3. 0 must remove the background bands completely.
+4. Maximum must make bands fully solid.
+
+C. Other Fibonacci tools
+- Repeat Price / Reading / On tests on Fib Channel, Trend Fib Extension, Time Zone, Trend Fib Time, Circles, Spiral, Speed Arcs, Speed Fan, Wedge and Pitchfan.
+
+D. Gann
+1. Gann Fan: readings must show 1/8, 1/4, 1/3, 1/2, 1/1 etc. when Reading is on.
+2. Gann Fan: Price master/per-level Price checkboxes must visibly add/remove the price component.
+3. Fixed Gann Square: drag the opposite corner diagonally. Whole square must grow/shrink while staying square/linked.
+4. Gann Box: confirm internal diagonals/fan rays/arcs are visible and clicking them reselects the object.
+5. Test per-level On / Price / Reading on Gann Box, both Gann Squares and Gann Fan.
+
+E. Contrast
+- Test light chart and dark chart.
+- Readings should remain legible even when their level colour is very light or very dark.
+
+If any single item fails, keep Folder 2 open and send the exact screenshot/video; do not move to Folder 3.

@@ -1,0 +1,24 @@
+TickLab v1.13.0.42 protected MT5/FileBridge verification
+
+PASS  MT5/TickLabLiveBridge_V300.mq5
+PASS  MT5/TickLabCandleMarkerExchange_V109.mq5
+PASS  MT5/TickLabHistoryBridge_V305.mq5
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5HistoryStatus.cs
+PASS  src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5ConnectorSummary.cs
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+PASS  src/TickLab.App/Gateway/FileBridge/TickArchiveCandleCache.cs
+PASS  src/TickLab.App/Gateway/FileBridge/LocalCandleHistoryCache.cs
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5ProtocolModels.cs
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5SymbolInfo.cs
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5Paths.cs
+PASS  src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+PASS  src/TickLab.App/Gateway/FileBridge/ExternalHistoryStore.cs
+PASS  src/TickLab.App/Gateway/FileBridge/NativeCandleArchiveStore.cs
+PASS  src/TickLab.App/Gateway/FileBridge/MarkerExchangeService.cs
+PASS  src/TickLab.App/Gateway/FileBridge/TemporaryHistoryStore.cs
+PASS  src/TickLab.App/Gateway/FileBridge/CsvLineParser.cs
+PASS  src/TickLab.App/Gateway/FileBridge/HistoryVisibilityStore.cs
+
+Protected files checked: 19
+Failures: 0

@@ -1,0 +1,12 @@
+TickLab v1.13.0.141 — first runtime checks
+
+1. Open Find Candle and confirm Timeframe order begins: Tick, 1s, 15s, 30s, 45s.
+2. Select Tick. Confirm button label becomes Find tick.
+3. Search a raw tick from an older date/time. Confirm Raw Tick Chart opens and centers around that second quickly.
+4. Confirm the Find button immediately becomes locked Finding… with a clearly visible rotating round arrow; no white-on-white state.
+5. While Finding… is active, try rapid repeat clicks: no second search should start.
+6. Confirm a found historical Tick window does NOT show live right-side blank breathing space.
+7. Press End or click the Tick Chart Live button. Confirm it reloads the true latest ticks and live updates resume.
+8. On Tick Chart, zoom out horizontally. Confirm it stops at 5000 visible ticks; further zoom-out does nothing.
+9. Confirm normal initial Tick Chart live view is still about 1600 ticks, not forced to 5000.
+10. Re-test 1s Find Candle direct seek and marker removal from v1.13.0.139/v1.13.0.140 for regression.

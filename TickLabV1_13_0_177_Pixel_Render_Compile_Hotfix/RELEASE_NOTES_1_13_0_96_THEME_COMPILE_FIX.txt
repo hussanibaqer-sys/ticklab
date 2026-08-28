@@ -1,0 +1,18 @@
+TickLab v1.13.0.96 — Theme Compile Fix
+
+Purpose
+- Small compile-only correction on top of v1.13.0.95.
+- No intentional drawing geometry, Fib controls, Gann behavior, MT5, history, or replay changes.
+
+Compile blocker fixed
+- Added System.Windows.Controls.Primitives import for DataGridColumnHeader used by ApplicationThemeManager.
+
+Nullable safety
+- Replaced the ColorConverter cast/null-forgiving expression in ApplicationThemeManager with explicit object? / Color type checking.
+
+Version
+- TickLab.App package/assembly/file version bumped to 1.13.0.96.
+- Main window title bumped to v1.13.0.96.
+
+Note
+- The three remaining nullable diagnostics reported without filenames/line numbers cannot be mapped reliably in this Linux environment because the Windows WPF compiler is unavailable. If Visual Studio still reports them after this build, send the filename + line number and they can be corrected exactly without guessing.

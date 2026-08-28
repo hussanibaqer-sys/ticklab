@@ -1,0 +1,46 @@
+TickLab v1.13.0.108 — Folder 4 Step 3 VWAP + Volume Profile Parity
+
+SCOPE LOCK
+Only Step 3 tools were changed:
+- Anchored VWAP
+- Fixed Range Volume Profile (FRVP)
+- Anchored Volume Profile
+- Shared drawing settings/hit-testing needed by those three tools
+- Version/title metadata
+Everything else remains frozen against v1.13.0.107.
+
+ANCHORED VWAP
+- Starts calculation from the selected anchor candle.
+- Uses cumulative volume-weighted price from the anchor forward.
+- Main VWAP defaults to blue.
+- First upper/lower standard-deviation band pair is enabled by default and uses a separate green style role.
+- Additional Band #2 / Band #3 remain available and disabled by default.
+- Band level checkboxes are authoritative when explicit levels exist.
+- Click any visible VWAP or deviation-band segment to select the parent tool and restore quick edit.
+- Selection bounds include the complete visible VWAP and bands.
+
+FIXED RANGE VOLUME PROFILE
+- Replaces the inappropriate generic Fib/Levels settings presentation with dedicated profile Inputs + Style controls.
+- Inputs: Rows Layout, Row Size, Volume mode, Value Area Volume %, Extend Right.
+- Rows Layout supports Number of Rows and Ticks per Row semantics.
+- Style: Volume Profile, Values, Values colour/transparency, Width (% of box), Placement.
+- Independent colour + transparency for Up Volume, Down Volume, Value Area Up, Value Area Down, VAH, VAL, POC, Developing POC, Developing VA, Histogram Box.
+- Default fixed-range placement is Left, with width measured as a percentage of the selected range box.
+- Value Area, POC, VAH and VAL are derived from the selected range profile.
+- Optional Developing POC / Developing VA paths and Histogram Box.
+- Dedicated Coordinates view shows #1 (bar) and #2 (bar) using the currently loaded chart data while persistence remains timestamp-based.
+- Clicking a visible histogram row or enabled POC/VAH/VAL/developing/box component selects the parent profile.
+
+ANCHORED VOLUME PROFILE
+- Uses the same dedicated Inputs/Style system as FRVP.
+- Starts from one selected anchor and calculates forward.
+- Defaults to Right placement.
+- Uses the same Up/Down, Value Area, POC/VAH/VAL and independent colour/transparency system.
+- Dedicated Coordinates view shows the anchor as #1 (bar).
+- Clicking any visible profile component selects the parent tool.
+
+COMPATIBILITY
+- Legacy profile option keys and old four-role profile levels are migrated/fallback-mapped so older workspaces do not need to be discarded.
+
+VALIDATION LIMIT
+This Linux environment does not have dotnet/MSBuild, so Windows WPF compilation/runtime cannot be executed here. Static validation, XAML parsing, event-handler resolution, source freeze checks and package integrity are performed before delivery. Visual Studio on Windows remains the final compile/runtime gate.

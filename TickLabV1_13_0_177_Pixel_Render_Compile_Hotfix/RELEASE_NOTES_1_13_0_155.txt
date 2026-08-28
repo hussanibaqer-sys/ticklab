@@ -1,0 +1,20 @@
+TickLab v1.13.0.155 — Synthetic Seconds Lock
+
+BASE
+- Rebuilt directly from v1.13.0.152 — Tick Render + Drawing Smoothness.
+- v1.13.0.153 and v1.13.0.154 changes are NOT included.
+
+ONLY FUNCTIONAL CHANGE
+- Synthetic chart types are locked on every seconds timeframe (built-in or custom).
+- Locked types: Heikin Ashi, Renko, Line Break, Kagi, Point & Figure, Range.
+- While a seconds timeframe is active, the Synthetic charts menu/settings are disabled.
+- Direct/programmatic synthetic selection on seconds is rejected.
+- Switching from a synthetic minute-or-higher chart to a seconds timeframe automatically uses normal Candles.
+- Saved workspaces containing synthetic + seconds are normalized to Candles when restored.
+- Synthetic chart types remain available normally on 1-minute and higher timeframes.
+
+PROTECTED
+- No v153/v154 synthetic paging/history modifications are present.
+- v152 Tick renderer and drawing smoothness changes are preserved.
+- Seconds history/paging/aggregation remains exactly v152.
+- Tick history, Tick Find, Candle Finder, Replay, watchdog/integrity agents, FileBridge/MT5/MQL, drawings, indicators and other chart types are unchanged except for the synthetic-seconds selection guard described above.

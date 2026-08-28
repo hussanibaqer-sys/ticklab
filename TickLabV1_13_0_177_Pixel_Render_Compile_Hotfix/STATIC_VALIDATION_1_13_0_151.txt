@@ -1,0 +1,35 @@
+TickLab v1.13.0.151 — Static Validation
+
+Environment limitation
+----------------------
+The ChatGPT execution environment has no dotnet, MSBuild, csc or mcs installed, so a
+Windows Visual Studio compile/runtime test remains authoritative.
+
+Checks performed
+----------------
+PASS - C# delimiter/string/comment balance on every functional changed C# file.
+PASS - MainWindow.xaml XML parse.
+PASS - TickLab.App.csproj XML parse.
+PASS - exactly one PrepareMergedSegment helper.
+PASS - exactly one CanonicalTickArchiveStore ReadSegmentMetadata helper.
+PASS - exactly one DrainPendingRawTickHistoryRequests helper.
+PASS - old CanonicalTickArchiveStore MergeSegment / WriteSegmentMetadata call sites removed.
+PASS - watchdog code file MainWindow.xaml.cs byte-for-byte unchanged from v1.13.0.150.
+PASS - Replay code MainWindow.AlertsReplay.cs byte-for-byte unchanged from v1.13.0.150.
+PASS - PersistentHistoryStore.cs byte-for-byte unchanged from v1.13.0.150.
+PASS - Mt5FileBridgeClient.cs byte-for-byte unchanged from v1.13.0.150.
+PASS - MT5 TickLabLiveBridge_V300.mq5 unchanged.
+PASS - MT5 TickLabCandleMarkerExchange_V109.mq5 unchanged.
+PASS - MT5 TickLabHistoryBridge_V305.mq5 unchanged.
+PASS - v1.13.0.151 version/title tokens present.
+
+Concurrency invariants reviewed
+-------------------------------
+- Raw parsing cannot mutate canonical data before commit.
+- Prepared merge uses an immutable old target snapshot plus temporary incoming source.
+- Cancellation during parsing/preparation leaves canonical target untouched.
+- Final replacement is File.Move(..., overwrite:true) under the existing canonical lock.
+- Foreground readers either see the old complete target or the new complete target.
+- Background maintenance may wait for foreground reader completion; foreground readers no
+  longer wait for raw CSV parsing or merge preparation.
+- Pending Tick page requests are cleared when chart identity/history paging resets.

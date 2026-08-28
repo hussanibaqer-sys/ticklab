@@ -1,0 +1,19 @@
+TickLab v1.13.0.169 static validation
+
+PASS — version metadata = 1.13.0.169
+PASS — MainWindow title = TickLab v1.13.0.169 — Crisp Action Rail Icons
+PASS — action icons use normalized one-pixel stroke compensation
+PASS — Favorites / Measure / Zoom / Scroll / Magnet / Stay / Lock / Hide / Delete / Unlock vectors present
+PASS — Delete vector rebuilt as centered trash-can geometry
+PASS — rectangle/ellipse pixel snapping enabled
+PASS — C# delimiter balance check for DrawingToolIconFactory.cs
+PASS — TickLab.App.csproj XML parse
+PASS — MainWindow.xaml XML parse
+PASS — source diff scope limited to DrawingToolIconFactory.cs plus version-only MainWindow.xaml and TickLab.App.csproj
+PASS — no MT5/FileBridge/history/raw-tick/seconds/Find/Replay/indicator/workspace/chart-type source files changed
+
+Build note
+----------
+The current Linux packaging environment does not contain dotnet/csc/mcs, so a full WPF compile
+cannot be executed here. Run the normal Windows restore/build/runtime test before promoting this
+candidate.

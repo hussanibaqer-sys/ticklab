@@ -1,0 +1,27 @@
+TickLab v1.13.0.45 intended source changes
+
+Runtime source changed:
+- src/TickLab.App/MainWindow.DemoTrading.cs
+  - Added demo initialization gate.
+  - Ignored History on chart events during InitializeComponent.
+  - Blocked premature demo-account saves.
+  - Made status output controls null-safe.
+  - Added .bak/.tmp load fallback and .bak creation before replacement.
+- src/TickLab.App/MainWindow.xaml
+  - Updated window version title only.
+- src/TickLab.App/TickLab.App.csproj
+  - Updated version identity only.
+
+Build/release files changed or added:
+- TickLabV1_13_0_45.sln
+- VERSION.txt
+- Clean-Restore-Build.cmd
+- RELEASE_NOTES_1_13_0_45.txt
+- FIRST_TEST_CHECKLIST_1_13_0_45.txt
+- BUILD_README_1_13_0_45.txt
+- DEMO_HISTORY_RECOVERY_NOTE_1_13_0_45.txt
+- VALIDATION_REPORT_1_13_0_45.txt
+- PROTECTED_MT5_FILEBRIDGE_VERIFICATION_1_13_0_45.txt
+- EXACT_FILE_DIFF_1_13_0_45.txt
+- SOURCE_MANIFEST_SHA256_1_13_0_45.txt
+- tools/validate_source_1_13_0_45.py

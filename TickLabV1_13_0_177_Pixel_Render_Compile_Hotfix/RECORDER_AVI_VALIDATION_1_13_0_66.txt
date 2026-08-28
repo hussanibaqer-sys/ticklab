@@ -1,0 +1,13 @@
+TickLab v1.13.0.66 AVI layout validation
+
+A synthetic AVI was generated with the same RIFF/LIST/movi/idx1 layout and v1.13.0.66 header values.
+Independent ffprobe result:
+- format_name: avi
+- codec_name: mjpeg
+- dimensions: 640x360
+- r_frame_rate: 15/1
+- nb_frames: 15
+- duration: 1.000000 seconds
+- probe return code: 0
+
+This validates container/header/index structure independently of TickLab UI behavior.

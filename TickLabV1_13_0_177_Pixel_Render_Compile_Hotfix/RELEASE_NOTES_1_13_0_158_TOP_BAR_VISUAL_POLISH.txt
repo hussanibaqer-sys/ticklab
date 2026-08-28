@@ -1,0 +1,20 @@
+TickLab v1.13.0.158 — Top Bar Visual Polish
+
+BASE
+- Built directly from v1.13.0.157 Final Baseline.
+- Functionality, layout structure, button order, event handlers and all non-top-bar systems are preserved.
+
+TOP BAR ONLY
+- Replaced the top toolbar button visual template with a clean borderless idle state.
+- Hover/pressed/active states use only subtle theme-surface shading; no blue selected marker or blue selection border.
+- Active timeframe uses theme-surface shading rather than the old blue fill/border.
+- Preserved every top-bar control and its existing order/function.
+- Make Timeframe now uses the same clean top-bar button surface.
+- Reworked icons as WPF vector geometry for crisp scaling: New Chart, Layout, Indicators, Alerts, Replay, MT5 Connections, Chart Type, Refresh, Markers, Theme, Settings, Folder, Code Editor, Recorder, Screenshot.
+- Indicators uses a bar-chart + rising trend vector based on the user-provided reference.
+- Settings is now an unmistakable mechanical nut/gear-style symbol rather than a target/GPS-like icon.
+- Candles chart-type icon uses true wick/body candlesticks rather than mixer-like sliders.
+- Recorder uses a film/video-camera silhouette; Screenshot uses a compact digital-camera silhouette.
+
+PROTECTED
+- No chart engine, drawing engine, history, Tick, seconds, Find, Replay, workspace, indicator, agent, FileBridge or MT5/MQL logic changed.

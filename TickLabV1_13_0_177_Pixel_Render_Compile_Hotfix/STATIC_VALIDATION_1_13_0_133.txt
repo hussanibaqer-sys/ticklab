@@ -1,0 +1,28 @@
+PASS | Version 1.13.0.133
+PASS | Window title v133
+PASS | Solution v133 exists
+PASS | Build helper targets v133
+PASS | Second launch page = normal virtual page
+PASS | Seconds launch branch explicit
+PASS | All second full reloads capped
+PASS | Actual raw tick coverage boundary used
+PASS | Page-first false boundary removed
+PASS | Paged seconds only resolve boundary on initial load
+PASS | Hidden ranges guarded in coverage
+PASS | Hidden tick segments skipped before backward search
+PASS | Frozen CandleChartControl.cs
+PASS | Frozen CandleChartControl.Drawing.cs
+PASS | Frozen CandleChartControl.DrawingParity.cs
+PASS | Frozen MainWindow.RawTickChart.cs
+PASS | Frozen DrawingToolCatalog.cs
+PASS | Frozen EmojiVectorAssets.cs
+PASS | Shared max visible candles still 1500
+PASS | Shared page records still 1600
+PASS | Shared virtual buffer still 12000
+PASS | All XAML parses | 31 files; bad=0
+PASS | All C# structurally balanced | 154 files; bad=0
+PASS | Source diff limited to four intended files | ['TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs', 'TickLab.App/MainWindow.xaml', 'TickLab.App/MainWindow.xaml.cs', 'TickLab.App/TickLab.App.csproj']
+PASS | No build caches
+
+RESULT: 25/25 passed
+Environment limitation: Windows WPF/.NET SDK is unavailable in this container; Visual Studio compile/runtime remains the final gate.

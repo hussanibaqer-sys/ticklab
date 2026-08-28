@@ -1,0 +1,10 @@
+TickLab v1.13.0.33 Restart Step 3A validation
+
+Targeted source checks: 203 passed, 0 failed
+Duplicate-method checks: 9 passed, 0 failed
+Bridge-write checks: 15 passed, 0 failed
+XML/XAML/project parsing: passed
+C# delimiter validation: passed
+Protected MT5/FileBridge/history sources: unchanged from v1.13.0.32 Restart Step 3
+
+Important: this environment does not contain the Windows .NET/WPF compiler. A real Visual Studio 2022/.NET 8 build remains required.

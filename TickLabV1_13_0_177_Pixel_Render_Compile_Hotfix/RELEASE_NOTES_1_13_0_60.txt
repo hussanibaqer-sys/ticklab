@@ -1,0 +1,15 @@
+TickLab v1.13.0.60 — Replay Labels + Reverse Response
+
+Scope
+-----
+Replay controls and replay selector presentation only.
+
+Changes
+-------
+1. Yellow replay Start selector now shows a tiny START label at both the top and bottom of the vertical line.
+2. Red replay End selector now shows a tiny END label at both the top and bottom of the vertical line.
+3. Compact Replay tab now includes End Replay, returning the chart to the continuously updated live view.
+4. Reverse now undoes one raw tick immediately on button click and redraws immediately, then continues reverse playback on the timer.
+5. Existing v1.13.0.59 compact/full Replay controls, visible Speed value, instant replay path, viewport preservation and hidden live-state behavior are preserved.
+
+No screen-recording feature is included.

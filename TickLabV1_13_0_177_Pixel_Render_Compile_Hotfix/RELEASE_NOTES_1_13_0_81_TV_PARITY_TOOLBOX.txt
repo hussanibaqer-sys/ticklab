@@ -1,0 +1,50 @@
+TickLab v1.13.0.81 — TL75 TradingView-Parity Drawing Toolbox
+==============================================================
+
+Purpose
+-------
+This release replaces the generic v1.13.0.79/v1.13.0.80 drawing-toolbox presentation with a reference-driven toolbox layer based on the user's eight-part TradingView recording, emoji screenshots, and chart-image-upload recording.
+
+Reference-parity changes
+------------------------
+- Compact 46 px full-height left drawing rail with the audited group order:
+  cursor, lines, Fibonacci/Gann, patterns, forecasting/measurement, geometry, text/notes, media.
+- Each drawing group is a split control: current/recent tool on the main icon and the full folder on the small flyout segment.
+- Folder menus now overlay the chart beside the rail instead of consuming chart width.
+- Folder menus are sectioned and ordered like the recording (LINES / CHANNELS / PITCHFORKS, FIBONACCI / GANN, BRUSHES / ARROWS / SHAPES, FORECASTING / VOLUME BASED / MEASURES, etc.).
+- Reference keyboard shortcuts are displayed and active: Alt+T, Alt+H, Alt+J, Alt+V, Alt+C, Alt+F, Alt+Shift+R.
+- Favorites stars follow the recorded interaction: existing favorites stay visible; non-favorite stars appear on row hover. Right-click any listed drawing tool still provides Add/Remove from Favorites.
+- Drawing tool icons and left-rail actions use TickLab-owned vector geometry instead of generic letter/Unicode placeholders.
+- The lower utility rail follows the recording: Measure, one-shot Zoom, Magnet, Stay Drawing Mode, Lock, Hide, Remove, and Collapse.
+- Selected-object contextual controls now follow the selected drawing on the chart, preferring the space immediately above it and automatically moving below/clamping when needed.
+- Context controls use compact vector lock/settings/delete/close icons and only expose controls relevant to the selected object.
+- Selection handles use the reference blue/white edit treatment and image objects use four-corner resize handles.
+- Live construction previews are nearly full opacity so anchors/geometry remain readable while drawing.
+
+Drawing behavior/settings retained and connected
+------------------------------------------------
+- Tool-specific anchor counts, click sequences, live mouse preview, double-click completion for variable-point tools, freehand smoothing, Shift constraints, Ctrl-drag clone, selection/move/reshape, undo/redo/checkpoints.
+- Specialized implementations for lines/rays/channels/regression, Fibonacci/Gann/pitchfork tools, harmonic/Elliott/cycle tools, forecasting and measurement tools, volume profiles, ranges, geometric shapes, text/notes, and media objects.
+- Selected drawing -> contextual mini toolbar; Settings opens the tool-aware Style/Text/Inputs/Coordinates/Visibility editor as applicable.
+- Long/Short position drawings remain analysis/P&L/risk objects only. No broker attachment and no real-order-placement path was added.
+
+Emoji/media
+-----------
+- Emoji picker keeps the audited top category navigation and fixed bottom Emojis / Stickers / Icons tabs.
+- The complete local emoji catalog remains available independent of network loading.
+- Image tool follows the supplied recording: Choose image -> JPG/PNG/WEBP (2 MB limit) -> preview/loading state -> Transparency -> OK -> place on chart -> select/move/resize.
+
+Favorites projection
+--------------------
+- Right-click a drawing tool -> Add to Favorites / Remove from Favorites.
+- Right-click empty price chart or empty workspace -> Favorites Tabs -> On/Off.
+- The independent floating drawing-favorites bar can be moved/reordered but is hard-clamped inside the TickLab owner frame and re-clamped when the owner moves/resizes/state-changes.
+
+Compatibility
+-------------
+- Legacy internal drawing IDs that are not present in the audited TradingView flyouts are retained for old workspace/template compatibility but hidden from the reference palette.
+- Existing TickLab data/history/replay/indicator/demo-trading architecture is preserved.
+
+Validation note
+---------------
+The execution environment used to prepare this source does not contain the Windows .NET SDK/MSBuild/WPF compiler. Static XAML/event/source validation and ZIP integrity are performed here; the final WPF compile must be run on Windows/Visual Studio.

@@ -1,0 +1,12 @@
+TickLab v1.13.0.110 — First Test Checklist
+
+1. Draw/select Fixed Range Volume Profile and open Settings > Style.
+2. Click VAH colour: colour picker must open and TickLab must stay responsive.
+3. Change colour, click OK, confirm live/profile colour update.
+4. Repeat for VAL and POC.
+5. Repeat for Up Volume, Down Volume, Value Area Up, Value Area Down.
+6. Repeat for Developing POC, Developing VA, Histogram Box and Values colour.
+7. Repeat the same checks on Anchored Volume Profile.
+8. Cancel one picker and confirm the original colour returns.
+9. Verify transparency sliders still work independently.
+10. Verify other Folder 4 tools are unchanged.

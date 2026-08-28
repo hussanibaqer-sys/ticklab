@@ -1,0 +1,30 @@
+TickLab v1.13.0.52 change scope
+================================
+
+Approved scope: Replay Mode only.
+
+Functional source changes:
+- CandleChartControl.cs: replay-line hit testing, drawing-style drag capture and right-click removal.
+- MarketReplayEngine.cs: expose the current replay candle bucket for exact Step Candle behavior.
+- MainWindow.AlertsReplay.cs: bind replay to its owning chart, raw-tick stepping/playback, safe rendering, line removal and restore.
+- MainWindow.ChartContexts.cs: route replay-line removal and block Refresh on the active replay chart.
+- MainWindow.IndependentIndicators.cs: prevent replay indicators from reading future candles.
+- MainWindow.xaml.cs: block older/newer/Home/End history injection into the replay chart.
+- MarketReplayWindow.cs: clarify line interaction and removal instructions.
+
+Release identity changes:
+- TickLab.App.csproj
+- MainWindow.xaml title
+- VERSION.txt
+- solution filename
+- Clean-Restore-Build.cmd
+- v1.13.0.52 validation and release documents
+
+Explicitly outside scope:
+- MT5 bridge code
+- FileBridge/history storage formats
+- Demo Trading logic
+- alert engine
+- right-side panel rail
+- drawing engine other than temporary replay-line interaction
+- symbol favourites

@@ -1,0 +1,22 @@
+TickLab v1.13.0.36 — Restart Step 5A Compile Hotfix
+
+Base
+- TickLab v1.13.0.35 Restart Step 5.
+
+Fixed only the reported compiler diagnostics
+- Added a NotNullWhen(true) contract to the independent-indicator source lookup so a successful lookup proves the connected chart is non-null.
+- Added explicit non-null checks to the two TickScript indicator-result lookups used by the chart indicator menus.
+- Assigned DemoMarketSnapshot market on every return path.
+- Added an explicit null guard for the exact chart context used by demo positions.
+- Replaced the short-circuit demo market lookup with an explicit null branch so the out parameter is always assigned.
+- Snapshotted the nullable dragged trade-line ID before converting it to a non-null string.
+
+Unchanged
+- Demo trading behaviour, position cards, live P/L, Entry/SL/TP levels and draggable SL/TP.
+- Price-chart Add Indicator.
+- Floating-chart drag handle.
+- Symbol picker, workspace add menu and indicator placement/sync behaviour.
+- MT5 bridge, FileBridge, history, live data, replay and storage formats.
+
+Environment limitation
+- This package was statically validated in Linux. A Windows Visual Studio 2022 / .NET 8 WPF rebuild remains the authoritative compiler and runtime test.

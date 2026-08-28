@@ -1,0 +1,9 @@
+TickLab v1.13.0.25 first test — basic Candles only
+
+1. Open the default Candles chart.
+2. Zoom out horizontally until exactly 1,500 bars are visible and horizontal zoom stops.
+3. Continue rolling the wheel outward 20–30 steps.
+4. Confirm only the vertical price scale expands.
+5. Confirm visible bar count remains 1,500, the newest candle stays fixed, and no candle flickers, disappears, or returns.
+6. Repeat with the mouse near the top, middle, and bottom of the plot.
+7. Zoom vertically back in and confirm candle X positions never move.

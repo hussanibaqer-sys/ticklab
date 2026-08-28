@@ -1,0 +1,252 @@
+<Window x:Class="TickLab.Desktop.Windows.SymbolPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select MT5 Instrument"
+        Width="760"
+        Height="650"
+        MinWidth="560"
+        MinHeight="460"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        Background="{StaticResource WindowBrush}"
+        Foreground="{StaticResource TextBrush}">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Select an MT5 instrument"
+                           Style="{StaticResource PageTitle}"/>
+                <TextBlock Text="Search by symbol, description, or broker category."
+                           Margin="0,4,0,0"
+                           Foreground="{StaticResource MutedTextBrush}"/>
+            </StackPanel>
+
+            <Button Grid.Column="1"
+                    Width="104"
+                    Height="36"
+                    Margin="12,0,0,0"
+                    Padding="8,4"
+                    Content="Refresh MT5"
+                    Style="{StaticResource SoftAccentButton}"
+                    Click="RefreshButton_Click"/>
+        </Grid>
+
+        <Border Grid.Row="1"
+                PreviewMouseLeftButtonDown="SearchBorder_PreviewMouseLeftButtonDown"
+                Background="White"
+                BorderBrush="#707070"
+                BorderThickness="1"
+                CornerRadius="5"
+                Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="36"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="⌕"
+                           Foreground="Black"
+                           FontSize="21"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <TextBox x:Name="SearchBox"
+                         Grid.Column="1"
+                         Height="42"
+                         Padding="5,8"
+                         BorderThickness="0"
+                         Background="White"
+                         Foreground="Black"
+                         CaretBrush="Black"
+                         IsReadOnly="False"
+                         IsEnabled="True"
+                         Focusable="True"
+                         SelectionBrush="#BDD2FF"
+                         SelectionTextBrush="Black"
+                         FontSize="15"
+                         TextChanged="SearchBox_TextChanged"
+                         KeyDown="SearchBox_KeyDown"/>
+            </Grid>
+        </Border>
+
+
+        <ScrollViewer x:Name="FilterScrollViewer" Grid.Row="2"
+                      HorizontalScrollBarVisibility="Hidden"
+                      VerticalScrollBarVisibility="Disabled"
+                      Margin="0,0,0,10"
+                      PanningMode="HorizontalOnly"
+                      PreviewMouseWheel="FilterScrollViewer_PreviewMouseWheel"
+                      PreviewMouseLeftButtonDown="FilterScrollViewer_PreviewMouseLeftButtonDown"
+                      PreviewMouseMove="FilterScrollViewer_PreviewMouseMove"
+                      PreviewMouseLeftButtonUp="FilterScrollViewer_PreviewMouseLeftButtonUp"
+                      LostMouseCapture="FilterScrollViewer_LostMouseCapture">
+            <StackPanel x:Name="FilterPanel" Orientation="Horizontal"/>
+        </ScrollViewer>
+
+        <Border Grid.Row="3"
+                Background="White"
+                BorderBrush="#707070"
+                BorderThickness="1"
+                CornerRadius="5">
+            <Grid>
+                <ListBox x:Name="SymbolsList"
+                         Background="White"
+                         Foreground="Black"
+                         BorderThickness="0"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.CanContentScroll="True"
+                         MouseDoubleClick="SymbolsList_MouseDoubleClick"
+                         SelectionChanged="SymbolsList_SelectionChanged">
+                    <ListBox.Resources>
+                        <Style TargetType="{x:Type ScrollBar}">
+                            <Setter Property="Width" Value="17"/>
+                            <Setter Property="MinWidth" Value="17"/>
+                            <Setter Property="Background" Value="#E1E1E1"/>
+                            <Setter Property="Foreground" Value="#5A5A5A"/>
+                            <Setter Property="Opacity" Value="1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                        <Grid Width="17" Background="#E1E1E1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="17"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="17"/>
+                                            </Grid.RowDefinitions>
+                                            <RepeatButton Grid.Row="0" Command="{x:Static ScrollBar.LineUpCommand}" Content="▲" FontSize="8" Foreground="Black" Background="#D0D0D0" BorderBrush="#A0A0A0"/>
+                                            <Track x:Name="PART_Track" Grid.Row="1" Orientation="Vertical" IsDirectionReversed="True">
+                                                <Track.DecreaseRepeatButton>
+                                                    <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Background="#ECECEC" BorderThickness="0"/>
+                                                </Track.DecreaseRepeatButton>
+                                                <Track.Thumb>
+                                                    <Thumb MinHeight="32" Background="#666666" BorderBrush="#3B3B3B" BorderThickness="1"/>
+                                                </Track.Thumb>
+                                                <Track.IncreaseRepeatButton>
+                                                    <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Background="#ECECEC" BorderThickness="0"/>
+                                                </Track.IncreaseRepeatButton>
+                                            </Track>
+                                            <RepeatButton Grid.Row="2" Command="{x:Static ScrollBar.LineDownCommand}" Content="▼" FontSize="8" Foreground="Black" Background="#D0D0D0" BorderBrush="#A0A0A0"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Resources>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Padding" Value="10,7"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#E8E8E8"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#D6D6D6"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="36"/>
+                                    <ColumnDefinition Width="145"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="180"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        Width="28"
+                                        Height="25"
+                                        Padding="0"
+                                        Margin="0,-3,6,-3"
+                                        Tag="{Binding Name}"
+                                        Content="{Binding StarGlyph}"
+                                        FontSize="17"
+                                        Foreground="#D99A00"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        ToolTip="Add or remove favourite"
+                                        Click="FavouriteStar_Click"/>
+
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           Foreground="Black"
+                                           FontWeight="SemiBold"
+                                           FontSize="14"/>
+
+                                <TextBlock Grid.Column="2"
+                                           Margin="12,0"
+                                           Text="{Binding Description}"
+                                           Foreground="Black"
+                                           TextTrimming="CharacterEllipsis"/>
+
+                                <TextBlock Grid.Column="3"
+                                           Text="{Binding Path}"
+                                           Foreground="#303030"
+                                           TextAlignment="Right"
+                                           TextTrimming="CharacterEllipsis"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <TextBlock x:Name="EmptyText"
+                           Text="No MT5 instruments loaded yet."
+                           Foreground="Black"
+                           FontSize="15"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Visibility="Collapsed"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="4" Margin="0,12,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="CountText"
+                       Foreground="{StaticResource MutedTextBrush}"
+                       VerticalAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    Width="92"
+                    Height="36"
+                    Margin="0,0,8,0"
+                    Content="Cancel"
+                    Style="{StaticResource SoftAccentButton}"
+                    Click="CancelButton_Click"/>
+
+            <Button x:Name="SelectButton"
+                    Grid.Column="2"
+                    Width="112"
+                    Height="36"
+                    Content="Open chart"
+                    Style="{StaticResource AccentButton}"
+                    IsEnabled="False"
+                    Click="SelectButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

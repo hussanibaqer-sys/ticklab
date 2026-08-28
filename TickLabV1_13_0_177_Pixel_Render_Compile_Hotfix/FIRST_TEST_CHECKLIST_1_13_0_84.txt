@@ -1,0 +1,35 @@
+TickLab v1.13.0.84 first test checklist
+
+1. Clean build
+- Delete TickLab.App bin and obj, then rebuild in Visual Studio.
+
+2. Magic cursor
+- Open Cursor folder > Magic.
+- Confirm the cursor is a colourful wand with a gold star/sparkles.
+- Click several chart locations.
+- Confirm spawned fruit/money/gift/etc. are solid coloured, not outline-only and not semi-transparent.
+- Confirm particles pop, then fall all the way downward/out of the chart instead of fading away in mid-air.
+
+3. Folder 1 flyout
+- Open the line folder.
+- Confirm white TradingView-style flyout and sections LINES / CHANNELS / PITCHFORKS.
+- Confirm tool icons are individually recognizable and shortcuts/favorite stars are visible as expected.
+
+4. Line construction
+- Test Trendline, Ray, Info line, Extended line, Trend angle.
+- Test Horizontal line/ray, Vertical line, Crossline.
+- Test Parallel channel, Regression trend, Flat top/bottom, Disjoint channel.
+- Test all four pitchfork variants.
+
+5. Selection and quick controls
+- Select each completed line object.
+- Confirm anchor handles are editable.
+- Confirm the compact white quick toolbar appears near the selected object and follows it after moving anchors/object.
+
+6. Settings
+- Open settings for Trendline and Extended line: Style / Text / Coordinates / Visibility.
+- Open Trend angle settings: Style / Coordinates / Visibility (no Text tab).
+- Confirm line colour/style/width and arrow controls preview live.
+- In Coordinates, confirm rows show #1/#2 (price, bar); edit both price and bar and verify the drawing moves correctly.
+
+If a mismatch remains, record only Folder 1 while showing the menu, one drawing action, selection toolbar and settings so the next correction can remain isolated to this folder.

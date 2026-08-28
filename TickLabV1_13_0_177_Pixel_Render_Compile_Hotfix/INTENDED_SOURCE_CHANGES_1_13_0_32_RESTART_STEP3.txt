@@ -1,0 +1,30 @@
+TickLab v1.13.0.32 Restart Step 3 — Intended source changes
+
+Indicator right-click address and removal:
+- src/TickLab.App/Controls/BuiltInIndicatorPlotControl.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/Controls/IndicatorPaneStackControl.cs
+- src/TickLab.App/Controls/TickScriptIndicatorPlotControl.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/MainWindow.IndependentIndicators.cs
+- src/TickLab.App/MainWindow.IndicatorManagement.cs
+
+Symbol search:
+- src/TickLab.App/Windows/SymbolPickerWindow.xaml
+- src/TickLab.App/Windows/SymbolPickerWindow.xaml.cs
+
+Colour swatches and hover names:
+- src/TickLab.App/Settings/ColorDisplayHelper.cs
+- src/TickLab.App/Windows/BuiltInIndicatorSettingsWindow.cs
+- src/TickLab.App/Windows/ChartSettingsWindow.xaml.cs
+- src/TickLab.App/Windows/DrawingColorPickerWindow.xaml
+- src/TickLab.App/Windows/DrawingColorPickerWindow.xaml.cs
+- src/TickLab.App/Windows/DrawingSettingsWindow.xaml
+- src/TickLab.App/Windows/DrawingSettingsWindow.xaml.cs
+- src/TickLab.App/Windows/TickScriptIndicatorSettingsWindow.cs
+
+Version metadata only:
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+
+All other source files match v1.13.0.31 Restart Step 2.

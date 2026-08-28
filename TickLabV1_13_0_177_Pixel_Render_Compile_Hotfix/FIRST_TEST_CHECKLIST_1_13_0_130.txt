@@ -1,0 +1,10 @@
+TickLab v1.13.0.130 — First Runtime Test
+
+1. Draw a Trend Line.
+2. Use the top-center quick-edit toolbar and click Settings.
+3. Confirm TradingView Line Settings opens without NullReferenceException.
+4. Open the Visibility tab.
+5. Drag Seconds / Minutes / Hours / Daily / Weekly / Monthly maximum sliders.
+6. Confirm each displayed maximum label updates and no crash occurs.
+7. Close/reopen settings from another line-family drawing (Ray / Horizontal Line / Channel if applicable).
+8. Regression: confirm v1.13.0.129 Favorites Tabs and top-center quick edit still work unchanged.

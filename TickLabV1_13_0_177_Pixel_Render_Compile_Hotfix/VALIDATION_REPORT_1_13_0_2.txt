@@ -1,0 +1,16 @@
+TickLab v1.13.0.2 — Validation Report
+
+Compiler hotfix checks
+- Duplicate DistanceToSegment declarations: none.
+- Shadowed fillOpacity local: removed.
+- Nullable TryGetValue declarations corrected: 4.
+- Explicit null guards added for nullable reference results.
+- CS4014 containment limited to that single diagnostic.
+
+Protected components
+- TickLabLiveBridge_V300.mq5 unchanged.
+- TickLabHistoryBridge_V305.mq5 unchanged.
+- TickLabCandleMarkerExchange_V109.mq5 unchanged.
+
+Limitation
+- The active environment has no Windows .NET/WPF compiler. Visual Studio 2022 Release Rebuild remains the final compiler test.

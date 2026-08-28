@@ -1,0 +1,11 @@
+TickLab v1.13.0.159 — Top Bar Icon Correction
+
+Built from v1.13.0.158. Icon-only correction requested by user.
+
+Changed top-bar vector artwork only:
+- Screenshot: proper digital still camera with top housing, shutter, double-ring lens and status light.
+- Settings: true toothed mechanical gear/hub, not GPS/target shaped.
+- MT5 Connections: trading terminal + live cable/plug symbol.
+- Candles chart type: canonical three-candlestick icon with clear wicks and bodies.
+
+No top-bar control order, layout, handlers, tooltips, selected-state styling, chart/history/drawing/Find/Replay/Bridge/agent behavior changed.

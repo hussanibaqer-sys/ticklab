@@ -1,0 +1,15 @@
+TickLab v1.13.0.3 first test checklist
+
+1. Extract to C:\TickLab\TickLabV1_13_0_3 outside OneDrive.
+2. Open TickLabV1_13_0_3.sln and select Release.
+3. Clean Solution and Rebuild Solution.
+4. Confirm the drawing rail is visible from top to bottom.
+5. Confirm every rail icon is centred in its button.
+6. Use the up/down controls and mouse wheel to reach every rail item.
+7. Click each drawing category and confirm its list opens beside the rail.
+8. Confirm the category list scrolls vertically.
+9. Drag the category-list splitter left and right.
+10. Confirm DRAWINGS, OBJECTS and MARKET remain in the right workspace.
+11. Drag the right-workspace splitter left and right.
+12. Use the arrow handle to collapse and restore the right workspace.
+13. Confirm chart zoom, scrolling, drawing selection and MT5 data remain functional.

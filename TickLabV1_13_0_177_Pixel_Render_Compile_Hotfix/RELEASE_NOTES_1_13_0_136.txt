@@ -1,0 +1,32 @@
+TickLab v1.13.0.136 — Find Candle Timeframe Anchor
+
+Focused scope: Candle Marker / Find Candle navigation only.
+
+1. Find Candle timeframe coverage
+- Added TickLab second candle choices to the existing Find Candle timeframe selector:
+  1s, 15s, 30s, 45s.
+- Existing native MT5 timeframe choices remain available.
+- Second-timeframe Find/Mark uses TickLab raw-tick-derived candle history.
+- MT5 export remains native-timeframe-only because MT5 does not expose these TickLab synthetic second timeframes as native chart periods.
+
+2. Historical navigation anchor
+- A successful Find Candle / Go to Marker now records the original historical timestamp as a per-chart navigation anchor.
+- Changing candle timeframe keeps the same chart pane around that timestamp instead of returning to the current/live candle.
+- The target candle on each new timeframe is the candle bucket containing the original timestamp.
+- The selected candle is centered in the chart after the historical page is loaded.
+- The original timestamp remains the anchor when moving 1s -> M1 -> M5 -> M30 -> H1 -> other candle timeframes.
+
+3. Bounded history loading
+- Historical timeframe comparison uses the existing virtual chart paging system.
+- Seconds retain the 1,600-candle page discipline and raw-tick on-demand generation from v1.13.0.135.
+- The feature does not load the entire historical dataset into the chart.
+
+4. Returning to live
+- Pressing End / returning to the latest chart window releases the Find Candle anchor.
+- Paging all the way to the actual newest saved candle also releases the anchor.
+- Selecting another symbol releases an anchor belonging to the previous symbol.
+
+Regression freeze
+- v1.13.0.135 unlimited seconds raw-tick history code is unchanged.
+- Drawing tools, drawing parity, Emoji, Favorites, top toolbar, Measure, Rectangle handles and settings code are unchanged.
+- MT5/FileBridge raw-tick storage/import implementation is unchanged in this update.

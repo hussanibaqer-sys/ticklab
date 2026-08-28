@@ -1,0 +1,26 @@
+TickLab v1.13.0.40 protected MT5/FileBridge verification
+
+Compared against v1.13.0.39 Restart Step 7.
+Protected files checked: 19
+PASS  f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4  MT5/TickLabCandleMarkerExchange_V109.mq5
+PASS  1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf  MT5/TickLabHistoryBridge_V305.mq5
+PASS  a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e  MT5/TickLabLiveBridge_V300.mq5
+PASS  a8b5ae11512387a28a7b4eb77d6df73b2db994ccc70f774cdb838bbef6b8cdf5  src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+PASS  c1ab404b7acda4274a218f7ae9ca86bac017a028e4ed83a065434eafd0cf9859  src/TickLab.App/Gateway/FileBridge/CsvLineParser.cs
+PASS  b09afd7deaa0c54ec8a507f76a16f9996213494d52ee8a3fc74e614f56bc5a1d  src/TickLab.App/Gateway/FileBridge/ExternalHistoryStore.cs
+PASS  28121e07e0edbdece025e4e423b9f09d1a86f11ae05fce01e989199945af803b  src/TickLab.App/Gateway/FileBridge/HistoryVisibilityStore.cs
+PASS  aa3ad534d91d80be0868b13561770cf7e0d0d703f64cc45ba3c7bf7caad2253e  src/TickLab.App/Gateway/FileBridge/LocalCandleHistoryCache.cs
+PASS  c76f9c132e6a096a6c71ce7d3f4cf30c59ba25be3e9b6eae32b8aa0ea3cc374d  src/TickLab.App/Gateway/FileBridge/MarkerExchangeService.cs
+PASS  ddc50ea487380fe2499fabca666d4d38a2612090ad5452c346b8aca4fe36c6ad  src/TickLab.App/Gateway/FileBridge/Mt5ConnectorSummary.cs
+PASS  f21af284b6b80cb0c0ec4465b604dad7ce992bcc512a3e83dbda5d87876b36e7  src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+PASS  529090aa9ebc30e81f41dd30c62e9582caa1f53593d6f0728486fe86793c3cd6  src/TickLab.App/Gateway/FileBridge/Mt5HistoryStatus.cs
+PASS  08f3b7f62b7f9feeff7f34359f9eef81dbd65d95cc5899a924e44ddce6759ec8  src/TickLab.App/Gateway/FileBridge/Mt5Paths.cs
+PASS  1bcc108c6a8ca36a79c703bdfc914879d3661b3bf404e05327dcdc90c69d5a54  src/TickLab.App/Gateway/FileBridge/Mt5ProtocolModels.cs
+PASS  9bd478f890b154acf6f5d054de45317345a5ea6c36a189a403551bff8c855c3f  src/TickLab.App/Gateway/FileBridge/Mt5SymbolInfo.cs
+PASS  c699c8c82c7f46557ac0d717ead9a8238a3f549e136bcc4a81cb3bdbfec94724  src/TickLab.App/Gateway/FileBridge/NativeCandleArchiveStore.cs
+PASS  0624ee64b417d02c7fc0d5814b2f5f692b53f97de445afd0b03d40ad4f34bd3b  src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+PASS  96cc81123b2ac158910686d2f3f5c3b0e97b3a9c9586343600bac9c9a9ce9b7f  src/TickLab.App/Gateway/FileBridge/TemporaryHistoryStore.cs
+PASS  408cddfce9d50d66934533f3bffea99b9954da08c28d40a6689b80439fa75ca1  src/TickLab.App/Gateway/FileBridge/TickArchiveCandleCache.cs
+
+Passed: 19
+Failed: 0

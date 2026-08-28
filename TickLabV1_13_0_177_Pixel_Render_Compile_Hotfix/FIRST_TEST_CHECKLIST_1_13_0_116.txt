@@ -1,0 +1,16 @@
+TickLab v1.13.0.116 — FIRST TEST CHECKLIST
+
+1. Confirm title shows v1.13.0.116.
+2. Select Text and click once in the middle of the chart.
+   Expected: "Add text" appears immediately and remains visible after completion.
+3. Select Note and click first anchor, then second point.
+   Expected: live preview appears; completed leader + note box remain visible.
+4. Place Price Note, Pin, Comment, Price Label, Signpost and Flag.
+   Expected: each is visibly painted on the chart, not only listed in Drawing Inspector.
+5. Place Table with two clicks.
+   Expected: grid appears and remains visible.
+6. Click visible annotation bodies/text/boxes.
+   Expected: parent drawing reselects and quick edit works.
+7. Drawing Inspector Remove.
+   Expected: removal remains working exactly as it did in v1.13.0.115.
+8. Regression: previously completed drawing folders remain unchanged.

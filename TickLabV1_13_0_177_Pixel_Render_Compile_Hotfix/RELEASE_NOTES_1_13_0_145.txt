@@ -1,0 +1,21 @@
+TickLab v1.13.0.145 — Shared Drawing Compile Hotfix
+
+Purpose
+- Compile-only correction on top of v1.13.0.144 shared Tick Chart drawing integration.
+
+Fixed compiler errors
+- Renamed Raw Tick branch local drawingObjectUnderPointer to avoid C# enclosing-scope collision.
+- Renamed Raw Tick body-move priceDelta to rawPriceDelta to avoid enclosing-scope collision.
+- Renamed Raw Tick magnet targetPoint/pointerDistance locals to rawTargetPoint/rawPointerDistance to avoid enclosing-scope collisions.
+- Added shared FindTickIndexByTimestamp(long) binary-search helper and reused it from ShowTimestamp and Find Tick marker drawing/hit testing.
+
+Preserved
+- v1.13.0.144 shared CandleChart drawing engine architecture on Tick Chart.
+- v1.13.0.143 Tick history/projection repair and 5,000-visible-tick ceiling.
+- v1.13.0.142 fast old 1-second Find Candle behavior.
+- MT5/FileBridge/history storage/replay files unchanged.
+
+Validation
+- Static source/XML/symbol checks passed in ChatGPT environment.
+- No dotnet/MSBuild/csc compiler is installed in this environment, so Visual Studio remains the authoritative compile/runtime test.
+- Nullability diagnostics reported with the compile errors were warnings, not the six blocking compiler errors patched here.

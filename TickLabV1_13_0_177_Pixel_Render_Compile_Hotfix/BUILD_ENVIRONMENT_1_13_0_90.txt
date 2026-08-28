@@ -1,0 +1,7 @@
+TickLab v1.13.0.90 build environment note
+
+Linux static-edit/validation environment.
+dotnet executable: NOT_AVAILABLE
+msbuild executable: NOT_AVAILABLE
+
+A Windows WPF compile/runtime check must be performed on the user's PC.

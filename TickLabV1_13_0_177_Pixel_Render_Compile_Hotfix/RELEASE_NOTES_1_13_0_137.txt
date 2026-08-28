@@ -1,0 +1,50 @@
+TickLab v1.13.0.137 — Find Candle Raw-Tick Time Anchor
+
+Focused scope: Find Candle historical navigation, seconds raw-tick generation, cross-timeframe anchor, and marker background rendering.
+
+1. Exact date/time is now authoritative after Find Candle
+- Find Candle keeps its timeframe selector as the initial lookup context.
+- MarkerDraft now preserves both the selected timeframe candle bucket and the exact date/time typed by the user.
+- Local Find markers persist that exact navigation timestamp in AnchorUnix.
+- Once a marker is placed, changing timeframe uses the exact date/time anchor rather than forcing the original Find timeframe to keep matching.
+- Example: Find PERIOD_M1 at 10:35:27 -> switch to 1s -> TickLab centers around 10:35:27, not merely 10:35:00 and not the live edge.
+
+2. Seconds Find Candle now generates a full chart window directly from raw ticks
+- 1s / 15s / 30s / 45s Find no longer depends on a second candle having been generated previously.
+- A seconds Find request asks for a normal bounded 1,600-candle page around the requested timestamp.
+- ReadSecondCandlesOnDemand now accepts a focus timestamp.
+- If a full canonical page exists elsewhere but does not span the requested time, TickLab still discovers/indexes the required historical raw-tick snapshots and rebuilds the page around the requested time.
+- Exact Find succeeds only when raw ticks formed the requested second-timeframe bucket; the surrounding raw-tick page is still checked/generated on demand.
+
+3. Historical seconds chart remains navigable in both directions
+- Older paging keeps the existing unlimited raw-tick history mechanism from v1.13.0.135.
+- Newer paging from a historical seconds window now supplies a forward focus timestamp, so the next raw-tick area can be indexed/generated instead of falsely concluding the live edge was reached because only older canonical candles were present.
+- Pages remain bounded; TickLab does not load months/years of 1-second candles into memory at once.
+
+4. Timeframe switching no longer returns to live
+- A successful Find detaches the pane from live projection while the historical anchor is active.
+- 1s -> 15s -> M1 -> M5 -> M30 -> H1 and other candle timeframe changes stay around the exact same marked date/time.
+- Reaching the newest saved page by scrolling no longer deletes the historical anchor.
+- Refresh rebuilds the chart around the same historical anchor instead of silently loading the live tail.
+- Explicit End / Go Live / Latest clears the anchor. Selecting a different symbol still clears a marker anchor belonging to the old symbol.
+
+5. Marker vertical line is always background
+- Persisted marker vertical strokes are now drawn before all drawing layers and before candles.
+- The active historical date/time guide also renders in the background.
+- On the original Find timeframe the persisted marker line is used; on other timeframes the exact timestamp guide remains visible even though the original marker belongs to another timeframe.
+- Marker labels remain readable above chart content while the vertical stroke itself never covers candle bodies/wicks.
+
+Regression freeze
+- Drawing interaction/parity files unchanged.
+- DrawingToolCatalog unchanged.
+- Emoji vector assets unchanged.
+- Mt5FileBridgeClient unchanged.
+- Native candle archive unchanged.
+- Replay engine unchanged.
+- Existing v1.13.0.135 unlimited seconds-history paging remains the base behavior and is extended only with timestamp-focused on-demand indexing.
+
+Validation
+- 25/25 targeted static checks passed.
+- 31/31 XAML files parsed.
+- 154 C# files passed delimiter/structural scan.
+- Windows Visual Studio is still the final WPF compile/runtime gate.

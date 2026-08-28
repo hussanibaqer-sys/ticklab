@@ -1,0 +1,101 @@
+<Window x:Class="TickLab.Desktop.Windows.ChartSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TickLab v1.13.0.21 — Chart Settings"
+        Width="880" Height="880" MinWidth="780" MinHeight="700"
+        WindowStartupLocation="CenterOwner" Background="{DynamicResource WindowBrush}">
+
+    <Window.Resources>
+        <Style x:Key="ChartColourSwatchButton" TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Swatch" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform><TranslateTransform/></Border.RenderTransform>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Swatch" Property="BorderBrush" Value="#C8C8C8"/></Trigger>
+                            <Trigger Property="IsPressed" Value="True"><Setter TargetName="Swatch" Property="RenderTransform"><Setter.Value><TranslateTransform Y="1"/></Setter.Value></Setter></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions><RowDefinition Height="54"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="{DynamicResource DarkHeaderBrush}">
+            <Grid Margin="16,0"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Chart Settings" Foreground="White" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="ChartIdentityText" Foreground="#8FA6C0" FontSize="10" Margin="0,2,0,0"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Text="Live preview · OK saves · Cancel restores" Foreground="#7F95AD" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Margin="16">
+            <Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <Border Style="{StaticResource CardBorder}" Padding="14" Margin="0,0,0,12">
+                        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="180"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <TextBlock Text="Application theme" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="ApplicationThemeCombo" Grid.Column="1" Width="160" HorizontalAlignment="Left" SelectionChanged="SettingControl_Changed">
+                                <ComboBoxItem Content="Dark"/><ComboBoxItem Content="Light"/>
+                            </ComboBox>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Padding="14" Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Text="Interaction" Style="{StaticResource SectionTitle}" Margin="0,0,0,8"/>
+                            <RadioButton x:Name="ZoomModeRadioButton" GroupName="ScrollWheelMode" Content="Mouse wheel zooms the selected chart"/>
+                            <RadioButton x:Name="ScrollModeRadioButton" GroupName="ScrollWheelMode" Content="Mouse wheel scrolls the selected chart"/>
+                            <CheckBox x:Name="ShowCandleGridCheckBox" Content="Show chart grid"/>
+                            <CheckBox x:Name="ShowCandleCrosshairCheckBox" Content="Show crosshair"/>
+                            <CheckBox x:Name="SnapCandleCrosshairCheckBox" Content="Snap crosshair to nearest candle"/>
+                            <CheckBox x:Name="ShowCrosshairLabelsCheckBox" Content="Show crosshair price and time labels"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Padding="14" Margin="0,0,0,12">
+                        <StackPanel x:Name="AppearancePanel"/>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Padding="14" Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Text="Tick chart" Style="{StaticResource SectionTitle}" Margin="0,0,0,8"/>
+                            <CheckBox x:Name="ShowTickGridCheckBox" Content="Show tick grid"/>
+                            <CheckBox x:Name="ShowBidLineCheckBox" Content="Show Bid line"/>
+                            <CheckBox x:Name="ShowAskLineCheckBox" Content="Show Ask line"/>
+                            <CheckBox x:Name="ShowMidLineCheckBox" Content="Show Mid line"/>
+                            <CheckBox x:Name="ShowTickPointsCheckBox" Content="Show every tick point"/>
+                            <CheckBox x:Name="ShowTickCrosshairCheckBox" Content="Show tick crosshair"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Padding="14">
+                        <StackPanel>
+                            <TextBlock Text="Copy and defaults" Style="{StaticResource SectionTitle}" Margin="0,0,0,8"/>
+                            <CheckBox x:Name="UseAsDefaultCheckBox" Content="Use confirmed settings as the default for future charts"/>
+                            <TextBlock Text="Optionally copy the confirmed settings to specific charts:" Foreground="{StaticResource MutedTextBrush}" Margin="0,8,0,5"/>
+                            <WrapPanel x:Name="CopyTargetsPanel"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+            <Grid Grid.Row="1" Margin="0,14,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Reset chart" Click="ResetButton_Click"/>
+                    <Button Content="Save preset" Click="SavePresetButton_Click"/>
+                    <Button Content="Load preset" Click="LoadPresetButton_Click"/>
+                    <Button Content="Import" Click="ImportPresetButton_Click"/>
+                    <Button Content="Export" Click="ExportPresetButton_Click"/>
+                </StackPanel>
+                <Button Grid.Column="3" Width="100" Content="Cancel" Click="CancelButton_Click"/>
+                <Button Grid.Column="4" Style="{StaticResource AccentButton}" Width="100" Margin="0" Content="OK" Click="ApplyButton_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

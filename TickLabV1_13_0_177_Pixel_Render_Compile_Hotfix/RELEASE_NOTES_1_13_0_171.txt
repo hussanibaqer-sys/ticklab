@@ -1,0 +1,22 @@
+TickLab v1.13.0.171 — Human-Centered Rail Balance
+
+Base:
+- Built directly from v1.13.0.170 — Balanced Drawing Rail Gutters.
+- v1.13.0.157 Final Baseline remains the permanent functional rollback baseline.
+
+Visual-only drawing-rail correction:
+- Expanded rail remains 68 px wide.
+- The visible 36 px lower action-button column is now positioned at x = 16 px, giving exactly 16 px visible breathing room on the left and 16 px on the right.
+- Folder split rows move with that same visual tool column. Their 35 px primary tool button therefore has approximately balanced visible gutters (16 px left / 17 px right) when the chevron is hidden.
+- The 11 px chevron remains hover-only and now occupies part of the right-side breathing-room area only when it appears, instead of being counted as permanent visible width.
+- The full 46 px folder host is still present for hover hit-testing and split-button behavior; only its placement changed.
+- Separator and bottom collapse control are recentered on the same human-visible tool axis.
+- Collapsed rail remains 14 px.
+
+Preserved:
+- v1.13.0.170 68 px rail width.
+- v1.13.0.169 one-pixel action icon geometry.
+- v1.13.0.168 crisp drawing-tool icon fixes.
+- v1.13.0.167 hover-only folder chevrons/theme-aware hover treatment.
+- v1.13.0.166 universal markers / last-used folder tools.
+- No drawing, chart, raw tick, seconds, Find, Replay, FileBridge/MT5, indicator, workspace or chart-type behavior changed.

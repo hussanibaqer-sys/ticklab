@@ -1,0 +1,32 @@
+TickLab v1.13.0.37 exact file diff versus v1.13.0.36 Restart Step 5A
+
+Added (10)
++ BUILD_README_1_13_0_37_RESTART_STEP6.txt
++ FIRST_TEST_CHECKLIST_1_13_0_37_RESTART_STEP6.txt
++ INTENDED_SOURCE_CHANGES_1_13_0_37_RESTART_STEP6.txt
++ PROTECTED_MT5_FILEBRIDGE_VERIFICATION_1_13_0_37.txt
++ RELEASE_NOTES_1_13_0_37_RESTART_STEP6.txt
++ SOURCE_MANIFEST_SHA256_1_13_0_37.txt
++ TickLabV1_13_0_37.sln
++ VALIDATION_REPORT_1_13_0_37_RESTART_STEP6.txt
++ VALIDATION_RUN_1_13_0_37_RESTART_STEP6.txt
++ tools/validate_source_1_13_0_37_restart_step6.py
+
+Removed (1)
+- TickLabV1_13_0_36.sln
+
+Changed (14)
+* Clean-Restore-Build.cmd
+* VERSION.txt
+* src/TickLab.App/Controls/BuiltInIndicatorPlotControl.cs
+* src/TickLab.App/Controls/CandleChartControl.cs
+* src/TickLab.App/Controls/TickScriptIndicatorPlotControl.cs
+* src/TickLab.App/Core/Settings/ChartSettings.cs
+* src/TickLab.App/MainWindow.ChartContexts.cs
+* src/TickLab.App/MainWindow.DemoTrading.cs
+* src/TickLab.App/MainWindow.IndicatorManagement.cs
+* src/TickLab.App/MainWindow.Workspaces.cs
+* src/TickLab.App/MainWindow.xaml
+* src/TickLab.App/TickLab.App.csproj
+* src/TickLab.App/Windows/ChartSettingsWindow.xaml.cs
+* src/TickLab.App/Windows/DetachedChartWindow.xaml

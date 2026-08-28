@@ -1,0 +1,60 @@
+TickLab v1.13.0.79 — TL75 Full Drawing Toolbox Video-Audit Integration
+
+Scope
+-----
+This update applies the complete TL75 drawing-toolbox audit on top of v1.13.0.78 while preserving the existing chart, history, replay, demo-trading, indicators, recorder, workspace and MT5 bridge systems.
+
+Audited drawing system retained and integrated
+----------------------------------------------
+- Full left drawing rail with cursor/selection, line/channel, Fibonacci/Gann, patterns, prediction/measurement, geometry/brush, text/annotation and media groups.
+- Tool flyouts now show TradingView-style subgroup headings such as LINES, HORIZONTAL & VERTICAL, CHANNELS, FIBONACCI, PITCHFORK, GANN, PATTERNS, ELLIOTT WAVES, CYCLES, POSITION & FORECAST, RANGES, PROJECTION, VOLUME PROFILE, BRUSHES, SHAPES, TEXT AND NOTES and CONTENT.
+- Existing v1.13 drawing behavior is retained: live construction preview, tool-specific anchor counts, selection handles, body movement, anchor editing, locking, hiding, cloning, templates, undo/redo, magnet snapping, visual order, interval visibility and drawing synchronization.
+- Selected objects continue to project the contextual quick-edit bar; full settings keep Style, Text & Labels, Coordinates, Levels & Options, Visibility and Templates.
+
+Long / Short Position
+---------------------
+- Retains the local analytical Long Position and Short Position tools with entry, target and stop zones.
+- Retains local account/risk quantity, leverage cap, risk/reward, TP/SL P&L and projected-balance statistics.
+- No broker attachment, broker account connection, order placement or real-trading action was added to these drawing tools.
+
+Favorites
+---------
+- Right-click any drawing tool row or active/recent category shortcut to Add to Favorites / Remove from Favorites.
+- Favorite drawing tools use their own floating Favorites toolbar, separate from timeframe favorites.
+- Right-click empty price chart -> Favorites Tabs -> On / Off.
+- Right-click an empty workspace partition -> Favorites Tabs -> On / Off.
+- The floating drawing Favorites toolbar is hard-clamped to the TickLab owner-window frame while it is being dragged, after TickLab moves, and after TickLab resizes. It cannot be lost beyond the application frame.
+- Favorite items remain reorderable and removable; visibility and position remain workspace-persisted.
+
+Emoji / media picker
+--------------------
+- Reworked the media picker to the audited bottom-tab layout: Emojis / Stickers / Icons.
+- Emoji category rail includes Recently used plus Smileys & People, Animals & Nature, Food & Drink, Activity, Travel & Places, Objects, Symbols and Flags.
+- Added 1,609 local Unicode emoji entries across those categories, including a broad country/region flag set, so the picker is not dependent on the weak-internet loading seen in the reference recording.
+- Emoji previews and chart objects use Segoe UI Emoji; selected emoji are remembered in the in-session Recently used category.
+- Existing TickLab stickers and icons remain available as chart media objects.
+
+Image chart object
+------------------
+- Added CONTENT -> Image, Post and Idea entries to the Text & Notes/Annotation toolbox.
+- Image follows the audited flow: Image dialog -> Choose image -> JPG/PNG/WEBP -> maximum 2 MB -> preview -> Transparency -> Cancel / OK.
+- After OK the image is placed immediately near the center of the active price chart; no extra chart click is required.
+- The placed image is automatically selected and receives the same contextual editing workflow as other objects.
+- Images can be moved by dragging the body and resized from all four displayed corner handles.
+- Transparency is persisted through the drawing style opacity.
+- Imported image files are copied into the local TickLab DrawingImages store so workspace reload does not depend on the original source-file location.
+
+Annotation menu parity
+----------------------
+- Audited Text & Notes order is represented: Text, Note, Price Note, Pin, Table, Callout, Comment, Price Label, Signpost, Anchored Note, Flag Mark.
+- CONTENT contains Image, Post and Idea.
+- Post and Idea are local annotation/card objects only; no online social publishing integration is introduced.
+
+Multi-chart editing
+-------------------
+- Contextual drawing previews/settings now retain the chart that owns the selected drawing rather than accidentally routing edits to the primary chart.
+
+Protected / excluded
+--------------------
+- No broker-attach or real-order function was added to Long/Short Position.
+- MT5 bridge/data capture, replay, recorder, demo trading, reports/history, code editor and indicator engines were not intentionally changed by this toolbar integration.

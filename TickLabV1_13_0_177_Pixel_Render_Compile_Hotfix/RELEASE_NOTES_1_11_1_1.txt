@@ -1,0 +1,17 @@
+TickLab v1.11.1.1 — Favorites Startup Runtime Hotfix
+
+FIXED
+- Prevents DrawingFavoritesWindow from being constructed while MainWindow is still in its constructor.
+- Owned drawing windows are enabled only after MainWindow_Loaded and after a WPF presentation source exists.
+- A pre-load favorites request is deferred safely through the dispatcher.
+- Deferred callbacks cannot reopen the window while TickLab is closing.
+- Saved favorites still restore after the main window is ready.
+- Adding the first favorite after startup still opens the expandable favorites bar automatically.
+
+UNCHANGED
+- Drawing tools and quick editor behavior.
+- History/tick synchronization and storage formats.
+- Live Bridge V300, History Bridge V305, and Marker V109.
+
+BUILD
+Open TickLabV1_11_1_1.sln, select Release, and Rebuild Solution.

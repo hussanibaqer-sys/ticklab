@@ -1,0 +1,7 @@
+Changed app source vs v1.13.0.125:
+1. Controls/CandleChartControl.Drawing.cs
+2. MainWindow.xaml
+3. MainWindow.xaml.cs
+4. TickLab.App.csproj
+5. Windows/DrawingMediaPickerWindow.xaml
+6. Windows/DrawingMediaPickerWindow.xaml.cs

@@ -1,0 +1,36 @@
+TickLab v1.13.0.131 — Favorites / Top Bar Refinement
+
+BASE
+- Built from v1.13.0.130 Line Settings Visibility Init Hotfix.
+- Existing drawing renderer, drawing parity geometry, drawing tool catalog, Emoji picker/assets, Measure/Rectangle work, and line-settings crash hotfix are preserved.
+
+FAVORITES BARS
+- Drawing Favorites and Timeframe Favorites no longer share one row and cannot overlap each other.
+- Permanent home is bottom-center of the active chart plot, directly above the time scale.
+- Timeframe Favorites occupy the lower row; Drawing Favorites sit one row above with a fixed gap.
+- Turning Favorites Tabs OFF hides both bars. Turning it ON always returns visible favorite bars to their permanent bottom-center home, regardless of where either bar was previously dragged.
+- Chart/window resize, maximize/restore, move, and active-chart changes re-evaluate the safe bottom-center location.
+- Both windows are clamped to the TickLab owner frame while dragging, so they cannot be dragged outside TickLab.
+- Bars grow horizontally as favorites are added, up to the available active-chart width. Overflow remains horizontally wheel-scrollable instead of crossing the chart edge.
+- Drawing favorite buttons remain drag-and-drop reorderable; the chosen drawing favorite order persists through the existing drawing workspace system.
+- Timeframe favorites are authoritative chronological/numeric order by timeframe duration (1,2,3... sequence within the timeline rather than add order). Manual timeframe-favorite reordering is disabled so the order cannot become scrambled.
+
+TOP TOOLBAR ICON PASS
+- Search/instrument control and timeframe selector remain unchanged as requested.
+- New Chart, Layout, Indicators, Alerts, Replay, Chart Type, MT5 Connections, Refresh, Markers, Theme, Settings, Data Folder, Code Editor, Recorder, Screenshot, and Restore are icon-only vector buttons with tooltips.
+- No font/image dependency is used for these top toolbar icons.
+- Chart Type button is dynamic: it displays a dedicated vector icon for the currently selected chart type.
+- Dedicated chart icons are provided for all 22 current ChartVisualType values, including Candles, Hollow Candles, Bars, Line, Area, Heikin Ashi, Renko, Point & Figure, TPO, Volume Profile, Footprint, Tick, etc.
+- Theme switching refreshes the vector icon brushes for light/dark contrast.
+
+FREEZE / REGRESSION BOUNDARY
+- CandleChartControl.Drawing.cs unchanged from v1.13.0.130.
+- CandleChartControl.DrawingParity.cs unchanged.
+- DrawingToolCatalog.cs unchanged.
+- DrawingMediaPickerWindow.xaml.cs unchanged.
+- TradingViewLineSettingsWindow.xaml.cs unchanged, preserving the v130 crash hotfix.
+- No MT5/Bridge/History/Replay/Gateway/Connector implementation source changed.
+
+VALIDATION LIMIT
+- Linux environment has no Windows WPF/.NET MSBuild toolchain.
+- Static checks and source-scope validation are included; Windows Visual Studio compile/runtime remains the final gate.

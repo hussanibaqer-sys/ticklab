@@ -1,0 +1,12 @@
+TickLab v1.13.0.120 — FIRST TEST CHECKLIST
+
+Use a NEW Trend Line first:
+1. Select Trend Line and draw it once. Tool must return to cursor after completion.
+2. Drag the middle/body of the line. Entire drawing must move.
+3. Drag point A, then point B. Each anchor must edit independently.
+4. Left-click blank chart space. Drawing must deselect exactly as before.
+5. Reselect the line and middle-click/center-click directly on the visible line. It must be removed.
+6. Draw another Trend Line, reselect it, press Remove/Delete in the quick-edit toolbar. It must be removed.
+7. Repeat body/anchor drag on one 3-point tool to confirm point C also edits.
+8. Verify an explicitly locked drawing still cannot be accidentally dragged/deleted until unlocked.
+9. Briefly verify Callout tail remains connected and earlier folders still render unchanged.

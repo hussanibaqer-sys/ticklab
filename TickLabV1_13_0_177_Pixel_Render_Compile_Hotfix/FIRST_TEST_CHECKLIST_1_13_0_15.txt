@@ -1,0 +1,13 @@
+TickLab v1.13.0.15 first test checklist
+
+1. Start with Candles and confirm the candle gap is visibly twice v1.13.0.14.
+2. Check candle edges at Windows scaling 100%, 125% and 150% if available.
+3. Zoom out to 1,500 candles and confirm the compressed renderer remains responsive.
+4. Select Chart Type > TPO and confirm it opens without real volume.
+5. Change TPO bracket and session start in TPO / volume settings.
+6. Select Session Volume Profile with a broker that supplies VolumeReal.
+7. Confirm POC and value-area shading follow the selected broker-time session.
+8. Select Volume Footprint and zoom in until bid x ask numbers appear.
+9. Drag/zoom to another saved period and confirm the profile refreshes after movement stops.
+10. Test a symbol with no VolumeReal and confirm a clear error appears without using tick volume.
+11. Confirm alerts, replay, synthetic charts and MT5 bridge connection still work.

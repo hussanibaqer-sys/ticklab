@@ -1,0 +1,13 @@
+TickLab v1.13.0.26 validation report
+
+Static/source validation: PASSED
+- 7,052 checks passed.
+- Directional history prefetch verified.
+- Prefetch threshold bounded below page size.
+- No history I/O during mouse-move or vertical-only max zoom.
+- Crosshair no longer publishes viewport changes.
+- Drag no-op viewport suppression verified.
+- Previous indicator, XAML, duplicate-method, bridge-write, candle geometry and zoom-anchor regressions passed.
+- Protected MT5 bridge sources verified by SHA-256.
+
+Limit: Windows WPF compilation and live MT5 interaction must be tested in Visual Studio on Windows.

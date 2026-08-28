@@ -1,0 +1,35 @@
+TICKLAB v1.13.0.109 — FOLDER 4 FINAL PARITY AUDIT
+
+Purpose
+- Final conservative close-out of the Prediction / Measurement folder after v1.13.0.108 was runtime-confirmed working.
+- No functional drawing behavior was changed in this build.
+
+Folder 4 audited tools
+- Long Position
+- Short Position
+- Position Forecast
+- Bars Pattern
+- Ghost Feed
+- Anchored VWAP
+- Fixed Range Volume Profile
+- Anchored Volume Profile
+- Price Range
+- Date Range
+- Date and Price Range
+
+Audit focus
+- visible-part reselection / quick-edit hit targets
+- construction click models
+- Long/Short settings and TP/SL styling controls
+- Forecast WAITING/SUCCESS state logic
+- Bars Pattern projected-path selection
+- Ghost Feed multi-anchor synthetic-candle selection
+- Anchored VWAP bands
+- volume-profile settings/roles and POC/VAH/VAL hit targets
+- range-tool measurement selection
+- source freeze outside version/title metadata
+
+Result
+- Functional source is byte-identical to v1.13.0.108.
+- Only app version/title metadata changed to 1.13.0.109.
+- This minimizes regression risk before moving to the next folder.

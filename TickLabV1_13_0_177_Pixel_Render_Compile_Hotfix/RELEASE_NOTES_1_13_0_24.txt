@@ -1,0 +1,23 @@
+TickLab v1.13.0.24 — Basic Candle Newest-Anchor Zoom Hotfix
+
+Scope
+- Basic Candles chart only. No new indicator, chart-type, replay, alert or workspace features were added.
+
+Root cause fixed
+- v1.13.0.23 preserved a fixed negative right offset representing invisible future slots.
+- At strong zoom-in levels, the visible-bar count became smaller than the future-space count, leaving zero real candles in the frame.
+- Exact comparison with the default ten-slot future gap also incorrectly marked a zoomed live chart as historical, so newly appended candles could shift the viewport.
+
+Changes
+- Horizontal wheel zoom and time-scale drag now anchor the actual newest candle screen position.
+- Future slots scale with the visible-bar count.
+- The newest candle remains visible from 1 through 1,500 visible slots in a normal live view.
+- The anchor ratio is retained through the one-bar tier, so zooming back out restores the newest candle position.
+- Any viewport with the latest candle and only future space to its right remains in live-follow mode.
+- Negative future-space offsets are preserved by viewport restore and settings sanitation.
+- Historical views with a positive right offset retain their historical right boundary.
+
+Unchanged
+- Candle pixel geometry, borders, wicks and gaps.
+- MT5 bridge protocol and MQL5 sources.
+- Alerts, replay, indicators, workspaces and all existing chart types.

@@ -1,0 +1,18 @@
+TickLab v1.13.0.79 — Changed Source Inventory vs v1.13.0.78
+
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Controls/CandleChartControl.Drawing.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Controls/CandleChartControl.Drawing.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Core/Drawing/DrawingMediaCatalog.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Core/Drawing/DrawingMediaCatalog.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Core/Drawing/DrawingModels.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Core/Drawing/DrawingModels.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/MainWindow.ChartContexts.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/MainWindow.ChartContexts.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/MainWindow.Workspaces.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/MainWindow.Workspaces.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/MainWindow.xaml and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/MainWindow.xaml.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/MainWindow.xaml.cs differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/TickLab.App.csproj and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/TickLab.App.csproj differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Windows/DrawingFavoritesWindow.xaml and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Windows/DrawingFavoritesWindow.xaml differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Windows/DrawingFavoritesWindow.xaml.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Windows/DrawingFavoritesWindow.xaml.cs differ
+Only in /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Windows: DrawingImagePickerWindow.xaml
+Only in /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Windows: DrawingImagePickerWindow.xaml.cs
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml differ
+Files /mnt/data/ticklab78/TickLabV1_13_0_78_Timeframe_Builder_UI_Fix/src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml.cs and /mnt/data/ticklab78/TickLabV1_13_0_79_TL75_Full_Drawing_Toolbox/src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml.cs differ

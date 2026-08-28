@@ -1,0 +1,34 @@
+TickLab v1.13.0.84 — TV parity Folder 1 + Magic Cursor visual correction
+
+BASE
+- Built from v1.13.0.83 Folder 0 Cursor parity.
+- No broker-connection or real-trade placement functionality was added to drawing tools.
+
+MAGIC CURSOR CORRECTION
+- Replaced monochrome/outline Segoe UI Emoji particle rendering with TickLab-owned opaque colour vector particles.
+- Fruit, money, gift, heart, flower, clover, star, sparkle, diamond, bow and green-square particles now render as solid coloured artwork.
+- Particles no longer fade/evaporate while falling.
+- Burst now pops upward/outward and then falls naturally under gravity until it leaves the chart frame.
+- Increased particle size/colour contrast and removed see-through particle opacity.
+- Replaced the plain wand cursor with a colourful purple/pink/blue magic-wand cursor with a gold star and coloured sparkles.
+
+FOLDER 1 — LINES / CHANNELS / PITCHFORKS
+- Refined the reference white flyout dimensions and compact row spacing.
+- Added dedicated vector icons for Trendline, Ray, Extended line, Horizontal line, Horizontal ray, Vertical line, Crossline, Parallel channel, Regression trend and Pitchfork.
+- Preserved the reference order and sections: LINES, CHANNELS, PITCHFORKS.
+- Preserved reference shortcuts and Favorites-star interaction.
+- Selected line contextual toolbar remains white and follows the selected object; line colour now uses a line-swatch icon instead of the old pencil placeholder.
+- Refined line settings window to the compact white reference proportions.
+- Style row now places start/end arrow controls beside colour/style/width, closer to the recorded UI.
+- Style / Text / Coordinates / Visibility tabs remain tool-aware; Trend Angle hides Text as in the recording.
+- Coordinates tab now presents anchors as "#N (price, bar)" with editable price and bar fields rather than the previous Date/Time table.
+- Edited bar numbers resolve back to the actual candle timestamp.
+- Existing Folder-1 parity drawing behaviour retained: 2-point lines/rays, 1-point horizontal/vertical/cross lines, 3-point channels, regression trend, 3-point pitchfork variants, selected anchor handles, live settings preview, Info-line stats and Trend-angle guide/angle.
+
+VALIDATION
+- 30 XAML files parsed successfully.
+- 149 C# files scanned.
+- 427 XAML event references checked; 0 missing handlers.
+- 101 drawing tool IDs; 0 duplicates.
+- Static Magic/Folder-1 parity checks passed.
+- Windows .NET/WPF MSBuild is not installed in this container, so final Windows compile must be performed on the user's PC.

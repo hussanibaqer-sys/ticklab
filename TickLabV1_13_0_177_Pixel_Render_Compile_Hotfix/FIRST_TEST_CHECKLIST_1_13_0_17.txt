@@ -1,0 +1,12 @@
+TickLab v1.13.0.17 first test checklist
+
+1. Open a standard Candles chart at default zoom.
+2. Confirm every candle body has the same width.
+3. Confirm every wick is centred inside its body.
+4. Slowly zoom out through the detailed-to-compressed transition.
+5. Confirm no candle becomes randomly thicker or thinner.
+6. Confirm compressed candles remain one pixel wide with a visible one-pixel gap.
+7. Zoom back in and confirm the sequence remains stable without horizontal flicker.
+8. Resize the chart window and repeat the zoom test.
+9. Verify drawings, crosshair, alerts and replay markers stay aligned with candle time positions.
+10. Verify TPO, Session Volume Profile and Volume Footprint remain available.

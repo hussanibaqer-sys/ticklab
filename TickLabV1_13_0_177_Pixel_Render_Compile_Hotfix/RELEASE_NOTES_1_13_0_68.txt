@@ -1,0 +1,44 @@
+TickLab v1.13.0.68 — MT5 Trade History + Trading Reports
+
+Scope
+-----
+Demo Trading history/report additions only. Existing recorder, Replay, Tick chart, MT5 bridge and FileBridge behavior are preserved.
+
+Demo Trade History
+------------------
+- Moved the demo-history chart projection toggle out of the Demo Trading title bar and into the Trade history tab.
+- Added Open Report in Trade history.
+- Demo report contains account/start/end balance, realized P/L, wins/losses, win rate, gross profit/loss, profit factor, drawdown, expected payoff, recovery factor, trade-result Sharpe, buy/sell stats, streaks, durations, best/worst day, commissions/swap/fees, and a complete sortable/searchable trade table.
+
+MT5 Trade History
+-----------------
+- Added a dedicated MT5 trade history tab inside Demo Trading.
+- Open Folder opens: Documents\TickLab\MT5 Trade History
+- Paste MT5 .html/.htm/.csv/.tsv/.txt history/report files into that folder and press Refresh (the folder is also rescanned when Demo Trading opens).
+- Each saved file appears by filename/name.
+- Each file has a Project on chart checkbox. Projection preference is saved.
+- Checked histories project completed BUY/SELL entry, exit, SL and TP history markings on matching-symbol charts.
+- Each saved MT5 history has Open Report.
+- Parser supports standard two-time/two-price closed-position tables and common MT5 deal tables with IN/OUT deal pairing, including partial-volume pairing.
+- Deposits/withdrawals/balance operations are preserved when present in the source report.
+- Unknown values are shown as unavailable rather than invented.
+
+Trading Report Window
+---------------------
+- Large independent, scrollable report window.
+- Zoom -, Reset, Zoom + and Ctrl+mouse-wheel report scaling.
+- Balance / realized-equity curve.
+- Drawdown graph.
+- Profit/loss per day graph.
+- Number of trades per day graph.
+- Performance by symbol graph.
+- Monthly profit/loss graph.
+- Trade-by-trade net P/L graph.
+- Full sortable/searchable trade table with ticket, symbol, side, lot, entry/exit times and prices, SL, TP, profit, commission, swap, fees and comments.
+- Separate cash-flow table for deposits/withdrawals/balance operations when available.
+
+Safety / isolation
+------------------
+- MT5 imported history is read-only analysis data; it never sends or modifies broker orders.
+- Protected MT5/FileBridge source files are unchanged from v1.13.0.67.
+- No bin/obj output folders are included.

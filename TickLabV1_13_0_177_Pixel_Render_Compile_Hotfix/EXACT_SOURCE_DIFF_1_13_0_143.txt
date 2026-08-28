@@ -1,0 +1,27 @@
+TickLab v1.13.0.143 changed source files vs v1.13.0.142
+
+NEW
+- src/TickLab.App/Controls/TickChartControl.Drawing.cs
+
+CHANGED
+- src/TickLab.App/Controls/TickChartControl.cs
+  Tick-index projection, drawing/marker/measure overlay hooks, Cross toolbar crosshair activation, symbol precision properties.
+- src/TickLab.App/MainWindow.RawTickChart.cs
+  contiguous newest/backward paging, raw-history launch fallback, Tick Find marker/target lookup, price metadata, Live marker cleanup.
+- src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+  reverse/tail canonical tick reader and optional take-latest bridge range materialization for contiguous older paging.
+- src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+  wrappers for reverse canonical/raw-history paging.
+- src/TickLab.App/MainWindow.ChartContexts.cs
+  drawing-tool routing to TickChartControl.
+- src/TickLab.App/MainWindow.xaml.cs
+  Tick-aware Measure/Lock/Hide/Undo/Redo/Delete toolbar routing and active-state display.
+- src/TickLab.App/MainWindow.xaml
+  v1.13.0.143 window title.
+- src/TickLab.App/TickLab.App.csproj
+  v1.13.0.143 assembly/file/package version.
+
+UNCHANGED / PROTECTED
+- MT5/* (byte-for-byte)
+- src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs (byte-for-byte)
+- Existing v1.13.0.142 seconds direct-seek implementation files outside the shared generic tick archive reader.

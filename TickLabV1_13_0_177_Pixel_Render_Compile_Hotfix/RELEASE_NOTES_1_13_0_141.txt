@@ -1,0 +1,29 @@
+TickLab v1.13.0.141 — Tick Find / Find Contrast / 5000 Tick Zoom
+
+Base: v1.13.0.140.
+
+Find Candle / Tick
+- Added Tick above 1s in the Find Candle timeframe selector.
+- Tick is a real Find target: the requested server second opens the Raw Tick Chart and centers the first stored tick in that second, or the nearest stored tick when the exact second is quiet.
+- Tick lookup reads a small timestamp-centered raw-tick window directly instead of scanning the chart back from live.
+- The exact historical timestamp remains authoritative when comparing candle timeframes and Tick.
+- Historical Tick Find holds back live appends until the user explicitly returns to Live/End, preventing current ticks from being spliced beside old history.
+- Tick Mark/Export is intentionally blocked; Tick is Find-only. Existing second-candle Find/Mark behavior remains.
+
+Find busy-state contrast
+- The Find button switches to Finding… and remains locked while a candle/tick lookup is active.
+- Rotating round-arrow spinner remains visible while disabled.
+- The Find button now uses an explicit high-contrast purple/white control template and exact-colour theme scope, preventing white-background/white-text or invisible-spinner states in light/dark themes.
+- Idle label changes to Find tick when Tick is selected and Find candle otherwise.
+
+Raw Tick Chart
+- Horizontal zoom-out maximum changed from 1600 to 5000 visible ticks in the chart frame.
+- The normal initial live view remains 1600 ticks; the user can zoom farther out up to 5000.
+- The 5000 ceiling remains enforced by the shared TickChartControl viewport clamp, including wheel zoom, fit, and time-scale drag paths.
+- Historical Tick Find is explicitly treated as historical, so the live right-side blank space is not shown there.
+- Tick Chart Live button / End reloads the true latest raw-tick window after a historical Tick Find.
+
+Protected scope
+- Gateway/FileBridge source files are byte-for-byte unchanged from v1.13.0.140.
+- v1.13.0.139 seconds direct-seek/history storage logic is not modified.
+- No replay, MT5 bridge protocol, raw tick format, trading, or drawing geometry changes.

@@ -1,0 +1,69 @@
+TickLab v1.13.0.152 — Tick Render + Drawing Smoothness
+
+Purpose
+-------
+Improve Raw Tick Chart pan/zoom/live responsiveness and remove the severe slowdown that
+appeared when drawings were present, while preserving the user-confirmed v1.13.0.151
+history/Find/Replay/agent baseline.
+
+Rendering corrections
+---------------------
+1. Retained completed Tick drawings
+   - Completed drawings on the shared CandleChart drawing surface are cached individually
+     as WPF DrawingGroups.
+   - Ordinary pointer/crosshair movement no longer reconstructs every completed drawing.
+   - During pan/zoom/drawing interaction, unchanged completed drawings are transformed from
+     their retained viewport and rebuilt exactly when the interaction settles.
+   - Working drawing preview, selection handles/box, Measure and cursor overlays remain
+     dynamic so interaction behavior is unchanged.
+
+2. Safe live-data invalidation
+   - Simple geometric drawings are not rebuilt solely because an append-only live tick
+     arrived.
+   - The adapter automatically observes use of the raw Tick candle compatibility view.
+     Data-dependent tools therefore continue rebuilding when source Tick data changes,
+     without maintaining a fragile hand-written tool list.
+   - Prepended/replaced history still invalidates the cache through an index-origin version.
+
+3. Synthetic Tick candle cache
+   - The raw Tick compatibility view now lazily materializes each synthetic Candle once.
+   - Append-only live/newer history preserves already-created synthetic candles.
+   - Older-history prepend/full replacement resets the compatibility cache so shifted indexes
+     can never reuse stale candles.
+
+4. Faster retained Tick market geometry
+   - Active pan/zoom uses a lighter extrema-preserving first/min/max/last bucket density.
+   - Tick point markers are temporarily decimated only during active interaction.
+   - Exact normal-density geometry and exact requested Tick points return immediately when
+     the gesture settles.
+
+5. Faster live Tick overlap detection
+   - GetRawTickAdditions no longer scans the entire accumulated TickHistory every ~175 ms.
+   - It binary-seeks the final 1 ms overlap tail and keeps the same duplicate/multiplicity
+     semantics.
+   - Already ordered incoming live ticks avoid an unnecessary OrderBy allocation.
+
+Explicitly protected / unchanged from v1.13.0.151
+-------------------------------------------------
+- MainWindow.xaml.cs: watchdog/integrity agents and normal Candle Finder.
+- MainWindow.AlertsReplay.cs: Replay engine and semantics.
+- CanonicalTickArchiveStore.cs: v151 foreground-history-priority fix.
+- PersistentHistoryStore.cs: seconds aggregation/history and shared catalog.
+- Mt5FileBridgeClient.cs and all MT5/MQL files.
+- CandleChartControl.Drawing.cs and CandleChartControl.DrawingParity.cs: shared drawing
+  model/behavior/settings/Inspector/undo/redo implementation.
+- FindRawTickAsync, BuildTickFindPresentationWindowAsync, LoadOlderRawTicksAsync and
+  LoadNewerRawTicksAsync.
+- Raw history source files remain read-only.
+
+Validation performed in ChatGPT environment
+-------------------------------------------
+- C# delimiter/string/comment structural checks passed on all three functional changed files.
+- TickLab.App.csproj and MainWindow.xaml XML parsing passed.
+- Protected-file byte comparisons against v1.13.0.151 passed.
+- Protected Tick Find/history paging method-body comparisons passed.
+- Old/new live Tick addition logic was randomized against 10,000 sorted-history cases with
+  identical outputs.
+- Raw Tick retained viewport transform math was randomized across 10,000 cases.
+- No dotnet/MSBuild/csc compiler is installed in this environment; Windows Visual Studio
+  compile/runtime remains the authoritative final test.

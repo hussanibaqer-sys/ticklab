@@ -1,0 +1,36 @@
+TickLab v1.13.0.38 — First runtime test checklist
+
+A. Built-in overlay on price chart
+1. Add two or more copies of RSI or another built-in overlay indicator.
+2. Right-click directly near one selected indicator line.
+3. Confirm the menu heading identifies that indicator and current chart address.
+4. Confirm: Refresh, Properties, Move to Window, Move to Chart, Remove.
+5. Remove one instance and verify the other copies remain.
+
+B. Separate indicator pane
+1. Add a built-in separate-window indicator and a TickScript indicator.
+2. Right-click inside each plot.
+3. Right-click each pane header/title.
+4. Confirm the same five commands appear for the exact selected indicator.
+
+C. Move to Window
+1. Create an empty workspace partition.
+2. Right-click one indicator and choose Move to Window.
+3. Confirm only empty partitions appear.
+4. Choose one and verify only that indicator moves there with its settings and source connection retained.
+
+D. Move to Chart
+1. Open a second price chart.
+2. Right-click the moved independent indicator and choose Move to Chart.
+3. Choose the second chart address.
+4. Verify only that indicator moves to the chosen chart.
+
+E. Properties and Refresh
+1. Right-click one of several identical indicator instances.
+2. Change its Properties and verify the intended instance is selected.
+3. Use Refresh and verify no indicator is removed or moved.
+
+F. Regression smoke test
+1. Open/close Demo Trading panel.
+2. Confirm chart colour settings and Ask/Bid lines still work.
+3. Confirm MT5 connection, history and live chart remain unchanged.

@@ -1,0 +1,33 @@
+PASS | Version 1.13.0.125
+PASS | Window title 1.13.0.125
+PASS | v125 solution exists
+PASS | build script targets v125
+PASS | Emoji vertical scrollbar visible
+PASS | Emoji virtualization retained
+PASS | Wheel mode toggle API
+PASS | Toolbar toggles active chart
+PASS | Zoom/Scroll icon state
+PASS | Repeated emoji placement enabled
+PASS | Normal tools remain one-shot
+PASS | Four-corner media handles retained
+PASS | Uniform aspect-locked media resize retained
+PASS | 3,944 bundled SVG assets | 3944
+PASS | 3,944 manifest entries | 3944
+PASS | 0 catalog asset gaps
+PASS | No gray-heavy original Noto traces remain in Smileys & People
+PASS | Clean Twemoji person fallback used
+PASS | Clean Twemoji person composites used
+PASS | Vibrant vector fallback used for remaining people
+PASS | All bundled SVG XML parses | 0
+PASS | All XAML parses | 31 files
+PASS | Balanced raw delimiters: MainWindow.xaml.cs
+PASS | Balanced raw delimiters: Controls/CandleChartControl.cs
+PASS | Balanced raw delimiters: Controls/CandleChartControl.Drawing.cs
+PASS | Balanced raw delimiters: Core/Drawing/DrawingToolIconFactory.cs
+PASS | Frozen CandleChartControl.DrawingParity.cs
+PASS | Frozen DrawingToolCatalog.cs
+PASS | Diff limited to intended files | ['src/TickLab.App/Assets/Emoji/emoji-vector-assets.zip', 'src/TickLab.App/Controls/CandleChartControl.Drawing.cs', 'src/TickLab.App/Controls/CandleChartControl.cs', 'src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs', 'src/TickLab.App/MainWindow.xaml', 'src/TickLab.App/MainWindow.xaml.cs', 'src/TickLab.App/TickLab.App.csproj', 'src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml']
+PASS | No build caches
+
+RESULT: 30/30 passed
+Environment: Windows WPF/.NET SDK unavailable here; Visual Studio runtime compile remains final gate.

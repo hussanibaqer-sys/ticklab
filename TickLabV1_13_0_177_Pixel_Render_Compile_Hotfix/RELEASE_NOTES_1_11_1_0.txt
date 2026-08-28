@@ -1,0 +1,52 @@
+TickLab v1.11.1.0 — Futuristic Drawing Workspace
+==================================================
+
+DRAWING RAIL
+- Removed the global last-used button.
+- Each category now shows that category's most recently used tool as the main clickable icon.
+- A narrow arrow beside the icon opens the complete category.
+- Category panels are anchored inside the chart and cannot be dragged outside it.
+- Rail width and category-panel width were reduced to preserve chart space.
+- Original TickLab vector icons were refreshed with distinct modern geometry for cursor, Fib/Gann, pattern, annotation, range, profile and media tools.
+
+MAGNET AND MEASURE
+- Active Magnet and Measure buttons use a recessed dark pressed state.
+- Holding Ctrl while configured Magnet is Off temporarily activates Strong magnet.
+- Holding Ctrl while configured Magnet is Weak/Strong temporarily disables it.
+- Measure/Ruler is directly above Magnet.
+- Hold Shift and drag A to B with a cursor tool, or click Measure and drag.
+- Measurement shows signed price change, points, percentage, number of bars and duration.
+- Right-click or Escape cancels active tools and measurement.
+
+FAVORITES
+- Adding the first favorite automatically opens the dedicated Favorites bar.
+- The bar starts near one-tool width and expands horizontally as tools are added.
+- Tools can be reordered by dragging left/right.
+- The bar can be dragged, minimized, hidden and restored.
+- It is dedicated only to favorite drawing tools.
+
+LIVE DRAWING EDITING
+- A single left-click on a drawing opens a compact horizontal editor.
+- Live controls include line color, fill color, text-background color, pixel width, line style, opacity, fill on/off, fill opacity, text, lock, templates, full settings and delete.
+- Slider and typing changes preview immediately on the chart.
+- Edits are debounced into clean undo operations instead of saving every movement.
+
+ADVANCED SETTINGS
+- Window reduced from 920x700 to 650x500.
+- Every valid edit previews on the drawing while the window remains open.
+- Apply commits one clean undo step.
+- Cancel or window-close restores the exact original drawing.
+- Added explicit fill/background enable control, line/fill opacity sliders and annotation background color.
+- Fibonacci/Gann level changes, templates, defaults, coordinates, text and visibility also preview live.
+
+VISUAL QUALITY
+- Slim 4-pixel rounded scrollbars with longer 52-pixel minimum thumbs.
+- Horizontal timeframe scrolling retained.
+- High-DPI layout rounding, ClearType text and high-quality vector/bitmap rendering enabled.
+- Emoji tools default to Segoe UI Emoji and remain in the Emojis media folder.
+
+PROTECTED COMPONENTS
+- Live Bridge V300 unchanged.
+- History Bridge V305 unchanged.
+- Marker V109 unchanged.
+- Permanent M1 and raw-tick storage formats unchanged.

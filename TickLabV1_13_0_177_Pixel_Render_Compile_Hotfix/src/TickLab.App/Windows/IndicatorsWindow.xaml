@@ -1,0 +1,94 @@
+<Window x:Class="TickLab.Desktop.Windows.IndicatorsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TickLab Indicators" Width="760" Height="680" MinWidth="640" MinHeight="500"
+        WindowStartupLocation="CenterOwner" Background="#101010" Foreground="White" ShowInTaskbar="False"
+        UseLayoutRounding="True" SnapsToDevicePixels="True">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="Indicators" FontSize="22" FontWeight="SemiBold"/>
+            <TextBlock Text="Add to the selected chart or place an independent indicator directly in a workspace partition." Foreground="#BDBDBD" Margin="0,4,0,10"/>
+        </StackPanel>
+        <TextBox x:Name="SearchBox" Grid.Row="1" Height="34" Padding="8,5" TextChanged="SearchBox_TextChanged"
+                 Background="#202020" Foreground="#F2F2F2" BorderBrush="#505050"/>
+        <TabControl x:Name="IndicatorTabs" Grid.Row="2" Margin="0,10,0,10" Background="#151515" BorderBrush="#444444"
+                    SelectionChanged="IndicatorTabs_SelectionChanged">
+            <TabItem Header="Built-in (38)">
+                <ListBox x:Name="BuiltInList" Background="#151515" Foreground="White" BorderThickness="0"
+                         MouseDoubleClick="BuiltInList_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" BorderBrush="#303030" BorderThickness="0,0,0,1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Category}" Foreground="#A8A8A8" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Placement}" Foreground="#8EB7E8" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="Custom TickScript">
+                <ListBox x:Name="IndicatorList" SelectionChanged="IndicatorList_SelectionChanged" Background="#151515" Foreground="White" BorderThickness="0"
+                         PreviewMouseMove="IndicatorList_PreviewMouseMove" MouseDoubleClick="IndicatorList_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" BorderBrush="#303030" BorderThickness="0,0,0,1">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="White"/>
+                                    <TextBlock Text="Compiled TickScript indicator" Foreground="#A8A8A8" Margin="0,3,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="On selected chart">
+                <ListBox x:Name="AppliedList" Background="#151515" Foreground="White" BorderThickness="0"
+                         SelectionChanged="AppliedList_SelectionChanged" MouseDoubleClick="AppliedList_MouseDoubleClick">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Properties…" Click="AppliedPropertiesMenu_Click"/>
+                            <MenuItem Header="Route to chart">
+                                <MenuItem Header="Connect" Tag="Connect" Click="AppliedRouteMenu_Click"/>
+                                <MenuItem Header="Copy" Tag="Copy" Click="AppliedRouteMenu_Click"/>
+                                <MenuItem Header="Move" Tag="Move" Click="AppliedRouteMenu_Click"/>
+                            </MenuItem>
+                            <MenuItem Header="Remove from chart" Click="AppliedRemoveMenu_Click"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" BorderBrush="#303030" BorderThickness="0,0,0,1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="150"/><ColumnDefinition Width="130"/></Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Kind}" Foreground="#A8A8A8" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Placement}" Foreground="#8EB7E8" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock x:Name="StatusText" VerticalAlignment="Center" Foreground="#BDBDBD"/>
+            <Button x:Name="OpenFolderButton" Grid.Column="1" Content="Open Folder" Margin="4" Padding="12,7" Click="OpenFolderButton_Click"/>
+            <Button x:Name="DeleteScriptButton" Grid.Column="2" Content="Delete Script" Margin="4" Padding="12,7" IsEnabled="False" Click="DeleteScriptButton_Click"/>
+            <Button x:Name="OpenEditorButton" Grid.Column="3" Content="Open Editor" Margin="4" Padding="12,7" Click="OpenEditorButton_Click"/>
+            <Button x:Name="RemoveButton" Grid.Column="4" Content="Remove" Margin="4" Padding="12,7" IsEnabled="False" Click="RemoveButton_Click"/>
+            <Button x:Name="ApplyButton" Grid.Column="5" Content="Properties &amp; Apply" Margin="4" Padding="12,7" Background="#2F6DB2" Foreground="White" Click="ApplyButton_Click"/>
+            <Button Grid.Column="6" Content="Close" Margin="4" Padding="12,7" Click="CloseButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

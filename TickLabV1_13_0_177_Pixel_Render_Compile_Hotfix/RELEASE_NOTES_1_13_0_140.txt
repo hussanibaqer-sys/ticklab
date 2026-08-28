@@ -1,0 +1,28 @@
+TickLab v1.13.0.140 — Find Loading + Tick Chart Navigation
+Base: v1.13.0.139
+
+FIND CANDLE
+- Find Candle now enters a single-search locked UI state while a search is running.
+- Find button changes to “Finding…” and shows a rotating round-arrow spinner.
+- The Find button is disabled until the active search finishes.
+- A second code-level re-entry guard prevents rapid/double-click duplicate searches even if UI events arrive together.
+- The v1.13.0.139 direct timestamp seek and marker-removal fixes are preserved unchanged.
+
+RAW TICK CHART
+- Tick Chart now honors the same Scroll-vs-Zoom mouse-wheel setting as the regular candle chart.
+- In Scroll mode, mouse wheel pans backward/forward through tick history while keeping visible tick density unchanged.
+- Reaching the oldest loaded edge requests the next older history page without zooming out.
+- Right-side live breathing room is shown only at the latest/live edge. Historical navigation uses the full chart width so scrolling cannot leave a persistent empty right gap.
+- Maximum horizontal zoom-out is hard-capped at 1,600 visible ticks in the chart frame.
+- The 1,600 ceiling also applies to initial display, Fit Horizontal, Fit All, wheel zoom, time-scale drag zoom, and viewport normalization.
+- Wheel zoom uses smaller proportional steps for smoother horizontal/vertical scaling and high-resolution wheel/touchpad deltas.
+- Price-scale and time-scale drag zoom sensitivities were softened for smoother control.
+
+PROTECTED SCOPE
+- MT5/FileBridge client protocol code unchanged.
+- PersistentHistoryStore unchanged.
+- CanonicalTickArchiveStore unchanged.
+- v1.13.0.139 seconds direct-seek/history indexing code unchanged.
+
+BUILD NOTE
+- This execution environment does not contain dotnet/MSBuild, so the archive received static source/XAML/diff/hash/ZIP validation but still requires normal Visual Studio restore/build and Windows runtime validation.

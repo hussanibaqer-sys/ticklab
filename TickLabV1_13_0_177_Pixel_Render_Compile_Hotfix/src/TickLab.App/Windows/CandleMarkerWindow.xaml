@@ -1,0 +1,190 @@
+<Window x:Class="TickLab.Desktop.Windows.CandleMarkerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+        Title="Candle Markers — MT5 ↔ TickLab"
+        Width="700" Height="660" MinWidth="640" MinHeight="580"
+        WindowStartupLocation="CenterOwner" Background="#0B0B0B"
+        Foreground="#E5EDF8" ShowInTaskbar="False">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="12,7"/>
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#475569"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="7,5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="FindActionButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="12,7"/>
+            <Setter Property="Background" Value="#7C3AED"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#A78BFA"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="FindButtonBorder" CornerRadius="5"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="FindButtonBorder" Property="Background" Value="#6D28D9"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="FindButtonBorder" Property="Background" Value="#5B21B6"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="FindButtonBorder" Property="Background" Value="#4C1D95"/>
+                                <Setter TargetName="FindButtonBorder" Property="BorderBrush" Value="#8B5CF6"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Arrow"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Padding="12" CornerRadius="8" Background="#111C2E" BorderBrush="#353535" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Candle marker / export" FontSize="18" FontWeight="SemiBold"/>
+                    <TextBlock Text="The active TickLab chart is detected automatically. All date and time values use MT5 broker-server candle time." Foreground="#BDBDBD" Margin="0,4,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
+                <ToggleButton x:Name="ReceiveToggle" Grid.Column="1" Width="145" Height="34" Margin="12,0,0,0"
+                              Checked="ReceiveToggle_Changed" Unchecked="ReceiveToggle_Changed">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Ellipse x:Name="ReceiveDot" Width="11" Height="11" Fill="#64748B" Margin="0,0,8,0"/>
+                        <TextBlock x:Name="ReceiveText" Text="Receive OFF" Foreground="White"/>
+                    </StackPanel>
+                </ToggleButton>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="0,12,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.15*"/>
+                <ColumnDefinition Width="1.0*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.9*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Symbol" Margin="4,0"/>
+                <ComboBox x:Name="SymbolBox" IsEditable="True" IsTextSearchEnabled="True"
+                          StaysOpenOnEdit="True" PreviewMouseLeftButtonDown="SymbolBox_PreviewMouseLeftButtonDown"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Server date" Margin="4,0"/>
+                <TextBox x:Name="DateBox" ToolTip="dd-MM-yyyy or yyyy-MM-dd"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Server time" Margin="4,0"/>
+                <TextBox x:Name="TimeBox" ToolTip="HH:mm:ss"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3">
+                <TextBlock Text="Timeframe" Margin="4,0"/>
+                <ComboBox x:Name="TimeframeBox" SelectionChanged="TimeframeBox_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,6,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock Text="Label (optional)" Margin="4,0"/>
+                <TextBox x:Name="LabelBox"/>
+            </StackPanel>
+            <Button Grid.Column="1" Content="Use selected candle" Click="UseSelectedButton_Click" VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <Border Grid.Row="3" Margin="0,10,0,6" Padding="10" CornerRadius="6"
+                Background="#17112C" BorderBrush="#6D28D9" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Manual Find Candle / Tick" FontWeight="SemiBold"/>
+                    <TextBlock Text="Uses the symbol, server date, time and timeframe above. Tick finds the nearest raw tick in that entered second; candle timeframes load and centre the candle. It never imports history."
+                               Foreground="#C4B5FD" TextWrapping="Wrap" Margin="0,3,10,0"/>
+                </StackPanel>
+                <Button x:Name="FindButton" Grid.Column="1" Style="{StaticResource FindActionButtonStyle}"
+                        settings:ThemeColorScope.PreserveExactColors="True"
+                        Click="FindButton_Click" VerticalAlignment="Center" MinWidth="122">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock x:Name="FindSpinner" Text="↻" Foreground="White" FontSize="17" FontWeight="SemiBold"
+                                   Visibility="Collapsed" Margin="0,0,6,0" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <RotateTransform x:Name="FindSpinnerRotate" Angle="0"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock x:Name="FindButtonText" Text="Find candle" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+
+        <WrapPanel Grid.Row="4" Margin="0,4,0,8">
+            <Button x:Name="MarkButton" Content="Mark" Background="#CA8A04" Click="MarkButton_Click"/>
+            <Button x:Name="ExportButton" Content="Export" Background="#B91C1C" Click="ExportButton_Click" IsEnabled="False"/>
+            <Button Content="Go to marker" Click="GoToButton_Click"/>
+            <Button Content="Remove marker" Click="RemoveButton_Click"/>
+            <Button Content="Clear exported" Click="ClearExportedButton_Click"/>
+        </WrapPanel>
+
+        <ListView x:Name="MarkerList" Grid.Row="5" Background="#0D0D0D" Foreground="White" BorderBrush="#353535"
+                  SelectionChanged="MarkerList_SelectionChanged" MouseDoubleClick="MarkerList_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Symbol" Width="100" DisplayMemberBinding="{Binding Symbol}"/>
+                    <GridViewColumn Header="Timeframe" Width="95" DisplayMemberBinding="{Binding Timeframe}"/>
+                    <GridViewColumn Header="Server time" Width="165" DisplayMemberBinding="{Binding DisplayTime}"/>
+                    <GridViewColumn Header="Source" Width="75" DisplayMemberBinding="{Binding Source}"/>
+                    <GridViewColumn Header="Label" Width="145" DisplayMemberBinding="{Binding Label}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="6" Margin="0,10,0,0">
+            <TextBlock x:Name="StatusText" Foreground="#BDBDBD" VerticalAlignment="Center" Text="Ready" TextWrapping="Wrap" Margin="0,0,90,0"/>
+            <Button HorizontalAlignment="Right" Content="Close" Click="CloseButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

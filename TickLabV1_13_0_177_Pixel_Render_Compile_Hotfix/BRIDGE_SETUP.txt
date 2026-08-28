@@ -1,0 +1,14 @@
+TickLab v1.13.0 MT5 setup
+
+Compile and attach:
+1. TickLabLiveBridge_V300.mq5 — unchanged.
+2. TickLabHistoryBridge_V305.mq5 — unchanged, attach to a second chart.
+3. TickLabCandleMarkerExchange_V109.mq5 — compile under MQL5\Indicators.
+
+Marker V109
+- Mark toggles a private draggable thin solid yellow selection line.
+- Export keeps the existing thick solid red exported line.
+- Received/imported candles use a thick solid yellow line.
+- Manual Find Candle is local-only.
+- Normal MT5 vertical lines are ignored.
+- The panel is locked to one chart corner and does not reposition on normal scrolling.

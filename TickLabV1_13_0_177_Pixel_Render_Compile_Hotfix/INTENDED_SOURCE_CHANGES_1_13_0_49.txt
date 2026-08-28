@@ -1,0 +1,23 @@
+TickLab v1.13.0.49 intended source changes
+============================================
+
+Functional source files changed:
+- src/TickLab.App/MainWindow.DataIntegrity.cs
+  Rolling windows are repair-only; they cannot initialize or truncate chart history.
+- src/TickLab.App/MainWindow.MultiChartLive.cs
+  Latest-only live updates skip empty restored charts until indexed history is loaded.
+- src/TickLab.App/MainWindow.ChartContexts.cs
+  Empty restored charts load complete indexed local history when activated.
+- src/TickLab.App/Windows/AlertTriggeredWindow.cs
+  Main notification auto-height, line height, padding and non-clipping detail host.
+- src/TickLab.App/Windows/AlertToastWindow.cs
+  Toast auto-height, line height, padding and actual-height positioning.
+
+Identity-only files changed:
+- src/TickLab.App/TickLab.App.csproj
+- src/TickLab.App/MainWindow.xaml (window title only)
+- TickLabV1_13_0_49.sln
+- Clean-Restore-Build.cmd
+- VERSION.txt
+
+No other functional source changes were intended.

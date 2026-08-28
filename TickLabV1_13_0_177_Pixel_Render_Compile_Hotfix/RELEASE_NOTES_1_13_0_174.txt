@@ -1,0 +1,11 @@
+TickLab v1.13.0.174 — Icon Polish Compile Hotfix
+Built from v1.13.0.173 Final Drawing Tool Icon Polish.
+
+Fix:
+- Corrects compile error: UIElement does not define UseLayoutRounding.
+- Pixel snapping remains applied through UIElement.SnapsToDevicePixels.
+- Layout rounding is now applied only when the generated icon child is a FrameworkElement, which is the correct WPF type that exposes UseLayoutRounding.
+- All v1.13.0.173 final drawing-toolbar icon polish remains preserved.
+- No chart, drawing behavior, MT5/FileBridge, raw tick, seconds, Find, Replay, indicator, workspace, or chart-type behavior changed.
+
+Nullable diagnostics shown by the user's compiler are warnings and were not introduced/fixed by this hotfix unless separately identified by a file/line.

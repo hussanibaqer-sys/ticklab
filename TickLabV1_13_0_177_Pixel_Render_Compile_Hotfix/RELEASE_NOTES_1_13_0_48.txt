@@ -1,0 +1,48 @@
+TickLab v1.13.0.48 — Data Integrity, Alerts and Rail Stability
+================================================================
+
+MULTI-CHART DATA INTEGRITY
+- Replaced latest-file-only protection with independent rolling-window repair for every open chart context.
+- Minute-and-higher charts use the bridge's authoritative 31-candle native M1 integrity snapshot.
+- Second charts use the rolling one-second snapshot.
+- Each chart validates ordering, duplicate timestamps, finite OHLC, price envelopes, volumes and timeframe identity before accepting repair data.
+- Partial left-edge aggregate buckets are discarded so an incomplete rolling window cannot overwrite a complete H1/D1/etc. candle.
+- Active, inactive, maximized, minimized, hidden, restored and detached chart contexts keep independent source/display lists and viewport-preserving repairs.
+- Replay charts and intentionally historical windows are isolated from live-tail repair.
+
+INDICATOR SAFETY
+- Custom TickScript and built-in indicators calculate from validated immutable candle snapshots.
+- Results are accepted only for the same chart identity, symbol, timeframe and structural candle revision.
+- Structural revisions change for new/repaired candle ranges, preventing repaired history from receiving stale indicator results without starving normal intrabar refreshes.
+- Invalid, duplicate, out-of-order or non-finite input records are removed before indicator calculation.
+
+RIGHT-SIDE HANDLE REGRESSION REPAIR
+- CODE EDITOR, DEMO TRADING and PANEL now have isolated click/drag ownership.
+- PANEL can invoke only the workspace panel; DEMO TRADING can invoke only Demo Trading.
+- Starting a drag cancels stale capture/state from the other two handles.
+- Normal clicks are no longer swallowed by preview drag handlers.
+- The Demo Trading panel is clipped to its own dock, preserving access to the synchronized three-handle rail and panel controls.
+
+TRADE HISTORY LABELS
+- Blue entry and red exit arrows remain unchanged.
+- BUY/SELL/EXIT caption text is 50 percent larger than v1.13.0.47.
+- Ticket padding is minimal so text fills the ticket without clipping.
+- Captions are placed at the flat/base side of each arrow, opposite the pointed tip.
+
+ALERT RELIABILITY
+- Price-touch alerts evaluate the full live candle high-low range, including Ask spread offset and fast wick touches/crosses.
+- Alerts are evaluated for every live chart context, not only the selected chart.
+- Alert notifications are non-modal so they cannot block the live-data dispatcher.
+- The bell loops for at least five seconds, with a repeated system-sound fallback if custom audio cannot play.
+- Existing draggable alert lines and right-click Edit/Remove behavior remain preserved.
+
+PRESERVED
+- Demo-trading entry-line SL/TP drag behavior.
+- Symbol favourites.
+- Trade-history synchronization across matching symbols/timeframes.
+- Multi-chart demo-trade levels and live P&L.
+- MT5 bridge and FileBridge source files remain byte-for-byte unchanged.
+
+BUILD LIMITATION
+- The generation environment has no Windows .NET/WPF compiler.
+- Run Clean-Restore-Build.cmd with Visual Studio 2022 on Windows for the final compiler and display test.

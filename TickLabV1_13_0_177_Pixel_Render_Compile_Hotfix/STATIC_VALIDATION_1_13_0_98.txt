@@ -1,0 +1,14 @@
+TickLab v1.13.0.98 — Static Validation
+
+PASS: 31/31 XAML files parsed successfully.
+PASS: DrawingLevel model exposes per-level thickness as Width.
+PASS: No invalid level.LineWidth reference remains in CandleChartControl.DrawingParity.cs.
+PASS: Gann Box renderer uses level.Width with fallback to drawing.Style.LineWidth.
+PASS: Project/version metadata updated to 1.13.0.98.
+PASS: Relative to v1.13.0.97, the only application logic change is the one DrawingLevel property-name correction in CandleChartControl.DrawingParity.cs.
+PASS: Gann Box geometry/formulas are otherwise unchanged.
+PASS: Gann Fan, Gann Square, Gann Square Fixed and Fibonacci logic are unchanged in this compile-fix.
+
+Environment limitation:
+- dotnet/MSBuild is not installed in this Linux runtime, so Windows WPF compilation cannot be executed here.
+- Nullable warnings supplied without file/line coordinates are intentionally not guessed at; provide those coordinates if they remain after compilation.

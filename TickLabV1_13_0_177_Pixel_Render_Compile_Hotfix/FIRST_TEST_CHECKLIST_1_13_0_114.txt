@@ -1,0 +1,12 @@
+TickLab v1.13.0.114 — FIRST TEST CHECKLIST
+
+1. Open the same chart where v1.13.0.113 created invisible annotation objects. They should now render instead of existing only in the Inspector.
+2. Place Text and confirm Add text is visible immediately.
+3. Place Note with two clicks and confirm leader + note box render.
+4. Place Price Note with two clicks and confirm formatted price bubble renders.
+5. Place Pin, Comment, Price Label, Signpost and Flag; each must appear after completion.
+6. Place Table with two clicks; grid must appear, then click a cell and type.
+7. Place Callout with two clicks; bubble + tail must render.
+8. Click visible parts of each object and confirm selection/quick edit.
+9. In Drawing Inspector/Object Tree, use Remove on an old invisible/stale v1.13.0.113 object; it must disappear from the list.
+10. Confirm previously completed folders still behave exactly as before.

@@ -1,0 +1,17 @@
+TickLab v1.13.0.50 change scope
+
+Functional source changes:
+- Added MainWindow.AtomicHistoryLive.cs.
+- MainWindow.xaml.cs: commit loaded history to its context and reconcile before active live merge.
+- MainWindow.MultiChartLive.cs: reconcile non-active context before live merge.
+- MainWindow.DataIntegrity.cs: reconcile context before rolling-window tail repair.
+
+Identity/build changes:
+- Version metadata, solution name, window title, validator, release notes and test checklist.
+
+Explicitly unchanged:
+- Alert implementation and notification UI.
+- Demo Trading and chart trade overlays.
+- Right-side handles and panels.
+- Indicator implementations and drawing tools.
+- MT5 bridge sources, FileBridge sources and permanent history formats.

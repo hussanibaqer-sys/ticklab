@@ -1,0 +1,34 @@
+TickLab v1.13.0.129 — First Runtime Test Checklist
+==================================================
+
+1. FAVORITES BUTTON LOCATION
+[ ] Confirm Favorites Tabs button is on the left drawing toolbar between Emoji/Media and Measure.
+
+2. COMBINED FAVORITES TOGGLE
+[ ] Add at least one drawing tool to Favorites.
+[ ] Add at least one timeframe to Favorites.
+[ ] Click Favorites Tabs On: both available favorite bars appear.
+[ ] Click Favorites Tabs Off: both disappear but saved favorite items remain.
+[ ] Turn it back on and confirm the saved favorites return.
+
+3. FAVORITES BOTTOM POSITION
+[ ] Confirm both bars sit inside the active chart immediately above the time scale.
+[ ] Confirm they do not cross the time-scale border or right price scale.
+[ ] Resize/move/maximize TickLab and confirm the bars remain attached to the chart bottom.
+[ ] If chart width is small, confirm the two bars stack upward rather than crossing the chart boundary.
+
+4. GLOBAL QUICK EDIT
+[ ] Draw a Trend Line: after completion, quick edit appears at chart top-center.
+[ ] Draw Rectangle: quick edit appears at the same top-center location.
+[ ] Draw a Fib/Gann tool: quick edit appears at top-center.
+[ ] Draw an Emoji: quick edit appears at top-center.
+[ ] Deselect by clicking blank chart: quick edit disappears.
+[ ] Reselect an existing drawing: quick edit returns to top-center.
+[ ] Confirm the quick-edit bar can still be manually dragged when desired.
+
+5. REGRESSION SMOKE TEST
+[ ] Measure keeps v128 temporary behavior and does not gain the normal persistent quick-edit toolbar.
+[ ] Emoji full-color/vector rendering and picker behavior remain unchanged.
+[ ] Rectangle + Rotated Rectangle retain their v128 8-handle resize behavior.
+[ ] Whole-object drag, A/B/C editing, middle-click delete and quick-menu Remove remain working.
+[ ] Drawings still stay clear of price/time scale boundaries.

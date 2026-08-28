@@ -1,0 +1,42 @@
+TickLab v1.13.0.128 — FIRST RUNTIME TEST
+
+1. MEASURE
+[ ] Measure a range: translucent rectangle fill appears with NO outline.
+[ ] Center horizontal and vertical arrows remain.
+[ ] Right-click Measure icon -> Edit: Colour and Transparency / opacity work live.
+[ ] Click normal chart once after completion: measurement disappears.
+
+2. TL LOGO
+[ ] Bottom-left TickLab logo stays above the time scale and never touches/crosses its border.
+
+3. HOVER-ONLY CONTROLS
+[ ] Chart/pane top-right controls are invisible normally.
+[ ] Move pointer directly over their control area: controls appear.
+[ ] Leave that area: controls disappear.
+[ ] Workspace bottom-right controls behave the same way.
+[ ] Minimize / maximize / close functions still work.
+
+4. DRAWING BOUNDARIES
+[ ] Drag several drawings toward the right: nothing paints over the price scale.
+[ ] Drag toward the bottom: nothing paints over the time scale.
+[ ] Test labels/fills/emoji/handles near both boundaries.
+
+5. RECTANGLE
+[ ] Select Rectangle: exactly 8 handles appear.
+[ ] Four corner handles resize normally.
+[ ] Top/bottom center handles resize vertically only.
+[ ] Left/right center handles resize horizontally only.
+[ ] Whole-object drag remains working.
+
+6. ROTATED RECTANGLE
+[ ] Select Rotated Rectangle: exactly 8 handles appear.
+[ ] Four corners resize without skew.
+[ ] Four wall-center handles stay locked to the rectangle's rotated local axes.
+[ ] Wall resizing does not change the existing rotation.
+[ ] Resize near plot borders: rectangle cannot cross into price/time scales.
+
+7. REGRESSION
+[ ] Emoji colors/scrollbar remain exactly as v127.
+[ ] Zoom/Scroll wheel toggle remains working.
+[ ] One-select -> one-draw remains working.
+[ ] Whole drawing drag, A/B/C handles, middle-click delete, quick-menu Remove, and blank-chart deselect remain working.

@@ -1,0 +1,49 @@
+TickLab v1.13.0.5 — Multi-Window Chart Workspace
+=================================================
+
+UNIFIED TOP WORKSPACE BAR
+- Replaced the separate identity and command rows with one compact top workspace bar.
+- Moved every timeframe button and the custom-timeframe (+) button to the top bar.
+- Preserved New Chart, Layout, Indicators, Alerts, Replay, MT5, symbol search, Refresh, Markers, Settings and bridge-folder access.
+- Main TickLab continues to use the normal Windows title-bar controls; no duplicate application minimize/maximize/close buttons were added.
+
+SLIM CHART / WINDOW DOCK
+- Removed timeframe selection from the bottom of the chart.
+- Added a 38-pixel chart/window selector dock, approximately half the height of the earlier concept.
+- The main chart is window 1; detached windows appear as numbered selectable tabs.
+- Added a compact Add Chart command in the dock.
+- Moved MT5 connection status to the far bottom-right and retained live/offline colour state.
+
+DETACHABLE NUMBERED WINDOWS
+- New Chart opens a real independent WPF window that can be dragged to another connected display.
+- Detached chart numbering starts at 2 because the main TickLab chart is chart 1.
+- Each detached chart contains only a compact number/title strip, the price chart, the right price scale and the bottom time scale.
+- No main drawing rail, tool-folder window, Favorites bar, right inspector or bottom TickLab dock is duplicated inside detached charts.
+- Each detached chart has its own minimize, maximize/restore and close controls in its top-right corner.
+- Double-clicking a detached chart title strip toggles maximize/restore.
+- Detached charts receive current chart data, markers, timeline gaps, settings and live refresh updates.
+- The generic detached frame can also host an indicator, EA or analysis tool without adding the main TickLab workspace chrome.
+- Detaching an existing indicator/tool now uses the same numbered-window system and appears in the bottom selector.
+
+FAVORITES SAFETY
+- Favorites remains draggable.
+- Its location is clamped to the complete Windows virtual desktop so it cannot be lost beyond monitor edges.
+- Pressing Favorites hides the bar; pressing it again restores it inside the visible virtual desktop.
+- Saved Favorites positions on secondary displays remain supported.
+
+BRANDING AND PRESERVED WORKSPACE
+- Added the preferred TL + TickLab wordmark to the lower-left chart area.
+- Kept the full-height centred drawing rail and adjacent auto-closing scrollable tool folder.
+- Kept the right DRAWINGS / OBJECTS / MARKET workspace and its pointer-draggable left/right resize handle unchanged.
+- Retained smooth Pen/Highlighter drawing, future-space drawing, two-click measurement, coloured media, undo/redo and drawing persistence.
+
+PROTECTED COMPONENTS
+- TickLabLiveBridge_V300.mq5 unchanged.
+- TickLabHistoryBridge_V305.mq5 unchanged.
+- TickLabCandleMarkerExchange_V109.mq5 unchanged.
+- Permanent M1 and raw-tick storage formats unchanged.
+
+BUILD
+- Extract outside OneDrive.
+- Open TickLabV1_13_0_5.sln in Visual Studio 2022.
+- Select Release, then Clean Solution and Rebuild Solution.

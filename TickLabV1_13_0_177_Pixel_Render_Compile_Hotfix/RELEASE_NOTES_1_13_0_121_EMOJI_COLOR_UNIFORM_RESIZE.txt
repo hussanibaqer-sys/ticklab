@@ -1,0 +1,35 @@
+TickLab v1.13.0.121 — Emoji Color / Uniform Corner Resize
+
+BASE
+- Built directly from user-confirmed-good v1.13.0.120 Drawing Interaction Lock-State Fix.
+- v1.13.0.120 shared rendering, one-select -> one-draw, whole-object drag, A/B/C editing, middle-click delete, quick-menu Remove, blank-chart deselect, Inspector delete and Callout correction remain protected.
+
+EMOJI COLOUR
+- Emoji picker previews now use the emoji-aware colour renderer instead of standard WPF monochrome TextBlock rendering.
+- Placed chart emoji use full-colour vector DrawingImage geometry.
+- Compound emoji, skin-tone sequences and flags use the same colour/vector path.
+- Emoji rendering stays vector-based during scaling; no bitmap upscaling is introduced.
+
+EMOJI / ICON / STICKER SELECTION + MOVE
+- Completed Emoji-folder graphic objects show four corner control handles.
+- The stored center point is no longer exposed as a visible move handle.
+- Click-and-hold anywhere on the visible item body to drag/move the complete item normally.
+
+UNIFORM CORNER RESIZE
+- Any of the four corners can be dragged to resize.
+- Opposite corner stays fixed while resizing.
+- Width and height scale together from one MediaScale value.
+- No horizontal-only or vertical-only side handles exist, so graphics cannot be stretched/squashed.
+- Scale persists in ChartDrawing.NumericOptions and therefore survives workspace drawing persistence.
+- Supported scale range is guarded to avoid degenerate zero-sized or extreme geometry.
+
+SCOPE / FREEZE
+- No drawing tool catalog changes.
+- No Fib/Gann, Patterns, Elliott, Cycles, measurements, annotations or other tool-specific geometry changes.
+- CandleChartControl.DrawingParity.cs is byte-identical to v1.13.0.120.
+- Functional changes are limited to shared media-object rendering/resizing and the Emoji picker preview.
+- Added Emoji.Wpf 0.3.4 package reference for WPF colour vector emoji rendering.
+
+VALIDATION LIMIT
+- Static validation completed in the Linux packaging environment.
+- Windows WPF/.NET runtime compilation is not available here; Visual Studio on Windows remains the final runtime gate.

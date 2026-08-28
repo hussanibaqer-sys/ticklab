@@ -1,0 +1,40 @@
+TickLab v1.13.0.58 — Replay Controls + Viewport Fix
+
+Scope
+-----
+Replay controls and replay viewport behavior only. v1.13.0.57 replay identity fix and instant replay loading are preserved.
+
+Changes
+-------
+1. Replay Speed selector readability
+   - Speed selector uses a white background with black text.
+   - Dropdown speed choices also use white background / black text.
+
+2. Reverse / Forward replay buttons
+   - Added ◀ Reverse and Forward ▶ buttons to the Replay window.
+   - Reverse plays backward through raw ticks already revealed in the current replay.
+   - Candle OHLC, wicks, tick volume, real volume and spread are restored tick-by-tick while reversing.
+   - Forward reapplies the exact reversed ticks before continuing into unread raw ticks.
+   - Reverse cannot move earlier than the yellow replay start.
+   - Existing Play/Pause, Step tick and Step candle remain available.
+
+3. Preserve clear right-side chart space when Replay starts
+   - Starting Replay no longer pulls the remaining candles to the far-right chart wall after future candles are hidden.
+   - TickLab anchors the completed candle immediately before the yellow replay start at its existing visual position.
+   - The area that was to the right of the yellow line remains empty at Replay start and is naturally filled as replay candles form.
+   - No forced Reset/fit or replay-start auto-scroll is performed.
+
+Preserved
+---------
+- v1.13.0.57 replay identity/self-cancel fix.
+- Instant raw-tick replay loading path.
+- Hidden live MT5 state continues in the background during Replay.
+- End Replay restores the continuously updated live chart.
+- Replay Range yellow/red behavior and auto-stop.
+- Trading, alerts, panels, indicators, drawings, history import/storage and MT5 bridge behavior are unchanged.
+
+Validation
+----------
+- Existing source regression validation: 696 passed, 0 failed.
+- Replay controls + viewport validation: 27 passed, 0 failed.
+- Generation environment has no Windows/.NET WPF compiler; run Clean-Restore-Build.cmd or Visual Studio 2022 Release Rebuild on Windows for final compilation/display testing.

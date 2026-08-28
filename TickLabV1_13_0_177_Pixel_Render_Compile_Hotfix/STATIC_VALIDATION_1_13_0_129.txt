@@ -1,0 +1,47 @@
+TickLab v1.13.0.129 — Static Validation
+===========================================
+
+PASS | Version 1.13.0.129 in project
+PASS | Window title v1.13.0.129
+PASS | VERSION.txt v1.13.0.129
+PASS | v129 solution exists
+PASS | Favorites toolbar button present
+PASS | Favorites button visible (not collapsed) | <Button x:Name="DrawingFavoritesButton" Style="{StaticResource DrawingRailButton}" ToolTip="Favorites Tabs On/Off — drawing tools + timeframes" Click="DrawingFavoritesButton_Click"/>
+PASS | Favorites button is after category panel and before Measure
+PASS | Favorites button tooltip says drawing + timeframe
+PASS | Combined favorites toggle method exists
+PASS | Combined toggle opens drawing favorites
+PASS | Combined toggle opens timeframe favorites
+PASS | Combined toolbar click toggles both
+PASS | Bottom-position routine exists
+PASS | Favorites positioning uses protected plot bounds
+PASS | Favorites anchor to plot bottom
+PASS | Favorites never intentionally anchor into time scale
+PASS | Favorites windows reposition on main window move/resize/state
+PASS | Favorites reposition on active chart size change
+PASS | Quick edit top-center routine exists
+PASS | Quick edit uses plot bounds
+PASS | Quick edit centers across plot
+PASS | Quick edit anchors near plot top
+PASS | Quick edit no longer follows drawing bounds
+PASS | Drawing selection opens quick edit
+PASS | Quick edit repositions on chart resize
+PASS | Manual quick-edit drag remains supported
+PASS | Chart exposes protected plot bounds helper
+PASS | Frozen Core/Drawing/DrawingToolCatalog.cs
+PASS | Frozen Controls/CandleChartControl.DrawingParity.cs
+PASS | Frozen Controls/CandleChartControl.Drawing.cs
+PASS | Frozen Core/Drawing/DrawingMediaCatalog.cs
+PASS | Frozen Windows/DrawingMediaPickerWindow.xaml
+PASS | Frozen Windows/DrawingMediaPickerWindow.xaml.cs
+PASS | Functional source diff limited to 5 intended files | Controls/CandleChartControl.cs, MainWindow.ChartContexts.cs, MainWindow.xaml, MainWindow.xaml.cs, TickLab.App.csproj
+PASS | All 31 XAML files parse
+PASS | MainWindow.xaml.cs raw delimiter balance
+PASS | MainWindow.ChartContexts.cs raw delimiter balance
+PASS | Controls/CandleChartControl.cs raw delimiter balance
+PASS | No bin/obj/.vs caches packaged
+RESULT 39/39
+
+Environment limitation:
+- Windows WPF/.NET MSBuild runtime compilation is unavailable in this Linux packaging environment.
+- Visual Studio on Windows remains the final compile/runtime acceptance gate.

@@ -1,0 +1,18 @@
+TickLab v1.13.0.19 — 400-Bar Full Candle Zoom Repair
+
+Candle zoom repair
+- The compact high/low renderer no longer starts near 206 visible bars.
+- Full candle bodies and centred wicks remain active down to a three-physical-pixel slot.
+- On the chart size that previously changed near 206 bars, the new transition occurs at roughly 480 bars.
+- This guarantees at least 400 visible bars with real candle bodies on that frame.
+- The 7–5 pixel range keeps the normal compact gap.
+- The 4-pixel micro tier uses a three-pixel body with a one-pixel gap.
+- The 3-pixel micro tier keeps a three-pixel body and one-pixel centred wick so candles do not become high/low lines.
+- The one-pixel compressed renderer remains available beyond the micro tier for the 1,500-bar maximum zoom-out.
+
+Retained
+- Crisp physical-pixel candle borders.
+- Shared body/wick centreline.
+- Alerts and market replay.
+- Standard, synthetic, TPO and real-volume chart types.
+- MT5 bridge protocol and protected MQL5 sources.

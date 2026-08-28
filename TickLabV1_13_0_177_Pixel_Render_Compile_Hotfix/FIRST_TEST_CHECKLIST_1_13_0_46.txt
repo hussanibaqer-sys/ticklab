@@ -1,0 +1,43 @@
+TickLab v1.13.0.46 — First Test Checklist
+
+1. Build and launch
+[ ] Open TickLabV1_13_0_46.sln in Visual Studio 2022.
+[ ] Rebuild Release with zero compiler errors.
+[ ] Launch without a startup exception.
+
+2. Trade history
+[ ] Tick History on chart in Demo Trading.
+[ ] Close a demo trade.
+[ ] Confirm BUY/SELL and EXIT arrows plus dashed path appear at the correct candles.
+[ ] Change the same chart through several timeframes; history remains visible.
+[ ] Open another chart of the same symbol; history appears there too.
+[ ] Untick History on chart; closed history hides while running entry/SL/TP remain.
+
+3. SL / TP
+[ ] Right-click a running entry, SL or TP line.
+[ ] Confirm there is no Enter points option.
+[ ] Open Add/Modify SL or TP.
+[ ] One arrow click moves exactly 50 symbol points.
+[ ] Hold an arrow; price repeats rapidly at five times the former repeat speed.
+[ ] Missing SL/TP begins from entry price.
+[ ] Existing SL and TP lines can still be dragged.
+
+4. Entry line
+[ ] Entry line shows BUY/SELL, lot size and live USD P/L.
+[ ] Dragging the entry line does not create or change SL/TP.
+
+5. P/L width
+[ ] Open-position LIVE P/L values are fully visible.
+[ ] History P/L values are fully visible.
+
+6. Multi-chart live
+[ ] Open two or more charts of the same live symbol with different timeframes.
+[ ] Click chart 1 repeatedly; every chart continues moving.
+[ ] Click chart 2 repeatedly; every chart continues moving.
+[ ] Float/detach a chart; both docked and floating charts continue moving.
+[ ] Start replay in one pane; other live panes continue moving.
+
+7. Regression
+[ ] Code Editor, Demo Trading and Panel handles remain synchronized and readable.
+[ ] Saved demo history survives restart.
+[ ] MT5 history import and bridge connectivity still work.

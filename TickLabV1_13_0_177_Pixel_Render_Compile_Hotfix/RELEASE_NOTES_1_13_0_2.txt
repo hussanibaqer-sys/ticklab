@@ -1,0 +1,17 @@
+TickLab v1.13.0.2 — Compiler and Nullable Safety Hotfix
+
+Fixed
+- Renamed the Fibonacci-level fill-opacity local so it no longer conflicts with the drawing fill-opacity local.
+- Corrected four nullable TryGetValue result declarations.
+- Added explicit null guards before cached connector and history-boundary dereferences.
+- Retained the single shared CandleChartControl.DistanceToSegment implementation.
+- Contained only CS4014 after auditing intentional background UI refresh calls; all nullable diagnostics remain enabled.
+
+Unchanged
+- Premium v1.13 interface and drawing behavior.
+- Live Bridge V300, History Bridge V305, and Marker V109.
+- Permanent M1 and raw-tick storage formats.
+
+Build
+- Open TickLabV1_13_0_2.sln in Visual Studio 2022.
+- Select Release and choose Build > Rebuild Solution.

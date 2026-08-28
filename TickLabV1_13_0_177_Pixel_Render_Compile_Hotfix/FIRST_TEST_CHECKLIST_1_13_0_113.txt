@@ -1,0 +1,56 @@
+TickLab v1.13.0.113 — FIRST TEST CHECKLIST
+
+1. TEXT
+- Select Text, click once, edit the text.
+- Confirm selected text has a clean box outline, not a detached anchor dot.
+- Change text colour, font size and Anchor.
+- Deselect/reselect by clicking directly on the letters.
+
+2. NOTE
+- Click anchor point, then click note location.
+- Confirm straight leader + editable note box.
+- Click leader and box separately; both must select the Note.
+
+3. PRICE NOTE
+- Click price anchor, then label location.
+- Confirm formatted price only (no “Note”, no excessive raw decimals).
+- Drag first point: displayed price changes. Drag second: only label position changes.
+
+4. PIN
+- One click should place map-pin + “Add text” box.
+- Change pin/text styling and Anchor.
+- Click pin body and text independently to reselect.
+
+5. TABLE — TEST THIS CAREFULLY
+- Create table with two placement points.
+- Confirm blank 2×3 grid.
+- Click inside a cell and type; caret/highlight should be visible.
+- Backspace, Tab and Enter should work.
+- Use +Column and +Row quick actions.
+- Resize from all four corners.
+- Click any cell/border to select the table.
+
+6. CALLOUT
+- Two clicks: anchor then bubble location.
+- Confirm filled tapered tail + rounded editable bubble.
+- Click tail and bubble to reselect.
+
+7. COMMENT
+- One click creates compact rounded comment bubble.
+- Edit text/fill/font; click bubble/tail to reselect.
+
+8. PRICE LABEL
+- One click creates attached price bubble.
+- Confirm price precision matches the chart symbol.
+- Drag vertically and verify price updates.
+
+9. SIGNPOST
+- One click creates label with vertical post to the time axis.
+- Click label or post to reselect.
+
+10. FLAG
+- One click creates small flag + pole.
+- Click flag body or pole to reselect.
+
+11. FREEZE CHECK
+- Quickly open a known-good tool from an earlier folder (for example Path, Gann Box, Cyclic Lines) and confirm its prior behavior has not changed.

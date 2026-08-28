@@ -1,0 +1,43 @@
+TickLab v1.13.0.125 — Emoji Combined Quality / Controls
+
+BASE
+- Built from v1.13.0.124 Emoji Full Vector Asset Fix.
+- v1.13.0.120 shared drawing interaction/render baseline remains protected.
+
+1. SMILEYS & PEOPLE QUALITY CLEANUP
+- Removes the gray-heavy fallback look from Smileys & People entries that were not using native clean Twemoji vectors.
+- Directional/person variants reuse clean full-colour Twemoji artwork when possible.
+- Multi-person sequences that lacked a clean direct vector use clean Twemoji component composition instead of gray traced figures.
+- Remaining Smileys & People fallback vectors are recoloured/saturated to remove the washed-out gray appearance while preserving skin-tone regions.
+- The Emoji catalog remains complete at 3,944 bundled SVG entries; picker and chart use the same bundled vector source.
+
+2. EMOJI PICKER SCROLLBAR
+- Emoji picker now always shows a visible vertical scrollbar.
+- Mouse-wheel scrolling remains available.
+- Virtualized/recycled emoji rows remain enabled so the full catalog does not get created at once.
+
+3. TOOLBAR ZOOM / SCROLL WHEEL MODE
+- Existing Zoom toolbar button is now a mouse-wheel mode toggle.
+- Zoom Mode: mouse wheel zooms the active chart.
+- Scroll Mode: mouse wheel pans/scrolls the active chart horizontally.
+- Button icon/tooltip changes with the active mode.
+- State is applied to the active chart and continues through the existing per-chart ChartSettings persistence path.
+
+4. UNLIMITED / REPEATED EMOJI PLACEMENT
+- After choosing an Emoji, each chart click can place another copy until the user changes tool or presses Escape.
+- No low hard cap is added to placed Emoji objects.
+- Normal drawing tools preserve the confirmed one-select -> one-draw behavior.
+
+5. PRESERVED EMOJI INTERACTION
+- Four corner resize handles remain.
+- Body click-hold moves the item.
+- Corner resize remains uniform/aspect-locked with no horizontal/vertical distortion.
+- Full-vector chart rendering and picker virtualization remain.
+
+FREEZE BOUNDARY
+- DrawingToolCatalog.cs unchanged from v1.13.0.124.
+- CandleChartControl.DrawingParity.cs unchanged from v1.13.0.124.
+- No Fib/Gann, Patterns, Elliott, Cycles, Text/Notes, MT5, history, replay, gateway or connector geometry/implementation work is included.
+
+RUNTIME NOTE
+- Linux packaging environment has no Windows WPF/.NET SDK, so final compile/runtime validation remains Visual Studio on Windows.

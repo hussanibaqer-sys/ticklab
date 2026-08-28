@@ -1,0 +1,11 @@
+TickLab v1.13.0.25 — Vertical-Only Zoom Isolation Hotfix
+
+Scope: default Candles chart only.
+
+Fixed:
+- At the 1,500-bar horizontal zoom-out limit, further wheel-out input no longer executes any horizontal zoom, right-offset, clamp, viewport-publish, or horizontal redraw path.
+- Horizontal and vertical wheel zoom are applied as one transaction with one viewport notification and one visual invalidation.
+- The price-scale-only path preserves visible candle count, timeline range, newest-candle anchor, and right offset exactly.
+- Compressed candle OHLC rows are clamped to drawable physical pixels, preventing zero-height disappearance at the plot-bottom boundary during deep vertical zoom-out.
+
+No indicator, synthetic-chart, workspace, replay, alert, history, connector, or MQL5 protocol changes are included.

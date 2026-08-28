@@ -1,0 +1,53 @@
+TickLab v1.13.0.89 — Disjoint Vertical Lock / Fib-Gann Parity
+
+SCOPE
+- Correct Folder 1 Disjoint Channel vertical-lock behavior first.
+- Then perform the next strict toolbox pass only: Folder 2 — Fibonacci / Gann.
+- No Folder 3 work is included.
+- No MT5 bridge, history, replay, connector, or real-order code was changed.
+
+DISJOINT CHANNEL CORRECTION
+- First two points define the first rail and its angle.
+- Point 3 is now vertically constrained: its time/X is locked to point 2 while its price/Y follows the pointer.
+- The second rail is the exact mirrored/opposite-angle counterpart of the first rail rather than an independently skewable line.
+- Selection/edit handles use the same constrained third-point geometry.
+- Completed object remains movable as an object.
+
+FOLDER 2 — FIBONACCI / GANN
+Visual/UI parity pass:
+- Folder 2 now uses the same light reference-style flyout treatment as the supplied TradingView recording.
+- Reference folder sections/order are preserved for Fibonacci and Gann tools.
+- Folder 2 uses the light selected-object contextual toolbar and reference-style object context menu.
+- Added a dedicated light TradingViewFibGannSettingsWindow rather than routing Folder 2 through the old generic dark settings UI.
+
+Settings behavior:
+- Folder 2 settings are modeless so opening settings does not freeze/disable the main TickLab chart.
+- Live preview is retained while changing style/levels.
+- Cancel/X restores the original drawing; OK commits the edit.
+- Added reference-relevant controls including Reverse, Use one color, label options, Gann Fan/Arcs options, Lock and Place as background.
+- Transparency direction is Transparent -> Solid.
+- Per-level line and fill swatches are clickable and live-update the drawing.
+
+Colors/levels:
+- Added distinct multicolor default stacks for Fib retracement/channel, trend-based Fib extension, time tools, speed/fan/arc/wedge family, and Gann grids.
+- Gann box/square rendering now uses per-level colors on time and price grid lines.
+- Gann fan/square rays/arcs use the corresponding individual level colors.
+
+Geometry corrections:
+- Fib Speed Resistance Arcs now render as half-circle bands toward point 2 instead of incorrect full circles.
+- Fib Wedge now renders as nested circular sector bands instead of straight chords.
+- Fib/Gann fan tools render translucent colored zones between level rays.
+- Gann square/fixed-square selection handles and bounds follow the displayed square rather than the raw unadjusted second anchor.
+
+Selection/reselection:
+- Added visible-geometry hit testing for Fib retracement levels, trend extension levels, Fib channel levels, time-zone lines, circles, speed arcs, fan rays, pitchfan rays, Fib wedge arcs/rays, and Fib spiral.
+- Clicking the visible drawing should reselect the object and restore edit handles/settings instead of requiring a click on an invisible raw anchor path.
+
+VALIDATION
+- Static source/XAML/handler/structure/parity validation: 644 passed, 0 failed.
+- Exact app-source diff vs clean v1.13.0.88: 9 intended files.
+- No protected bridge/history/replay/MT5 source files changed.
+- Windows WPF runtime compilation cannot be performed in this Linux tool environment because dotnet/MSBuild for the Windows desktop target is unavailable. Compile and runtime-video parity still require the user's Windows test.
+
+IMPORTANT
+Folder 2 is a test candidate, not declared final parity from static checks alone. Do not advance to Folder 3 until the user tests the complete select -> construct -> complete -> deselect -> reselect -> settings/edit sequence against the reference video.

@@ -1,0 +1,13 @@
+FIRST TEST — v1.13.0.109
+
+Because v1.13.0.109 intentionally makes no functional drawing changes, this is a regression smoke test only.
+
+1. Restore NuGet packages if Visual Studio reports project.assets.json missing.
+2. Build and launch TickLab.
+3. Open one saved/new drawing from each Folder 4 tool.
+4. Click a visible body/line/fill/label and verify quick edit opens.
+5. Confirm Long/Short one-click placement and deselected clean view.
+6. Confirm Forecast begins WAITING and turns SUCCESS only when market reaches B.
+7. Confirm Ghost Feed multi-click + double-click finish.
+8. Confirm FRVP/Anchored VP settings and Anchored VWAP remain as in v1.13.0.108.
+9. If all remain good, Folder 4 is closed and the next folder can begin.

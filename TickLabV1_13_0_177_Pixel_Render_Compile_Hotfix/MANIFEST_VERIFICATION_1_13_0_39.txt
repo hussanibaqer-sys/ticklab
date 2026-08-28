@@ -1,0 +1,8 @@
+TickLab v1.13.0.39 source-manifest verification
+
+Manifest entries verified: 477
+Passed: 477
+Failed: 0
+
+The manifest intentionally excludes itself and this verification report to avoid circular hashes.
+Result: PASS

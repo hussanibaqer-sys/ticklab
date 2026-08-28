@@ -1,0 +1,15 @@
+TickLab v1.13.0.20 — Stable Candle Range Zoom Hotfix
+
+Fixed
+- Removed the changing unused pixel strip at the left side of the candle layer.
+- Candles now span the complete fixed plot width at every detailed zoom level.
+- Spare physical pixels are distributed deterministically between candle slots.
+- Candle body width stays identical across a frame; spare pixels affect only gaps.
+- Wicks remain derived from the final body centre.
+- Corrected the horizontal zoom anchor from count - 1 to the complete slot range.
+- Repeated zoom-in/zoom-out no longer accumulates a half-slot left-edge drift.
+- The 400-bar full-candle tier and 1,500-bar maximum remain.
+- Alerts, Replay, chart types, TPO, Footprint, Volume Profile and bridge fixes remain.
+
+Build
+Close TickLab and Visual Studio, delete bin and obj, then clean and rebuild the solution.

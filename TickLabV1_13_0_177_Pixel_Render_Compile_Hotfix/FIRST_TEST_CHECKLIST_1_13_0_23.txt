@@ -1,0 +1,11 @@
+TickLab v1.13.0.24 first test
+
+1. Select Chart Type > Candles.
+2. Press End/Go Live so the latest candle and normal future space are visible.
+3. Put the mouse at the left, middle and right of the plot and zoom in/out repeatedly.
+4. Confirm the right/latest candle boundary never changes; only older candles enter/leave from the left.
+5. Zoom past 400 visible candles and return to the default zoom.
+6. Drag the bottom time scale left/right to zoom and confirm the right boundary remains fixed.
+7. Scroll/drag through history, stop, then zoom. Confirm the current right boundary remains fixed at that historical position.
+8. Confirm vertical price zoom still follows the mouse Y position.
+9. Confirm candles remain crisp, uniformly spaced and centred.

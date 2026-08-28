@@ -1,0 +1,9 @@
+TickLab v1.13.0.122 — FIRST TEST
+
+1. Open Emojis and scroll every category; confirm formerly missing cells are present.
+2. Search for: face in clouds, face exhaling, collision, speech balloon, monkey, pushing hand, and any emoji you previously noticed missing.
+3. Place several newly restored emoji and confirm full-colour chart rendering.
+4. Select each: exactly 4 corner handles.
+5. Drag body to move.
+6. Drag any corner diagonally: uniform proportional resize, no horizontal/vertical distortion.
+7. Regression: draw a Trend Line and confirm v1.13.0.120 drag/delete/quick-remove behavior remains working.

@@ -1,0 +1,19 @@
+TickLab v1.13.0.166 exact source diff vs v1.13.0.165
+
+Changed application source files only:
+- src/TickLab.App/App.xaml
+  * stronger theme-neutral hover/pressed/focused/active markers for DarkToolbarButton and DrawingRailButton
+  * drawing-rail marker uses adaptive horizontal stretch so narrow split-arrow buttons also show it
+  * no square outlines restored
+- src/TickLab.App/MainWindow.xaml.cs
+  * every drawing category uses the same split button with a visible right chevron
+  * main category button shows/activates last-used tool for that category
+  * per-category last-used cache, seeded from persisted RecentDrawingToolIds when available
+  * successful media/image selection updates the category shortcut
+- src/TickLab.App/MainWindow.xaml
+  * version title only
+- src/TickLab.App/TickLab.App.csproj
+  * version metadata only
+- VERSION.txt / v166 release-validation metadata
+
+No other source file differs from v1.13.0.165.

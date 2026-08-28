@@ -1,0 +1,13 @@
+TickLab v1.13.0.171 static validation
+
+PASS — version metadata = 1.13.0.171
+PASS — MainWindow title = TickLab v1.13.0.171 — Human-Centered Rail Balance
+PASS — expanded DrawingToolbarColumn remains 68 px
+PASS — DrawingToolbarPanel remains 46 px wide
+PASS — DrawingToolbarPanel visible-tool origin moved from 11 px to 16 px
+PASS — 36 px lower action buttons now have 16 px left + 16 px right visible gutters
+PASS — 35 px folder primary button has 16 px left + 17 px right visible gutters while chevron is hidden
+PASS — 11 px folder chevron remains hover-only and uses the right-side visual gutter when shown
+PASS — expanded collapse control aligned to 16 px visual gutter
+PASS — collapsed DrawingToolbarColumn remains 14 px
+PASS — no chart/drawing engine source files modified

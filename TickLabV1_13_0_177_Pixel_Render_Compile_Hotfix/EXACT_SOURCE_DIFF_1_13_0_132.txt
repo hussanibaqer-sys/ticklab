@@ -1,0 +1,6 @@
+Files /mnt/data/TickLabV1_13_0_131_Favorites_TopBar_Refine/src/TickLab.App/Core/TopBarIconFactory.cs and /mnt/data/TickLabV1_13_0_132_Compile_Nullability_Hotfix/src/TickLab.App/Core/TopBarIconFactory.cs differ
+Files /mnt/data/TickLabV1_13_0_131_Favorites_TopBar_Refine/src/TickLab.App/MainWindow.xaml and /mnt/data/TickLabV1_13_0_132_Compile_Nullability_Hotfix/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/TickLabV1_13_0_131_Favorites_TopBar_Refine/src/TickLab.App/MainWindow.xaml.cs and /mnt/data/TickLabV1_13_0_132_Compile_Nullability_Hotfix/src/TickLab.App/MainWindow.xaml.cs differ
+Files /mnt/data/TickLabV1_13_0_131_Favorites_TopBar_Refine/src/TickLab.App/TickLab.App.csproj and /mnt/data/TickLabV1_13_0_132_Compile_Nullability_Hotfix/src/TickLab.App/TickLab.App.csproj differ
+Files /mnt/data/TickLabV1_13_0_131_Favorites_TopBar_Refine/src/TickLab.App/Windows/DrawingFavoritesWindow.xaml.cs and /mnt/data/TickLabV1_13_0_132_Compile_Nullability_Hotfix/src/TickLab.App/Windows/DrawingFavoritesWindow.xaml.cs differ
+Files /mnt/data/TickLabV1_13_0_131_Favorites_TopBar_Refine/src/TickLab.App/Windows/TimeframeFavoritesWindow.xaml.cs and /mnt/data/TickLabV1_13_0_132_Compile_Nullability_Hotfix/src/TickLab.App/Windows/TimeframeFavoritesWindow.xaml.cs differ

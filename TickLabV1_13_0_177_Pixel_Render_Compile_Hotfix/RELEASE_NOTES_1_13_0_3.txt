@@ -1,0 +1,29 @@
+TickLab v1.13.0.3 — Adaptive Drawing Workspace Hotfix
+========================================================
+
+LAYOUT FIXES
+- Rebuilt the left drawing rail as a full-height, independently scrollable area.
+- Removed the internal visible scrollbar that shifted tool logos away from the centre.
+- Added fixed scroll-up and scroll-down controls while retaining mouse-wheel scrolling.
+- Explicitly centred every category and action icon in its rail button.
+
+TOOL WINDOW
+- Moved the selected drawing-category list out of the right DRAWINGS / OBJECTS / MARKET workspace.
+- A category click now opens a dedicated vertically scrollable tool window immediately beside the left rail.
+- The adjacent tool window can be resized with its own splitter and closed without leaving a blank right panel.
+
+RIGHT WORKSPACE
+- Added a draggable splitter for the DRAWINGS / OBJECTS / MARKET workspace.
+- Added a collapse/expand handle so the right workspace can slide out of the chart area and return.
+- The DRAWINGS tab now uses its full area for the selected-drawing inspector.
+
+PRESERVED
+- v1.13.0.2 compiler, nullable-safety and duplicate-method fixes.
+- Drawing engine, favourites, object tree, market panel, undo/redo and persistence.
+- Live Bridge V300, History Bridge V305 and Marker V109 unchanged.
+- Permanent M1 and raw-tick data formats unchanged.
+
+BUILD
+- Extract outside OneDrive.
+- Open TickLabV1_13_0_3.sln in Visual Studio 2022.
+- Select Release, then Clean Solution and Rebuild Solution.

@@ -1,0 +1,36 @@
+TickLab v1.13.0.123 — Emoji Render / Picker Performance Fix
+============================================================
+
+BASE
+- Built from v1.13.0.122, preserving the v1.13.0.121 four-corner media resize
+  and the user-confirmed v1.13.0.120 global drawing interaction baseline.
+- No unrelated drawing-folder geometry/settings are intentionally changed.
+
+MISSING EMOJI COVERAGE
+- v1.13.0.122 covered the 1,914 fully-qualified base emoji forms but intentionally
+  omitted skin-tone/multi-person tone permutations from separate picker cells.
+- v1.13.0.123 adds the remaining 2,030 fully-qualified variant sequences.
+- The picker source now contains all 3,944 fully-qualified Unicode Emoji 17.0
+  sequences from emoji-test.txt, while preserving all previous TickLab emoji keys.
+- Bundled vector fallback artwork is used for the newest Emoji 17 glyphs that can
+  be absent from the Windows system emoji font, including all ballet-dancer tones.
+
+PICKER PERFORMANCE
+- Emoji list is category-lazy rather than constructing the whole catalog on open.
+- The emoji sheet is row-virtualized with recycling: only visible rows create
+  full-colour preview images.
+- Vector previews are cached after first realization.
+- Stickers and Icons tabs are also built lazily on first use.
+- The complete catalog is retained; performance is improved without deleting emoji.
+
+PRESERVED BEHAVIOUR
+- Full-colour emoji rendering.
+- Four corner handles only for Emoji/Icon/Sticker resize.
+- Uniform aspect-locked diagonal resize; no side stretching.
+- Body click-hold drag for moving media objects.
+- One-select -> one-draw, whole-object drag, A/B/C edit, middle-click delete,
+  quick-menu Remove, blank-chart deselect and Inspector delete remain protected.
+
+VALIDATION LIMIT
+- Static source/XAML/catalog/package validation is performed in the Linux build
+  environment. Windows Visual Studio compile/runtime remains the final gate.

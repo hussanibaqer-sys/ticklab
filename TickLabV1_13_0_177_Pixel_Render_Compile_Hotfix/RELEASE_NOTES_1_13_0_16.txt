@@ -1,0 +1,28 @@
+TickLab v1.13.0.17 — Uniform Candle Geometry Repair
+
+CANDLE SPACING
+- Restored the previous compact 3-pixel target gap.
+- Adjacent candles now share one calculated slot boundary.
+- Gap size no longer accumulates independent rounding errors across the chart.
+- The same sequence is retained during horizontal and vertical zoom.
+
+CRISP BODY BORDERS
+- Removed WPF outline Pen rendering from candle bodies.
+- Borders are drawn as filled physical-pixel strips inside the candle rectangle.
+- Body top, bottom, left and right edges are snapped to the monitor's physical-pixel grid.
+- WPF guideline sets remain active for the final device-aligned rectangles.
+
+WICK CENTRING
+- Wick X position is derived from the final body bounds, not from a separately rounded fractional slot centre.
+- Wick and body therefore use the same centreline at normal zoom.
+- The compressed renderer uses the same physical-pixel column for high/low and open/close.
+
+ZOOM-OUT
+- Removed the mixed fractional renderer that produced broken bodies and side-shifted wicks.
+- Heavy zoom-out aggregates only candles sharing the same physical display column.
+- Missing timeline gaps remain empty and are never aggregated across.
+- The 1,500-visible-candle limit remains unchanged.
+
+UNCHANGED
+- Step 5 TPO, Session Volume Profile and Volume Footprint remain included.
+- Alerts, replay, synthetic charts, workspaces and the MT5 bridge protocol are unchanged.

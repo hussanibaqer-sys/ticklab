@@ -1,0 +1,12 @@
+TickLab v1.13.0.146 — first runtime test
+
+1. Open Raw Tick Chart at Live with normal ~1600 ticks visible.
+2. Move the pointer/crosshair continuously: underlying Bid/Ask lines should stay visually stable and pointer movement should feel substantially smoother.
+3. Zoom out gradually to 5000 visible ticks: 5000 remains the hard maximum.
+4. Pan left/right through history while zoomed out: verify no missing tick-history chunks and noticeably smoother drag response.
+5. Drag price scale vertically and time scale horizontally; verify smooth response and no viewport jumps.
+6. Draw Trend Line, Rectangle and Measure using the shared drawing engine. Confirm first anchor/live preview, quick edit, middle-click removal and Drawing Inspector still work.
+7. Measure on Tick Chart and verify ticks + elapsed time + pips/price semantics remain correct.
+8. Find an old Tick and verify centering + vertical marker remain correct.
+9. Test one-month-old 1-second Find Candle once to confirm the protected v1.13.0.142 direct-seek behavior remains fast.
+10. Let live ticks append for several minutes and confirm the chart remains responsive.

@@ -1,0 +1,14 @@
+TickLab v1.13.0.47 protected-source verification
+
+PASS  MT5/TickLabCandleMarkerExchange_V109.mq5
+      f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+PASS  MT5/TickLabHistoryBridge_V305.mq5
+      1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+PASS  MT5/TickLabLiveBridge_V300.mq5
+      a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+PASS  src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+      f21af284b6b80cb0c0ec4465b604dad7ce992bcc512a3e83dbda5d87876b36e7
+PASS  src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+      0624ee64b417d02c7fc0d5814b2f5f692b53f97de445afd0b03d40ad4f34bd3b
+
+Overall: PASS

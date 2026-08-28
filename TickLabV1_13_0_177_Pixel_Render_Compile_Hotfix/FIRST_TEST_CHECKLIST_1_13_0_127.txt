@@ -1,0 +1,16 @@
+TickLab v1.13.0.127 — First Test
+
+MEASURE
+1. Click Measure, place A then B.
+2. Confirm there is NO diagonal dotted line and NO outer rectangle/frame.
+3. Confirm one horizontal and one vertical line cross at the center of the measured range.
+4. Confirm small arrowheads are visible at left/right/top/bottom ends.
+5. Confirm no drawing quick-menu appears after measurement.
+6. Click once on normal chart space; the completed measurement should disappear.
+7. Right-click the Measure toolbar icon -> Edit.
+8. Confirm Edit contains only Colour and Transparency / Opacity and both update the measure visual.
+
+EMOJI SCROLLBAR
+9. Open Emoji picker.
+10. Confirm the right scrollbar looks/behaves like the History Report scrollbar: stable full-width bar, visible thumb, directly draggable.
+11. Confirm emoji graphics, one-shot placement, picker bounds, and Zoom/Scroll mode are unchanged from v1.13.0.126.

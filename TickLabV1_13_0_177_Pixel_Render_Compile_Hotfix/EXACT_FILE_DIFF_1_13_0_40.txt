@@ -1,0 +1,15 @@
+TickLab v1.13.0.40 exact file difference from v1.13.0.39 Restart Step 7
+
+ADDED    BUILD_README_1_13_0_40_RESTART_STEP8.txt
+CHANGED  Clean-Restore-Build.cmd
+ADDED    FIRST_TEST_CHECKLIST_1_13_0_40_RESTART_STEP8.txt
+ADDED    RELEASE_NOTES_1_13_0_40_RESTART_STEP8.txt
+REMOVED  TickLabV1_13_0_39.sln
+ADDED    TickLabV1_13_0_40.sln
+CHANGED  VERSION.txt
+CHANGED  src/TickLab.App/Controls/CandleChartControl.cs
+CHANGED  src/TickLab.App/MainWindow.DemoTrading.cs
+CHANGED  src/TickLab.App/MainWindow.xaml
+CHANGED  src/TickLab.App/MainWindow.xaml.cs
+CHANGED  src/TickLab.App/TickLab.App.csproj
+ADDED    tools/validate_source_1_13_0_40_restart_step8.py

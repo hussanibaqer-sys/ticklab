@@ -1,0 +1,62 @@
+TickLab v1.13.0.90 — FIRST TEST CHECKLIST
+
+1. BUILD / LAUNCH
+[ ] Run Clean-Restore-Build.cmd.
+[ ] Confirm Visual Studio/dotnet reports no compile errors.
+[ ] Launch TickLab and confirm existing chart/history/replay behavior still opens normally.
+
+2. FIB RETRACEMENT — TEST THIS FIRST
+[ ] Select Fib Retracement; first anchor appears immediately.
+[ ] Move mouse before second click; live preview is visible.
+[ ] Complete it; level lines are sharp, not blurry.
+[ ] Different levels have different colors.
+[ ] Each space between levels follows the color of the line directly above it.
+[ ] Background gauge at 0 makes all bands disappear completely.
+[ ] Background gauge at maximum makes bands fully solid.
+[ ] Change one level's color; that line and its band change live without changing other levels.
+[ ] Uncheck a level Reading; only that reading disappears.
+[ ] Uncheck a level Price; only that price portion disappears.
+[ ] Test Left/Center/Right + Above/Middle/Below + Inside/Outside reading placement.
+[ ] Click blank chart to deselect, then click a visible Fib level to reselect and restore handles.
+
+3. TREND-BASED FIB EXTENSION
+[ ] Place A, B, C with live construction visible after each click.
+[ ] After C, extension levels are immediately visible; they do NOT collapse/disappear.
+[ ] Bands, colors, readings, price checks and background gauge behave like Fib Retracement.
+[ ] Reselect completed levels from visible geometry.
+
+4. REST OF FIB FAMILY
+[ ] Fib Channel: colors/bands/readings/reselection.
+[ ] Fib Time Zone: colored spaces and readings.
+[ ] Trend Fib Time: colored spaces and readings.
+[ ] Fib Circles: colored concentric bands/readings.
+[ ] Fib Spiral: colored level ribbons/readings.
+[ ] Fib Speed Resistance Arcs: SEMICIRCULAR arcs/bands, not full circles.
+[ ] Fib Speed Fan: colored sectors/readings.
+[ ] Fib Wedge: nested curved sector bands/readings, not straight cross-lines.
+[ ] Pitchfan: colored sectors/readings.
+
+5. GANN BOX
+[ ] Draw Gann Box; it has no unrelated fan.
+[ ] Horizontal/left stack is 0, 0.382, 0.618, 1.
+[ ] Vertical/right stack is 0.25, 0.5, 0.75.
+[ ] Labels/readings are visible around the box.
+[ ] Background gauge controls the colored cells.
+[ ] Click visible grid lines to reselect the completed object.
+
+6. GANN SQUARE FIXED / GANN SQUARE / GANN FAN
+[ ] Gann Square Fixed construction/fans/arcs originate from the correct top corner like the reference.
+[ ] Gann Square construction/fans/arcs originate from the correct bottom corner like the reference.
+[ ] Quarter arcs stay inside the square rather than becoming full circles.
+[ ] Gann Fan has distinct 1x8, 1x4, 1x3, 1x2, 1x1, 2x1, 3x1, 4x1, 8x1 rays/colors/readings.
+[ ] Click visible fan rays/arcs/grid lines to reselect.
+
+7. SETTINGS / THEME
+[ ] Open Settings on several Fib and Gann objects; TickLab does NOT freeze/disable.
+[ ] Switch Light/Dark theme and reopen toolbox/flyout/settings/context toolbar.
+[ ] No white-tab + black-button mismatch remains.
+[ ] Icons are sharp, professional and not blurry/broken.
+[ ] Cancel/X restores original drawing; OK keeps live edits.
+
+8. FOLDER GATE
+Do NOT move to Folder 3 until any runtime/video differences found above are reported and corrected.

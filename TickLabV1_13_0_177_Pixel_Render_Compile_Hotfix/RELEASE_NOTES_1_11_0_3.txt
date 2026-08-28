@@ -1,0 +1,13 @@
+TickLab v1.11.0.4 workspace persistence hotfix
+
+Fixed:
+- Workspace save no longer fails when WPF reports unset or non-finite window coordinates.
+- Settings JSON safely round-trips NaN sentinel values used for first-launch window placement.
+- Window and Favorites window sizes are validated before serialization.
+- Invalid manual chart price ranges automatically fall back to vertical auto-scale.
+- Null collection values from damaged/older settings files are normalized to empty collections.
+
+Protected components:
+- Live Bridge V300 unchanged.
+- History Bridge V305 unchanged.
+- Marker V109 unchanged.

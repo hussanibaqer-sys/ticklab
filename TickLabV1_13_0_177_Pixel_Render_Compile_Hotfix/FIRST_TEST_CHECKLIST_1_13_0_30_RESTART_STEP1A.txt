@@ -1,0 +1,34 @@
+TickLab v1.13.0.30 Restart Step 1A — Sync Gesture Fix Test
+
+This build changes only synchronized navigation for a standalone indicator pane.
+The existing on-chart indicator placement must remain unchanged.
+
+1. Launch and connection
+[ ] Build and launch TickLab.
+[ ] Open a price chart.
+[ ] Place an indicator in an empty workspace using Restart Step 1.
+[ ] Connect it to the price chart.
+[ ] Turn Sync with Price Chart ON.
+
+2. Price chart controls the indicator while Sync is ON
+[ ] Mouse-wheel zoom the price chart in and out.
+[ ] Confirm indicator candle/timestamp density follows horizontal zoom.
+[ ] Confirm indicator value scale receives the same relative vertical zoom gesture while retaining indicator values.
+[ ] Drag the bottom time scale horizontally to zoom; indicator time range follows.
+[ ] Free-drag the price chart left/right; indicator timestamps follow.
+[ ] Free-drag the price chart up/down; indicator value view moves by the same relative amount.
+[ ] Drag the price scale up/down to zoom vertically; indicator value view mirrors the relative zoom.
+[ ] Double-click the price scale to reset; indicator vertical scale resets.
+
+3. Sync OFF remains connected
+[ ] Untick Sync with Price Chart.
+[ ] Move and zoom the price chart; indicator viewport no longer follows.
+[ ] Scroll/zoom/drag the indicator independently.
+[ ] Confirm live candles/data continue updating in the indicator.
+[ ] Turn Sync ON again; indicator immediately returns to the chart timestamp viewport.
+
+4. Regression protection
+[ ] Existing on-chart indicator placement still works exactly as in v1.13.0.28.
+[ ] Place Address and Connect Address still work.
+[ ] Right-click Connect still works.
+[ ] MT5 bridge, history, live candles, drawings and workspaces behave unchanged.

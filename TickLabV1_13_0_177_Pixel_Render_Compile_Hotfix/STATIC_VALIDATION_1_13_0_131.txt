@@ -1,0 +1,46 @@
+TickLab v1.13.0.131 — STATIC VALIDATION
+Result: 42/42 checks passed
+Windows WPF/MSBuild is unavailable in this Linux environment; Visual Studio runtime compilation remains final gate.
+
+PASS | All XAML parse | 31 files; errors=0
+PASS | Handlers resolve: MainWindow.xaml | []
+PASS | Handlers resolve: DrawingFavoritesWindow.xaml | []
+PASS | Handlers resolve: TimeframeFavoritesWindow.xaml | []
+PASS | C# structural scan | 154 files; failures=0
+PASS | favorites vertical stack
+PASS | favorites active plot home
+PASS | OFF->ON home reset
+PASS | horizontal growth
+PASS | drawing favorite drag reorder
+PASS | timeframe numeric order
+PASS | timeframe drag order disabled
+PASS | drawing favorites owner clamp
+PASS | timeframe favorites owner clamp
+PASS | search/timeframe selector preserved
+PASS | top toolbar vector factory
+PASS | dynamic chart type icon
+PASS | icon button NewChartButton
+PASS | icon button LayoutButton
+PASS | icon button IndicatorsTopButton
+PASS | icon button AlertsButton
+PASS | icon button ReplayButton
+PASS | icon button ChartTypeButton
+PASS | icon button ConnectionsTopButton
+PASS | icon button RefreshTopButton
+PASS | icon button MarkersTopButton
+PASS | icon button ThemeButton
+PASS | icon button SettingsTopButton
+PASS | icon button OpenFolderTopButton
+PASS | icon button CodePanelButton
+PASS | icon button RecorderButton
+PASS | icon button ScreenshotButton
+PASS | icon button RestoreToolButton
+PASS | all 22 chart types icon-covered | []
+PASS | protected unchanged Controls/CandleChartControl.Drawing.cs
+PASS | protected unchanged Controls/CandleChartControl.DrawingParity.cs
+PASS | protected unchanged Core/Drawing/DrawingToolCatalog.cs
+PASS | protected unchanged Windows/DrawingMediaPickerWindow.xaml.cs
+PASS | protected unchanged Windows/TradingViewLineSettingsWindow.xaml.cs
+PASS | exact intended app source scope | ['Core/TopBarIconFactory.cs', 'MainWindow.ChartTypes.cs', 'MainWindow.xaml', 'MainWindow.xaml.cs', 'TickLab.App.csproj', 'Windows/DrawingFavoritesWindow.xaml', 'Windows/DrawingFavoritesWindow.xaml.cs', 'Windows/TimeframeFavoritesWindow.xaml', 'Windows/TimeframeFavoritesWindow.xaml.cs']
+PASS | version=1.13.0.131
+PASS | App.xaml unchanged | pre-existing template-local ItemBorder names untouched

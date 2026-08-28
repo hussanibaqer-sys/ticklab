@@ -1,0 +1,28 @@
+TickLab v1.13.0.165 — Borderless Toolbars + Live Theme Refresh
+
+Base
+- Built directly from v1.13.0.164 Search + Hover + Drawing Rail Polish.
+- v1.13.0.157 Final Baseline remains the permanent functional rollback baseline.
+
+Changes
+1. Top-bar buttons
+- Removed all visible button outlines/boxes from the shared top-bar button template.
+- Hover/pressed/active feedback remains as a subtle theme surface plus bottom marker.
+- Search/symbol control remains the only outlined control in the top toolbar.
+- No blue marker or blue outline was reintroduced.
+
+2. Left drawing toolbox
+- Removed visible button outlines/boxes from all drawing-rail buttons.
+- Category/folder split-arrow, collapse and rail controls use the same borderless visual treatment.
+- Hover/active bottom marker remains.
+- No drawing tool behavior, layout order, icon size, or click handler was changed.
+
+3. Live Light/Dark theme switch repair
+- Root cause fixed: drawing-rail vector icons were created with the old theme brush and were not rebuilt when theme resources changed.
+- Theme preview now immediately rebuilds top icons, timeframe buttons and drawing-rail visual content after ApplicationThemeManager.Apply().
+- Collapsed drawing-rail icon/state is refreshed immediately as well.
+- The toolbox no longer waits for the next drawing-tool selection to visually repair itself.
+- Search text/search glyph/dropdown glyph now use DynamicResource TextBrush/MutedTextBrush directly for live contrast.
+
+Protected behavior
+- No chart rendering, drawing engine behavior, drawing tool IDs, chart type behavior, history, raw tick, seconds, Find, Replay, FileBridge, MT5/MQL, indicators, workspaces or persistence logic was changed.

@@ -1,0 +1,125 @@
+TickLab v1.13.0.167 — Exact Source Diff vs v1.13.0.166
+
+--- /mnt/data/ticklab166/TickLabV1_13_0_166_Universal_Markers_Last_Used_Folder_Tools/src/TickLab.App/MainWindow.xaml	2026-08-19 15:01:30.000000000 +0000
++++ /mnt/data/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/MainWindow.xaml	2026-08-19 15:32:50.297815030 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.166 — Universal Markers + Last-Used Folder Tools"
++        Title="TickLab v1.13.0.167 — Rail Alignment + Hover Reveal"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+@@ -107,7 +107,7 @@
+         <!-- Full-height charting workspace -->
+         <Grid Grid.Row="1">
+             <Grid.ColumnDefinitions>
+-                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="46"/>
++                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="57"/>
+                 <ColumnDefinition x:Name="DrawingPaletteColumn" Width="0" MinWidth="0" MaxWidth="420"/>
+                 <ColumnDefinition x:Name="DrawingPaletteSplitterColumn" Width="0"/>
+                 <ColumnDefinition Width="*" MinWidth="420"/>
+@@ -130,32 +130,32 @@
+                     </Grid.RowDefinitions>
+                     <Button x:Name="DrawingToolbarScrollUpButton" Grid.Row="0" Style="{StaticResource DrawingRailButton}" Width="40" Height="20" MinHeight="20" Padding="0" Margin="0" Content="⌃" Visibility="Collapsed"
+                             ToolTip="Scroll drawing toolbar up" Foreground="#7890AA" Background="Transparent" BorderBrush="Transparent"
+-                            HorizontalAlignment="Center" Click="DrawingToolbarScrollUpButton_Click"/>
++                            HorizontalAlignment="Left" Click="DrawingToolbarScrollUpButton_Click"/>
+                     <ScrollViewer x:Name="DrawingToolbarScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+                                   CanContentScroll="False" PanningMode="VerticalOnly" Focusable="False">
+-                        <StackPanel x:Name="DrawingToolbarPanel" Width="48" HorizontalAlignment="Center" Margin="0,3,0,3">
+-                            <StackPanel x:Name="DrawingCategoryButtonsPanel" Width="48" HorizontalAlignment="Center"/>
+-                            <Button x:Name="DrawingBrushButton" Style="{StaticResource DrawingRailButton}" ToolTip="Brush, pen and highlighter" Click="DrawingBrushButton_Click" Visibility="Collapsed"/>
+-                            <Border Width="26" Height="1" Background="{DynamicResource BorderBrush}" Margin="0,4,0,6" HorizontalAlignment="Center" SnapsToDevicePixels="True"/>
+-                            <Button x:Name="DrawingFavoritesButton" Style="{StaticResource DrawingRailButton}" ToolTip="Favorites Tabs On/Off — drawing tools + timeframes" Click="DrawingFavoritesButton_Click"/>
+-                            <Button x:Name="DrawingMeasureButton" Style="{StaticResource DrawingRailButton}" ToolTip="Measure — click A, then click B; Shift may be released after A" Click="DrawingMeasureButton_Click" PreviewMouseRightButtonUp="DrawingMeasureButton_MouseRightButtonUp"/>
+-                            <Button x:Name="DrawingZoomButton" Style="{StaticResource DrawingRailButton}" ToolTip="Mouse wheel: Zoom mode" Click="DrawingZoomButton_Click"/>
+-                            <Button x:Name="DrawingMagnetButton" Style="{StaticResource DrawingRailButton}" ToolTip="Magnet" Click="DrawingMagnetButton_Click" MouseRightButtonUp="DrawingMagnetButton_MouseRightButtonUp"/>
+-                            <Button x:Name="StayDrawingModeButton" Style="{StaticResource DrawingRailButton}" ToolTip="Keep drawing" Click="StayDrawingModeButton_Click"/>
+-                            <Button x:Name="DrawingLockButton" Style="{StaticResource DrawingRailButton}" ToolTip="Lock all drawings" Click="DrawingLockButton_Click"/>
+-                            <Button x:Name="DrawingHideButton" Style="{StaticResource DrawingRailButton}" ToolTip="Hide all drawings" Click="DrawingHideButton_Click"/>
+-                            <Button x:Name="DrawingObjectTreeButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" ToolTip="Object Tree" Click="DrawingObjectTreeButton_Click"/>
+-                            <Button x:Name="DrawingSyncButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" ToolTip="Synchronize drawings" Click="DrawingSyncButton_Click" MouseRightButtonUp="DrawingSyncButton_MouseRightButtonUp"/>
+-                            <Button x:Name="DrawingUndoButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" ToolTip="Undo" Click="DrawingUndoButton_Click"/>
+-                            <Button x:Name="DrawingRedoButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" ToolTip="Redo" Click="DrawingRedoButton_Click"/>
+-                            <Button x:Name="DrawingRemoveButton" Style="{StaticResource DrawingRailButton}" ToolTip="Remove selected drawing" Click="DrawingRemoveSelectedButton_Click"/>
++                        <StackPanel x:Name="DrawingToolbarPanel" Width="57" HorizontalAlignment="Left" Margin="0,3,0,3">
++                            <StackPanel x:Name="DrawingCategoryButtonsPanel" Width="46" HorizontalAlignment="Left"/>
++                            <Button x:Name="DrawingBrushButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Brush, pen and highlighter" Click="DrawingBrushButton_Click" Visibility="Collapsed"/>
++                            <Border Width="26" Height="1" Background="{DynamicResource BorderBrush}" Margin="5,4,0,6" HorizontalAlignment="Left" SnapsToDevicePixels="True"/>
++                            <Button x:Name="DrawingFavoritesButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Favorites Tabs On/Off — drawing tools + timeframes" Click="DrawingFavoritesButton_Click"/>
++                            <Button x:Name="DrawingMeasureButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Measure — click A, then click B; Shift may be released after A" Click="DrawingMeasureButton_Click" PreviewMouseRightButtonUp="DrawingMeasureButton_MouseRightButtonUp"/>
++                            <Button x:Name="DrawingZoomButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Mouse wheel: Zoom mode" Click="DrawingZoomButton_Click"/>
++                            <Button x:Name="DrawingMagnetButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Magnet" Click="DrawingMagnetButton_Click" MouseRightButtonUp="DrawingMagnetButton_MouseRightButtonUp"/>
++                            <Button x:Name="StayDrawingModeButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Keep drawing" Click="StayDrawingModeButton_Click"/>
++                            <Button x:Name="DrawingLockButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Lock all drawings" Click="DrawingLockButton_Click"/>
++                            <Button x:Name="DrawingHideButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Hide all drawings" Click="DrawingHideButton_Click"/>
++                            <Button x:Name="DrawingObjectTreeButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Object Tree" Click="DrawingObjectTreeButton_Click"/>
++                            <Button x:Name="DrawingSyncButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Synchronize drawings" Click="DrawingSyncButton_Click" MouseRightButtonUp="DrawingSyncButton_MouseRightButtonUp"/>
++                            <Button x:Name="DrawingUndoButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Undo" Click="DrawingUndoButton_Click"/>
++                            <Button x:Name="DrawingRedoButton" Visibility="Collapsed" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Redo" Click="DrawingRedoButton_Click"/>
++                            <Button x:Name="DrawingRemoveButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Remove selected drawing" Click="DrawingRemoveSelectedButton_Click"/>
+                         </StackPanel>
+                     </ScrollViewer>
+                     <Button x:Name="DrawingToolbarScrollDownButton" Grid.Row="2" Style="{StaticResource DrawingRailButton}" Width="40" Height="20" MinHeight="20" Padding="0" Margin="0" Content="⌄" Visibility="Collapsed"
+                             ToolTip="Scroll drawing toolbar down" Foreground="#7890AA" Background="Transparent" BorderBrush="Transparent"
+-                            HorizontalAlignment="Center" Click="DrawingToolbarScrollDownButton_Click"/>
++                            HorizontalAlignment="Left" Click="DrawingToolbarScrollDownButton_Click"/>
+                     <Button x:Name="DrawingToolbarCollapseButton" Grid.Row="3" Style="{StaticResource DrawingRailButton}" Width="40" Height="24" MinHeight="24" Padding="0" Margin="0,3,0,5" Content="‹"
+-                            Foreground="#A0A0A0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Center"
++                            Foreground="#A0A0A0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left"
+                             Click="DrawingToolbarCollapseButton_Click"/>
+                 </Grid>
+             </Border>
+
+--- /mnt/data/ticklab166/TickLabV1_13_0_166_Universal_Markers_Last_Used_Folder_Tools/src/TickLab.App/MainWindow.xaml.cs	2026-08-19 15:01:30.000000000 +0000
++++ /mnt/data/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/MainWindow.xaml.cs	2026-08-19 15:32:07.712679753 +0000
+@@ -7327,7 +7327,8 @@
+             Width = 46,
+             Height = 38,
+             Margin = new Thickness(0),
+-            HorizontalAlignment = HorizontalAlignment.Center,
++            HorizontalAlignment = HorizontalAlignment.Left,
++            Background = Brushes.Transparent,
+             ToolTip = $"{shortcut.DisplayName} — {DrawingToolCatalog.CategoryName(category)}"
+         };
+         host.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(35) });
+@@ -7371,12 +7372,15 @@
+             Foreground = railBrush,
+             Content = DrawingToolIconFactory.CreateActionIcon("chevron-right", 12, railBrush),
+             Tag = _openDrawingCategory == category ? "Active" : null,
++            Visibility = Visibility.Hidden,
+             ToolTip = $"Open {DrawingToolCatalog.CategoryName(category)} folder",
+             Effect = null,
+             SnapsToDevicePixels = true,
+             UseLayoutRounding = true
+         };
+         flyout.Click += (_, _) => OpenDrawingCategoryPalette(category);
++        host.MouseEnter += (_, _) => flyout.Visibility = Visibility.Visible;
++        host.MouseLeave += (_, _) => flyout.Visibility = Visibility.Hidden;
+         Grid.SetColumn(flyout, 1);
+         host.Children.Add(primary);
+         host.Children.Add(flyout);
+
+--- /mnt/data/ticklab166/TickLabV1_13_0_166_Universal_Markers_Last_Used_Folder_Tools/src/TickLab.App/TickLab.App.csproj	2026-08-19 15:01:30.000000000 +0000
++++ /mnt/data/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/src/TickLab.App/TickLab.App.csproj	2026-08-19 15:32:07.697349080 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.166</Version>
+-    <AssemblyVersion>1.13.0.166</AssemblyVersion>
+-    <FileVersion>1.13.0.166</FileVersion>
++    <Version>1.13.0.167</Version>
++    <AssemblyVersion>1.13.0.167</AssemblyVersion>
++    <FileVersion>1.13.0.167</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>
+
+--- /mnt/data/ticklab166/TickLabV1_13_0_166_Universal_Markers_Last_Used_Folder_Tools/VERSION.txt	2026-08-19 15:02:51.000000000 +0000
++++ /mnt/data/TickLabV1_13_0_167_Rail_Alignment_Hover_Reveal/VERSION.txt	2026-08-19 15:32:07.697092282 +0000
+@@ -1 +1 @@
+-1.13.0.166
++1.13.0.167

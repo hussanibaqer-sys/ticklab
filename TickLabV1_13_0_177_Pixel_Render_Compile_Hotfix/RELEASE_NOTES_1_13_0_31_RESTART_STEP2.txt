@@ -1,0 +1,15 @@
+TickLab v1.13.0.31 — Restart Step 2
+Indicator properties, workspace controls, and connection selector contrast
+
+Built directly from the successful v1.13.0.30 Restart Step 1A package.
+
+Only this step was changed:
+- Existing built-in and TickScript indicator Properties windows now include Place Address, Connect Address, and Sync with Price Chart.
+- A selected indicator can remain where it is, move from chart to chart, move from chart to an empty workspace partition, move from a standalone workspace to a chart, or move to another empty workspace partition.
+- Changing Connect Address affects only the selected standalone indicator workspace and safely changes its source chart or leaves it unconnected.
+- The current standalone workspace appears as its current Place Address so connection-only changes do not move it.
+- Connect/Change Connection, Place Address, Connect Address, and workspace destination selectors use white backgrounds, black text, and visible hover/selected states.
+- Workspace Minimize, Maximize/Restore, and Close controls were moved from the top-right to the bottom-right corner so they no longer overlap Sync with Price Chart.
+- Existing indicator calculation, chart rendering, MT5 bridge, history, live data, and unrelated TickLab systems were not intentionally changed.
+
+Windows Visual Studio 2022 / .NET 8 WPF compilation and live testing are still required.

@@ -1,0 +1,41 @@
+TickLab v1.13.0.29 Restart Step 1 — Intended source changes only
+
+1. src/TickLab.App/Controls/IndicatorPaneStackControl.cs
+   - Rename the independent-pane checkbox to “Sync with Price Chart”.
+
+2. src/TickLab.App/Controls/WorkspaceSurfaceControl.cs
+   - A single click on an empty partition selects it as the next indicator Place Address.
+   - Occupied chart clicks are not intercepted.
+
+3. src/TickLab.App/MainWindow.IndependentIndicators.cs
+   - Remember the last clicked price chart or empty workspace partition.
+   - Build independent Place Address and Connect Address choices.
+   - Apply built-in and TickScript indicators either to the selected chart or to an empty workspace.
+   - Optional chart connection and Sync state for standalone workspace indicators.
+
+4. src/TickLab.App/MainWindow.Workspaces.cs
+   - Send empty-partition and price-chart click addresses to the indicator placement tracker.
+
+5. src/TickLab.App/MainWindow.xaml.cs
+   - Route the Indicators window Apply action to the new destination-aware placement handlers.
+
+6. src/TickLab.App/Windows/BuiltInIndicatorSettingsWindow.cs
+   - Optional Placement tab during new-indicator application only.
+   - Existing indicator editing remains on the original constructor path.
+
+7. src/TickLab.App/Windows/IndicatorPlacementModels.cs
+   - New Place Address, Connect Address and Sync editor/model.
+
+8. src/TickLab.App/Windows/IndicatorsWindow.xaml
+9. src/TickLab.App/Windows/IndicatorsWindow.xaml.cs
+   - One Properties & Apply button; remove the separate Place in Workspace button.
+
+10. src/TickLab.App/Windows/TickScriptIndicatorSettingsWindow.cs
+    - Optional Placement tab during new-indicator application only.
+
+11. src/TickLab.App/MainWindow.xaml
+12. src/TickLab.App/TickLab.App.csproj
+    - Version/title metadata only.
+
+No MT5 bridge, history, candle renderer, drawings, alerts, replay, chart-type renderer,
+or existing on-chart indicator calculation/application method was intentionally modified.

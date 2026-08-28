@@ -1,0 +1,32 @@
+TickLab v1.13.0.8 — Validation Report
+
+Result
+- Static source/XAML validator: 794 passed, 0 failed.
+- C# source files checked for balanced delimiters: 91.
+- XAML files parsed successfully: 27.
+- ChartSettings properties connected to settings UI/readback: 50 of 50.
+- Protected MT5 bridge SHA-256 hashes: unchanged.
+
+Validated v1.13.0.8 behavior in source
+- Per-chart independent appearance settings and persistence.
+- Compact chart ID + symbol + timeframe identity.
+- Black Dark application theme and high-contrast Light application theme.
+- Application theme excludes candle/tick chart colour rendering.
+- Independent candle body, border and wick colours.
+- Chart/background/scale/grid/text and crosshair-label colours.
+- Grid opacity and thickness.
+- Price/spread/crosshair line colour, style and thickness.
+- Spread label and fill.
+- Broker-server-time candle countdown.
+- Selected-candle, history-boundary and go-live button colours.
+- Live preview on one chart, OK commit, Cancel/X rollback.
+- Explicit copy targets and future-chart defaults.
+- Template save/load/delete and import/export.
+- Explicit template overwrite and delete confirmations.
+- Silent single-click chart activation.
+- First-priority price/time scale double-click reset.
+- Existing workspace, docking, indicator, drawing synchronization and Code Editor paths retained.
+
+Environment limitation
+- This environment does not contain the Windows .NET/WPF SDK, MSBuild or Visual Studio.
+- A Release | Any CPU rebuild in Visual Studio 2022 on Windows is required for the final compiler and on-screen test.

@@ -1,0 +1,44 @@
+TickLab v1.13.0.105 — STATIC VALIDATION
+
+RESULT
+PASS — static source/package checks completed. Windows WPF compile/runtime is not available in this Linux environment.
+
+COUNTS
+- C# source files checked: 150
+- Lightweight C# delimiter issues: 0
+- XAML files parsed as XML: 31
+- XAML parse errors: 0
+- DrawingSettingsWindow XAML event handlers referenced: 20
+- Missing referenced handler methods: 0
+- Source files changed vs v1.13.0.104: 9
+
+TARGETED STEP-1 CHECKS
+PASS — Position Target colour + transparency controls present
+PASS — Position Stop colour + transparency controls present
+PASS — Position stats/compact/price-label controls present
+PASS — Price/Date/Date+Price parity renderer dispatch present
+PASS — Date range volume calculation uses RealVolume with TickVolume fallback
+PASS — Forecast uses quadratic Bezier curve
+PASS — Forecast SUCCESS / RESULT status control present
+PASS — Step-1 visible-part hit-testing expansion present
+PASS — Prediction/Measurement quick opacity/fill behavior present
+PASS — Version metadata = 1.13.0.105
+PASS — Date measurement uses double-ended horizontal arrow
+PASS — Price measurement uses double-ended vertical arrow
+
+SOURCE FREEZE
+Only these nine source files differ from v1.13.0.104:
+1. TickLab.App/Controls/CandleChartControl.Drawing.cs
+2. TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+3. TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+4. TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+5. TickLab.App/MainWindow.xaml
+6. TickLab.App/MainWindow.xaml.cs
+7. TickLab.App/TickLab.App.csproj
+8. TickLab.App/Windows/DrawingSettingsWindow.xaml
+9. TickLab.App/Windows/DrawingSettingsWindow.xaml.cs
+
+No bin/, obj/ or .vs build-cache directories are included in the package.
+
+COMPILE LIMITATION
+`dotnet` is not installed in this environment. Therefore this report does NOT claim compile success or runtime TradingView parity. Compile and runtime verification must be done in the user's Windows Visual Studio environment.

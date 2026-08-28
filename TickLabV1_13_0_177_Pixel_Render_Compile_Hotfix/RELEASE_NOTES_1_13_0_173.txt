@@ -1,0 +1,20 @@
+TickLab v1.13.0.173 — Final Drawing Tool Icon Polish
+Built from: v1.13.0.172 — Compact Rail + Stronger Measure Icon
+
+Summary
+- Final graphic-polish pass for the full left drawing-toolbar icon set.
+- Focused on remaining blur, broken-pixel artifacts, and inconsistent vector rendering.
+- No intentional changes to drawing/chart behavior.
+
+Icon polish changes
+- Added final post-build icon-quality pass for every generated drawing-tool and action icon.
+- Ensured all icon child elements use pixel snapping and layout rounding consistently.
+- Normalized miter limits and shape rendering so crisp angular icons do not develop broken corners.
+- Refined pattern-family and zig-zag/polyline-family icons to use cleaner angular geometry with smaller construction nodes.
+- Refined Bars Pattern / Ghost Feed fallback angular line treatment to reduce soft blur from rounded joins.
+- Preserved the existing one-pixel visual stroke standard established in v1.13.0.168/v1.13.0.169.
+- Preserved v1.13.0.172 compact rail width and balanced spacing.
+
+Unchanged intentionally
+- No changes to drawing placement/editing behavior.
+- No changes to raw tick, seconds, Find Candle, Replay, FileBridge/MT5, chart types, workspace, or indicators.

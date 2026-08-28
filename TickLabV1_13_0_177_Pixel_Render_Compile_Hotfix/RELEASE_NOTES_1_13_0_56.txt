@@ -1,0 +1,16 @@
+TickLab v1.13.0.56 — Replay Source Recovery
+
+Scope
+-----
+Replay reliability only. No trading, alerts, panels, indicators, drawings, history rules, or MT5 bridge source changes.
+
+Fixes
+-----
+1. Replay fast raw-tick reads no longer abort when a recent/live bridge CSV is atomically replaced, temporarily unavailable, or read-locked. The reader skips that transient source and continues with the other overlapping sources.
+2. Failure to persist replay_source_index.json is now non-fatal. Replay uses the rebuilt in-memory source map for the current Play request.
+3. If the bridge raw-source path cannot provide the selected slice, Replay immediately falls back to the already-built permanent TickLab binary tick archive. Play never starts a quarter-wide synchronization.
+4. The visible replay switch remains immediate: the yellow start candle and all future candles are hidden before disk work, while the live engine continues in the hidden live state.
+
+Validation
+----------
+The v1.13.0.55 replay regression validator passes 696 checks, 0 failures after this recovery patch. Final Windows/WPF compilation and live-market replay timing must be tested in Visual Studio 2022.

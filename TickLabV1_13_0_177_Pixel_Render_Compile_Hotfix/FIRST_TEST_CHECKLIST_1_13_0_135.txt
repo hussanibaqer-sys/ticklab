@@ -1,0 +1,9 @@
+TickLab v1.13.0.135 — First Runtime Test
+
+1. Open a symbol with known raw-tick history older than 14 August.
+2. Select 1s.
+3. Scroll left beyond 14 August and allow each older virtual page to complete.
+4. Continue across multiple days/weeks. The chart must not declare beginning of history until the actual oldest stored raw tick is reached.
+5. Repeat on 15s, 30s and 45s.
+6. Confirm chart remains bounded/smooth: about 1,600 candles per page and max ~1,500 visible.
+7. Confirm M1/H1 charts still load normally.

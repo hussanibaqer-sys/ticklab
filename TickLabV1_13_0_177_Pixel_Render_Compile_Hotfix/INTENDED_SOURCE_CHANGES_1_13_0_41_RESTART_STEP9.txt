@@ -1,0 +1,11 @@
+TickLab v1.13.0.41 intended source changes relative to v1.13.0.40
+
+- MainWindow.xaml: release title, protected demo colour scope, preset/combo contrast, thicker middle handle.
+- MainWindow.DemoTrading.cs: preset selected visual, compact active trade labels, complete history hover text.
+- CandleChartControl.DemoTrading.cs: price-scale trade tickets, entry-to-exit historical paths/markers and hover tooltip.
+- CandleChartControl.cs: update/close historical trade tooltip during mouse movement.
+- ColorDisplayHelper.cs and DrawingColorPickerWindow.xaml.cs: named Near Black #080808 palette entry.
+- TickLab.App.csproj, VERSION.txt, solution and build command: v1.13.0.41 identity.
+- Release/validation metadata only.
+
+No MT5 or FileBridge source change is intended.

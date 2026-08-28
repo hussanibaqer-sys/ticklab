@@ -1,0 +1,39 @@
+TickLab v1.13.0.91 — Folder 2 Settings / Readings Reliability
+
+Scope
+- Folder 2 Fibonacci/Gann settings/readings reliability only, plus the shared chart small-label contrast helper and version/title.
+- No MT5, FileBridge, History, Replay, Gateway or connector implementation files changed.
+
+Fixes
+1. Independent reading controls
+- Global "Level readings" controls ratio/level text only (0.5, 0.618, 1/4, etc.).
+- Global "Prices on levels" controls price text independently.
+- Each level has its own one-click On, Price and Reading checkboxes.
+- Turning prices off no longer depends on the level-reading master switch.
+- Turning level readings off can leave prices visible if Prices on levels remains enabled.
+
+2. Level editor reliability
+- Level rows now use live property-change notification.
+- Value, visibility, Price, Reading, line colour and other row edits update live.
+- Add, remove, move, enable/disable and edit levels remain available for every Folder-2 tool.
+- Numeric labels automatically follow a modified numeric level value unless the user supplied a custom non-numeric label.
+
+3. Transparency gauge
+- Both transparency sliders now move to the exact clicked point.
+- 0 means transparent/invisible; 1 means completely solid.
+- Track clicks no longer intentionally use a large jump that can bounce between 0 and 1.
+
+4. Gann readings / geometry corrections
+- Gann Fan default readings use 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1 notation.
+- Gann Fan/Fib Fan/Pitchfan/Wedge/Circles/Arcs/Spiral readings can include the geometric price where meaningful.
+- Fixed Gann Square is diagonal/aspect constrained and grows/shrinks from the dragged corner; the obsolete fixed-pixel size is removed.
+- Gann Box now includes internal diagonal/fan and quarter-arc geometry, and those visible elements participate in reselection hit testing.
+
+5. Readability
+- Folder-2 Settings uses active theme text resources for common text/check controls.
+- Small chart readings retain their level colour but get an opposite-luminance one-pixel halo so light labels cannot disappear on light charts and dark labels cannot disappear on dark charts/highlights.
+
+Validation
+- 119 static checks passed, 0 failed.
+- Includes XML parse of all XAML, modified C# delimiter checks, event-handler checks, exact changed-file scope, Folder-2 level-support checks, critical protected-source hash comparisons, slider behavior checks and settings/rendering assertions.
+- .NET/WPF runtime compilation could not be executed in this Linux environment because dotnet/MSBuild is unavailable. Windows compile/runtime remains the final gate.

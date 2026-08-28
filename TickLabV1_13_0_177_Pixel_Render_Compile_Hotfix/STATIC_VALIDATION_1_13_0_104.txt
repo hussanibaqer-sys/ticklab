@@ -1,0 +1,55 @@
+TickLab v1.13.0.104 Cycles Viewport / Selection static validation
+Checks: 52 passed, 0 failed
+
+PASS — XAML parse src/TickLab.App/MainWindow.xaml
+PASS — XAML parse src/TickLab.App/App.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingFavoritesWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/CandleMarkerWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/ErrorDetailsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/HistoryImportProgressWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/ExternalImportWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DetachedWorkspaceWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/PinPromptWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingColorPickerWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TickScriptHelpWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TimeframeFavoritesWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingImagePickerWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/HistoryManagementWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TimeframeBuilderWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TickScriptEditorWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TradingViewLineSettingsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DetachedChartWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/IndicatorsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TradingViewFibGannSettingsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/ChartSettingsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/SymbolPickerWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingSettingsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/HistoryOperationOptionsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingObjectTreeWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/CandleHistoryWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DetachedToolWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/TickHistoryWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/ConnectionsWindow.xaml
+PASS — XAML parse src/TickLab.App/Windows/DrawingToolPaletteWindow.xaml
+PASS — Only 4 intended source files changed — TickLab.App/Controls/CandleChartControl.Drawing.cs, TickLab.App/Controls/CandleChartControl.DrawingParity.cs, TickLab.App/MainWindow.xaml, TickLab.App/TickLab.App.csproj
+PASS — Cycle renderer uses viewport index range
+PASS — Cycle renderer no longer uses finite Count loop
+PASS — Cycle renderer clips to current plot
+PASS — Sine renderer receives plot
+PASS — Sine renderer spans visible plot
+PASS — Sine renderer is plot clipped
+PASS — Repeated cycle hit testing added
+PASS — Repeated circle stroke hit testing added
+PASS — Repeated sine curve hit testing added
+PASS — Version is 1.13.0.104
+PASS — Window title updated
+PASS — Delimiter balance src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+PASS — Delimiter balance src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+PASS — Cycle coverage with origin -25000 — 1249,1311
+PASS — Cycle coverage with origin 500 — -26,36
+PASS — Cycle coverage with origin 25000 — -1251,-1189
+PASS — Sine repeats at x=0 — -51.346923457346094 -51.34692345734609
+PASS — Sine repeats at x=83 — 36.80218334973719 36.80218334973724
+PASS — Sine repeats at x=427 — 55.0 55.0
+PASS — Sine repeats at x=1199 — -50.24500017034306 -50.2450001703429

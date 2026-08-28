@@ -1,0 +1,23 @@
+TickLab v1.13.0.46 intended source changes from v1.13.0.45
+
+Modified application source:
+- src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/MainWindow.DemoTrading.cs
+- src/TickLab.App/MainWindow.MultiChartLive.cs (new)
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/MainWindow.xaml.cs
+- src/TickLab.App/TickLab.App.csproj
+- src/TickLab.App/Windows/DemoTradeValuePromptWindow.cs
+
+Release/build metadata:
+- VERSION.txt
+- TickLabV1_13_0_46.sln
+- Clean-Restore-Build.cmd
+- BUILD_README_1_13_0_46.txt
+- RELEASE_NOTES_1_13_0_46.txt
+- FIRST_TEST_CHECKLIST_1_13_0_46.txt
+- VALIDATION_REPORT_1_13_0_46.txt
+- tools/validate_source_1_13_0_46.py
+
+Protected MT5 bridge and Gateway/FileBridge source files were not modified.

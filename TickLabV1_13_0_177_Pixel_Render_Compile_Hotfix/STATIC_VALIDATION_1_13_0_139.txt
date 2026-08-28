@@ -1,0 +1,25 @@
+TickLab v1.13.0.139 STATIC VALIDATION
+
+MainWindow.xaml.cs: braces=0, parens=0, brackets=0
+MainWindow.ChartContexts.cs: braces=0, parens=0, brackets=0
+Controls/CandleChartControl.cs: braces=0, parens=0, brackets=0
+Gateway/FileBridge/PersistentHistoryStore.cs: braces=0, parens=0, brackets=0
+Gateway/FileBridge/CanonicalTickArchiveStore.cs: braces=0, parens=0, brackets=0
+TickLab.App.csproj XML: OK
+MainWindow.xaml XML: OK
+Version markers: 1.13.0.139
+Direct Find Candle focused source method present: YES
+Focused path returns before sequential backward-repair loop: YES
+1s older-history read-ahead: 4,800 candles
+Manual historical guide remove event wired: YES
+Interactive Find Candle selection remove event wired: YES
+
+Protected source hash comparison vs v1.13.0.138:
+src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs: UNCHANGED
+src/TickLab.App/Gateway/FileBridge/Mt5ProtocolModels.cs: UNCHANGED
+src/TickLab.App/MainWindow.AlertsReplay.cs: UNCHANGED
+src/TickLab.App/MainWindow.RawTickChart.cs: UNCHANGED
+
+Build limitation:
+The execution environment does not have dotnet/MSBuild/csc installed, so a Windows/WPF compile could not be executed here.
+Run the normal Visual Studio restore/build on Windows before runtime validation.

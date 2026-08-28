@@ -1,0 +1,9 @@
+TickLab v1.13.0.92 — First Test
+
+1. Extract v1.13.0.92 into a fresh folder.
+2. Open the solution/project in Visual Studio.
+3. Build/Rebuild once.
+4. Confirm the two CS0136 errors for 'reverse' and 'origin' are gone.
+5. Launch TickLab.
+6. Re-test Folder 2 controls from v1.13.0.91; this build intentionally does not alter their geometry/behavior.
+7. If Visual Studio still shows any warning/error, copy the message INCLUDING file name and line number so the exact remaining site can be corrected.

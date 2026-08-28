@@ -1,0 +1,34 @@
+TickLab v1.13.0.37 Restart Step 6 static validation run
+
+STEP6 CHECKS PASSED: 648
+STEP6 CHECKS FAILED: 0
+
+DUPLICATE-METHOD CHECKS PASSED: 9
+DUPLICATE-METHOD CHECKS FAILED: 0
+
+BRIDGE-WRITE CHECKS PASSED: 15
+BRIDGE-WRITE CHECKS FAILED: 0
+
+Static checks include:
+- Release identity.
+- All WPF XAML files parse.
+- Unique x:Name values.
+- XAML event handlers resolve in source.
+- C# punctuation balance using a C# lexer.
+- Chart colour-selection root fix.
+- Ask-line settings and renderer.
+- Demo-panel click/keyboard/drag paths.
+- Bid/Ask entry, valuation, close and SL/TP trigger rules.
+- Optional and preset SL/TP paths.
+- Running-position modifications and manual close.
+- Six pending-order types, edit and cancel.
+- Account/history/persistence structures.
+- No known real-order API tokens in Demo Trading source.
+- Indicator context-menu actions.
+- Floating chart drag-transfer and workspace target highlighting.
+- Protected MT5/FileBridge hashes.
+- Absence of bin/obj directories.
+
+Not performed
+- dotnet build: dotnet executable is not installed in the Linux validation environment.
+- Windows WPF runtime test: requires Windows and Visual Studio 2022 / .NET 8.

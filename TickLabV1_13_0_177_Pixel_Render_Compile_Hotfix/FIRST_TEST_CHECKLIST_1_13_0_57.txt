@@ -1,0 +1,12 @@
+TickLab v1.13.0.57 — first replay test
+
+1. Close old TickLab processes.
+2. Delete src\TickLab.App\bin and src\TickLab.App\obj, then rebuild Release.
+3. Open a historical area with saved raw ticks.
+4. Tick Replay line and place the yellow selector.
+5. Press Play once.
+6. EXPECT: yellow candle and candles to its right hide immediately.
+7. EXPECT: Replay does NOT report target changed / cancel itself.
+8. EXPECT: first raw tick appears and the selected candle grows tick-by-tick.
+9. End Replay and confirm the continuously updated live chart returns.
+10. Test yellow/red range and confirm automatic stop at red.

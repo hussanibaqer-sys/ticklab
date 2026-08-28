@@ -1,0 +1,12 @@
+TickLab v1.13.0.80 — TL75 Toolbox Compile Fix
+
+Scope: compile/nullability cleanup only. The v1.13.0.79 toolbox feature set is preserved.
+
+Fixes:
+- Added the missing WPF Controls.Primitives namespace required by PlacementMode in MainWindow.xaml.cs.
+- Removed three indicator plot events that were subscribed but never raised, eliminating the reported unused-event warnings without removing the working pane route/editor commands.
+- Reworked startup-history nullable flow so NativeCandleFileSummary is proven non-null before dereference.
+- Added NotNullWhen(true) contracts to replay-marker predicates and removed unsafe nullable dereferences.
+- Hardened nullable volume-profile level color access.
+
+No broker attach or real-order functionality was added.

@@ -1,0 +1,19 @@
+TickLab v1.13.0.45 — Demo History Startup Null Hotfix
+
+FIXED
+- Fixed the System.NullReferenceException in MainWindow.SetDemoStatus triggered by DemoShowHistoryOnChartCheckBox_Changed during InitializeComponent.
+- The History on chart checkbox now ignores Checked/Unchecked events until the saved demo account and complete demo UI are initialized.
+- Demo state saving is blocked until demo initialization has completed, preventing startup events from replacing saved positions/history with the default empty account.
+- Demo status text updates are null-safe during startup and shutdown.
+- Demo persistence now writes a .bak copy before replacing demo-account.json.
+- Startup can fall back to demo-account.json.bak or demo-account.json.tmp if the primary JSON is missing or invalid.
+
+PRESERVED
+- Shared right-side Code Editor / Demo Trading / Panel rail.
+- Same-symbol running trade levels and saved trade history across all charts and timeframes.
+- History on chart toggle, MT5-style history arrows/connectors, SL/TP arrow controls, and entry-line drag creation.
+- MT5 bridge and FileBridge sources remain unchanged.
+
+LIMITATION
+- The Linux packaging environment does not include the Windows .NET/WPF compiler.
+- Run Clean-Restore-Build.cmd or Visual Studio 2022 Release Rebuild on Windows for the final compile and on-screen test.

@@ -1,0 +1,27 @@
+TickLab v1.13.0.127 — Measure / Emoji Scrollbar Refinement
+
+BASE
+- Built from v1.13.0.126.
+- Scope intentionally limited to the two user-requested corrections below.
+
+1. MEASURE TOOL
+- Removed the old diagonal dashed measurement line.
+- Removed the surrounding measurement range outline/frame.
+- Measurement geometry is now one centered horizontal line plus one centered vertical line.
+- Small outward arrowheads are rendered at all four outer line ends.
+- Measurement remains temporary: after completion, the next normal chart click clears it.
+- Measure does not create a persistent ChartDrawing and therefore does not open the drawing quick-edit toolbar.
+- Right-click the Measure toolbar icon -> Edit.
+- Measure Edit exposes only Colour and Transparency / Opacity.
+- Colour and transparency update the temporary measure overlay live for the current session.
+
+2. EMOJI PICKER SCROLLBAR
+- Replaced the picker-specific shrinking/custom scrollbar template with the same stable native-style approach used by the History Report.
+- Width is 15 px, fully opaque, with a solid track/thumb and remains directly draggable.
+- Existing emoji virtualization, assets, picker bounds, one-shot placement, colours/graphics, and Zoom/Scroll button logic are unchanged.
+
+FREEZE
+- No DrawingToolCatalog changes.
+- No DrawingParity renderer changes.
+- No emoji asset/catalog changes.
+- No MT5/bridge/history/replay implementation changes.

@@ -1,0 +1,15 @@
+TickLab v1.13.0.160 — Top Bar 150% Vector Icons
+
+Base: v1.13.0.159 — Top Bar Icon Correction.
+Permanent rollback baseline remains v1.13.0.157 Final Baseline.
+
+Requested change only:
+- Keep every existing top-bar icon design.
+- Increase all TopBarIconFactory action icons to exactly 150% of their v159 requested size.
+  19 -> 28.5, 18 -> 27.
+- Increase chart-type icon from 20 -> 30 (150%).
+- Keep button widths/heights, order, x:Names, tooltips, click handlers and selected-state visuals unchanged.
+- Keep vector geometry unchanged.
+- Common Viewbox/Canvas layout rounding and pixel snapping are explicitly enabled so vectors remain clean and centered at the larger size.
+
+No chart/history/Find/Replay/drawing/bridge/MT5 behavior is intentionally changed.

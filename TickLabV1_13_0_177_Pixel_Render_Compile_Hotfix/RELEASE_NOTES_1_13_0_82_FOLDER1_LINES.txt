@@ -1,0 +1,63 @@
+TickLab v1.13.0.82 — TradingView parity rebuild, Folder 1 only
+
+Purpose
+-------
+This version deliberately stops the previous "all toolbox at once" approach.
+Only the first drawing-tool folder is being rebuilt against the supplied reference video.
+Other drawing folders remain at the v1.13.0.81 state and are NOT claimed to match yet.
+
+Folder 1 reference scope
+------------------------
+LINES
+- Trendline (Alt+T)
+- Ray
+- Info line
+- Extended line
+- Trend angle
+- Horizontal line (Alt+H)
+- Horizontal ray (Alt+J)
+- Vertical line (Alt+V)
+- Crossline (Alt+C)
+
+CHANNELS
+- Parallel channel
+- Regression trend
+- Flat top/bottom
+- Disjoint channel
+
+PITCHFORKS
+- Pitchfork
+- Schiff pitchfork
+- Modified Schiff pitchfork
+- Inside pitchfork
+
+Rebuilt in this version
+-----------------------
+- First-folder flyout is a compact white TradingView-style overlay beside the left rail.
+- Reference section order, row order, shortcuts, vector icons, hover state and favorites star behavior.
+- Right-click on a tool still provides Add/Remove from Favorites.
+- Selected line-family objects use a compact white object toolbar that follows the object.
+- Object toolbar order is aligned to the reference: drag grip, templates, line colour, text (where applicable), width, line style, settings, alert, lock, delete, more.
+- More menu matches the reference structure: Visual order, Visibility on intervals, Clone, Copy, Hide.
+- Line-family right-click menu is reduced to the same reference actions instead of the old generic TickLab object menu.
+- Dedicated white tabbed line settings dialog replaces the generic all-tools settings dialog for Folder 1.
+- Style / Text / Coordinates / Visibility tabs are tool-specific; Trend angle suppresses Text.
+- Trendline style includes line, extend, middle point, price labels, stats, stats position and always-show-stats controls.
+- Channel-specific middle-line/background controls.
+- Regression source/deviation/Pearson controls.
+- Pitchfork extend/background/level controls.
+- Live settings preview with exact cancel restoration and one apply update.
+- Trend angle now renders a horizontal guide, angle arc and unboxed angle label at the first anchor.
+- Trend angle value can be edited from Coordinates and updates the line geometry.
+- Info-line statistics now include price change, percent, bars and elapsed time, with left/right positioning.
+- Parallel channel uses the three-click reference construction: first edge from A/B, third click places the parallel edge.
+- Existing one-click Horizontal/Vertical/Crossline and two-click line/ray behavior is preserved.
+
+Explicitly excluded
+-------------------
+No broker attachment, broker connection, real-order placement or real-trade execution was added.
+
+Validation limitation
+---------------------
+The current Linux tool environment does not contain dotnet/MSBuild, so a Windows WPF compile cannot be executed here.
+Static validation was performed for XML/XAML parsing, XAML event-handler resolution, modified-file structure, and prohibited broker/order phrases.

@@ -1,0 +1,24 @@
+TickLab v1.13.0.40 Restart Step 8 validation report
+
+Static focused/regression checks: 802 passed, 0 failed
+Duplicate-method checks: 9 passed, 0 failed
+Bridge-access checks: 15 passed, 0 failed
+Protected MT5/FileBridge files: 19 unchanged, 0 changed
+XAML/XML parsing: passed
+XAML event-handler resolution: passed
+C# punctuation balance: passed
+No bin/obj directories: passed
+
+Key Step 8 checks
+- Entry/current ticket contains live USD P/L and exact price.
+- SL/TP tickets contain projected USD result and exact price.
+- Active ticket labels refresh while positions are open.
+- Ask ticket contains price only; ASK text removed.
+- Middle right-workspace handle has click, drag, keyboard and lost-capture recovery.
+- SL/TP preset text follows explicit high-contrast foreground/background.
+- Pending Type and Expiration selectors and dropdown items have readable normal, hover, selected and disabled states.
+- Existing demo execution and real-order isolation checks remain passed.
+
+Limitations
+- No dotnet/MSBuild/Visual Studio executable is available in this Linux environment.
+- A real Windows Visual Studio 2022/.NET 8 WPF compile and runtime interaction test are required.

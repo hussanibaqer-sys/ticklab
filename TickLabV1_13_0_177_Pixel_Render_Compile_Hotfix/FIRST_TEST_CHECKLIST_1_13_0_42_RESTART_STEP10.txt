@@ -1,0 +1,15 @@
+TickLab v1.13.0.42 first Windows test checklist
+
+1. Clean bin and obj, restore, and rebuild the v1.13.0.42 solution.
+2. Confirm the price chart is back at its previous width and is no longer shifted left.
+3. Click PANEL: Drawings/Objects/Market opens. Click again: it closes.
+4. Drag PANEL left/right and confirm resizing works.
+5. Click CODE EDITOR: Code Editor opens. Click again: it closes.
+6. Drag CODE EDITOR left/right and confirm resizing works.
+7. Open Demo Trading > Order > Pending order Type. Check every popup entry is readable.
+8. Open Expiration. Check Good till cancelled and Specified time are readable.
+9. Check Order, Open positions, Pending orders and Trade history tab headers in selected/unselected/hover states.
+10. Check open positions, pending orders and trade-history rows for readable selection colours.
+11. Open Chart Settings, choose the chart background colour and confirm Default Chart Background matches the existing launch shade exactly.
+12. Confirm Near Black remains a separate visibly different option.
+13. Open and manage a demo trade to confirm existing demo trading behavior is unchanged.

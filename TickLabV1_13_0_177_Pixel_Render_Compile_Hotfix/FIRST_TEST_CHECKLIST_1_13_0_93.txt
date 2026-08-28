@@ -1,0 +1,26 @@
+TickLab v1.13.0.93 — FIRST TEST CHECKLIST
+
+1. Open Fib Retracement settings.
+2. Confirm the two master controls are visibly separate and named exactly:
+   [ ] Level readings
+   [ ] Prices on levels
+3. With both ON, confirm ratio reading and price are visible on enabled Fib levels.
+4. Turn ONLY Level readings OFF:
+   - 0 / 0.236 / 0.382 / 0.5 / 0.618 / 0.786 / 1 etc. must disappear.
+   - prices must stay visible if Prices on levels remains ON.
+5. Turn Level readings ON and ONLY Prices on levels OFF:
+   - ratio readings must stay visible.
+   - actual prices must disappear.
+6. Test a single row:
+   - toggle its Price checkbox only.
+   - toggle its Level reading checkbox only.
+   Each must affect only that row.
+7. Select a level and press Remove reading:
+   - its level line remains.
+   - its price setting remains.
+   - only its level reading disappears.
+8. Select the same level and press Add reading:
+   - its reading returns immediately.
+9. Add a new level, edit its numeric value, choose its colour and test its Price/Level reading boxes.
+10. Repeat the master Level readings / Prices on levels test on Trend-based Fib Extension, Fib Channel and at least one curved/fan Fib tool.
+11. Confirm Background transparency and existing geometry have not changed from v1.13.0.92.

@@ -1,0 +1,27 @@
+TickLab v1.13.0.158 — Top Bar Visual Polish
+Static validation summary
+
+BASE
+- Clean v1.13.0.157 Final Baseline.
+
+FUNCTIONAL SCOPE
+- Top-bar presentation only.
+- Existing top-bar button names, order and event handlers preserved.
+- No chart/history/drawing/Find/Replay/agent/bridge/MT5 behavior changed.
+
+STATIC CHECKS
+- App.xaml XML parse: PASS
+- MainWindow.xaml XML parse: PASS
+- TickLab.App.csproj XML parse: PASS
+- MainWindow.xaml.cs delimiter/string/comment structure: PASS
+- TopBarIconFactory.cs delimiter/string/comment structure: PASS
+- Old blue active-timeframe fill RGB(31,91,166): absent from BuildTimeframeButtons
+- Old blue active-timeframe border RGB(70,165,255): absent from BuildTimeframeButtons
+- Top-bar control names/order preserved: PASS
+- Known top-bar Click handlers preserved: PASS
+- Protected core files byte-identical to v1.13.0.157: PASS
+- MT5/MQL tree byte-identical to v1.13.0.157: PASS
+
+ENVIRONMENT
+- dotnet/MSBuild/csc unavailable in ChatGPT runtime.
+- Windows Visual Studio compile/runtime test remains authoritative.

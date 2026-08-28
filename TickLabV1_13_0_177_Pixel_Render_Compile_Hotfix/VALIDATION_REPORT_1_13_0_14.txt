@@ -1,0 +1,24 @@
+TickLab v1.13.0.14 validation report
+
+Static source validation:
+- 572 checks passed.
+- 0 checks failed.
+- All XAML files parsed successfully.
+- All referenced XAML handlers were found.
+- All C# files passed lexical brace/bracket checks.
+- Reliable built-in WAV bell wiring verified.
+- Alert popup stop/dispose acknowledgement path verified.
+- Test bell action verified.
+- Six synthetic chart types, algorithms and renderers verified as connected.
+- Synthetic settings persistence fields verified.
+- Original/source candle separation verified.
+- Synthetic live-tail regeneration and viewport accounting verified.
+- Indicator refresh against displayed chart series verified.
+- 1,500-candle cap and 3-pixel candle gap retained.
+- Replay-line cleanup and draggable alert persistence retained.
+- Protected MT5 source hashes are unchanged.
+
+Important limitation:
+- This Linux environment does not contain dotnet/MSBuild and cannot perform the
+  final Windows WPF compilation or audio-device runtime test. Rebuild the solution
+  in Visual Studio 2022 on Windows before use.

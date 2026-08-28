@@ -1,0 +1,9 @@
+- Only in /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix: EXACT_FILE_DIFF_1_13_0_93.txt
+- Only in /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix: FIRST_TEST_CHECKLIST_1_13_0_93.txt
+- Only in /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix: RELEASE_NOTES_1_13_0_93_FIB_READINGS_CONTROLS_FIX.txt
+- Only in /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix: STATIC_VALIDATION_1_13_0_93_FIB_READINGS_CONTROLS_FIX.txt
+- Files /mnt/data/ticklab_work/v92/TickLabV1_13_0_92_Folder2_Compile_Fix/VERSION.txt and /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/VERSION.txt differ
+- Files /mnt/data/ticklab_work/v92/TickLabV1_13_0_92_Folder2_Compile_Fix/src/TickLab.App/MainWindow.xaml and /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/MainWindow.xaml differ
+- Files /mnt/data/ticklab_work/v92/TickLabV1_13_0_92_Folder2_Compile_Fix/src/TickLab.App/TickLab.App.csproj and /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/TickLab.App.csproj differ
+- Files /mnt/data/ticklab_work/v92/TickLabV1_13_0_92_Folder2_Compile_Fix/src/TickLab.App/Windows/TradingViewFibGannSettingsWindow.xaml and /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/Windows/TradingViewFibGannSettingsWindow.xaml differ
+- Files /mnt/data/ticklab_work/v92/TickLabV1_13_0_92_Folder2_Compile_Fix/src/TickLab.App/Windows/TradingViewFibGannSettingsWindow.xaml.cs and /mnt/data/ticklab_work/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/Windows/TradingViewFibGannSettingsWindow.xaml.cs differ

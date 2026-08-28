@@ -1,0 +1,16 @@
+TickLab v1.13.0.14 MT5 Bridge Write-Access Hotfix
+
+Validated in the source package:
+- Existing v1.13.0.14 static checks pass.
+- Duplicate-method compile regression checks pass.
+- Per-target request-file write serialization is present.
+- Unique temporary bridge request paths are used.
+- IOException and UnauthorizedAccessException are treated as bridge sharing failures.
+- Atomic move retry and direct-write fallback are present.
+- Direct writes are flushed to disk.
+- Temporary bridge files are cleaned up.
+- Forced symbol refresh catches transient IO and access failures.
+- MT5 MQL5 bridge source hashes are unchanged from the compile-hotfix input.
+
+A Windows Visual Studio/WPF build is still required because this packaging
+environment does not include the .NET SDK or Windows Desktop targeting pack.

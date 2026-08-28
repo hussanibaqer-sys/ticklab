@@ -1,0 +1,11 @@
+Static validation performed in CAAS environment:
+- Updated source files:
+  - src/TickLab.App/App.xaml
+  - src/TickLab.App/MainWindow.xaml
+  - src/TickLab.App/MainWindow.xaml.cs
+- ZIP created successfully.
+- SHA-256 checksum generated successfully.
+
+Limitation:
+- Full WPF/.NET build was not executed here because the .NET SDK is not available in the CAAS environment.
+- Final runtime verification should be performed on the user's Windows development environment.

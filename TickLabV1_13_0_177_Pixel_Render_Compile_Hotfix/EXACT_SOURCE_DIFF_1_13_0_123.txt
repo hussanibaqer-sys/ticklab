@@ -1,0 +1,56 @@
+TickLab v1.13.0.123 — exact TickLab.App source diff vs v1.13.0.122
+
+ADD Assets/OpenMoji/1F6D8.svg
+  v123 c1b96af20d2d5326d7ba9e125383796682eea8c00f91f249a285fd5d2530be7a
+ADD Assets/OpenMoji/1F9D1-1F3FB-200D-1FA70.svg
+  v123 505dd9ee72c2ea866fde8d449cc1a7ff7529761ca258cc57dac566859dd505bb
+ADD Assets/OpenMoji/1F9D1-1F3FC-200D-1FA70.svg
+  v123 7f39a9bf7e4e13d83f78f9088306e9b57515738aeee701c43befc2fe520ed650
+ADD Assets/OpenMoji/1F9D1-1F3FD-200D-1FA70.svg
+  v123 929812bb3b8130b493d3b5248ffdb810061cd19a135ab57f39f1f1880aec2364
+ADD Assets/OpenMoji/1F9D1-1F3FE-200D-1FA70.svg
+  v123 56c21a9caf22c89e3c248bb139a973e20a3696cf4f3f86669f1bb91552c4ee51
+ADD Assets/OpenMoji/1F9D1-1F3FF-200D-1FA70.svg
+  v123 fa965c71695230d544ec7a8d5cbb88f6dada13945ad2539e76b89491047e3419
+ADD Assets/OpenMoji/1F9D1-200D-1FA70.svg
+  v123 8a52b458d5ffd8edebd107d7901d5d3a65ad6e7774183e99a3cdb198c79bbedb
+ADD Assets/OpenMoji/1FA8A.svg
+  v123 d6eef01950a022945c6f4d211a08665c95af3d3369b7d242886755d828ab4a04
+ADD Assets/OpenMoji/1FA8E.svg
+  v123 ce7118e6f0c5b84454f648286ef0c57417dd1e7e0522de194446d73be195545a
+ADD Assets/OpenMoji/1FAC8.svg
+  v123 571771e3834eb83bda800bc3ca3b7fb25c1e1a91edb06d27bf279c31e3960221
+ADD Assets/OpenMoji/1FACD.svg
+  v123 1f04d3ed00d8c4506272ca8c4647b51602d5a070dff196a10f215fb4fbc5f3e4
+ADD Assets/OpenMoji/1FAEA.svg
+  v123 7f5107d57b1cd0d9d86ca4e19a091b7071229ece1b1eb73763b8932b590dcc3b
+ADD Assets/OpenMoji/1FAEF.svg
+  v123 2f9272f1ab2e8c4d41f872d7dac5ef6a85f95eb043bfa1ded6eae2313ddd5dbb
+MOD Controls/CandleChartControl.Drawing.cs
+  v122 6475672b388c91b20b8c7b52681c474b93a9f9a2e68406b463aa83130291dd5c
+  v123 de3f39714d9a8b53fd12251393a8ab3b25cbdad103980d5d12c0c68d1a4edb92
+ADD Controls/OpenMojiFallback.cs
+  v123 0c46ed04fe2846bd497e28ee666db9f76a3fd74318a217324a2380ec3541cd26
+MOD Core/Drawing/DrawingMediaCatalog.cs
+  v122 10fcdd2835facef3aa0aa5999874194e058ca1abec14a4c56093617155a64eff
+  v123 8eaa3fd60a040da6cf9b1a9cb3c4b378debb2061ad1e75e2c524070b8a7eb425
+ADD Core/Drawing/DrawingMediaEmojiVariants.cs
+  v123 6ca134fe2532111404c23c5a454b46d0f3372d53cea24600e870b917944116b3
+MOD MainWindow.xaml
+  v122 ed92318edc05e09002f02e653531d4fd1a91ecef823f2b91f1b14fb102d67bc9
+  v123 ea0d1ffc86f337a64da6bf48dc6d8048303a173da3349ed716d2e64504d8d60b
+MOD TickLab.App.csproj
+  v122 c2a707c21da3447ffea3d4d7ad35b96f51fbb225e7bda2d7b1d9de3e5a796287
+  v123 7b9cd8f32fb8bd04201dac54c4aee777da7c83ac9e9011dac21c8e71a148eeeb
+MOD Windows/DrawingMediaPickerWindow.xaml
+  v122 2e4a6a5d631762906e00a1660fceae9069e193872f7d38a1b096d2ced4a65036
+  v123 2ce52c875ef672530e978c8d95b71110be52addfe4cc5ea033467a75cafd5ea7
+MOD Windows/DrawingMediaPickerWindow.xaml.cs
+  v122 6534adbfca0b226d4573309d24c0b3aac841f3f979d108a3bfbbf52889b7dbc9
+  v123 8ccf3235cc6e09025a11017d3f570c13861443721d9b9b0c2a06d2a7391de0b6
+ADD Windows/EmojiPreviewConverter.cs
+  v123 20f65fff33281f88ce1fa1a93e726fd1a363c5567bf0b4c5813de079c8f8002b
+
+Total changed/added/deleted app files: 22
+Protected DrawingToolCatalog.cs and CandleChartControl.DrawingParity.cs are byte-identical to v1.13.0.122.
+CandleChartControl.Drawing.cs differs only by the Emoji/OpenMoji fallback hook.

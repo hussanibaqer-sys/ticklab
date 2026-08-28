@@ -1,0 +1,22 @@
+TickLab v1.13.0.130 — Line Settings Visibility Init Hotfix
+
+BASE
+- Built directly from v1.13.0.129 Favorites Tabs / Quick Edit Top Center.
+- No drawing geometry, favorites, quick-edit positioning, emoji, Measure, chart-boundary, MT5/history/replay, or other tool behavior is intentionally changed.
+
+RUNTIME CRASH FIX
+- Fixes NullReferenceException when opening TradingViewLineSettingsWindow via quick-edit Settings.
+- Stack location reported at RefreshVisibilityRangeLabels() while MinutesMaxText was null during InitializeComponent().
+- VisibilityRangeSlider_ValueChanged now ignores construction-time events while _loading is true.
+- RefreshVisibilityRangeLabels independently null-checks all six slider/label pairs (Seconds, Minutes, Hours, Daily, Weekly, Monthly).
+- Constructor still performs an explicit visibility-label refresh after loading is complete.
+
+SCOPE
+Functional source change:
+- src/TickLab.App/Windows/TradingViewLineSettingsWindow.xaml.cs
+
+Metadata only:
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+- VERSION.txt
+- solution/build-helper identity updated to v1.13.0.130.

@@ -1,0 +1,20 @@
+TickLab v1.13.0.168 — Crisp Drawing Tool Icons
+
+Built directly from v1.13.0.167 — Rail Alignment + Hover Reveal.
+
+Changes:
+- Normalized drawing-tool logo vector strokes to a consistent one-pixel visual weight after the 24 -> 30 px rail scaling, removing the overly thick appearance across the tool catalog.
+- Axis-aligned one-pixel tool-icon lines use crisp edge rendering while diagonal/curved vector geometry keeps normal antialiasing.
+- Long Position and Short Position toolbar logos: corrected the entry-line positions/strokes so the horizontal entry separators render sharply instead of blurred.
+- Path logo: rebuilt the zig-zag geometry, reduced the construction nodes, changed the polyline joins to clean mitered geometry, and added the missing arrow head at the final endpoint.
+- Polyline logo: rebuilt the segment geometry with clean mitered joins and smaller hollow nodes instead of the old heavy filled dots.
+- Text logo: replaced the smaller font-rendered T with a full-size vector T matched to the visual footprint of the other rail icons.
+
+Preserved from v1.13.0.167:
+- Wider/aligned drawing rail and hover-only folder chevrons.
+- Theme-aware hover highlighting on drawing-rail and top-bar controls.
+- v1.13.0.166 universal markers and last-used folder-tool behavior.
+- All drawing placement/editing behavior, chart rendering, history, raw tick, seconds, Find, Replay, FileBridge/MT5, indicators, workspaces and chart-type behavior.
+
+Rollback protection:
+- v1.13.0.157 Final Baseline remains the permanent functional rollback baseline.

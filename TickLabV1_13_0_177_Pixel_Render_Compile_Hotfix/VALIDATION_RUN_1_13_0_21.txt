@@ -1,0 +1,29 @@
+TickLab v1.13.0.21 validation run
+
+Primary indicator and all-chart zoom validator:
+- Passed: 1,433
+- Failed: 0
+
+Regression checks:
+- Duplicate-method checks passed: 9
+- Bridge-write checks passed: 15
+
+Structure checks:
+- XAML files parsed: 27
+- XAML parse errors: 0
+- C# files checked for balanced delimiters: 118
+- C# delimiter errors: 0
+- XAML event handlers checked: 260
+- Missing event handlers: 0
+- CandleChartControl partial method signatures checked: 295; duplicates: 0
+- MainWindow partial method signatures checked: 355; duplicates: 0
+
+Indicator coverage:
+- BuiltInIndicatorKind entries: 38
+- Catalog definitions: 38
+- Calculation-engine dispatch entries: 38
+- Missing or duplicate indicator definitions: 0
+
+Environment limitation:
+- This Linux build environment does not contain the Windows .NET/WPF compiler.
+- Final compilation, DPI rendering, live MT5 behavior and audio/UI tests must be run in Visual Studio 2022 on Windows.

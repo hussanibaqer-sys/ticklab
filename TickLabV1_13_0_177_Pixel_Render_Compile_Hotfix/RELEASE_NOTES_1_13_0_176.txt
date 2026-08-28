@@ -1,0 +1,18 @@
+TickLab v1.13.0.176 — Pixel-Perfect Rail + Lock Geometry
+Built from: v1.13.0.175 — Rail Icon Crispness + Marker Fix
+
+Changes
+- Restored the previous main drawing-rail icon sizes: 30 px for normal rail/folder/action icons and 33 px for the active Magnet refresh state.
+- Reworked DrawingToolIconFactory rendering so requested icon sizes are rendered directly into a final-size Canvas instead of applying a LayoutTransform to a 24-DIP Canvas.
+- Design coordinates are now scaled into final coordinates before WPF renders each line/path/rectangle/ellipse/polyline/text element.
+- One-pixel normalized strokes remain one pixel at the final requested icon size.
+- This removes the previous 1.25x / 1.375x layout-scale stage that could visually soften the toolbar icons.
+- Horizontal/vertical lines retain pixel-snapped/aliased handling while curves/diagonals remain normal vector-antialiased.
+- Lock icon rebuilt as a clean symmetric geometric padlock with straight centered body, balanced shackle, keyhole and stem.
+- Unlock icon rebuilt to match the same body geometry with a clean open shackle.
+- v1.13.0.175 stronger lower-rail hover/active marker remains preserved.
+
+Unchanged intentionally
+- Rail width and spacing remain as v1.13.0.172+.
+- No drawing placement/editing behavior changed.
+- No raw tick, seconds, Find Candle, Replay, FileBridge/MT5, indicators, workspace, or chart-type logic changed.

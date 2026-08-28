@@ -1,0 +1,23 @@
+TickLab v1.13.0.146 — Raw Tick Smooth Render
+
+Purpose
+- Make Raw Tick Chart pointer, crosshair, drawing, pan and zoom interaction substantially smoother without changing the shared drawing-engine architecture or rewriting tick/history storage.
+
+Performance changes
+- Ordinary pointer/crosshair movement on the shared drawing overlay no longer invalidates/repaints the dense underlying TickChartControl.
+- TickChartControl visible layout/price-range scan is cached by data version, viewport, size, line visibility and manual vertical range. Repeated overlay layout queries reuse the cached result instead of rescanning up to 5,000 visible ticks.
+- Bid/Ask/Mid raw-tick drawing is cached as one reusable DrawingGroup. It rebuilds only when tick data, viewport, price range, size or relevant tick appearance settings change.
+- Dense line rendering now uses an envelope-preserving bucket path when multiple ticks occupy the same physical pixels. Each bucket preserves first/min/max/last samples, retaining spikes and overall shape while removing visually redundant WPF line segments.
+- Explicit Show every tick point remains exact; point markers are cached with the static tick drawing so they do not rebuild on pointer/crosshair movement.
+- Raw Tick drawing overlay no longer allocates Enumerable.Range(...).ToArray() visible-slot arrays on every render; the sequential visible-slot array is reused until visible count changes.
+- Live-button hover is the only no-drag pointer state that can invalidate the underlying Tick renderer.
+
+Preserved behavior
+- v1.13.0.145 shared candle drawing engine on Tick Chart remains unchanged architecturally.
+- Drawing Inspector, quick edit, one-select/one-draw, middle-click removal, Measure design, selection, lock/hide/delete, undo/redo and persistence remain the existing candle drawing-engine paths.
+- v1.13.0.143 raw tick >30-minute history/projection repair, contiguous paging, raw history fallback, Find Tick marker and 5,000 visible tick ceiling remain preserved.
+- v1.13.0.142 one-month-old 1-second Find Candle direct seek remains protected.
+- MT5/MQL bridge, PersistentHistoryStore, CanonicalTickArchiveStore and Mt5FileBridgeClient are unchanged.
+
+Build note
+- ChatGPT environment has no dotnet/MSBuild/csc. Static source/XML/protected-file/ZIP checks were performed; authoritative compile/runtime validation must be done in Visual Studio on Windows.

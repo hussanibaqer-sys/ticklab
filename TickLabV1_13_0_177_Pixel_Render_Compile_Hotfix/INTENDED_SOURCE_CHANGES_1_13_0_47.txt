@@ -1,0 +1,26 @@
+TickLab v1.13.0.47 intended source changes
+
+- src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs
+  Blue entry/red exit history rendering, smaller captions and restored entry-drag SL/TP preview.
+- src/TickLab.App/Controls/CandleChartControl.cs
+  Alert-line Edit/Remove right-click actions and events.
+- src/TickLab.App/MainWindow.AlertsReplay.cs
+  Full candle-range price-touch detection, direct alert removal and immediate bell.
+- src/TickLab.App/MainWindow.ChartContexts.cs
+  Routes alert-line Edit/Remove actions.
+- src/TickLab.App/MainWindow.DemoTrading.cs
+  Restores entry drag and aligns Demo Trading handle interaction with the shared rail.
+- src/TickLab.App/MainWindow.MultiChartLive.cs
+  Keeps alert evaluation active in nonselected live chart contexts.
+- src/TickLab.App/MainWindow.xaml
+  v1.13.0.47 identity and 647-pixel Demo Trading column matching the panel width.
+- src/TickLab.App/TickLab.App.csproj
+  v1.13.0.47 assembly/file/package identity.
+- src/TickLab.App/Windows/SymbolPickerWindow.xaml
+  Per-symbol star control.
+- src/TickLab.App/Windows/SymbolPickerWindow.xaml.cs
+  Favourite persistence and top ordering.
+- Root solution/build/version/validation/release files
+  v1.13.0.47 packaging and test documentation.
+
+Protected MT5 and FileBridge sources are intentionally unchanged.

@@ -1,0 +1,34 @@
+TickLab v1.13.0.144 — Static validation
+
+PASS XML: src/TickLab.App/MainWindow.xaml
+PASS XML: src/TickLab.App/TickLab.App.csproj
+PASS token: version :: 1.13.0.144
+PASS token: title :: TickLab v1.13.0.144 — Shared Drawing Engine Tick Chart
+PASS token: raw shared adapter :: EnableRawTickDrawingSurface
+PASS token: exact ms drawing anchor :: StartMilliseconds
+PASS token: normal chart measure route :: context.Chart.SetMeasureMode
+PASS token: middle click remains in CandleChart engine :: MouseButton.Middle
+PASS forbidden old Tick drawing token absent: context.TickChart.SetDrawingTool (count=0)
+PASS forbidden old Tick drawing token absent: context.TickChart.SetMeasureMode (count=0)
+PASS forbidden old Tick drawing token absent: context.TickChart.UndoDrawingChange (count=0)
+PASS forbidden old Tick drawing token absent: context.TickChart.RedoDrawingChange (count=0)
+PASS forbidden old Tick drawing token absent: context.TickChart.RemoveSelectedDrawings (count=0)
+PASS forbidden old Tick drawing token absent: TickDrawingState (count=0)
+PASS forbidden old Tick drawing token absent: _tickDrawings (count=0)
+PASS delimiters: src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+PASS delimiters: src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+PASS delimiters: src/TickLab.App/Controls/CandleChartControl.RawTickDrawing.cs
+PASS delimiters: src/TickLab.App/Controls/CandleChartControl.cs
+PASS delimiters: src/TickLab.App/Controls/ChartPaneControl.cs
+PASS delimiters: src/TickLab.App/Controls/TickChartControl.Drawing.cs
+PASS delimiters: src/TickLab.App/Controls/TickChartControl.cs
+PASS delimiters: src/TickLab.App/Core/Drawing/DrawingModels.cs
+PASS delimiters: src/TickLab.App/MainWindow.ChartContexts.cs
+PASS delimiters: src/TickLab.App/MainWindow.RawTickChart.cs
+PASS delimiters: src/TickLab.App/MainWindow.xaml.cs
+PASS protected hash unchanged: src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs :: 2c0c652c81c91dc1a580c785441f0837411fa035a20863b24bb714482a14bbc8
+PASS protected hash unchanged: src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs :: b16980a183c901db01f15609be3261baf6e58d055f38990c83f57026e9b06547
+PASS protected hash unchanged: src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs :: 4febbcd3fce68905a635f5ff8134995cf20f8ca4a99472ac2ad2471149665fc8
+PASS protected MT5 tree unchanged :: 1fbb5498676498445019670f55526139e1e6995b0e277560c604ac8ac89a2336
+
+NOTE: dotnet/MSBuild/csc are not installed in this environment; compile/runtime validation must be performed in Visual Studio on Windows.

@@ -1,0 +1,19 @@
+TickLab v1.13.0.51 — Candle List Aliasing Hotfix
+
+ONLY CHANGE
+- Fixed the confirmed source/display List<Candle> aliasing fault.
+- Full history and live source data now always use separate mutable list instances.
+- Fast native and one-second history paths clone both owners.
+- Rolling integrity repair copies the visible history before clearing/replacing its source list.
+- Active, inactive and multi-chart live paths enforce the same no-alias invariant.
+
+EXPECTED RESULT
+- Refresh loads full history.
+- The next live tick updates only the final candle and cannot erase the visible history.
+- The temporary “Connect to MT5 to load candle history” fluctuation caused by the shared-list clear is removed.
+
+UNCHANGED
+- Alerts, Demo Trading, panels, indicators, drawings, bridges and storage formats.
+
+BUILD NOTE
+- Run Clean-Restore-Build.cmd on Windows with Visual Studio 2022 / .NET 8 for the final compiler and live-market test.

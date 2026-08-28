@@ -1,0 +1,59 @@
+TickLab v1.13.0.39 — First runtime test checklist
+
+A. Demo panel handle
+1. Start TickLab with the demo panel closed.
+2. Confirm the thin vertical DEMO TRADING handle remains visible at centre-right.
+3. Click the handle to open, then click again to close.
+4. Drag left to open and right to close.
+5. Resize the main window smaller and larger; confirm the handle never disappears off-screen.
+6. Confirm the handle does not block unrelated chart buttons.
+
+B. Readability
+1. Open every Demo Trading tab.
+2. Confirm labels, input values, preset buttons, open positions, pending orders and history are black/readable on white/light backgrounds.
+3. Confirm hover and selected preset states remain visible.
+
+C. Market execution and live P/L
+1. Select a live chart and note its displayed Bid and Ask.
+2. With No SL and No TP selected, open a Buy; confirm entry equals Ask.
+3. Open a Sell; confirm entry equals Bid.
+4. Confirm each position immediately shows live Bid, Ask, points moved, lot and floating P/L.
+5. Let price move; confirm Buy P/L follows Bid and Sell P/L follows Ask continuously.
+6. Test 0.01, 0.02 and another lot size; confirm P/L scales proportionally.
+7. Change a pane to another symbol; confirm an existing trade never uses the new unrelated symbol price.
+
+D. Close controls
+1. Close one position using its × button.
+2. Test Close selected now.
+3. Test Close all now.
+4. Confirm balance, equity, realized P/L and history update immediately.
+5. Confirm Buy closes at Bid and Sell closes at Ask.
+
+E. SL/TP modification
+1. Open a trade with no SL/TP.
+2. Right-click its Entry line and add SL by exact price, then TP by points.
+3. Right-click the SL line and modify by exact price and by points.
+4. Right-click the TP line and modify by exact price and by points.
+5. Remove/cancel SL and TP from their context menus.
+6. Add levels again and drag both lines; confirm only the exact position changes.
+7. Confirm invalid-direction levels are rejected.
+8. Let a Buy SL/TP trigger from Bid and a Sell SL/TP trigger from Ask.
+
+F. Completed trade markings
+1. Close trades manually and through SL/TP.
+2. Confirm distinct historical Entry, Exit, SL and TP markings remain on the correct chart.
+3. Confirm labels show direction, lot, open/close time, realized P/L and close reason.
+4. Restart TickLab and confirm history markings restore.
+5. Confirm historical markings do not stretch the chart price scale.
+
+G. History deletion and statistics
+1. Confirm totals for Closed, Profit trades, Loss trades, Breakeven, Winning total, Losing total and Net P/L.
+2. Select one history trade and delete it; confirm only its record/markings disappear and totals recalculate.
+3. Use Delete ALL demo history + chart markings and confirm the warning.
+4. Confirm completed history/markings clear while open positions and pending orders remain.
+
+H. Regression smoke test
+1. Confirm indicator right-click menus from v1.13.0.38 still work.
+2. Confirm chart colour settings and Bid/Ask lines still work.
+3. Confirm MT5 connection, history import and live chart capture remain unchanged.
+4. Confirm Demo Trading never sends a real MT5 order.

@@ -1,0 +1,8 @@
+TickLab v1.13.0.101 — first runtime test
+
+1. Gann Box: confirm it is unchanged from the now-correct v1.13.0.100 result.
+2. Draw Gann Fan. With Level readings ON, confirm 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1 and 8/1 are visibly inside the chart.
+3. Turn Level readings OFF: ratio labels must disappear. Turn ON: they must return.
+4. Open the selected drawing quick-edit bar. Its panel background must be visible.
+5. Open Pixels/line-width and line-style dropdowns. Hover and select rows in Light and Dark theme. Selected text must remain readable and never white-on-white.
+6. Confirm no Fib, Gann Box, Gann Square, Gann Square Fixed, MT5, history or replay behavior changed.

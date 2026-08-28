@@ -1,0 +1,29 @@
+TickLab v1.13.0.93 — Fib Readings Controls Fix
+
+Scope
+- Narrow correction pass based on v1.13.0.92.
+- No Fibonacci/Gann geometry renderer changes.
+- No Folder 1 drawing geometry changes.
+- No MT5, FileBridge, history, replay, gateway or connector implementation changes.
+
+Fixed
+1. Master Fibonacci reading controls are now explicit and independent:
+   - Level readings
+   - Prices on levels
+2. The master label is exactly "Level readings" (no "all readings" wording and no values embedded in the control label).
+3. "Prices on levels" is a separate visible master checkbox next to Level readings.
+4. Every level still has its own independent Price and Level reading checkbox.
+5. Added explicit Add reading / Remove reading buttons for the selected level.
+   - Add reading enables only the selected level's reading and turns on the master Level readings switch so the result is visible immediately.
+   - Remove reading hides only the selected level's reading; it does not delete the level or alter its price setting.
+6. Add/remove level, reorder level, edit level value, individual level colour, Price and Level reading controls remain available.
+7. Applying a template or restoring tool defaults now refreshes the two master reading switches from the tool/template numeric options instead of leaving stale UI state.
+8. All changes continue to update the drawing through the existing live-preview path.
+
+Validation
+- 31 XAML files parse successfully.
+- All event handlers referenced by TradingViewFibGannSettingsWindow.xaml exist in code-behind.
+- Edited C# file passes brace/structure balance check.
+- Exact source comparison vs v1.13.0.92 confirms only 5 intended files changed.
+- CandleChartControl.DrawingParity.cs is byte-identical to v1.13.0.92 in this pass.
+- Windows WPF compile/runtime test still must be performed in Visual Studio on the user's Windows PC.

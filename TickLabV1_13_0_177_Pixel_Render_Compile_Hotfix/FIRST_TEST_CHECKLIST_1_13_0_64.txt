@@ -1,0 +1,10 @@
+TickLab v1.13.0.64 first test checklist
+
+1. Build Release in Visual Studio.
+2. Open Chart Type: Tick must be the first item above Candles. Tick must no longer appear beside 1s.
+3. Select Tick: verify Bid/Ask raw ticks, price/time scale backgrounds/text and grid match candle chart settings.
+4. Switch back to Candles/Line/etc: verify the prior candle timeframe is restored.
+5. On M1 place Replay START/END across candles: selector strokes must sit behind bodies/wicks; START/END labels remain visible.
+6. Press Play on already imported history: startup should use ticks.tlt direct seek and begin promptly.
+7. Test 100x, 250x, 500x, 750x, 1000x, 1250x, 1500x and 2000x. Final OHLC/tick volume must match lower-speed replay for the same range.
+8. Verify Pause changes to Play immediately at range completion.

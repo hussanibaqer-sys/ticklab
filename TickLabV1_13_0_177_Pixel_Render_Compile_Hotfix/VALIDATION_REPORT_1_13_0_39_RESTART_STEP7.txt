@@ -1,0 +1,28 @@
+TickLab v1.13.0.39 Restart Step 7 validation report
+
+Result
+- Focused and regression source validation: PASS (779/779).
+- Duplicate-method regression validation: PASS (9/9).
+- Bridge-write-access regression validation: PASS (15/15).
+- Protected MT5/FileBridge comparison: PASS (19/19 unchanged).
+- WPF XAML parsing, unique-name and handler-resolution checks: PASS.
+
+Corrective behavior verified statically
+- The Demo Trading panel is never collapsed beyond recovery; its 22-pixel centre-right handle remains present while panel width is clamped between zero and the available window width.
+- Click, keyboard, drag and lost-mouse-capture paths all snap the panel to a recoverable open/closed state.
+- The scalp panel supplies explicit white/light surfaces, black text and readable hover/selected button states.
+- Demo execution reads the newest rendered chart candle first, uses its Close as Bid and derives Ask from live spread × point.
+- Market Buy uses Ask; Market Sell uses Bid.
+- Buy valuation, manual close, SL and TP use Bid; Sell valuation, manual close, SL and TP use Ask.
+- Position P/L uses directional price difference, tick size, tick value per lot and volume, with contract-size fallback.
+- Open-position rows expose Entry, Bid, Ask, points moved, lot, SL, TP and floating P/L.
+- A stored pane ID is accepted only when its symbol/timeframe still matches the position; otherwise the matching chart is resolved safely.
+- Individual close, Close Selected and Close All routes remain connected.
+- Active Entry/SL/TP lines expose exact-position context menus; SL/TP can be entered by exact price or points, removed, or dragged.
+- Closed trades restore historical Entry, Exit, SL and TP overlays on one matching chart; history overlays are visually distinct and excluded from auto-scale.
+- Selected or all completed history can be deleted with related chart markings; all-history deletion preserves open positions and pending orders.
+- Closed trade statistics recalculate from the remaining history.
+- Demo Trading source contains no real MT5 order API calls.
+
+Important boundary
+These are static/source checks. They do not prove Windows compilation, live broker-feed behavior or WPF mouse interaction. The Linux environment does not contain dotnet and cannot run WPF. A clean Windows Visual Studio 2022 / .NET 8 rebuild and the included first-test checklist remain mandatory.

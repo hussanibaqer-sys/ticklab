@@ -1,0 +1,52 @@
+TickLab v1.13.0.5 — Validation Report
+=====================================
+
+SOURCE VALIDATION
+- Static checks passed: 637
+- Static checks failed: 0
+- All XAML documents parsed successfully.
+- All referenced XAML event handlers were found in C# source.
+- All C# files passed delimiter/string/comment structural balancing.
+- CandleChartControl partial files contain no duplicate method signatures.
+
+MULTI-WINDOW WORKSPACE CHECKS
+- One 52-pixel unified top workspace/timeframe bar is present.
+- The old bottom timeframe strip is absent.
+- A slim 38-pixel chart/window selector dock is present.
+- MT5 connection status is located at the far bottom-right.
+- Main chart is numbered 1; detached chart numbering begins at 2.
+- New Chart creates a real independent DetachedChartWindow.
+- Detached windows expose chart-specific minimize, maximize/restore and close controls.
+- Detached price charts contain no main toolbar, Favorites, right workspace or bottom dock.
+- Detached charts receive current candles, timeline gaps, markers, settings and live updates.
+- The generic detached host supports indicator/tool/EA content.
+- Existing indicator/tool detachment is routed into the numbered window manager.
+- Bottom chart/window tabs activate detached windows.
+
+FAVORITES AND LAYOUT CHECKS
+- Favorites window drag behaviour is retained.
+- Favorites positions are clamped to the Windows virtual desktop.
+- Favorites toolbar can be hidden and restored visibly from its toolbar button.
+- TL + TickLab wordmark is present in the lower-left chart area.
+- Full-height centred drawing rail remains present.
+- Adjacent scrollable category tool window remains present.
+- Right DRAWINGS / OBJECTS / MARKET workspace and drag handle remain present.
+
+PRESERVED v1.13.0.4 CHECKS
+- Smooth Pen and Highlighter rendering retained.
+- Future-space drawing retained.
+- Two-click temporary measurement retained.
+- Coloured media catalog remains at least 158 unique items.
+- Nullable and duplicate-method guards remain active.
+
+PROTECTED COMPONENTS
+- Live Bridge V300 SHA-256 unchanged:
+  a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+- History Bridge V305 SHA-256 unchanged:
+  1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+- Marker V109 SHA-256 unchanged:
+  f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+LIMITATION
+- This environment does not contain the Windows .NET 8/WPF build toolchain.
+- Visual Studio 2022 Release -> Rebuild Solution remains the final compiler and on-screen test.

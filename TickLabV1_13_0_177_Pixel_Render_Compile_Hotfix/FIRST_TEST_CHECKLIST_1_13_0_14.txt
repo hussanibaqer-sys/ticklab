@@ -1,0 +1,31 @@
+TickLab v1.13.0.14 — first test checklist
+
+BUILD
+1. Close every TickLab and Visual Studio process.
+2. Delete src\TickLab.App\bin and src\TickLab.App\obj.
+3. Open TickLabV1_13_0_14.sln.
+4. Clean Solution and Rebuild Solution.
+
+ALERT BELL
+1. Open a chart and right-click at a nearby price.
+2. Choose Add Alert Here.
+3. Confirm Sound and Desktop popup are checked.
+4. Press Test bell. A clear bell should sound even if Windows Exclamation is disabled.
+5. Save the alert.
+6. Drag the horizontal alert line to a nearby price.
+7. When price touches it, verify the bell repeats and the popup says the market touched that price.
+8. Press OK. The bell must stop immediately and the popup must close.
+
+SYNTHETIC CHARTS
+1. Select a chart, then open Chart Type > Synthetic charts.
+2. Test Heikin Ashi, Renko, Line Break, Kagi, Point & Figure and Range.
+3. Open Synthetic chart settings and change one value.
+4. Confirm only the selected chart changes.
+5. Reopen TickLab and confirm chart type and settings are restored.
+6. Switch back to Candles and confirm original MT5 candles are unchanged.
+7. With an indicator applied, switch chart types and confirm the indicator refreshes.
+
+REPLAY/ALERT REGRESSION
+1. Start replay and then click End Replay. The vertical replay line must disappear.
+2. Confirm draggable alert lines still remain after replay ends.
+3. Confirm colour selection, floating-chart drag/attach controls and standard chart types still work.

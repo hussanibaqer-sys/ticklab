@@ -1,0 +1,40 @@
+TickLab v1.13.0.27 — Validation Report
+
+RESULT
+PASS — static source validation completed with no detected failures.
+
+AUTOMATED SOURCE VALIDATOR
+- Command: python3 tools/validate_source_1_13_0_27.py
+- Passed: 7,113
+- Failed: 0
+
+VALIDATED AREAS
+- Version, solution and title consistency.
+- All 38 built-in indicator definitions, catalog entries and calculation branches.
+- XAML parsing and event-handler references.
+- C# lexical delimiter balance.
+- Duplicate CandleChartControl method-signature regression.
+- v1.13.0.26 candle-chart and bounded directional prefetch protections.
+- Per-chart older/newer history cancellation, generation and pending ownership.
+- No opposite-direction completion/cancellation inside boundary paging handlers.
+- Built-in and TickScript colour models, settings and rendering paths.
+- 48px indicator scale alignment and 9px divider preservation.
+- Per-chart indicator refresh, appearance and sync persistence.
+- Connect/Copy/Move route models, UI and event wiring.
+- Workspace custom-indicator save/restore paths.
+- Protected MT5 source hashes.
+
+ADDITIONAL CHECKS
+- 28 XAML/project XML files parsed successfully.
+- 124 TickLab.App C# files passed delimiter scanning.
+- MT5/TickLabLiveBridge_V300.mq5 SHA-256: OK.
+- MT5/TickLabHistoryBridge_V305.mq5 SHA-256: OK.
+- MT5/TickLabCandleMarkerExchange_V109.mq5 SHA-256: OK.
+- Duplicate-method validator: 9 passed, 0 failed.
+- Bridge-write-access validator: 15 passed, 0 failed.
+
+LIMITATION
+A real Windows WPF compile and live MT5 execution were not possible in this Linux environment. No .NET/WPF SDK is installed here, and network access was unavailable for installing one. This report therefore does not claim that Visual Studio compilation or live behaviour has already passed.
+
+REQUIRED NEXT VALIDATION
+Build TickLabV1_13_0_27.sln in Visual Studio 2022 on Windows and complete FIRST_TEST_CHECKLIST_1_13_0_27.txt before replacing v1.13.0.26.

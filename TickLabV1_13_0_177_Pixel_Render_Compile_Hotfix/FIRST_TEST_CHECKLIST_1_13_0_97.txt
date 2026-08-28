@@ -1,0 +1,32 @@
+TickLab v1.13.0.97 — First Test Checklist
+
+1. GANN BOX
+- Draw Gann Box (not Gann Square).
+- Compare it with your supplied TradingView top-left reference.
+- Confirm the rectangle contains equal grid divisions, the complete fan/angle family, and nested colored quarter arcs.
+- Confirm clicking a visible grid line, angle ray or arc reselects the Gann Box.
+
+2. DO NOT REGRESS GANN SQUARES
+- Draw Gann Square Fixed: confirm it still grows/shrinks diagonally exactly as in v1.13.0.96.
+- Draw Gann Square: confirm its geometry is unchanged.
+
+3. GANN FAN READINGS
+- Draw Gann Fan.
+- Turn Level readings ON and Prices on levels OFF.
+- Confirm 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1 appear on the rays.
+- Turn Level readings OFF: ratios must disappear without changing ray geometry.
+- Toggle per-level Reading boxes and confirm only that reading changes.
+
+4. CHART RIGHT-CLICK MENU
+- Right-click blank chart.
+- Confirm the extra white strip/gutter on the left is gone.
+- Open nested menus such as Indicators/Favorites Tabs and confirm submenu behavior still works.
+
+5. EDIT / SETTINGS CONTRAST
+- Open a drawing Edit/Settings tab in Light mode.
+- Hover options such as Pixels/width/style entries: highlight and text must remain visibly different.
+- Select an option and move the cursor away: selected text must remain readable.
+- Repeat in Dark mode.
+- Test quick-edit dropdowns/context menus as well.
+
+If Visual Studio reports a compile error, send the exact error, filename and line number.

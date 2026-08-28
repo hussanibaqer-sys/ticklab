@@ -1,0 +1,45 @@
+TickLab v1.13.0.131 — FIRST TEST CHECKLIST
+
+1. FAVORITES HOME / TOGGLE
+- Add at least 4 drawing favorites and 4 timeframe favorites.
+- Turn Favorites Tabs ON.
+- Confirm Timeframe Favorites is bottom-center directly above the time scale.
+- Confirm Drawing Favorites is centered directly above the timeframe bar and they do not overlap.
+- Drag either favorites window elsewhere inside TickLab.
+- Turn Favorites Tabs OFF, then ON.
+- Confirm both bars return to their permanent bottom-center home.
+
+2. FAVORITES WINDOW BOUNDARIES
+- Drag each favorites bar toward every TickLab wall.
+- Confirm neither can cross outside the TickLab window.
+- Resize/maximize/restore TickLab and confirm the bars remain inside the active chart area.
+
+3. HORIZONTAL GROWTH
+- Add many drawing favorites and many timeframe favorites.
+- Confirm each bar grows horizontally until the active chart width is reached.
+- Confirm neither bar crosses the active chart boundary or overlaps the other.
+- With overflow, use mouse wheel over the bar and confirm horizontal movement still reaches later favorites.
+
+4. DRAWING FAVORITE ORDER
+- Drag drawing favorite buttons left/right to reorder them.
+- Confirm tool activation still works after reorder.
+- Reopen TickLab/workspace and confirm drawing favorite button order persists.
+
+5. TIMEFRAME FAVORITE ORDER
+- Add timeframes in deliberately mixed order (for example 12h, 1m, 4h, 2m, 16h, 5m).
+- Confirm the favorites bar displays them in chronological/numeric order rather than add order.
+- Confirm a custom 16h sits after 12h and before daily timeframes.
+
+6. TOP TOOLBAR ICONS
+- Confirm search/instrument bar and timeframe selector remain normal.
+- Confirm all other requested top-toolbar actions are vector-icon buttons with hover tooltips.
+- Click New Chart, Indicators, Alerts, Replay, MT5, Refresh, Markers, Theme, Settings, folder, Code Editor, Recorder and Screenshot; behavior must remain unchanged.
+
+7. DYNAMIC CHART TYPE ICON
+- Switch Candles -> Line -> Bars -> Heikin Ashi -> Renko -> another available type.
+- Confirm Chart Type button changes icon each time and its tooltip names the active chart type.
+
+8. REGRESSION
+- Draw one normal tool; verify one-select/one-draw, body drag, handle drag, middle-click delete, quick-menu Remove and top-center quick edit still work.
+- Open line Settings/Visibility and confirm v130 NullReference crash remains fixed.
+- Briefly confirm Emoji picker and Measure remain unchanged.

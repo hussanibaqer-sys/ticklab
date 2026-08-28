@@ -1,0 +1,11 @@
+TickLab v1.13.0.33 — Restart Step 3A Compile Hotfix
+
+Scope: compile and warning cleanup only.
+
+Fixed:
+- Added the missing TickLab.Desktop.Settings namespace for ColorDisplayHelper in DrawingSettingsWindow.
+- Removed the unused BuiltInIndicatorCatalog Bool helper.
+- Made dialog result access flow-safe without changing behavior.
+- Made Application.Current access null-safe.
+- Removed three unused indicator state fields and their no-op assignments.
+- Kept all Step 3 indicator removal, symbol search, and colour-name behavior unchanged.

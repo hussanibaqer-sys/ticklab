@@ -1,0 +1,18 @@
+TickLab v1.13.0.119 — STATIC VALIDATION
+RESULT: PASS
+XAML parse: 31/31 passed
+Changed app files vs 1.13.0.118:
+- Controls/CandleChartControl.Drawing.cs
+- Controls/CandleChartControl.DrawingParity.cs
+- Controls/CandleChartControl.cs
+- MainWindow.xaml
+- MainWindow.xaml.cs
+- TickLab.App.csproj
+Core/Drawing/DrawingToolCatalog.cs unchanged: True
+VisibleDrawings/DrawDrawingLayer block unchanged: True
+one-shot stale persisted state disabled: True
+middle delete before base: True
+quick delete owner resolution: True
+callout inward overlap: True
+version csproj: True
+version title: True

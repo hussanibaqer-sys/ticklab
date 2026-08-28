@@ -1,0 +1,25 @@
+TickLab v1.13.0.14
+
+ALERT BELL REPAIR
+- Replaced SystemSounds.Exclamation with a TickLab-generated PCM WAV bell.
+- The bell no longer depends on the user's Windows sound scheme.
+- Alert popup bell loops until OK is pressed or the popup is closed.
+- Sound-only alerts play the same built-in bell once.
+- Existing draggable horizontal alert lines and alert persistence are retained.
+
+STEP 4 — SYNTHETIC CHARTS
+- Heikin Ashi.
+- Renko with configurable box size and reversal boxes.
+- Line Break with configurable line count.
+- Kagi with configurable reversal amount.
+- Point & Figure with configurable box size and reversal boxes.
+- Range chart with configurable range size.
+- Synthetic settings are saved per chart and restored with the workspace.
+- The original MT5 candle history remains untouched; synthetic bars are generated
+  as an in-memory visual series whenever the selected chart type changes.
+- Indicators use the currently displayed chart series, including synthetic bars.
+
+DATA NOTE
+- Heikin Ashi is calculated directly from loaded OHLC candles.
+- Renko, Line Break, Kagi, Point & Figure, and Range are deterministically generated
+  from the loaded candle closes. They do not invent real volume or overwrite source data.

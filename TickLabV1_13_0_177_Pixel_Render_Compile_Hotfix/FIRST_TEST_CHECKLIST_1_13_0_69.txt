@@ -1,0 +1,14 @@
+TickLab v1.13.0.69 — First Test Checklist
+
+1. Open TickLabV1_13_0_69.sln in Visual Studio 2022 and Build Solution.
+2. Launch TickLab and verify the main PANEL still starts collapsed.
+3. Open Demo Trading > MT5 Trade History and enable a large saved history.
+4. On M1, drag/zoom the chart quickly. Verify chart movement remains smooth and only visible-range trade markings are rendered.
+5. Scroll into older history. Verify the matching historical trades appear automatically.
+6. Zoom far out over a dense period. Verify entry/exit paths remain visible while captions/SL/TP simplify for performance.
+7. Zoom back in. Verify detailed labels, SL/TP and hover trade information return.
+8. Open Report for both Demo Trade History and MT5 Trade History.
+9. Verify pages: Summary, Profit & Loss, Long & Short, Symbols, Risks, Trades.
+10. Verify graphs scroll, hover values work, Ctrl+wheel zoom works, and toolbar zoom/reset works.
+11. Switch TickLab Light/Dark theme, reopen or reactivate the report and verify report surfaces/text/graphs follow the theme.
+12. Verify Trades page search/sort and cash-flow table when deposits/withdrawals exist.

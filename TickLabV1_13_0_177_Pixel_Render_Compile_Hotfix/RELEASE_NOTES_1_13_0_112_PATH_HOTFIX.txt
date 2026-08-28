@@ -1,0 +1,8 @@
+TickLab v1.13.0.112 — Path Sharp Segments / Arrow Hotfix
+
+Surgical correction only:
+- Removed the quadratic Bezier interpolation that was still rounding Path corners in v1.13.0.111.
+- Path is now a true angular polyline: anchor-to-anchor segments stay perfectly straight.
+- Uses miter joins so turning points remain sharp.
+- Added the TradingView-style arrowhead at the final Path endpoint.
+- Everything else remains frozen from v1.13.0.111.

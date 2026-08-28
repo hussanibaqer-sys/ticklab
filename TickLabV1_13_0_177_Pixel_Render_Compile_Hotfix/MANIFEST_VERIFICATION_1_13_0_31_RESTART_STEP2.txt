@@ -1,0 +1,8 @@
+TickLab v1.13.0.31 Restart Step 2 Manifest Verification
+
+Source manifest: SOURCE_MANIFEST_1_13_0_31_RESTART_STEP2.sha256.txt
+Focused validation: 205 passed, 0 failed
+Duplicate-method validation: 9 passed, 0 failed
+Bridge-access validation: 15 passed, 0 failed
+Protected MT5/FileBridge comparison against v1.13.0.30 Restart Step 1A: 16 files checked, 0 differences
+Windows Visual Studio 2022 / .NET 8 WPF compilation: still required

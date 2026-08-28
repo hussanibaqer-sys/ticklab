@@ -1,0 +1,8 @@
+Approved change scope for v1.13.0.48
+===================================
+1. Protect every chart/workspace from live candle corruption after maximize/minimize/hidden periods and heavy indicator load.
+2. Give each indicator validated independent input and reject stale cross-chart results.
+3. Fix PANEL versus DEMO TRADING handle routing and unreliable click/drag capture without changing the synchronized rail design.
+4. Enlarge history text/ticket by 50 percent and place it on the flat side of the arrow.
+5. Make price-touch alert notification and bell reliable, with at least five seconds of sound.
+6. Preserve all previously fixed functionality and protected bridge/storage sources.

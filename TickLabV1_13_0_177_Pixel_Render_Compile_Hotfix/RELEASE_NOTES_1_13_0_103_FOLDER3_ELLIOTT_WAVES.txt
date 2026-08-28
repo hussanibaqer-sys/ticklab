@@ -1,0 +1,49 @@
+TickLab v1.13.0.103 — Folder 3 Elliott Waves TradingView Parity
+
+Scope
+- Elliott Waves only.
+- Patterns from v1.13.0.102 are frozen.
+- Cycles are not modified yet.
+- Fib/Gann and MT5/history/replay/bridge code are not modified.
+
+Reference corrections
+1. Elliott Impulse Wave
+   - First construction anchor is not labelled.
+   - Wave vertices are labelled 1, 2, 3, 4, 5.
+   - Each wave number is shown inside a clean outline circle, matching the TradingView reference style.
+   - Circle and number inherit the current Elliott wave line colour.
+   - Peak labels render above the vertex and trough labels below.
+
+2. Elliott Correction Wave
+   - First construction anchor is not labelled.
+   - Uses (A), (B), (C), not plain A/B/C or 0/A/B/C.
+   - Markings inherit the current wave line colour.
+
+3. Elliott Triangle Wave
+   - First construction anchor is not labelled.
+   - Uses (A), (B), (C), (D), (E).
+   - Markings inherit the current wave line colour.
+
+4. Elliott Double Combo Wave
+   - First construction anchor is not labelled.
+   - Uses (W), (X), (Y).
+   - Markings inherit the current wave line colour.
+
+5. Elliott Triple Combo Wave
+   - First construction anchor is not labelled.
+   - Uses (W), (X), (Y), (X), (Z) in anchor order.
+   - Markings inherit the current wave line colour.
+
+Construction
+- Existing anchor counts and polyline construction are preserved.
+- Labels appear progressively as construction points are committed.
+- No Elliott "0" label remains in the parity renderer.
+
+Validation
+- 31 XAML files parsed successfully.
+- C# delimiter/balance validation passed.
+- Exact source diff from v1.13.0.102 is only:
+  * TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+  * TickLab.App/MainWindow.xaml
+  * TickLab.App/TickLab.App.csproj
+- Windows WPF compile/runtime testing is still required in Visual Studio.

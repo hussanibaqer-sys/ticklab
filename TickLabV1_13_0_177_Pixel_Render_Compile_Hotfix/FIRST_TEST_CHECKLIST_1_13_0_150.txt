@@ -1,0 +1,9 @@
+v1.13.0.150 first runtime test
+
+1. Open 1s and scroll left repeatedly. Older than 30-40 minutes should load without multi-minute stalls.
+2. Repeat on 15s, 30s, and 45s. Pages should remain responsive.
+3. Switch to Tick Chart and pan/zoom continuously. It should not freeze while live ticks arrive.
+4. Scroll Tick history left for older pages and right for newer pages.
+5. Use Find Candle on a seconds timeframe and Find Tick. Existing working Find behavior must remain unchanged.
+6. Switch repeatedly between 1s/15s/30s/45s and Tick; one mode must not make the other slow or lose history.
+7. Verify the historical 1-second candles restored in v147 are still present.

@@ -1,0 +1,11 @@
+TickLab v1.12.1 first test
+
+1. Extract outside OneDrive.
+2. Open TickLabV1_12_1.sln.
+3. Select Release and Rebuild Solution.
+4. Confirm the chart fills the area above the timeframe strip.
+5. Confirm the four old panels below the chart are gone.
+6. Open each drawing category and confirm the compact flyout remains inside the chart.
+7. Add a favorite and confirm the horizontal floating bar appears and can be dragged freely.
+8. Confirm every timeframe label is readable and horizontal scrolling works.
+9. Run TickLab for at least 15 minutes and confirm no lag or freeze.

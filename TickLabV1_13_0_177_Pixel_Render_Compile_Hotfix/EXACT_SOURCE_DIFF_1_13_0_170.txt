@@ -1,0 +1,79 @@
+TickLab v1.13.0.170 — Exact Source Diff vs v1.13.0.169
+
+--- /mnt/data/tl170/TickLabV1_13_0_169_Crisp_Action_Rail_Icons/src/TickLab.App/MainWindow.xaml	2026-08-19 18:54:27.000000000 +0000
++++ /mnt/data/tl170/TickLabV1_13_0_170_Balanced_Drawing_Rail_Gutters/src/TickLab.App/MainWindow.xaml	2026-08-19 19:45:16.568945879 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.169 — Crisp Action Rail Icons"
++        Title="TickLab v1.13.0.170 — Balanced Drawing Rail Gutters"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+@@ -107,7 +107,7 @@
+         <!-- Full-height charting workspace -->
+         <Grid Grid.Row="1">
+             <Grid.ColumnDefinitions>
+-                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="57"/>
++                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="68"/>
+                 <ColumnDefinition x:Name="DrawingPaletteColumn" Width="0" MinWidth="0" MaxWidth="420"/>
+                 <ColumnDefinition x:Name="DrawingPaletteSplitterColumn" Width="0"/>
+                 <ColumnDefinition Width="*" MinWidth="420"/>
+@@ -133,7 +133,7 @@
+                             HorizontalAlignment="Left" Click="DrawingToolbarScrollUpButton_Click"/>
+                     <ScrollViewer x:Name="DrawingToolbarScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+                                   CanContentScroll="False" PanningMode="VerticalOnly" Focusable="False">
+-                        <StackPanel x:Name="DrawingToolbarPanel" Width="57" HorizontalAlignment="Left" Margin="0,3,0,3">
++                        <StackPanel x:Name="DrawingToolbarPanel" Width="46" HorizontalAlignment="Left" Margin="11,3,0,3">
+                             <StackPanel x:Name="DrawingCategoryButtonsPanel" Width="46" HorizontalAlignment="Left"/>
+                             <Button x:Name="DrawingBrushButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Brush, pen and highlighter" Click="DrawingBrushButton_Click" Visibility="Collapsed"/>
+                             <Border Width="26" Height="1" Background="{DynamicResource BorderBrush}" Margin="5,4,0,6" HorizontalAlignment="Left" SnapsToDevicePixels="True"/>
+@@ -154,7 +154,7 @@
+                     <Button x:Name="DrawingToolbarScrollDownButton" Grid.Row="2" Style="{StaticResource DrawingRailButton}" Width="40" Height="20" MinHeight="20" Padding="0" Margin="0" Content="⌄" Visibility="Collapsed"
+                             ToolTip="Scroll drawing toolbar down" Foreground="#7890AA" Background="Transparent" BorderBrush="Transparent"
+                             HorizontalAlignment="Left" Click="DrawingToolbarScrollDownButton_Click"/>
+-                    <Button x:Name="DrawingToolbarCollapseButton" Grid.Row="3" Style="{StaticResource DrawingRailButton}" Width="40" Height="24" MinHeight="24" Padding="0" Margin="0,3,0,5" Content="‹"
++                    <Button x:Name="DrawingToolbarCollapseButton" Grid.Row="3" Style="{StaticResource DrawingRailButton}" Width="36" Height="24" MinHeight="24" Padding="0" Margin="11,3,0,5" Content="‹"
+                             Foreground="#A0A0A0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left"
+                             Click="DrawingToolbarCollapseButton_Click"/>
+                 </Grid>
+--- /mnt/data/tl170/TickLabV1_13_0_169_Crisp_Action_Rail_Icons/src/TickLab.App/MainWindow.xaml.cs	2026-08-19 15:32:07.000000000 +0000
++++ /mnt/data/tl170/TickLabV1_13_0_170_Balanced_Drawing_Rail_Gutters/src/TickLab.App/MainWindow.xaml.cs	2026-08-19 19:45:16.576167855 +0000
+@@ -8817,7 +8817,7 @@
+ 
+     private void ApplyDrawingToolbarCollapsedState()
+     {
+-        DrawingToolbarColumn.Width = new GridLength(_drawingToolbarCollapsed ? 14 : 46);
++        DrawingToolbarColumn.Width = new GridLength(_drawingToolbarCollapsed ? 14 : 68);
+         Visibility railVisibility = _drawingToolbarCollapsed
+             ? Visibility.Collapsed
+             : Visibility.Visible;
+@@ -8833,10 +8833,10 @@
+         DrawingToolbarCollapseButton.ToolTip = _drawingToolbarCollapsed
+             ? "Expand drawing toolbar"
+             : "Collapse drawing toolbar";
+-        DrawingToolbarCollapseButton.Width = _drawingToolbarCollapsed ? 16 : 40;
++        DrawingToolbarCollapseButton.Width = _drawingToolbarCollapsed ? 16 : 36;
+         DrawingToolbarCollapseButton.Margin = _drawingToolbarCollapsed
+             ? new Thickness(0, 3, 0, 5)
+-            : new Thickness(0, 3, 0, 5);
++            : new Thickness(11, 3, 0, 5);
+     }
+ 
+     private void RightWorkspaceToggleButton_Click(object sender, RoutedEventArgs e)
+--- /mnt/data/tl170/TickLabV1_13_0_169_Crisp_Action_Rail_Icons/src/TickLab.App/TickLab.App.csproj	2026-08-19 18:54:27.000000000 +0000
++++ /mnt/data/tl170/TickLabV1_13_0_170_Balanced_Drawing_Rail_Gutters/src/TickLab.App/TickLab.App.csproj	2026-08-19 19:45:16.057348361 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.169</Version>
+-    <AssemblyVersion>1.13.0.169</AssemblyVersion>
+-    <FileVersion>1.13.0.169</FileVersion>
++    <Version>1.13.0.170</Version>
++    <AssemblyVersion>1.13.0.170</AssemblyVersion>
++    <FileVersion>1.13.0.170</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>

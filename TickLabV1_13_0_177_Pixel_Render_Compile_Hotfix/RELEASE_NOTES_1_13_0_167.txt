@@ -1,0 +1,20 @@
+TickLab v1.13.0.167 — Rail Alignment + Hover Reveal
+
+Built directly from v1.13.0.166 — Universal Markers + Last-Used Folder Tools.
+
+Changes:
+- Widened the left drawing rail by one folder-chevron lane (46 -> 57 px) without changing drawing/chart behavior.
+- Kept the category split-button row itself at 46 px and left-aligned it in the wider rail, preserving the existing main-tool + right-chevron geometry.
+- Moved Favorites, Measure, Zoom, Magnet, Keep Drawing, Lock, Hide, Delete and the other lower rail controls slightly left so their main icon/hit areas align with the folder main buttons above.
+- Aligned the separator with the same primary-button column.
+- Folder chevrons now reserve their layout space but remain invisible at rest; they appear only while the pointer is over that folder row and disappear again when the pointer leaves.
+- Folder main buttons, revealed chevrons and every lower drawing-rail button continue to use the same DynamicResource ControlHoverBrush / ControlPressedBrush hover treatment.
+- Every top-bar Button continues to use DarkToolbarButton and therefore the same theme-aware ControlHoverBrush highlight; timeframe chips and the clickable symbol/search control already use the same dynamic hover resource.
+
+Preserved from v1.13.0.166:
+- Universal hover/pressed/focused/active neutral markers.
+- Last-used tool per drawing category and universal split-folder behavior.
+- All drawing placement/editing, markers, history, raw tick, seconds, Find, Replay, FileBridge/MT5, indicators, workspaces and chart-type behavior.
+
+Rollback protection:
+- v1.13.0.157 Final Baseline remains the permanent functional rollback baseline.

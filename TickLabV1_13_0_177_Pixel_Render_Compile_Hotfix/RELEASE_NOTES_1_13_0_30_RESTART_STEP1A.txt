@@ -1,0 +1,13 @@
+TickLab v1.13.0.30 — Restart Step 1A: Sync Gesture Fix
+
+Changed only the standalone workspace indicator Sync behavior:
+- Existing horizontal viewport synchronization remains in place.
+- Price-chart wheel zoom now sends its relative vertical zoom gesture to synced independent indicators.
+- Price-chart free vertical drag now sends its relative vertical pan gesture.
+- Price-scale drag now sends its relative vertical zoom gesture.
+- Price-scale reset resets the independent indicator value scale.
+- Indicator values remain on their own value scale; chart price numbers are never copied to the indicator.
+- Sync OFF remains connected to market data and keeps independent navigation.
+
+The existing on-chart indicator placement system was not redesigned.
+All protected non-step source and MT5 files remain byte-for-byte equal to Restart Step 1.

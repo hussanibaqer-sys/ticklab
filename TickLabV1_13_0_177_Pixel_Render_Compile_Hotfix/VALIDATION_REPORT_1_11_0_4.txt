@@ -1,0 +1,28 @@
+TickLab v1.11.0.4 validation report
+
+Static source checks: 448 passed, 0 failed.
+Dedicated anti-freeze checks: 9 passed, 0 failed.
+All XAML files parsed successfully.
+
+Freeze prevention changes verified:
+1. Workspace save runs only when dirty.
+2. Settings file I/O runs on a background task.
+3. Automatic save failures do not open modal warning windows.
+4. Pending-candle flush no longer repeats raw-tick synchronization.
+5. Live integrity has a 45-second timeout.
+6. Pending candle writes have a 30-second timeout and requeue safely.
+7. Indicator calculation runs on a coalesced background task.
+8. Drawing changes do not rebuild the complete toolbar.
+9. Viewport changes are persisted through the debounced save path.
+
+Protected hashes:
+TickLabLiveBridge_V300.mq5
+a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+
+TickLabHistoryBridge_V305.mq5
+1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+
+TickLabCandleMarkerExchange_V109.mq5
+f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+A real Windows Visual Studio Release rebuild and runtime test are still required.

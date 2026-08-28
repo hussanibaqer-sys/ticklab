@@ -1,0 +1,44 @@
+TickLab v1.13.0.105 — FIRST TEST CHECKLIST
+
+Build in Visual Studio first. If there is a compiler error, stop and send the exact filename + line + error text.
+
+1. SHORT POSITION
+- Draw one Short Position.
+- Open Settings.
+- Change Target colour; chart updates live.
+- Change Target transparency from 0 toward 1; verify transparent -> solid direction.
+- Change Stop colour and Stop transparency independently.
+- Verify Target, Stop and center stats are separate readable boxes.
+- Click target fill, stop fill, entry line and labels: parent drawing should reselect and quick edit should appear.
+
+2. LONG POSITION
+- Repeat the same colour/transparency checks.
+- Verify target/stop orientation is correct for Long.
+- Test Full stats / Compact stats / Hidden.
+- Toggle Price labels.
+
+3. FORECAST / PROJECTION
+- Draw all three anchors.
+- Verify the middle anchor shapes one curved forecast path.
+- Verify start price/time label, end result label and SUCCESS bar.
+- Click the curve and visible labels/status area to reselect.
+
+4. PRICE RANGE
+- Draw between two prices.
+- Verify top/bottom boundaries, vertical double arrow, fill, price change, percent and points.
+- Drag either anchor; values update.
+- Click border, arrow, fill and label to reselect.
+
+5. DATE RANGE
+- Draw across a candle range.
+- Verify two vertical boundaries, horizontal double arrow, bar count, elapsed time and Vol.
+- Drag either anchor; values update.
+- Click border, arrow, fill and label to reselect.
+
+6. DATE & PRICE RANGE
+- Verify both arrows are present.
+- Verify combined price + percent + points + bars + duration + volume label.
+- Verify drag/live updates and visible-part reselection.
+
+7. REGRESSION SPOT CHECK
+- Open one already-approved Pattern, Elliott and Cycle drawing only to confirm there is no obvious visual/runtime regression. Do not judge those folders as part of this Step-1 work unless something actually changed.

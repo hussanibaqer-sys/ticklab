@@ -1,0 +1,7 @@
+TickLab v1.13.0.94 — Static Validation
+
+PASS: DrawSmallLabel restored exactly to the pre-v1.13.0.91 rendering style: Segoe UI, size 10, single draw pass, no halo/outline.
+PASS: v1.13.0.93 controls preserved: Level readings, Prices on levels, Add reading, Remove reading.
+PASS: 31 XAML files parse successfully.
+PASS: Source diff vs v1.13.0.93 limited to CandleChartControl.Drawing.cs, MainWindow.xaml, and TickLab.App.csproj.
+PASS: No geometry, MT5, bridge, history, or replay source changed.

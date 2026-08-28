@@ -1,0 +1,23 @@
+TickLab v1.13.0.35 Restart Step 5 — first Windows test
+
+1. Clean bin and obj, then Rebuild Solution in Visual Studio 2022 with .NET 8.
+2. Right-click the main price chart and a secondary price chart.
+   - Confirm Add Indicator… is visible.
+   - Confirm it opens the indicator library, not the applied list.
+   - Apply an indicator and confirm it goes to the chart that was right-clicked.
+3. Open the Demo Trade slide panel.
+   - Confirm the slide button is vertically centred and does not overlap another control.
+   - Confirm Balance, Equity, Floating P/L and Realized P/L are visible.
+4. Open a demo Buy or Sell.
+   - Confirm a live position card appears immediately.
+   - Confirm Current and LIVE P/L update while price moves.
+   - Confirm the position card × closes only that position.
+5. On the source price chart, confirm Entry, SL and TP lines appear.
+   - Entry must not drag.
+   - Drag SL and TP vertically and release.
+   - Confirm only that position updates in the panel and persistence survives restart.
+   - Confirm an invalid SL/TP side is rejected and the line returns safely.
+6. Click New Chart while no workspace partition is selected.
+   - Confirm the floating chart header shows a visible ⠿ DRAG handle.
+   - Drag it onto an empty workspace partition.
+7. Confirm no real trade appears in MT5 and AutoTrading state is irrelevant to demo orders.

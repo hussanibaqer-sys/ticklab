@@ -1,0 +1,10 @@
+TickLab v1.13.0.61 — First test checklist
+
+1. Close TickLab and Visual Studio, delete src\TickLab.App\bin and obj, then Rebuild Release.
+2. Click Replay from the main app. EXPECT: compact Replay tab opens by default.
+3. Expand Replay. Choose Start colour and End colour. EXPECT: selector lines/labels update and colours survive workspace save/reopen.
+4. Inspect START/END labels. EXPECT: crisp vertical lines with a small clean gap behind top and bottom label text.
+5. Start replay, choose 0.25x then Reverse. Compare with 10x/50x. EXPECT: reverse speed clearly follows selected multiplier.
+6. While reverse is running, change Speed. EXPECT: new speed takes effect immediately without restarting Reverse.
+7. Open Alerts, select a price alert, click Line colour, choose a colour. EXPECT: that alert line/ticket updates and remains after restart.
+8. Regression: Play/Forward/Reverse/End Replay, Replay Range auto-stop, hidden live chart, compact/full controls all still work.

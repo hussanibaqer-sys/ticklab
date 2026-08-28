@@ -1,0 +1,12 @@
+TickLab v1.13.0.118 — STATIC VALIDATION
+
+PASS — 31/31 XAML files parse.
+PASS — changed C# drawing/window files structurally balanced.
+PASS — shared VisibleDrawings/DrawDrawingLayer block exactly restored from v1.13.0.112.
+PASS — v1.13.0.117 Folder-6 diagnostic overlay removed.
+PASS — active-chart Hide All Drawings state fix present.
+PASS — selecting a drawing tool clears stale Hide All state.
+PASS — CandleChartControl.DrawingParity.cs unchanged vs v1.13.0.117: True.
+PASS — DrawingToolCatalog.cs unchanged vs v1.13.0.117: True.
+
+Windows compile/runtime not claimed: dotnet/MSBuild unavailable in this environment.

@@ -1,0 +1,15 @@
+TickLab v1.13.0.9 — XAML Trigger Compile Hotfix
+
+Fixed WPF template trigger errors:
+- PressTransform target not found
+- ButtonPressTransform target not found
+- CaptionPressTransform target not found
+- RailPressTransform target not found
+
+The pressed-button effect now targets the named Border RenderTransform directly.
+This avoids targeting named TranslateTransform objects, which WPF did not resolve in these templates.
+
+Validation:
+- All XAML files are well-formed.
+- All ControlTemplate TargetName references resolve to elements in the same template.
+- TickLab static validation: 809 passed, 0 failed.

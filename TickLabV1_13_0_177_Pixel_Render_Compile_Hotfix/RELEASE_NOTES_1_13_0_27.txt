@@ -1,0 +1,72 @@
+TickLab v1.13.0.27
+History Isolation, Indicator Colours and Routing
+
+BASE
+- Built directly from the stable v1.13.0.26 source.
+- The v1.13.0.26 candle-chart fix is preserved.
+- This release treats the remaining navigation defect as a history loading/prefetch problem, not a candle-renderer problem.
+
+HISTORY LOADING
+- Older and newer boundary loads now have separate cancellation tokens, generations and running state for every chart.
+- Loading older history no longer cancels or completes a newer-history request.
+- Loading newer history no longer cancels or completes an older-history request.
+- Each request follows the chart that raised it, including floating and partitioned charts.
+- Symbol/timeframe identity changes cancel only that chart's obsolete paging work.
+- A superseded request cannot clear the pending state owned by a newer request.
+- History is merged against the latest chart-owned candle window before replacing data.
+- The visible anchor is preserved while pages are inserted and distant records are released.
+- History paging remains disabled during vertical-only operations and while the same direction is already loading.
+
+INDICATOR COLOURS
+- Every built-in indicator series now exposes editable:
+  * main colour
+  * down/negative colour where applicable
+  * fill colour
+  * fill opacity
+  * label/scale colour
+  * line width
+  * line style
+  * visibility
+- Indicator levels retain editable value, label, colour, width and line style.
+- Built-in cloud/fill rendering now uses the saved fill colour and opacity in both main-chart overlays and separate panes.
+- TickScript indicators now have a Properties window with editable:
+  * main line colour, width and style
+  * upper and lower level colours
+  * level width and style
+  * fill colour and opacity
+  * label/scale colour
+  * visibility
+- TickScript appearance is saved per chart and restored with the workspace.
+
+INDICATOR PANES AND WORKSPACES
+- Each price chart owns its own TickScript entries, built-in indicators, calculated results, appearance state and refresh state.
+- Custom indicator calculations no longer write through the active chart's global aliases.
+- Indicator right scales use the same 48px alignment as the price chart.
+- Separate panes retain independent vertical scaling and double-click vertical reset.
+- Pane dividers remain narrow 9px draggable strips.
+- Added “Sync with Price Chart”.
+- When synchronized, horizontal zoom, scroll and crosshair follow the source price chart.
+- When unlinked, the indicator stack keeps its own horizontal viewport, zoom, scroll and crosshair while vertical scales remain independent.
+- Sync state is saved per chart/workspace.
+
+CONNECT / COPY / MOVE
+- Indicators can be routed to another price chart through Workspace → Partition → Chart.
+- Connect creates a shared settings group: later colour/display edits propagate to connected copies.
+- Copy creates an independent indicator with independent settings.
+- Move transfers the indicator and removes it from the source chart.
+- Routing is available from indicator pane controls and the Applied Indicators list.
+
+PROTECTED SYSTEMS
+- No MT5 bridge source file was modified.
+- Existing history storage, live capture, candle rendering, replay, alerts, drawings, chart themes and workspace chart data paths were preserved.
+- The 1,500-candle horizontal safety cap remains unchanged.
+
+VALIDATION
+- Static source validator: 7,113 checks passed, 0 failed.
+- XAML/project XML parse: passed.
+- C# lexical delimiter scan: passed for 124 source files.
+- Protected MT5 SHA-256 checks: passed.
+- Duplicate-method and bridge-write-access regression validators: passed.
+
+IMPORTANT
+This Linux validation environment does not contain the Windows .NET/WPF SDK and has no network access to install it. The package therefore still requires the Windows Visual Studio build and live MT5 tests in FIRST_TEST_CHECKLIST_1_13_0_27.txt.

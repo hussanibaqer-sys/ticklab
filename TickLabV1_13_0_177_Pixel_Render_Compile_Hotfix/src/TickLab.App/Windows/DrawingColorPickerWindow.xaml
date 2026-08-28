@@ -1,0 +1,176 @@
+<Window x:Class="TickLab.Desktop.Windows.DrawingColorPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+        Title="Choose colour" Width="730" Height="590" MinWidth="730" MinHeight="590"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{DynamicResource WindowBrush}" Foreground="{DynamicResource TextBrush}"
+        ShowInTaskbar="False" UseLayoutRounding="True" SnapsToDevicePixels="True">
+    <Window.Resources>
+        <Style x:Key="PickerLabel" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="PaletteSwatchButton" TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#6B6B6B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="SwatchBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2"
+                                SnapsToDevicePixels="True"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TranslateTransform/>
+                            </Border.RenderTransform>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="SwatchBorder" Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="SwatchBorder" Property="RenderTransform">
+                                    <Setter.Value><TranslateTransform Y="1"/></Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ComponentBox" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Width" Value="76"/>
+            <Setter Property="Height" Value="31"/>
+            <Setter Property="MinHeight" Value="31"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Edit colour" FontSize="20" FontWeight="SemiBold"/>
+            <TextBlock Text="Choose a colour. Hover over any swatch for one second to see its name."
+                       Foreground="{DynamicResource MutedTextBrush}" Margin="0,3,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,16,0,14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="18"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Current" Style="{StaticResource PickerLabel}" Margin="0,0,0,5"/>
+                <Border x:Name="CurrentColorBorder"
+                        settings:ThemeColorScope.PreserveExactColors="True"
+                        Width="104" Height="50" CornerRadius="4"
+                        BorderBrush="#707070" BorderThickness="1"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="New" Style="{StaticResource PickerLabel}" Margin="0,0,0,5"/>
+                <Border x:Name="NewColorBorder"
+                        settings:ThemeColorScope.PreserveExactColors="True"
+                        Width="104" Height="50" CornerRadius="4"
+                        BorderBrush="#707070" BorderThickness="1"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBlock Text="Colour names appear beside the pointer after a short hover."
+                           Style="{StaticResource PickerLabel}" TextWrapping="Wrap" Width="220"/>
+                <TextBox x:Name="HexBox" Visibility="Collapsed" TextChanged="HexBox_TextChanged"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="205"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Background="{DynamicResource PanelBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="7" Padding="13">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Basic colours" FontWeight="SemiBold" Margin="0,0,0,11"/>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <UniformGrid x:Name="PalettePanel" Columns="10"/>
+                    </ScrollViewer>
+                    <TextBlock Grid.Row="2" x:Name="SelectedColourText"
+                               Margin="0,10,0,0" FontSize="10.5"
+                               Foreground="{DynamicResource MutedTextBrush}"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Background="{DynamicResource PanelBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="7" Padding="14">
+                <StackPanel>
+                    <TextBlock Text="Custom colour" FontWeight="SemiBold" Margin="0,0,0,14"/>
+                    <Grid Margin="0,0,0,12">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                        <TextBlock Text="Red" Style="{StaticResource PickerLabel}"/>
+                        <Slider x:Name="RedSlider" Grid.Row="1" Minimum="0" Maximum="255" TickFrequency="1"
+                                ValueChanged="ComponentSlider_ValueChanged"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,12">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                        <TextBlock Text="Green" Style="{StaticResource PickerLabel}"/>
+                        <Slider x:Name="GreenSlider" Grid.Row="1" Minimum="0" Maximum="255" TickFrequency="1"
+                                ValueChanged="ComponentSlider_ValueChanged"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,12">
+                        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                        <TextBlock Text="Blue" Style="{StaticResource PickerLabel}"/>
+                        <Slider x:Name="BlueSlider" Grid.Row="1" Minimum="0" Maximum="255" TickFrequency="1"
+                                ValueChanged="ComponentSlider_ValueChanged"/>
+                    </Grid>
+                    <TextBox x:Name="RedBox" Visibility="Collapsed" TextChanged="ComponentBox_TextChanged"/>
+                    <TextBox x:Name="GreenBox" Visibility="Collapsed" TextChanged="ComponentBox_TextChanged"/>
+                    <TextBox x:Name="BlueBox" Visibility="Collapsed" TextChanged="ComponentBox_TextChanged"/>
+                    <Border Height="1" Background="{DynamicResource BorderBrush}" Margin="0,8,0,12"/>
+                    <TextBlock Text="Move the sliders to create a custom colour. No colour codes are shown."
+                               TextWrapping="Wrap" Foreground="{DynamicResource MutedTextBrush}" FontSize="10.5"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="ValidationText" VerticalAlignment="Center" Foreground="#D45B5B" FontSize="10.5"/>
+            <Button Grid.Column="1" Content="Cancel" Width="96" Margin="0,0,8,0" Click="CancelButton_Click"/>
+            <Button Grid.Column="2" Content="OK" Width="96" Style="{StaticResource AccentButton}" Click="ApplyButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

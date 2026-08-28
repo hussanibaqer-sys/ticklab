@@ -1,0 +1,21 @@
+TickLab v1.13.0.91 static validation
+
+Result: 119 passed, 0 failed.
+
+Validated:
+- all application XAML parses as XML;
+- modified C# files have balanced lexical delimiters after stripping comments/strings;
+- exact source-change set is limited to 7 intended files;
+- all 15 Folder-2 Fib/Gann tools remain level-enabled;
+- live per-level On / Price / Reading checkbox bindings exist;
+- LevelRow uses INotifyPropertyChanged and schedules live preview;
+- global ShowLevelReadings and ShowLevelPrices are independent;
+- sliders use IsMoveToPointEnabled=True, no snap, 0.01 step;
+- Gann Fan slash readings exist;
+- FixedPixels behavior is removed from Gann Square Fixed;
+- Gann Box internal geometry and hit testing are present;
+- critical MT5/FileBridge/History/Replay source trees hash-identical to v1.13.0.90;
+- Fib/Gann settings XAML event handlers resolve in code-behind.
+
+Environment limitation:
+- dotnet/MSBuild is not installed in this Linux environment, therefore WPF compile/runtime testing must be performed on Windows.

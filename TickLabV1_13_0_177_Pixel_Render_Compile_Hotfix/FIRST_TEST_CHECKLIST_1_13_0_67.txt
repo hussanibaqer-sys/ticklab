@@ -1,0 +1,8 @@
+TickLab v1.13.0.67 — First Test Checklist
+
+1. Build/rebuild solution in Visual Studio.
+2. Launch TickLab: right-side PANEL should be collapsed; CODE EDITOR, DEMO TRADING, and PANEL handles remain visible.
+3. Click PANEL handle: panel opens normally; close/relaunch TickLab: it starts collapsed again.
+4. Click the new Screenshot button beside ● REC: a PNG appears in Videos\TickLab\Recordings.
+5. Open Recorder: the new screenshot appears in the saved media list.
+6. Confirm Recorder still records/pauses/resumes/stops normally.

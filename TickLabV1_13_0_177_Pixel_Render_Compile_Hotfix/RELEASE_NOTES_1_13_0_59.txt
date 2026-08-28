@@ -1,0 +1,36 @@
+TickLab v1.13.0.59 — Compact Replay Controls
+
+Scope
+-----
+Replay window/control presentation only. Screen recording is intentionally NOT included.
+All v1.13.0.58 replay engine, instant replay, reverse/forward playback and viewport behavior are preserved.
+
+Changes
+-------
+1. Successful Play automatically collapses the Replay window into a compact control tab.
+2. Compact tab contains only the requested live Replay controls:
+   - Play / Pause
+   - Reverse
+   - Forward
+   - Speed
+   - Replay Line on/off
+   - Replay Range on/off
+   - Expand (full-window icon)
+3. Full Replay window now includes a Compact button to manually return to the small tab.
+4. Expanding while Replay is already running remains a manual choice; Reverse/Forward do not force it compact again.
+5. Replay Line and Replay Range checkboxes are mirrored/synchronized between full and compact modes.
+6. Speed is now an explicit white button with black text. The chosen value is always visible, e.g. "Speed 1×" or "Speed 10×".
+7. Clicking Speed opens the same speed choices: 0.25×, 0.5×, 1×, 2×, 5×, 10×, 50×.
+
+Preserved behavior
+------------------
+- v1.13.0.57 identity/self-cancel replay fix.
+- v1.13.0.58 reverse/forward playback.
+- Replay start keeps the existing horizontal chart view and leaves future space clear.
+- Live MT5/background state continues independently while Replay is visible.
+- No screen-recording code added in this version.
+
+Validation
+----------
+Static source validation: 702 passed, 0 failed.
+Windows/.NET WPF compilation still requires Visual Studio 2022 on Windows.

@@ -1,0 +1,20 @@
+TickLab v1.13.0.64 — Tick Chart Type + Instant Replay Turbo
+
+Replay
+- Replay Play reads the permanent binary ticks.tlt archive first using timestamp seek.
+- Bridge raw CSV is fallback only when very recent ticks are not yet present in ticks.tlt.
+- The same permanent-first rule is used for later replay batches.
+- START/END selector strokes render behind candle bodies and wicks; labels stay readable above candles.
+- Added 100x, 250x, 500x, 750x, 1000x, 1250x, 1500x and 2000x speeds.
+- Every raw tick is processed in order at turbo speeds; only chart redraw is throttled to protect UI responsiveness.
+
+Raw Tick chart
+- Tick is now the first item in the Chart Type menu, above Candles.
+- The Tick timeframe chip is hidden from the timeframe toolbar.
+- Leaving Tick restores the last candle timeframe/chart type where possible.
+- Tick chart price/time scale backgrounds and scale text now use the same chart settings as candle charts.
+- Tick grid continues to use the same grid colour, opacity and pixel thickness settings as candle charts.
+
+Safety
+- Existing candle timeframes remain unchanged.
+- MT5 EA/FileBridge source files are not intentionally modified.

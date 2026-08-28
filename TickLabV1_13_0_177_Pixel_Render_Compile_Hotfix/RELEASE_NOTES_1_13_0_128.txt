@@ -1,0 +1,61 @@
+TickLab v1.13.0.128 — Chart Bounds / Measure / Rectangle Handles
+
+BASE
+- Built conservatively from v1.13.0.127 Measure / Emoji Scrollbar Refinement.
+- Emoji assets/picker, DrawingToolCatalog and CandleChartControl.DrawingParity remain frozen.
+
+1. MEASURE TOOL
+- Keeps the v127 centered horizontal + vertical double-arrow measurement cross.
+- Restores the selected-range rectangle as a translucent fill with NO outline.
+- Existing Measure right-click Edit remains limited to Colour and Transparency / opacity.
+- Colour/transparency drive the measure visual including the restored fill.
+- Completed Measure remains temporary and clears on the next normal chart click.
+
+2. TICKLAB LOGO / TIME-SCALE BOUNDARY
+- Bottom-left TickLab wordmark now reserves the chart's complete 32 px time-scale height plus its visual margin.
+- It stays inside the chart plot area instead of overlapping the time-scale boundary.
+
+3. HOVER-ONLY WINDOW / WORKSPACE CONTROLS
+- Embedded workspace Minimize / Maximize / Close controls remain physically present but start fully invisible.
+- They appear only when the pointer enters their own control area and hide again on leave.
+- Pane/chart top-right controls use the same hover-only behavior.
+- Detached Chart and Detached Workspace caption controls also use hover-only visibility.
+- Existing button actions are unchanged.
+
+4. GLOBAL DRAWING PLOT BOUNDARY
+- Above-candle and above-indicator drawing layers, selection handles, Measure, emoji/media objects and construction previews are clipped to layout.Plot.
+- Drawings therefore cannot paint over the right price scale or bottom time scale.
+- Finite whole-object body dragging is constrained as a unit to remain inside the plot.
+- Anchor creation/editing continues to clamp to the plot; media corner resizing now also uses the constrained pointer.
+- Infinite/full-plot drawing families retain their existing interaction behavior and are protected visually by the plot clip.
+
+5. RECTANGLE — 8 EDIT HANDLES
+- Rectangle now exposes exactly 8 selected edit handles:
+  4 corners + top/right/bottom/left wall centers.
+- Corner handles resize width and height.
+- Top/bottom wall handles resize vertically only.
+- Left/right wall handles resize horizontally only.
+- Minimum size protection prevents collapse.
+
+6. ROTATED RECTANGLE — 8 LOCAL-AXIS HANDLES
+- Rotated Rectangle now exposes 4 corners + 4 wall-center handles.
+- Corner resizing preserves the current rectangle axes; it does not skew the shape.
+- Top/bottom wall handles move perpendicular to those walls only.
+- Left/right wall handles resize along the rotated rectangle's local horizontal axis only.
+- Rotation is preserved during wall resizing.
+- Candidate resize is rejected if any resulting corner would cross outside the chart plot.
+- Rotated Rectangle selection/body bounds now include all four rendered corners.
+
+FREEZE / REGRESSION
+- CandleChartControl.DrawingParity.cs unchanged from v127.
+- DrawingToolCatalog.cs unchanged from v127.
+- EmojiVectorAssets.cs unchanged from v127.
+- DrawingMediaPickerWindow XAML/code-behind unchanged from v127.
+- No Bridge / History / Replay / MT5 / Gateway / Connector implementation changed.
+
+VALIDATION
+- 35/35 targeted static checks passed.
+- 31/31 XAML files parse.
+- 153 C# files passed structural delimiter scanning.
+- App source diff is limited to 8 intended files.
+- Windows WPF/.NET runtime compilation is not available in this Linux environment; Visual Studio on Windows remains the final runtime gate.

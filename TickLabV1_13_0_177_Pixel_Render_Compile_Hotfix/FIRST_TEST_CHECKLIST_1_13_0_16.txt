@@ -1,0 +1,12 @@
+TickLab v1.13.0.17 first test checklist
+
+1. Open a normal Candles chart at default zoom.
+2. Confirm the gap is compact again and visually equal between every adjacent candle.
+3. Zoom horizontally in and out repeatedly; confirm no individual gap jumps wider or narrower.
+4. Zoom the price scale vertically; confirm body borders stay sharp.
+5. Confirm every wick stays centred in its candle body.
+6. Zoom out beyond the detailed-body threshold; confirm the compact renderer stays aligned and does not show broken side wicks.
+7. Return to default zoom and confirm the original spacing sequence is restored.
+8. Test Hollow Candles, Volume Candles, Heikin Ashi, Renko, Line Break and Range.
+9. Confirm TPO, Session Volume Profile and Volume Footprint menus remain available.
+10. Confirm alerts, replay, workspace docking and MT5 connection still work.

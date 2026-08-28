@@ -1,0 +1,20 @@
+TickLab v1.13.0.9 — Visual Stability and Professional Colour System
+
+This release repairs the visual and interaction regressions reported in v1.13.0.8 while retaining the working multi-workspace, partition, docking, chart-context, drawing-sync and Code Editor systems.
+
+Changes
+- Rebuilt the chart colour picker as a professional desktop paint-style palette with broad basic colours, exact RGB values, hexadecimal input, current/new previews and safe Cancel behavior.
+- Colour swatches retain their exact selected colour during hover and preview.
+- Removed repeated whole-application theme refreshes during chart-colour edits; only actual theme changes re-theme TickLab.
+- Replaced harsh blue UI surfaces and hover boxes with neutral black/grey application colours.
+- Buttons use a subtle one-pixel pressed movement instead of a large blue hover highlight.
+- Increased toolbar and tab icon readability without making window controls bulky.
+- Corrected partition double-click routing so chart price/time scale resets work on the first attempt and cannot select or clear an occupied partition.
+- Clicking the already-active chart no longer rebuilds its workspace during scale interaction.
+- Horizontal zoom-out is capped at 1,500 visible candles per chart.
+- Normal candle bodies preserve a three-pixel inter-candle gap.
+- Added crisp pixel alignment for candle bodies and wicks.
+- Candle brushes and pens are resolved once per render frame instead of once per candle, improving multi-chart zoom and scroll performance.
+- Compressed candle rendering is used automatically when there is not enough screen width to preserve a true three-pixel gap.
+
+Protected MT5 bridge sources remain unchanged.

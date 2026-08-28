@@ -1,0 +1,62 @@
+TickLab v1.13.0.28 — Independent Indicator Workspaces and Sync
+
+PURPOSE
+v1.13.0.27 added indicator colour controls but did not create the independent workspace-indicator architecture requested. v1.13.0.28 corrects that omission without replacing the working MT5 bridge, candle renderer or isolated history paging system.
+
+DIRECT WORKSPACE PLACEMENT
+- The Indicators window now has two separate actions:
+  1. Properties & Add to Chart
+  2. Place in Workspace
+- Place in Workspace opens a Workspace → Partition chooser.
+- Empty and occupied partitions are shown. Existing workspace swap/replace/cancel protection is reused for occupied destinations.
+- The indicator becomes a real WorkspacePaneKind.Indicator pane, not an attachment hidden inside the active chart.
+- Built-in and TickScript indicators are both supported.
+
+INDEPENDENT PANE STATE
+Each direct indicator pane owns:
+- its own indicator collection and calculation results;
+- its own appearance/colour settings;
+- its own independent vertical scale and double-click vertical reset;
+- its own horizontal viewport when Sync is off;
+- its own visible time scale and 48px-aligned value scale;
+- its connected source-chart id;
+- its Sync state;
+- its persisted workspace/partition/floating position.
+
+CONNECT AND SYNC
+- Connect/Change selects a source using Workspace → Partition → Chart.
+- Sync is disabled until a source chart is connected.
+- Sync ON links horizontal scrolling, horizontal zoom, crosshair time and source replay data.
+- Vertical scale always remains independent.
+- Sync OFF keeps horizontal scrolling/zoom local. If the connected chart enters replay, the independent pane continues using the chart's original non-replay candles instead of being forced into that replay dataset.
+- Closing the connected chart safely disconnects the indicator pane instead of closing or corrupting it.
+
+ROUTING
+- Header route button and right-click menu expose Connect, Copy and Move.
+- Connect changes the data/time source while the independent pane stays in place.
+- Copy creates an independent copy on the selected chart and preserves the workspace indicator.
+- Move copies first and removes the workspace indicator only after the destination operation succeeds.
+- Target selection uses Workspace → Partition → Chart.
+
+PERSISTENCE
+The following are restored after reopening TickLab:
+- direct indicator pane and destination partition/floating window;
+- built-in/TickScript indicator settings;
+- all editable colours;
+- connected source chart;
+- Sync state;
+- independent horizontal visible count/right offset;
+- source-following chart theme.
+- Floating chart source ids are restored in two phases so a valid connection is not lost before floating windows finish loading.
+
+COLOURS
+The complete v1.13.0.27 colour work remains present for all indicators, including applicable plots, positive/negative series, histogram parts, signal lines, levels, bands, fills, fill opacity and labels.
+
+PROTECTED WORKING SYSTEMS
+- MT5 bridge source files were not changed.
+- v1.13.0.26 candle/right-edge correction remains intact.
+- v1.13.0.27 per-chart/per-direction history isolation remains intact.
+- Existing add-to-chart indicators, alerts, replay, drawings, themes and workspaces remain available.
+
+VALIDATION LIMIT
+This package was source-validated in a Linux container. A real WPF compilation and live MT5 test require Windows, Visual Studio 2022 and .NET 8. Keep v1.13.0.26 and v1.13.0.27 as rollback copies until the checklist passes.

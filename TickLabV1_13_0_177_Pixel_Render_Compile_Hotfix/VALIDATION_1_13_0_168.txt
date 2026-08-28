@@ -1,0 +1,19 @@
+TickLab v1.13.0.168 static validation
+
+Scope: drawing-toolbar icon sharpness/geometry only.
+
+Checks:
+- Source base: v1.13.0.167.
+- Only source files changed: DrawingToolIconFactory.cs, MainWindow.xaml title, and TickLab.App.csproj version metadata.
+- Drawing-tool icon factory now normalizes nonzero tool-logo vector strokes to one visual pixel after icon scaling.
+- Axis-aligned normalized tool lines use EdgeMode.Aliased; diagonal/curved geometry remains normally antialiased.
+- Long Position entry line is aligned at y=12.4 design units (15.5 px at the 30 px rail size).
+- Short Position entry line is aligned at y=10.8 design units (13.5 px at the 30 px rail size).
+- Path icon includes an explicit terminal two-segment arrow head and smaller hollow nodes.
+- Path/Polyline use the new mitered AddAngularPolyline helper for cleaner corners.
+- Text icon uses a full-size vector T instead of the smaller font glyph.
+- CandleChartControl.Drawing.cs and CandleChartControl.DrawingParity.cs are byte-identical to v1.13.0.167.
+- RawTick and Replay source files checked are byte-identical to v1.13.0.167.
+- MainWindow.xaml, App.xaml and TickLab.App.csproj parse successfully as XML.
+- Edited C# source has balanced braces.
+- Full dotnet/WPF compilation could not be run in this Linux container because the dotnet SDK is not installed; Windows runtime compilation remains the final build check.

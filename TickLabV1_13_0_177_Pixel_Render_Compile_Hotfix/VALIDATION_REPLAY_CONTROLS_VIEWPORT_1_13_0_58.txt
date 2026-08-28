@@ -1,0 +1,32 @@
+TickLab v1.13.0.58 replay controls + viewport validation
+
+Passed: 27
+Failed: 0
+
+PASS  v58 project version
+PASS  v58 window title
+PASS  replay window widened for new controls
+PASS  speed selector white with black text
+PASS  speed dropdown items black on white
+PASS  reverse button present
+PASS  forward button present
+PASS  reverse event exposed
+PASS  forward event exposed
+PASS  reverse event wired
+PASS  forward event wired
+PASS  playback direction state present
+PASS  both directions implemented
+PASS  replay engine maintains undo history
+PASS  replay engine can undo a raw tick
+PASS  reversed ticks retained for exact forward replay
+PASS  reverse stores exact undone tick
+PASS  forward reapplies reversed tick before new raw ticks
+PASS  reverse uses replay clock and speed
+PASS  reverse stops at replay start boundary
+PASS  chart supports replay start viewport anchor
+PASS  anchor uses completed candle before yellow start
+PASS  initial future hide preserves horizontal window
+PASS  right-side future space rule documented in source
+PASS  v57 replay identity fix preserved
+PASS  instant replay loading path preserved
+PASS  hidden live engine state preserved

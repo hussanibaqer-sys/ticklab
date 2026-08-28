@@ -1,0 +1,28 @@
+TickLab v1.13.0.35 exact file diff against v1.13.0.34
+
+ADDED (10)
++ BUILD_README_1_13_0_35_RESTART_STEP5.txt
++ FIRST_TEST_CHECKLIST_1_13_0_35_RESTART_STEP5.txt
++ PROTECTED_HASH_VERIFICATION_1_13_0_35.txt
++ RELEASE_NOTES_1_13_0_35_RESTART_STEP5.txt
++ src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs
++ TickLabV1_13_0_35.sln
++ tools/validate_source_1_13_0_35_restart_step5.py
++ VALIDATION_BRIDGE_ACCESS_1_13_0_35.txt
++ VALIDATION_DUPLICATE_METHODS_1_13_0_35.txt
++ VALIDATION_RUN_1_13_0_35_RESTART_STEP5.txt
+
+REMOVED (1)
+- TickLabV1_13_0_34.sln
+
+MODIFIED (10)
+* Clean-Restore-Build.cmd
+* src/TickLab.App/Controls/CandleChartControl.cs
+* src/TickLab.App/MainWindow.ChartContexts.cs
+* src/TickLab.App/MainWindow.DemoTrading.cs
+* src/TickLab.App/MainWindow.IndicatorManagement.cs
+* src/TickLab.App/MainWindow.xaml
+* src/TickLab.App/TickLab.App.csproj
+* src/TickLab.App/Windows/DetachedChartWindow.xaml
+* src/TickLab.App/Windows/IndicatorsWindow.xaml.cs
+* VERSION.txt

@@ -1,0 +1,15 @@
+TickLab v1.13.0.103 static validation
+
+PASS — 31 XAML files parse.
+PASS — C# delimiter balance passed.
+PASS — Dedicated TradingView Elliott renderer is active.
+PASS — Impulse first anchor is unlabelled and vertices use circled 1..5.
+PASS — Correction uses (A)(B)(C).
+PASS — Triangle uses (A)(B)(C)(D)(E).
+PASS — Double Combo uses (W)(X)(Y).
+PASS — Triple Combo uses (W)(X)(Y)(X)(Z).
+PASS — Elliott markings use pen.Brush, so markings inherit wave-line colour.
+PASS — old generic Elliott DrawPatternLabels call removed from parity branch.
+PASS — exact functional source scope from v1.13.0.102 is 3 files only.
+
+Note: No Windows dotnet/MSBuild toolchain is available in this environment. Final WPF compile/runtime acceptance must be performed in Visual Studio on Windows.

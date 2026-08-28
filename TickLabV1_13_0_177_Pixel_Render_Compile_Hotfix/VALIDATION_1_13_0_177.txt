@@ -1,0 +1,5 @@
+Static validation:
+- No TransformedGeometry references remain in TickLab source.
+- The changed AddPath implementation uses System.Windows.Media.Geometry and ScaleTransform, already available in the WPF target imports.
+- Source change from v1.13.0.176 is isolated to DrawingToolIconFactory.cs plus release metadata/title.
+- Full WPF compilation not run in this environment because the .NET SDK is unavailable.

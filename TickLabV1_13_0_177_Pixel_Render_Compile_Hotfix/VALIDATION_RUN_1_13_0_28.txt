@@ -1,0 +1,16 @@
+TickLab v1.13.0.28 validation run
+Generated: 2026-08-05 Europe/Brussels
+
+V1.13.0.28 CHECKS PASSED: 7167
+V1.13.0.28 CHECKS FAILED: 0
+TickLab v1.13.0.28 independent indicator workspace and sync validation passed.
+
+DUPLICATE-METHOD CHECKS PASSED: 9
+DUPLICATE-METHOD CHECKS FAILED: 0
+CandleChartControl duplicate-method compile hotfix validation passed.
+
+BRIDGE-WRITE CHECKS PASSED: 15
+BRIDGE-WRITE CHECKS FAILED: 0
+TickLab v1.13.0.14 MT5 bridge write-access hotfix validation passed.
+
+bin/obj/.vs directories: 0

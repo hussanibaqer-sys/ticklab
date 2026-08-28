@@ -1,0 +1,28 @@
+TickLab v1.13.0.100 — Gann Fan Readings / Quick Edit Contrast Fix
+
+Scope is intentionally limited to the two runtime issues reported after v1.13.0.99:
+
+1. Gann Fan level readings
+- Gann Fan geometry, ratios, rays, bands and colors are preserved.
+- Ratio/price labels are collected while the fan is rendered, then drawn in a dedicated post-clip label pass.
+- This prevents labels from disappearing because of the fan clip or low-contrast ray/fill colors.
+- Labels use chart-background-aware contrast: dark text on a light chart, light text on a dark chart.
+- Level readings still obey ShowLevelReadings / Level readings ON-OFF.
+- Price text remains independent and obeys ShowLevelPrices / Prices on levels.
+- Reference ratios remain 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1.
+
+2. Drawing quick-edit toolbar white-on-white states
+- Added a dedicated QuickEditComboItemStyle for the line-width and line-style dropdowns.
+- Normal, hover, selected and disabled popup rows now use live theme resources with explicit contrasting foregrounds.
+- Removed local foreground/background snapshots from the quick-edit ComboBoxes and action buttons.
+- The quick-edit bar background/border now remain owned by DynamicResource styling instead of frozen local brush values.
+- When the application theme changes while the quick-edit toolbar is open, the toolbar is refreshed immediately.
+
+Protected behavior
+- Gann Box is not changed.
+- Gann Square and Gann Square Fixed are not changed.
+- Fibonacci geometry/settings/readings are not changed.
+- MT5, FileBridge, history, replay, gateway and connector code are not changed.
+
+Build note
+- This environment does not contain Windows dotnet/MSBuild, so final WPF compilation must be run in Visual Studio on Windows.

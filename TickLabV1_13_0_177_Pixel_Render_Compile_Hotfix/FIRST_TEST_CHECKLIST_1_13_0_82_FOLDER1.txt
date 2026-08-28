@@ -1,0 +1,51 @@
+TickLab v1.13.0.82 — FIRST TEST: FOLDER 1 ONLY
+
+Please judge ONLY the first left-toolbar folder in this build.
+The remaining folders are intentionally not the parity target yet.
+
+1. Click the first line-tool icon on the left rail.
+   - White overlay flyout opens beside the rail.
+   - No search/header panel is shown.
+   - Sections are LINES, CHANNELS, PITCHFORKS in the reference order.
+   - Right-click any row -> Add/Remove from Favorites.
+
+2. Trendline
+   - click A, move mouse (live preview), click B to finish.
+   - completed object is selected and the white compact object toolbar appears near it.
+   - move either endpoint and move the whole line.
+   - toolbar: template, color, text, width, style, settings, alert, lock, delete, more.
+   - More -> Visual order / Visibility on intervals / Clone / Copy / Hide.
+   - Settings -> white dialog with Style/Text/Coordinates/Visibility.
+
+3. Ray / Extended line / Info line
+   - verify two-click construction.
+   - ray extends one direction; extended line extends both directions.
+   - Info line shows price change, %, bars and elapsed time when configured.
+
+4. Trend angle
+   - two-click construction.
+   - angle guide/arc and angle value are visible at first anchor.
+   - Settings has Style/Coordinates/Visibility (no Text tab).
+   - edit Angle in Coordinates and verify the line changes live.
+
+5. Horizontal / Horizontal ray / Vertical / Crossline
+   - one click places each tool.
+   - select and drag its anchor.
+   - price/time labels obey settings.
+
+6. Channels
+   - Parallel channel: A/B first edge, C places parallel edge.
+   - Flat top/bottom and Disjoint channel use three clicks and editable handles.
+   - settings expose middle line/background where appropriate.
+   - Regression trend uses the selected candle range and its own settings.
+
+7. Pitchfork family
+   - three-click construction.
+   - test all four variants.
+   - settings expose extend/background/levels.
+
+8. Cancel settings after making changes: the exact pre-dialog drawing must return.
+9. OK settings: the previewed result remains.
+10. Confirm no real-trading/broker-connect action exists anywhere in these tools.
+
+If Folder 1 visually/behaviorally matches closely enough, freeze it before starting Folder 2 (Fibonacci/Gann).

@@ -1,0 +1,30 @@
+TickLab v1.13.0.38 Restart Step 6A static validation run
+
+STEP6A CHECKS PASSED: 680
+STEP6A CHECKS FAILED: 0
+
+DUPLICATE-METHOD CHECKS PASSED: 9
+DUPLICATE-METHOD CHECKS FAILED: 0
+
+BRIDGE-WRITE CHECKS PASSED: 15
+BRIDGE-WRITE CHECKS FAILED: 0
+
+Protected MT5/FileBridge files: 19 passed, 0 failed.
+
+Checks include:
+- Release identity and solution/build-script target.
+- All WPF XAML files parse and have unique x:Name values.
+- XAML event handlers resolve in source.
+- C# punctuation balance using a C# lexer.
+- All existing Step 6 demo-trading, Ask-line, colour and floating-chart regression checks.
+- Direct built-in overlay hit testing for the selected indicator.
+- Exact menus on built-in plots, TickScript plots and pane headers.
+- Dedicated Move to Window and Move to Chart events.
+- Empty-workspace-only destination selection.
+- Exact built-in chart context for Properties and Remove.
+- Protected MT5/FileBridge byte comparison.
+- Absence of bin/obj directories.
+
+Not performed:
+- dotnet build: the dotnet executable is not installed in this Linux environment.
+- Windows WPF runtime test: requires Windows and Visual Studio 2022 / .NET 8.

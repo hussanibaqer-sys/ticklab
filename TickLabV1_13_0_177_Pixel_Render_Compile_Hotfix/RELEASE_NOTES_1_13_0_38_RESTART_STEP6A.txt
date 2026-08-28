@@ -1,0 +1,29 @@
+TickLab v1.13.0.38 — Restart Step 6A Indicator Context Menu Correction
+
+Purpose
+Correct the indicator right-click workflow that was incomplete in v1.13.0.37.
+
+Changes in this corrective release
+- Right-clicking a built-in indicator overlay line on the price chart opens the selected indicator's exact menu.
+- Right-clicking a built-in or TickScript indicator plot opens the selected indicator's exact menu.
+- Right-clicking a separate indicator pane header/title opens the same exact menu.
+- Independent workspace indicator plots and headers use the same menu.
+- The menu contains only:
+  - Refresh
+  - Properties
+  - Move to Window
+  - Move to Chart
+  - Remove
+- The heading shows the selected indicator name and its current placement address.
+- Move to Window opens a destination picker containing only empty workspace partitions.
+- Move to Chart opens the existing chart-address picker.
+- Move and Remove operate on the exact selected built-in InstanceId or TickScript entry.
+- The old Move-to-Window shortcut that reopened Properties has been removed.
+
+Not changed
+- Demo Trading and pending-order behavior.
+- Chart colours and Ask/Bid lines.
+- MT5 bridges, history import, live capture, storage, drawings, chart navigation, or workspace layout behavior.
+
+Validation boundary
+Static source checks passed in the Linux environment. A real Windows Visual Studio 2022 / .NET 8 WPF build and runtime test are still required.

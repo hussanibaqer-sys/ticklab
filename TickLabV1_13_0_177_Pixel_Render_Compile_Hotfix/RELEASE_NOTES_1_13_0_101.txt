@@ -1,0 +1,17 @@
+TickLab v1.13.0.101 — Gann Fan Visible Readings / Quick Edit Selected-State Fix
+
+Scope is intentionally surgical.
+
+Gann Fan:
+- Fixed the actual runtime cause of missing ratio readings. The fan rays use a far extended endpoint for clipped rendering; the old reading placement reused that off-screen endpoint.
+- Readings are now positioned from the real visible ray/plot-edge intersection, then clamped inside the plot.
+- Existing Level readings and Prices on levels behavior is preserved.
+
+Quick edit:
+- Restored the toolbar panel theme binding instead of ClearValue() removing its XAML background.
+- Added control-scope SystemColors overrides for quick-edit ComboBoxes so native WPF selected/highlight states use TickLab's SelectionBrush/SelectionTextBrush and cannot become white-on-white.
+
+Protected behavior:
+- Gann Box / Gann Square / Gann Square Fixed renderer is unchanged.
+- No Fib geometry/settings changes.
+- No MT5/history/replay/bridge changes.

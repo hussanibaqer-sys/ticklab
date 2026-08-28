@@ -1,0 +1,15 @@
+TickLab v1.13.0.120 — STATIC VALIDATION
+
+PASS
+- 31/31 XAML files parsed.
+- 150 C# files structurally scanned.
+- Workspace restore starts global Lock All off.
+- Selecting a non-cursor drawing tool clears stale global Lock All.
+- Direct image placement clears stale global Lock All.
+- Existing body/anchor drag handlers remain present.
+- Existing middle-button drawing remove path remains present.
+- Existing quick-edit owner-resolved Remove path remains present.
+- One-shot drawing completion remains present.
+- Source diff vs v1.13.0.119 limited to 3 app files.
+
+Runtime compile note: Windows .NET/WPF toolchain is not available in this environment.

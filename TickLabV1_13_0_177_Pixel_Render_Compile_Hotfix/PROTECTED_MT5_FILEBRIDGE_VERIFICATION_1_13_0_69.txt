@@ -1,0 +1,8 @@
+TickLab v1.13.0.69 protected-source verification
+
+Compared against v1.13.0.68 compile-fix baseline:
+- src/TickLab.App/Gateway/FileBridge: 0 changed files
+- mt5 (when present): 0 changed files
+- reference MT5 source: 0 changed files
+
+This release changes only desktop chart-history projection/report UI/model logic plus version/release metadata.

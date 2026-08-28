@@ -1,0 +1,9 @@
+TickLab v1.13.0.126 — FIRST TEST
+1. Open Emoji: no large Emoji/Stickers/Icons buttons at bottom.
+2. Confirm a clearly visible vertical scrollbar is present and its thumb can be dragged.
+3. Resize TickLab / use a short chart pane: Emoji picker stays entirely inside active chart and its bottom never crosses the time-scale boundary.
+4. Pick one emoji and click chart once: exactly one emoji is created and tool returns to cursor.
+5. A second chart click must NOT create another emoji unless Stay in drawing mode was explicitly enabled.
+6. Confirm emoji colours/graphics remain exactly as v1.13.0.125.
+7. Confirm toolbar Zoom/Scroll toggle remains working exactly as v1.13.0.125.
+8. Confirm emoji body drag + four-corner proportional resize remain working.

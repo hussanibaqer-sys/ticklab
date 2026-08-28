@@ -1,0 +1,58 @@
+TickLab v1.13.0.6 — Persistent Multi-Workspace Docking
+======================================================
+
+PAGE-BASED WORKSPACES
+- Replaced the permanent main-chart assumption with real workspace pages.
+- A clean first launch creates Workspace 1 containing Chart 1.
+- The bottom dock lists Workspace 1, Workspace 2 and onward like switchable pages.
+- Add Workspace creates an empty workspace using the currently selected layout.
+- Workspace IDs and pane/chart IDs use independent lowest-available-number allocation.
+- Existing IDs never change when another chart or workspace closes.
+
+PARTITION LAYOUTS
+- Added Single, two-column, three-column, 2x2 and 3x2 workspace divisions.
+- Empty partitions display their partition number in the centre.
+- Partition numbers disappear while content is attached and return after it is removed.
+- Dividers are thin solid lines without dotted grips.
+- Double-clicking a partition selects it with a temporary yellow border.
+- The next attachable chart, indicator, EA or tool enters the selected partition.
+- Escape clears the current partition selection.
+- Dropping onto an occupied partition offers Cancel, Swap or Replace.
+
+MAGNETIC DOCKING AND MAXIMIZE
+- Drag a pane grip or floating chart number badge over a partition to display a yellow magnetic target.
+- Releasing docks the item and expands it exactly to that partition border.
+- Pane controls appear only on hover and include drag, partition maximize/restore, detach and close.
+- Maximizing a pane inside TickLab fills only the central workspace area between the top bar, bottom bar, left drawing rail and right workspace.
+- Restoring returns it to its original partition.
+
+DETACHED CHARTS AND WORKSPACES
+- Every chart, including Chart 1, can detach.
+- A detached item keeps its ID and supports right-click Attach with workspace/partition choices.
+- A detached chart can become a new workspace with 1, 2, 3, 4 or 6 partitions; the source chart occupies Partition 1.
+- Docked workspaces expose compact minimize, maximize and close controls without duplicating the main Windows controls.
+- Minimize hides only that workspace page; its bottom tab restores it.
+- Maximize fills only the central TickLab workspace frame.
+- Whole workspaces detach using a tiny top-left handle that appears only on pointer hover.
+- Detached workspace windows include their own minimize, maximize/restore and close controls.
+- A detached workspace maximizes to the full usable area of its current monitor.
+- Closing a workspace asks whether to Cancel, Detach items or Close all.
+
+POWER-CUT-SAFE RESTORE
+- Workspace state is autosaved every time its layout, geometry, drawing state or viewport changes.
+- Settings are written to a temporary file with write-through and flushed to disk before atomic replacement.
+- The previous valid settings file is retained as a backup.
+- If the primary file is damaged by a power interruption, TickLab loads the backup.
+- Workspace layouts, partitions, pane IDs, drawings, viewport, floating/docked state, window geometry and maximized state are restored.
+- Saved windows from a disconnected monitor are clamped back onto the available virtual desktop.
+
+TOOLBAR AND CHART SPACE
+- Removed the duplicate TL logo from the left drawing rail.
+- Kept Favorites as a normal rail button and removed its extra frame/marker treatment.
+- Added a dedicated Brush button exposing Pen, Brush and Highlighter.
+- Improved freehand filtering, simplification and smoothing for continuous natural strokes.
+- Reduced the right price-scale margin from 82 to 58 pixels and reduced label padding.
+
+PRESERVED SYSTEMS
+- Existing MT5 bridge protocol, M1/tick history formats and marker exchange remain unchanged.
+- Existing drawing tools, future-space drawing, measurement, coloured media, Favorites recovery and right DRAWINGS / OBJECTS / MARKET panel remain included.

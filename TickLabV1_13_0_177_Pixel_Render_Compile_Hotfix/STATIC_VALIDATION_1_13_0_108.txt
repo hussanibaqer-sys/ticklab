@@ -1,0 +1,73 @@
+TickLab v1.13.0.108 Step 3 static validation
+Passed: 49
+Failed: 0
+
+Checks:
+[PASS] Version marker 1.13.0.108
+[PASS] Solution renamed to v108
+[PASS] Project Version v108
+[PASS] Window title v108 Step 3
+[PASS] Anchored VWAP true cumulative helper
+[PASS] Anchored VWAP begins at drawing anchor
+[PASS] Anchored VWAP extends through latest candle
+[PASS] Anchored VWAP default main line blue
+[PASS] Anchored VWAP Band 1 enabled by default
+[PASS] Anchored VWAP visible-line hit testing
+[PASS] Volume profiles have dedicated style section
+[PASS] Generic Levels hidden for volume profiles
+[PASS] FRVP Inputs Rows Layout
+[PASS] FRVP Inputs Row Size
+[PASS] FRVP Inputs Volume mode
+[PASS] FRVP Inputs Value Area Volume
+[PASS] FRVP Inputs Extend Right
+[PASS] Rows Layout Number/Ticks semantics implemented
+[PASS] Profile width uses selected box width
+[PASS] Profile left/right placement implemented
+[PASS] Up Volume independent style
+[PASS] Down Volume independent style
+[PASS] Value Area Up independent style
+[PASS] Value Area Down independent style
+[PASS] VAH independent style
+[PASS] VAL independent style
+[PASS] POC independent style
+[PASS] Developing POC style
+[PASS] Developing VA style
+[PASS] Histogram Box style
+[PASS] Values visibility, color and transparency
+[PASS] Transparency direction 0 to 1
+[PASS] Fixed profile defaults to Left
+[PASS] Anchored profile defaults to Right
+[PASS] Anchored profile uses same dedicated settings
+[PASS] Profile coordinates use bar-number UI
+[PASS] Profile bar coordinates map to candle timestamps
+[PASS] Settings receives chart candle context
+[PASS] Profile histogram visible-part hit testing
+[PASS] POC/VAH/VAL hit testing
+[PASS] Developing profile hit testing
+[PASS] Profile selection bounds include histogram
+[PASS] Anchored VWAP selection bounds include bands
+[PASS] Live profile settings preview wiring
+[PASS] Color picker live preview wiring
+[PASS] Default reset reloads dedicated profile controls
+[PASS] All XAML parses — 31 files, 0 errors
+[PASS] All XAML event handlers resolve in source — 0 missing
+[PASS] Source freeze: only Step 3 files changed — 9 source files changed
+
+Source files changed from v1.13.0.107:
+- CHANGED: src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+- CHANGED: src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- CHANGED: src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+- CHANGED: src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+- CHANGED: src/TickLab.App/MainWindow.xaml
+- CHANGED: src/TickLab.App/MainWindow.xaml.cs
+- CHANGED: src/TickLab.App/TickLab.App.csproj
+- CHANGED: src/TickLab.App/Windows/DrawingSettingsWindow.xaml
+- CHANGED: src/TickLab.App/Windows/DrawingSettingsWindow.xaml.cs
+
+Build environment:
+- dotnet/MSBuild is not installed in this Linux container.
+- Windows WPF compilation and runtime interaction remain the user test gate.
+
+Additional structural check:
+- C# files checked: 150
+- Delimiter/lexical structural errors: 0

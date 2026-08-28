@@ -1,0 +1,7 @@
+TickLab v1.13.0.135 Static Validation
+
+XAML parsed: 31/31
+Targeted unlimited-seconds history checks: PASS
+Version metadata: PASS
+C# delimiter scan: PASS (154 files; performed separately)
+Windows WPF runtime/compile not available in this environment.

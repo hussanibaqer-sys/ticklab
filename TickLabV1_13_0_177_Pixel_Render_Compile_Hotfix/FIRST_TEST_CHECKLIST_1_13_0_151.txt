@@ -1,0 +1,32 @@
+TickLab v1.13.0.151 — First Runtime Test Checklist
+
+A. Seconds charts
+[ ] 1s: scroll repeatedly beyond 30–40 minutes while MT5 is live.
+[ ] 15s: same.
+[ ] 30s: same.
+[ ] 45s: same.
+[ ] No repeating ~40-second pause.
+[ ] No old history disappears after switching to/from Tick.
+
+B. Raw Tick chart
+[ ] Normal pan/zoom remains smooth.
+[ ] Fast left scrolling across several history-page boundaries leaves no missing page.
+[ ] Fast right scrolling after historical Tick Find catches up through newer pages.
+[ ] 5,000 visible-tick ceiling remains.
+
+C. Find
+[ ] Normal Candle Finder behavior unchanged.
+[ ] Tick Find marker/zoom/centering unchanged.
+[ ] Historical Tick Find does not pause ~40 seconds before data appears.
+
+D. Replay
+[ ] Replay starts from the selected yellow marker normally.
+[ ] No ~40-second shared-archive wait.
+[ ] Forward/reverse/range behavior unchanged.
+
+E. Safety / agents
+[ ] Leave TickLab connected for multiple integrity cycles (>60–90 seconds).
+[ ] Live Integrity still runs and updates history.
+[ ] No watchdog/integrity errors caused by the change.
+[ ] Bridge stays connected/live.
+[ ] Minute/hour/day/week/month charts remain unchanged.

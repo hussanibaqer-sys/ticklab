@@ -1,0 +1,15 @@
+TickLab v1.13.0.100 — First runtime tests
+
+1. Draw a NEW Gann Fan.
+2. Confirm these readings are visible on the rays: 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1.
+3. Open Gann Fan Settings and untick Level readings: ratio text must disappear immediately.
+4. Tick Level readings again: ratio text must return immediately.
+5. Toggle Prices on levels separately and confirm it does not control the ratio readings.
+6. Repeat on both a light chart background and a dark chart background: readings must stay readable.
+7. Select a drawing and open the quick-edit line-width dropdown.
+8. Hover every width (Pixels) row: no white-on-white text.
+9. Select a width: selected row must remain readable.
+10. Repeat for the line-style dropdown.
+11. Switch TickLab Light/Dark theme while the quick-edit toolbar remains open and repeat steps 7-10.
+12. Regression check: Gann Box must look exactly as it did in v1.13.0.99.
+13. Regression check: Gann Square and Gann Square Fixed must remain unchanged.

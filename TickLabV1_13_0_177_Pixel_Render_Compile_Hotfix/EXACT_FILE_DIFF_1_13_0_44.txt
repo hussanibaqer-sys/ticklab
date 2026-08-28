@@ -1,0 +1,23 @@
+TickLab v1.13.0.44 exact file diff versus v1.13.0.43
+
+ADDED (7)
+  BUILD_README_1_13_0_44.txt
+  FIRST_TEST_CHECKLIST_1_13_0_44.txt
+  INTENDED_SOURCE_CHANGES_1_13_0_44.txt
+  RELEASE_NOTES_1_13_0_44.txt
+  TickLabV1_13_0_44.sln
+  VALIDATION_REPORT_1_13_0_44.txt
+  tools/validate_source_1_13_0_44.py
+
+REMOVED (1)
+  TickLabV1_13_0_43.sln
+
+CHANGED (8)
+  Clean-Restore-Build.cmd
+  VERSION.txt
+  src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs
+  src/TickLab.App/MainWindow.DemoTrading.cs
+  src/TickLab.App/MainWindow.xaml
+  src/TickLab.App/TickLab.App.csproj
+  src/TickLab.App/Windows/DemoTradeValuePromptWindow.cs
+  src/TickLab.App/Windows/DetachedChartWindow.xaml.cs

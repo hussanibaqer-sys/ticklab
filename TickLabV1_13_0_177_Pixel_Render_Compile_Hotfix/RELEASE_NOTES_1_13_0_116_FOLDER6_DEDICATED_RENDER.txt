@@ -1,0 +1,59 @@
+TickLab v1.13.0.116 — Folder 6 Dedicated Annotation Render Pass
+
+BASE
+- Built directly from v1.13.0.115.
+- Drawing Inspector delete/removal behavior from v1.13.0.115 is preserved unchanged.
+
+WHY THIS VERSION IS DIFFERENT
+- v1.13.0.114 and v1.13.0.115 proved that Folder 6 objects are successfully created/stored because they appear in Drawing Inspector, but the normal drawing rendering path still left them invisible.
+- v1.13.0.116 stops routing completed Folder 6 annotations through that failing generic render path.
+
+FIX
+1. Dedicated Folder 6 render pass
+- Text / Notes / Content drawings are enumerated directly from the chart's _drawings collection.
+- They render through DrawFolder6AnnotationDedicated instead of the generic DrawOneDrawing dispatch path.
+- The same dedicated path is used for live construction preview before completion.
+
+2. Local chart ownership recovery
+- Normal visibility rules are respected when valid.
+- A Folder 6 drawing owned by the current chart is still renderable if stale symbol/timeframe/sync workspace metadata causes the generic visibility filter to reject it.
+- Hide All and per-object hidden state remain respected.
+
+3. Safe annotation anchors
+- Folder 6 anchor conversion is validated before painting.
+- Non-finite or stale out-of-plot annotation points are recovered into the visible plot instead of silently painting off-screen.
+- Bounds/selection use the same safe coordinates.
+
+4. Plain Text contrast correction
+- v1.13.0.113 introduced #1F2937 as plain Text's stock colour while TickLab's default chart background is #080808.
+- Stock plain Text now automatically chooses readable chart contrast.
+- Explicit user-selected text colours remain unchanged.
+
+5. Folder scope
+- Text
+- Note
+- Price Note
+- Pin
+- Table
+- Callout
+- Comment
+- Price Label
+- Signpost
+- Anchored Note
+- Flag
+- Image
+- Post
+- Idea
+
+SOURCE SCOPE VS v1.13.0.115
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+- TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- TickLab.App/MainWindow.xaml (version title only)
+- TickLab.App/TickLab.App.csproj (version only)
+
+VALIDATION
+- 31/31 XAML files parsed.
+- Targeted Folder 6 checks: PASS.
+- Changed C# drawing files: delimiter/structure checks PASS.
+- Exactly 4 intended app source files changed vs v1.13.0.115.
+- Windows Visual Studio compile/runtime remains the final test environment.

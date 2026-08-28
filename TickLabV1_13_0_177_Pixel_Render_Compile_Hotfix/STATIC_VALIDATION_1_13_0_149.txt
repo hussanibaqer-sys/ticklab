@@ -1,0 +1,13 @@
+v1.13.0.149 static validation
+- Functional changes: TickChartControl.cs, TickChartControl.Drawing.cs, MainWindow.RawTickChart.cs, MainWindow.ChartContexts.cs.
+- Marker changed from blue dashed Tick-only style to candle Find historical-anchor style: solid ARGB(210,250,204,21), 2 px normal / 4 px selected.
+- Tick Find captures and restores visible tick count and vertical zoom span.
+- Tick Find builds balanced older/newer presentation data before centering the found tick.
+- Raw Tick historical navigation can request newer pages at the right edge as well as older pages at the left edge.
+- CanonicalTickArchiveStore.cs unchanged from v1.13.0.148.
+- PersistentHistoryStore.cs unchanged from v1.13.0.148.
+- Mt5FileBridgeClient.cs unchanged from v1.13.0.148.
+- MT5/MQL files unchanged from v1.13.0.148.
+- C# delimiter checks passed for all changed functional files.
+- TickLab.App.csproj and MainWindow.xaml XML parse passed.
+- No dotnet/MSBuild/csc is installed in the ChatGPT runtime; Visual Studio Windows build remains authoritative.

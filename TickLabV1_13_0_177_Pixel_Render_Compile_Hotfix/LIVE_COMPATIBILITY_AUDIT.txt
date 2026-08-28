@@ -1,0 +1,12 @@
+TickLab v1.13.0 Protected Component Audit
+=========================================
+Live Bridge V300 SHA-256:
+a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+
+History Bridge V305 SHA-256:
+1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+
+Marker V109 SHA-256:
+f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+All three files are unchanged from the prior stable package. TickLab v1.13.0 changes are limited to the desktop source, documentation and validation tooling.

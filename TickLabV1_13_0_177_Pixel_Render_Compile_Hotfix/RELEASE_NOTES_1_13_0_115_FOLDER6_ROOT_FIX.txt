@@ -1,0 +1,49 @@
+TickLab v1.13.0.115 — Folder 6 Text / Notes / Content Root Fix
+
+BASE
+- Built directly from v1.13.0.114 Folder 6 Render / Inspector Delete Hotfix.
+- Previous drawing folders and non-drawing systems remain freeze-protected.
+
+WHY v1.13.0.114 DID NOT FIX THE REPORTED BUG
+- v1.13.0.114 added a defensive renderer only after a drawing reached DrawOneDrawing().
+- The reported objects could still be rejected before that point by the shared VisibleDrawings/IsDrawingVisible path.
+- The previous hotfix also covered only a hard-coded 10-tool subset while this toolbar flyout contains the full Annotation category: TEXT AND NOTES plus CONTENT.
+- The inline Drawing Inspector still had no visible per-row delete button.
+
+ROOT FIX
+1. Annotation visibility recovery
+- Current-chart Annotation objects with ordinary/default visibility settings are allowed into the same rendering/hit-test enumeration even if generic metadata filtering rejects them.
+- Explicit Hide All, per-object Hidden, and custom timeframe visibility settings remain respected.
+
+2. Full folder coverage
+- Folder 6 is now identified by DrawingToolCategory.Annotation instead of a fixed 10-ID list.
+- This covers Text, Note, Price Note, Pin, Table, Callout, Comment, Price Label, Signpost, Anchored Note, Flag, Image, Post and Idea, plus future tools added to the same Annotation category.
+
+3. Direct defensive render path
+- Text/Note/Price Note/Pin/Table/Callout/Comment/Price Label/Signpost/Flag use their parity renderers.
+- Anchored Note is included.
+- Post and Idea use a visible note/content renderer.
+- Image uses the image renderer and missing images still receive the visible placeholder.
+- Missing/degenerate second anchors use safe display geometry instead of becoming zero-size/invisible.
+- Renderer exceptions still produce an on-chart fallback object.
+
+4. Drawing Inspector delete
+- Inline object rows now include a visible red × Remove button.
+- Remove searches every chart instance for the matching drawing ID and deletes source/copies with lock override, preventing synchronized/stale copies from immediately reappearing.
+- The separate Object Tree Remove button uses the exact same removal path.
+
+SOURCE SCOPE
+Only four TickLab.App source files changed versus v1.13.0.114:
+- Controls/CandleChartControl.Drawing.cs
+- MainWindow.xaml
+- MainWindow.xaml.cs
+- TickLab.App.csproj
+
+VALIDATION
+- 31 XAML files parsed.
+- 150 C# source files passed structural delimiter scanning.
+- 9 targeted Folder 6 root-fix checks passed.
+- No other src/ file changed.
+
+IMPORTANT
+- Windows WPF/.NET compilation cannot be executed in this Linux environment. Build and runtime verification must still be done in Visual Studio on Windows.

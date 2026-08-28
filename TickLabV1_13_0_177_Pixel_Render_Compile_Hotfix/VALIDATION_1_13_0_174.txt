@@ -1,0 +1,5 @@
+Static validation:
+- Removed invalid UIElement.UseLayoutRounding access.
+- FrameworkElement.UseLayoutRounding used instead.
+- DrawingToolIconFactory.cs remains the only source-code file changed from v1.13.0.173.
+- Full WPF build unavailable in this environment because .NET SDK is not installed.

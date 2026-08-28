@@ -1,0 +1,30 @@
+TickLab v1.13.0.55 intended source changes relative to v1.13.0.54
+
+Functional/source:
+- src/TickLab.App/MainWindow.AlertsReplay.cs
+- src/TickLab.App/MainWindow.MultiChartLive.cs
+- src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+- src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+- src/TickLab.App/Windows/MarketReplayWindow.cs
+
+Release identity/build only:
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+- VERSION.txt
+- Clean-Restore-Build.cmd
+- TickLabV1_13_0_54.sln renamed to TickLabV1_13_0_55.sln
+
+Validation/release documentation:
+- tools/validate_source_1_13_0_55.py
+- VALIDATION_REPORT_1_13_0_55.txt
+- RELEASE_NOTES_1_13_0_55.txt
+- FIRST_TEST_CHECKLIST_1_13_0_55.txt
+- INTENDED_SOURCE_CHANGES_1_13_0_55.txt
+- EXACT_FILE_DIFF_1_13_0_55.txt
+- SOURCE_MANIFEST_SHA256_1_13_0_55.txt
+- MANIFEST_VERIFICATION_1_13_0_55.txt
+
+Explicitly unchanged/protected:
+- MT5/TickLabLiveBridge_V300.mq5
+- MT5/TickLabHistoryBridge_V305.mq5
+- MT5/TickLabCandleMarkerExchange_V109.mq5

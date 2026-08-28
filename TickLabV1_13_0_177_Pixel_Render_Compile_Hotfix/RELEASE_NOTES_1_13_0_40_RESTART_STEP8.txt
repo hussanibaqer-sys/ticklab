@@ -1,0 +1,39 @@
+TickLab v1.13.0.40 — Restart Step 8 Trade Level Labels and UI Contrast
+
+Base
+- v1.13.0.39 Restart Step 7 Demo Trading Reliability and History.
+
+Approved changes only
+1. Active demo trade level tickets
+- Entry/current line now shows the exact price plus current floating P/L in USD.
+- SL line now shows the exact SL price plus the projected USD result if SL is hit.
+- TP line now shows the exact TP price plus the projected USD result if TP is hit.
+- USD calculations use the existing position direction, volume, point/tick size, tick value and contract size.
+- Existing demo execution, open-position, pending-order, SL/TP drag and history logic are preserved.
+
+2. Ask ticket
+- The Ask price line remains unchanged and configurable.
+- The ticket now shows only the live Ask price; the literal word ASK was removed.
+
+3. Middle right-side slide window
+- Corrected the right workspace/drawings-market handle located between Demo Trading and Code Editor.
+- Click toggles open/closed.
+- Left/right dragging resizes and opens/closes the workspace.
+- Keyboard Enter/Space toggles it.
+- Lost mouse capture no longer leaves the handle frozen.
+- The state is saved after a completed click or drag.
+
+4. Demo panel contrast
+- SL/TP None and preset buttons keep readable selected and unselected colours.
+- Pending-order Type and Expiration selectors use a white/light background with black text.
+- Dropdown hover, selected and disabled states remain readable.
+- No placeholder, test or debug text was added.
+
+Safety and scope
+- No real MT5 order API was added.
+- The working demo-trading execution engine was not redesigned.
+- MT5 and FileBridge files are unchanged.
+
+Build limitation
+- This environment does not contain Windows Visual Studio/.NET 8 WPF build tools.
+- A real Windows build and interaction test are still required.

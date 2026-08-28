@@ -1,0 +1,33 @@
+TickLab v1.13.0.121 — FIRST TEST CHECKLIST
+
+1. EMOJI COLOUR
+- Open Emoji folder/picker.
+- Confirm emoji previews are full colour.
+- Place 😀, ❤️, 🦄 and one flag; confirm placed chart objects remain full colour.
+
+2. FOUR CORNERS
+- Select a placed emoji.
+- Confirm exactly four resize handles appear at the four corners; no center move handle and no side stretch handles.
+- Repeat with one Icon and one Sticker.
+
+3. MOVE BY BODY
+- Click-and-hold directly on the visible emoji body (not a handle), then drag.
+- Confirm the whole item moves smoothly.
+- Repeat with an Icon and Sticker.
+
+4. UNIFORM RESIZE
+- Drag top-left corner diagonally larger/smaller.
+- Repeat with top-right, bottom-right and bottom-left.
+- Confirm width/height remain proportional and the graphic never stretches horizontally or vertically.
+- Confirm the opposite corner stays fixed during each resize.
+
+5. QUALITY
+- Enlarge an emoji substantially and confirm it stays sharp/full colour rather than pixelating.
+- Shrink it, then enlarge it again; confirm no accumulated quality loss.
+
+6. v1.13.0.120 REGRESSION SMOKE TEST
+- Draw one Trend Line: one selection creates one drawing only.
+- Body drag works; A/B points drag; blank-click deselects.
+- Middle-click delete works.
+- Quick-menu Remove works.
+- Confirm one earlier Fib/Gann or Cycle tool still renders/edits normally.

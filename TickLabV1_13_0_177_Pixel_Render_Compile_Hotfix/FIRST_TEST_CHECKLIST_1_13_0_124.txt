@@ -1,0 +1,10 @@
+TickLab v1.13.0.124 — First test
+
+1. Open Emoji folder: it should open with the same fast lazy/virtualized behavior as v1.13.0.123.
+2. Scroll through categories where v1.13.0.123 showed empty rectangles.
+3. Confirm those cells now show colored emoji artwork instead of tofu rectangles.
+4. Place several formerly blank emoji on the chart; picker image and placed chart image should match.
+5. Select a placed emoji: exactly 4 corner handles.
+6. Drag the item body to move it.
+7. Drag a corner diagonally to resize proportionally; no horizontal/vertical distortion.
+8. Smoke-test Trend Line move/anchor/delete to confirm v1.13.0.120 shared interaction behavior remains intact.

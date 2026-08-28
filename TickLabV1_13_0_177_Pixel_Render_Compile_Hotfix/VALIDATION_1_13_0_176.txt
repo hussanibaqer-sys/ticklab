@@ -1,0 +1,9 @@
+Static validation:
+- Main rail icon size calls verified restored to 30 px; Magnet active refresh verified at 33 px.
+- DrawingToolIconFactory no longer uses LayoutTransform for generated drawing/action icons.
+- Direct final-size coordinate scaling is applied in line, polyline, path, rectangle, ellipse, circle, and text helpers.
+- v1.13.0.175 DrawingRailButton hover/active marker styling remains present.
+- Package ZIP and SHA-256 generated successfully.
+
+Environment limitation:
+- Full Windows WPF/.NET compilation cannot be run in this container because the .NET SDK is not installed.

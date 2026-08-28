@@ -1,0 +1,53 @@
+TickLab v1.13.0.129 — Favorites Tabs / Quick Edit Top Center
+================================================================
+
+BASE
+- Built from v1.13.0.128 Chart Bounds / Measure / Rectangle Handles.
+- Existing drawing geometry, Emoji assets/picker, Measure behavior, Rectangle/Rotated Rectangle geometry, and protected MT5/history/replay systems remain frozen.
+
+1. FAVORITES TABS ON/OFF
+- The existing Favorites control is now a visible toolbar button directly between the final drawing category (Emoji/Media) and Measure.
+- One button controls BOTH floating favorites systems:
+  * Favorite drawing tools
+  * Favorite timeframes
+- Turning Favorites Tabs off hides both floating bars without deleting the saved favorites.
+- Turning Favorites Tabs on restores whichever favorite sets contain items.
+- The active state is visible on the toolbar button.
+
+2. FAVORITES PLACEMENT
+- Drawing Favorites and Timeframe Favorites are positioned inside the active chart at the bottom of the protected plot area, directly above the time scale.
+- They never intentionally anchor into the bottom time-scale region or right price-scale region.
+- If both bars fit, they are placed side-by-side.
+- If both do not fit, they stack upward above the time scale.
+- Position is refreshed when the main window moves/resizes/changes state and when the active chart changes size.
+
+3. GLOBAL QUICK-EDIT POSITION
+- Every persistent drawing selection/completion continues to use the existing drawing-selection event.
+- The contextual quick-edit toolbar now automatically opens at the TOP CENTER of the active chart plot, independent of the drawing's physical location.
+- The automatic location is calculated from the protected plot bounds, not drawing geometry, so it stays away from the price/time scales.
+- Deselecting hides the quick editor as before; reselecting a drawing brings it back at top-center.
+- Existing manual quick-edit dragging remains available after it opens.
+- Measure remains a temporary measurement tool and its previously requested no-normal-quick-menu behavior is not changed.
+
+FREEZE / REGRESSION BOUNDARY
+Byte-identical to v1.13.0.128:
+- Controls/CandleChartControl.Drawing.cs
+- Controls/CandleChartControl.DrawingParity.cs
+- Core/Drawing/DrawingToolCatalog.cs
+- Core/Drawing/DrawingMediaCatalog.cs
+- Windows/DrawingMediaPickerWindow.xaml
+- Windows/DrawingMediaPickerWindow.xaml.cs
+
+Only five TickLab.App source files differ from v1.13.0.128:
+- Controls/CandleChartControl.cs
+- MainWindow.ChartContexts.cs
+- MainWindow.xaml
+- MainWindow.xaml.cs
+- TickLab.App.csproj
+
+VALIDATION
+- 39/39 targeted static checks passed.
+- 31/31 XAML files parse.
+- Changed C# files pass raw delimiter-balance checks.
+- No bin/, obj/, or .vs build caches packaged.
+- Windows WPF/.NET runtime compilation is not available in this Linux environment; Visual Studio on Windows remains the final runtime gate.

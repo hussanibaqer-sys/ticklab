@@ -1,0 +1,13 @@
+TickLab v1.13.0.40 — First runtime test checklist
+
+1. Open one demo Buy and one demo Sell on a live chart.
+2. Confirm the Entry ticket shows price and live USD P/L.
+3. Add SL and TP; confirm each ticket shows exact price and projected USD amount.
+4. Move the market and confirm the Entry USD amount updates.
+5. Drag SL/TP and confirm the amount updates after release.
+6. Confirm the Ask ticket shows only the price and no ASK word.
+7. Click the middle right-workspace handle; confirm it opens and closes.
+8. Drag that middle handle left/right; confirm it resizes and never freezes.
+9. Select SL/TP presets and confirm None remains black-on-white when unselected and white-on-blue when selected.
+10. Open pending-order Type and Expiration dropdowns; confirm all entries are readable.
+11. Confirm existing Demo Trading, pending orders, open positions, close controls and history still work.

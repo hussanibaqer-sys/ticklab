@@ -1,0 +1,18 @@
+TickLab v1.13.0.38 Restart Step 6A validation report
+
+Result
+- Focused and regression source validation: PASS (680/680).
+- Duplicate-method regression validation: PASS (9/9).
+- Bridge-write-access regression validation: PASS (15/15).
+- Protected MT5/FileBridge comparison: PASS (19/19 unchanged).
+- WPF XAML parsing, unique-name and handler-resolution checks: PASS.
+
+Corrective behavior verified statically
+- The old Move-to-Window -> Properties shortcut is absent.
+- Built-in overlay line, indicator plots and pane headers expose the exact five-command menu.
+- Move to Window is connected to an empty-workspace destination picker.
+- Move to Chart is connected to an existing-chart address picker.
+- Move, Properties and Remove resolve the selected built-in InstanceId or TickScript entry.
+
+Important boundary
+These are static/source checks. They do not prove Windows compilation or live mouse interaction. The Linux environment does not contain dotnet and cannot run WPF. A clean Windows Visual Studio 2022 / .NET 8 rebuild and the included first-test checklist remain mandatory.

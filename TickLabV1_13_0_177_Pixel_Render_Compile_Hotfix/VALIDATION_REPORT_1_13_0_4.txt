@@ -1,0 +1,36 @@
+TickLab v1.13.0.4 — Validation Report
+=======================================
+
+Source validation
+- Static checks passed: 609
+- Static checks failed: 0
+- All WPF XAML documents parsed successfully.
+- XAML x:Name values are unique within each document.
+- Referenced XAML event handlers were found in C# source.
+- C# delimiter, string and comment balancing passed.
+- Duplicate CandleChartControl method-signature scan passed.
+- No stale visible v1.13.0.3 labels remain in current C#/XAML/project source.
+
+Natural drawing checks
+- Outside-click category-window dismissal is connected.
+- Pen/highlighter live filtering, endpoint capture, RDP simplification, multi-pass smoothing and quadratic Bezier rendering are present.
+- Continuous timestamp/timeline conversion permits drawing in visible future chart space.
+- Two-click Shift measurement and next-click clearing are present.
+- Right-workspace arrow handle supports pointer drag, collapse and restore.
+
+Coloured media checks
+- 50 original coloured icons.
+- 48 original trading stickers.
+- 60 original coloured emoji.
+- 158 total media items with unique keys and valid six-digit colour values.
+- Searchable, scrollable TickLab-themed picker is connected.
+- Native chart rendering includes coloured badges, stickers and cartoon faces.
+- No proprietary third-party artwork is bundled.
+
+Protected components
+- TickLabLiveBridge_V300.mq5 unchanged.
+- TickLabHistoryBridge_V305.mq5 unchanged.
+- TickLabCandleMarkerExchange_V109.mq5 unchanged.
+
+Limitation
+- This environment has no Windows .NET 8/WPF compiler. Final compilation and interactive behaviour must be verified with Visual Studio 2022 using Release > Rebuild Solution.

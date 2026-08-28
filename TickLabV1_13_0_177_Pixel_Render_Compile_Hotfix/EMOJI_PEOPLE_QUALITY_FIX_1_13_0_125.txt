@@ -1,0 +1,1 @@
+Recolored 20 Smileys & People fallback vector assets to remove gray-heavy traced styling.

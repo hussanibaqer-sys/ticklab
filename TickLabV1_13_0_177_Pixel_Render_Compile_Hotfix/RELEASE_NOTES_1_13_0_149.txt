@@ -1,0 +1,19 @@
+TickLab v1.13.0.149 — Tick Find Candle-Parity View
+
+Scope: post-find Tick Chart presentation only. The working Find Candle search/index pipeline and v147 1-second history recovery are protected.
+
+Changes
+- Raw Tick Find marker now matches the normal candle-chart historical Find marker: solid warm-yellow stroke, 2 px normal / 4 px selected, no separate blue dashed label treatment.
+- Tick Find captures the current Tick viewport before navigation and restores the same visible-tick density after the historical window is loaded.
+- Manual vertical zoom span is preserved and re-centered on the found tick; auto vertical mode remains auto.
+- Tick Find preloads a balanced surrounding window of older and newer ticks before showing the result, so the found tick is centered rather than becoming the last/rightmost tick.
+- Historical Tick Chart now pages newer saved ticks at the right edge as well as older saved ticks at the left edge. The Find marker is an anchor, not an end-of-chart boundary.
+- Returning to Live/End still clears the historical anchor and reloads the true latest tick window.
+
+Protected
+- Normal candle Find logic unchanged.
+- CanonicalTickArchiveStore.cs unchanged.
+- PersistentHistoryStore.cs unchanged.
+- Mt5FileBridgeClient.cs unchanged.
+- MT5/MQL bridge files unchanged.
+- v147 1-second historical-candle recovery unchanged.

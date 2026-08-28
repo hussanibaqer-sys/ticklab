@@ -1,0 +1,7 @@
+TickLab v1.13.0.41 static-build limitation
+
+The current environment has no dotnet, MSBuild or Windows WPF runtime.
+The source received XML/XAML parsing, C# punctuation analysis, handler resolution,
+focused feature checks, duplicate-method checks, bridge-access checks, protected-file
+hash comparison, source-manifest verification and ZIP integrity testing.
+A real Windows Visual Studio 2022 / .NET 8 WPF compilation and live mouse/UI test remain required.

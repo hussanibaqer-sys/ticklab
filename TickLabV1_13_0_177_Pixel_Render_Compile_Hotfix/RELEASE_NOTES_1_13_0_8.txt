@@ -1,0 +1,34 @@
+TickLab v1.13.0.8 — Per-Chart Appearance, Themes and Templates
+
+New in this release
+- Every chart has an independent visual-settings profile.
+- Chart header identity shows chart ID, symbol and timeframe in compact text.
+- Complete black Dark application theme and high-contrast Light application theme.
+- Application theme is separate from chart colours.
+- Independent chart background, chart text, price-scale and time-scale colours.
+- Independent bullish and bearish candle body, border and wick colours.
+- Adjustable candle border and wick thickness.
+- Grid visibility, colour, opacity and pixel thickness.
+- Configurable live price line colour, text colour, solid/dashed/dotted style and thickness.
+- Configurable spread line, spread label and optional transparent spread fill.
+- Optional broker-server-time candle countdown positioned in future chart space.
+- Configurable crosshair line and label colours, style and thickness.
+- Additional controls for selected-candle marker, native-history boundary and go-live button colours.
+- Live preview applies only to the chosen chart. OK saves; Cancel or window Close restores every original value.
+- Confirmed settings can be copied to specifically chosen charts or made the default for future charts.
+- Reset, saved presets, import and export.
+- Right-click Save Template, Load Template and Delete Template actions.
+- Existing template names require confirmation before replacement.
+- Template deletion requires explicit Yes confirmation.
+- Single-click silently selects a chart with no selection frame.
+- Price-scale and time-scale double-click resets take priority and work on the first attempt.
+
+Retained
+- Persistent multi-workspace and partition system.
+- Docking, magnetic partition drops and extended-monitor workspaces.
+- Independent chart timeframes and indicators.
+- Same-symbol drawing synchronization across timeframes.
+- Smooth Pen, Brush and Highlighter tools.
+- Slideable Code Editor.
+- Atomic power-cut recovery.
+- Protected MT5 bridge sources remain unchanged.

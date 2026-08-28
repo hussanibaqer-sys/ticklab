@@ -1,0 +1,57 @@
+TickLab v1.13.0.48 — First Test Checklist
+==========================================
+
+1. CLEAN BUILD
+[ ] Extract to a new local folder outside OneDrive/cloud sync.
+[ ] Run Clean-Restore-Build.cmd or Visual Studio 2022 Release > Rebuild Solution.
+[ ] Confirm zero compiler errors before replacing an older TickLab folder.
+
+2. EXACT 10-MINUTE CORRUPTION REPRODUCTION
+[ ] Open at least four charts for the same symbol: M1, M5, M15 and H1.
+[ ] Add two or more indicators to at least two charts.
+[ ] Confirm every chart is moving live.
+[ ] Maximize one chart and leave it maximized for at least 10 minutes.
+[ ] Restore/minimize that chart.
+[ ] Confirm the other M1 chart has continuous timestamps and correct OHLC candles.
+[ ] Confirm no duplicate, zero-height, giant-wick, missing or out-of-order candle appeared.
+[ ] Confirm M5/M15/H1 remain consistent and indicators continue updating.
+[ ] Repeat while clicking between charts, opening panels and resizing the application.
+
+3. WINDOW/WORKSPACE STRESS
+[ ] Open multiple workspaces, detached charts and several indicators.
+[ ] Maximize, minimize, hide, restore and resize different chart windows repeatedly.
+[ ] Confirm every visible chart catches up without jumping back or changing old candles incorrectly.
+[ ] Confirm replay affects only its own chart.
+
+4. INDICATOR SAFETY
+[ ] Apply built-in and TickScript indicators to different charts/timeframes.
+[ ] Leave a chart inactive for 10 minutes, then return to it.
+[ ] Confirm indicator plots align with repaired candles and do not disappear, shift or use another chart's data.
+[ ] Change symbol/timeframe quickly and confirm no old indicator result appears on the new chart identity.
+
+5. HANDLE REGRESSION
+[ ] Click PANEL 20 times; it must never open Demo Trading.
+[ ] Click DEMO TRADING 20 times; it must never open PANEL.
+[ ] Drag each of CODE EDITOR, DEMO TRADING and PANEL independently.
+[ ] Confirm all three handles remain visible and trading controls receive clicks on the first attempt.
+
+6. HISTORY LABELS
+[ ] Enable History on chart.
+[ ] Confirm entry arrows are blue and exit arrows are red.
+[ ] Confirm BUY/SELL/EXIT tickets are visibly 50 percent larger than v1.13.0.47.
+[ ] Confirm each ticket sits at the arrow's flat/base side, not at the pointed tip.
+[ ] Confirm text nearly fills the ticket with only tiny padding and no clipping.
+
+7. ALERTS
+[ ] Create a Price Touches alert near live price with Sound and Desktop popup enabled.
+[ ] Test while its chart is selected, inactive and while another chart is maximized.
+[ ] Confirm a wick/high-low touch triggers even when close does not stop exactly on the line.
+[ ] Confirm the visible notification appears without freezing charts.
+[ ] Confirm the bell continues for at least five seconds.
+[ ] Drag the alert line, then right-click Edit and Remove; confirm each action affects only that alert.
+
+8. PREVIOUS FEATURES
+[ ] Confirm entry-line drag still creates/replaces SL or TP in Demo Trading.
+[ ] Confirm live trade levels/history appear on all matching-symbol charts/timeframes.
+[ ] Confirm symbol favourites remain pinned at the top.
+[ ] Confirm MT5 connection, import, refresh and saved history still work unchanged.

@@ -1,0 +1,31 @@
+TickLab v1.13.0.106 — Folder 4 Step 1 Long/Short + Forecast Correction
+
+SCOPE LOCK
+This is a surgical correction on top of v1.13.0.105. Only Long Position, Short Position, Position Forecast, their shared settings, and version/title metadata were changed. Price Range, Date Range, Date & Price Range and every other TickLab area remain frozen.
+
+LONG / SHORT POSITION
+- One click on the chart now creates the complete default position object.
+- Three internal anchors are still created so Entry, Target and Stop remain independently draggable afterward.
+- Near the chart right edge, the default zone grows left so one-click placement still works.
+- Removed Target/Stop outer outline frames.
+- Only the Entry horizontal line remains visible as a line.
+- Entry line follows the Style -> Lines color/width/style control.
+- When deselected, Target/Stop/Entry text, statistics, price labels and edit handles disappear; the clean TP/SL fills plus Entry line remain.
+- Clicking the visible filled position continues to select the parent drawing and restore edit controls.
+- Target and Stop background colors remain independent.
+- Target and Stop background transparency are independent smooth 0 -> 1 controls (0 transparent, 1 solid) with live preview.
+- Position Style retains the reference controls visible in the supplied screenshot: Lines, Stop/Target colors, Text color/size, Price labels, Stats and Compact stats mode. Generic one-fill controls are hidden for Long/Short so they do not conflict with the independent TP/SL zones.
+
+POSITION FORECAST
+- Placement is now exactly two clicks: Point A, then Point B.
+- A computed curve control preserves the curved forecast appearance without a third construction point.
+- Status starts as: ⏱ WAITING — On the way.
+- SUCCESS is no longer hard-coded. TickLab checks real candle highs/lows after Point A against Point B's target price.
+- If the target is above Point A, a candle high touching/exceeding B marks SUCCESS. If below, a candle low touching/falling through B marks SUCCESS.
+- Existing start/result labels remain.
+
+FROZEN
+No Bars Pattern, Ghost Feed, Anchored VWAP, volume profiles, Cycles, Elliott, Patterns, Fib/Gann, Lines, chart, MT5, history, replay, demo trading or unrelated source was changed.
+
+VALIDATION LIMITATION
+Static source/XAML/scope checks were run. Windows WPF/MSBuild is not available in this container, so compile/runtime behavior must still be tested in Visual Studio.

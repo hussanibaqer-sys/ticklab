@@ -1,0 +1,7 @@
+./App.xaml
+./Controls/CandleChartControl.Drawing.cs
+./Controls/CandleChartControl.DrawingParity.cs
+./Controls/CandleChartControl.cs
+./Core/Drawing/DrawingParityDefaults.cs
+./MainWindow.xaml
+./TickLab.App.csproj

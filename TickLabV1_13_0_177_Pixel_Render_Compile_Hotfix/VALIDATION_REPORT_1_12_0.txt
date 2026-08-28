@@ -1,0 +1,12 @@
+STATIC CHECKS PASSED: 504
+STATIC CHECKS FAILED: 0
+All TickLab v1.12.0 static source checks passed.
+
+Additional v1.12.0 checks
+- XAML files parsed: 25
+- MainWindow named controls unique: 68
+- MainWindow event handlers resolved: 47
+- Permanent inline Favorites bar present
+- Integrated Object Tree present and connected
+- Lower analysis deck present
+- Windows compiler unavailable in generation environment

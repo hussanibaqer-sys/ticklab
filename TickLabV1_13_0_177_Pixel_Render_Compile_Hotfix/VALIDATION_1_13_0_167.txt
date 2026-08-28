@@ -1,0 +1,16 @@
+TickLab v1.13.0.167 static validation
+
+Scope: visual-only left-rail alignment / folder-chevron hover reveal, plus confirmation of existing theme-aware top-bar hover styling.
+
+Checks:
+- Source base: v1.13.0.166.
+- DrawingToolbarColumn widened to 57 px.
+- Category split row remains 46 px; lower rail buttons are left-aligned to the same primary column.
+- Chevron column remains 11 px and layout-reserved.
+- Chevron Visibility defaults Hidden; host MouseEnter shows it; MouseLeave hides it.
+- Host Background is Transparent so the reserved chevron lane participates in pointer hit testing.
+- No drawing/chart click handlers were replaced.
+- DarkToolbarButton, DrawingRailButton and TimeframeChipButton continue to use DynamicResource ControlHoverBrush / ControlPressedBrush.
+- SymbolSearchBorder continues to use DynamicResource ControlHoverBrush.
+- MainWindow.xaml and App.xaml parse as well-formed XML in the available environment.
+- Full dotnet/WPF compilation could not be run in this Linux container because the dotnet SDK is not installed; Windows runtime compilation remains the final build check.

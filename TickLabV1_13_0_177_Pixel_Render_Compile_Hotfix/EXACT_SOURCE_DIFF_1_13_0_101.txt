@@ -1,0 +1,5 @@
+Changed source files versus v1.13.0.100:
+- TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- TickLab.App/MainWindow.xaml
+- TickLab.App/MainWindow.xaml.cs
+- TickLab.App/TickLab.App.csproj

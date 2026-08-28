@@ -1,0 +1,11 @@
+TickLab v1.13.0.166 static validation
+
+- App.xaml XML parse: PASS
+- MainWindow.xaml XML parse: PASS
+- TickLab.App.csproj XML parse: PASS
+- MainWindow.xaml.cs delimiter balance: PASS
+- Source diff allowlist vs v1.13.0.165: App.xaml, MainWindow.xaml.cs, MainWindow.xaml (title only), TickLab.App.csproj (version only), VERSION/release/validation metadata.
+- MainWindow top-bar x:Name/button order: unchanged.
+- Protected raw tick/history/replay/chart/bridge/MT5 source: byte-identical to v1.13.0.165.
+- ZIP integrity: PASS.
+- dotnet/MSBuild/csc are unavailable in this runtime; compile/runtime validation remains authoritative in Windows Visual Studio.

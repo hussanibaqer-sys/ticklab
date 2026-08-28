@@ -1,0 +1,97 @@
+TickLab v1.13.0.87 — FIRST TEST CHECKLIST
+=========================================
+Purpose: verify Folder 1 ONLY against the reference videos before moving to the next folder.
+
+A. BUILD / LAUNCH
+[ ] Run Clean-Restore-Build.cmd on Windows.
+[ ] Confirm TickLab launches as v1.13.0.87.
+[ ] Confirm no new compile/runtime error before testing drawings.
+
+B. TOOL ACTIVATION / FIRST CLICK — TEST THIS FIRST
+[ ] Select each Folder-1 tool and immediately click the chart.
+[ ] The very first clicked anchor/control point appears IMMEDIATELY.
+[ ] Repeat first click on/near demo-trading lines, alerts or replay/chart overlays.
+[ ] The armed drawing tool still starts; another overlay must not steal that first click.
+[ ] Cursor/active-tool state matches the reference video.
+
+C. DURING-DRAWING BEHAVIOR
+For every Folder-1 tool:
+[ ] Already committed construction points stay visible.
+[ ] The live preview follows the mouse before the next click.
+[ ] Correct number/order of clicks matches the reference.
+[ ] Click-vs-drag behavior matches the reference.
+[ ] Completion/cancel/Esc/right-click behavior matches the reference.
+[ ] Finished drawing remains selected with reference-style handles.
+
+D. SELECTION / RESELECTION
+[ ] Blank chart click can deselect.
+[ ] Clicking the visible line/channel/pitchfork reliably reselects it.
+[ ] Handles/control points return immediately.
+[ ] Right-click directly on a drawing opens drawing-object context actions, not a generic chart menu.
+[ ] Lock prevents editing as expected.
+[ ] Place as Background works.
+
+E. LINES
+[ ] Trend Line: 2-click construction, immediate first point, live preview, final selection handles.
+[ ] Ray: correct one-direction extension.
+[ ] Info Line: statistics content and placement compared frame-by-frame to video.
+[ ] Extended Line: both-side extension behavior.
+[ ] Trend Angle: baseline/angle arc/degree label + Coordinates settings.
+[ ] Horizontal Line / Horizontal Ray / Vertical Line / Cross Line: exact full-chart behavior,
+    price/time labels and selected-state UI.
+
+F. PARALLEL CHANNEL — HIGH PRIORITY
+[ ] Click #1 starts first edge immediately.
+[ ] Click #2 commits first edge and live parallel offset follows pointer.
+[ ] Click #3 sets the channel OFFSET; moving the mouse left/right before click #3 must not skew the
+    second rail away from parallel.
+[ ] Completed channel rails stay parallel.
+[ ] Third handle is shown on the visible offset point.
+[ ] Drag third handle changes offset correctly.
+[ ] Drag second handle keeps channel construction coherent.
+[ ] Click anywhere on visible rails/body reliably reselects.
+[ ] Settings show channel levels + background and update live.
+[ ] Compare default enabled levels, middle dashed line, colors, widths and fill with reference.
+
+G. REGRESSION TREND — HIGH PRIORITY
+[ ] First anchor appears immediately; second click completes range.
+[ ] Click visible baseline, upper/lower rail, or filled band: object reselects reliably.
+[ ] Upper region is blue and lower region red/pink as reference.
+[ ] Base regression line style matches reference.
+[ ] Upper/lower deviation, source and Pearson options update live.
+[ ] Extend/settings behavior matches reference video.
+
+H. FLAT TOP/BOTTOM + DISJOINT CHANNEL
+[ ] Each uses its own 3-point construction behavior.
+[ ] All active construction points remain visible.
+[ ] Live third-point preview matches reference geometry.
+[ ] Completed rails/levels/background and handles match video.
+[ ] Reselect, drag and resize each control point.
+
+I. PITCHFORKS
+[ ] Original Pitchfork: 3-point construction and handle behavior.
+[ ] Schiff Pitchfork: compare geometry against its reference example.
+[ ] Modified Schiff Pitchfork: compare geometry against its reference example.
+[ ] Inside Pitchfork: compare geometry against its reference example.
+[ ] Style selector can switch Original / Schiff / Modified Schiff / Inside.
+[ ] Default ratios, colors, line styles and background match reference video.
+[ ] Reselect by clicking visible fork lines/body.
+
+J. SELECTED-OBJECT MINI TOOLBAR / FULL SETTINGS
+[ ] Mini toolbar appears in correct location with correct controls/order for each tool.
+[ ] Color control changes drawing live.
+[ ] Width/pixel control changes drawing live.
+[ ] Transparency direction is Transparent -> completely Solid.
+[ ] Lock works.
+[ ] Full Settings/Design window has only the controls/tabs shown for that reference tool.
+[ ] Place as Background exists and works on every tested tool.
+
+K. REGRESSION CHECK — DO NOT BREAK EARLIER CURSOR FIXES
+[ ] Magic Cursor still works.
+[ ] Demonstration Cursor remains continuous with no dots/gaps.
+[ ] Cross Cursor still shows horizontal + vertical guides.
+
+STOP RULE
+---------
+Do NOT move to Folder 2 after a successful compile alone.
+Any visible or behavioral mismatch in Folder 1 remains a bug until compared/fixed against video.

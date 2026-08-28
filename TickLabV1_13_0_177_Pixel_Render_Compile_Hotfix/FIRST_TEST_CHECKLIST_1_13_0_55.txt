@@ -1,0 +1,23 @@
+TickLab v1.13.0.55 — first Windows/live test checklist
+
+1. Close every old TickLab process before rebuilding.
+2. Run Clean-Restore-Build.cmd or Visual Studio 2022 Release Rebuild.
+3. Open a chart with imported raw ticks and scroll to a historical area.
+4. Open Replay. Check Replay line and place the yellow selector on a middle visible candle.
+5. Press Play.
+   EXPECT: the yellow candle and all candles to its right disappear from the visible
+   chart immediately; older candles remain visible.
+6. EXPECT: replay begins from the first saved raw tick without a multi-minute
+   "Preparing selected replay period"/quarter scan.
+7. Watch the start candle form tick-by-tick: body, high/low wicks, spread and tick volume.
+8. While replay runs, confirm another same-symbol chart remains live.
+9. Let MT5 receive several new ticks/candles during replay, then press End Replay.
+   EXPECT: the replay chart immediately returns to the current live state, including
+   updates that arrived while replay was visible.
+10. Enable Replay Range. Yellow = Start, red = End. Press Play.
+    EXPECT: replay starts at yellow and stops at the final tick of the red candle.
+11. Drag/scroll/zoom away from the thin selector lines.
+    EXPECT: normal chart navigation remains available.
+12. Confirm replay status/help text is fully visible with no bottom clipping.
+13. Regression spot-check: history remains loaded after new live ticks; alerts, Demo
+    Trading, right-side panel handles, indicators and drawings still behave as before.

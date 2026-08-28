@@ -1,0 +1,16 @@
+TickLab v1.13.0.12 validation report
+
+This repair release separates completed MT5 import from local replay indexing, adds
+an explicit successful-import confirmation, indexes only the selected replay
+period on demand, restores chart right-click price alerts, and adds visible
+floating-chart drag and workspace attachment controls.
+
+Validation performed in the source environment:
+- Static source and feature validator: 881 checks passed, 0 failed.
+- All WPF XAML files parsed successfully.
+- Required XAML event handlers and newly added context-menu routes were inspected.
+- Replay uses imported raw tick source files and selected-period canonical indexing.
+- Protected MT5 bridge sources were not modified.
+
+A final Windows Visual Studio 2022 .NET 8 WPF rebuild is still required because
+the Linux packaging environment does not contain the Windows WPF compiler.

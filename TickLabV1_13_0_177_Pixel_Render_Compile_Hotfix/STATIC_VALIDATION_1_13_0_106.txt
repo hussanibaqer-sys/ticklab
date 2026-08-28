@@ -1,0 +1,35 @@
+TickLab v1.13.0.106 — STATIC VALIDATION
+
+XAML files parsed: 31
+XAML parse errors: 0
+Changed C# files delimiter-scanned: 5
+Changed C# delimiter issues: 0
+
+Scope / behavior assertions:
+[PASS] Long/Short one-click construction special case
+[PASS] Long/Short retains 3 editable internal anchors
+[PASS] TP/SL rectangles render without outline pens
+[PASS] Entry line remains visible
+[PASS] Position details require selected state
+[PASS] Position price labels require selected state
+[PASS] Position target opacity smooth slider
+[PASS] Position stop opacity smooth slider
+[PASS] Generic fill hidden for Long/Short
+[PASS] Position Forecast definition is 2-click
+[PASS] Position Forecast renderer accepts 2 anchors
+[PASS] Position Forecast waiting status has clock icon/text
+[PASS] Position Forecast success is market-touch based
+[PASS] Forecast default Success is false
+[PASS] Only 8 source files changed
+
+Changed source files:
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+- TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+- TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+- TickLab.App/MainWindow.xaml
+- TickLab.App/TickLab.App.csproj
+- TickLab.App/Windows/DrawingSettingsWindow.xaml
+- TickLab.App/Windows/DrawingSettingsWindow.xaml.cs
+
+Environment limitation: dotnet/MSBuild is not installed in this Linux container, so Windows WPF compilation/runtime behavior is not claimed. Visual Studio remains the compile/runtime gate.

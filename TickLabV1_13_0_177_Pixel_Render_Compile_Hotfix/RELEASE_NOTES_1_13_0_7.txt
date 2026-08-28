@@ -1,0 +1,9 @@
+TickLab v1.13.0.7 — Independent Chart Contexts and Code Panel
+
+- Modern compact minimize, maximize/restore and close controls for chart and workspace frames.
+- Per-chart activation and context state. Timeframe changes now affect only the selected chart.
+- Indicators evaluate against and attach inside the selected chart.
+- Drawing tools remain active across every chart.
+- Same-symbol drawing synchronization across all timeframes.
+- Separate slideable right-side TickScript code editor with compile/save support and full-editor access.
+- Preserves v1.13.0.6 workspace, partition, docking and power-cut recovery behavior.

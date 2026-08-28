@@ -1,0 +1,11 @@
+TickLab v1.13.0.62 — First Test Checklist
+
+1. Close every TickLab process and Visual Studio build process.
+2. Run Clean-Restore-Build.cmd or rebuild TickLabV1_13_0_62.sln in Visual Studio 2022.
+3. REPLAY RANGE: choose yellow START and red END, then Play. At the final allowed red-range tick, confirm Pause changes to Play immediately with no 5–10 second delay.
+4. Expand Replay. Change START and END thickness independently through 1–5 px and confirm the chart lines update and remain sharp with the existing label gaps.
+5. Reopen the workspace and confirm START/END colours and thicknesses persist.
+6. ALERT SETTINGS: create/edit an alert and confirm Line appearance contains colour and pixel thickness; save and verify the chart alert line uses both.
+7. ACTIVE ALERTS: tick several alert checkboxes and press Delete selected. Confirm one warning appears and all checked alerts are removed together.
+8. Confirm ordinary single-alert Edit / Enable-disable / Delete / Line colour / Line pixels still work.
+9. Regression spot-check Replay Reverse/Forward/Speed, compact/full mode, End Replay and live chart restoration.

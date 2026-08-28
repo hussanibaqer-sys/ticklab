@@ -1,0 +1,31 @@
+TickLab v1.13.0.169 — Crisp Action Rail Icons
+Base: v1.13.0.168 — Crisp Drawing Tool Icons
+Permanent functional rollback baseline: v1.13.0.157 Final Baseline
+
+Scope
+-----
+Visual-only drawing-rail/action-icon geometry and sharpness pass. No chart, drawing behavior,
+MT5/FileBridge, history, raw tick, seconds, Find, Replay, indicator, workspace, or chart-type
+behavior was intentionally changed.
+
+Changes
+-------
+1. The entire DrawingToolIconFactory action-icon path now compensates for icon scaling so the
+   final visual vector stroke remains one device-independent pixel. This covers the lower rail
+   controls and any other UI that reuses the same action vectors.
+2. Favorites: rebuilt as a centered/symmetric thin-outline star.
+3. Measure: rebuilt ruler body/ticks with cleaner spacing and one-pixel outline.
+4. Zoom: rebuilt magnifier with balanced circle, handle and centered plus sign.
+5. Scroll: rebuilt as balanced four-way navigation geometry with one-pixel strokes.
+6. Magnet: rebuilt with equal pole legs/caps and cleaner U curvature.
+7. Keep Drawing: rebuilt infinity mark with balanced lobes and one-pixel stroke.
+8. Lock / Unlock: rebuilt centered body, symmetrical shackle and key line.
+9. Hide: rebuilt visibility-off eye with cleaner eye contour, pupil and full slash.
+10. Delete: trash-can geometry rebuilt with centered body, lid, handle and inner rails.
+    Because the shared delete vector is used by both the rail Remove button and quick-edit
+    Delete button, both receive the corrected geometry and one-pixel stroke.
+11. Primitive rectangles/ellipses now request device-pixel snapping without forcing jagged
+    aliasing on diagonal/curved vector paths.
+12. Existing v1.13.0.168 crisp drawing-tool logos, Path/Polyline fixes, P&L entry-line fixes,
+    Text icon sizing, v1.13.0.167 rail alignment/hover reveal, and v1.13.0.166 universal
+    markers/last-used category behavior remain preserved.

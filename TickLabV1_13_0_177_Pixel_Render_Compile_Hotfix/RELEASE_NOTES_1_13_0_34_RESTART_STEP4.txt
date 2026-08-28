@@ -1,0 +1,19 @@
+TickLab v1.13.0.34 — Restart Step 4
+
+Added:
+- Explicit visible scrollbar in MT5 symbol selection.
+- Right-click an empty workspace partition: Add -> Chart or Add -> Indicator.
+- Exact right-clicked partition is used as the destination.
+- Isolated right-side Demo/Fake Trading panel.
+- $1,000,000 demo balance and confirmed reset.
+- Simulated Buy/Sell, lot size, SL 50/100/200/300 point presets, TP 500/1000/1500/2000/3000 point presets, exact SL/TP price fields, Breakeven +10, close selected/all.
+- Open positions, balance, equity, floating and realized P/L, and persistent trade history.
+- Demo state persists in LocalAppData/TickLab/DemoTrading.
+
+Safety:
+- The demo engine reads TickLab chart prices only.
+- It contains no MT5 order-send calls and cannot place real broker trades.
+- MT5/FileBridge files were unchanged.
+
+Current limitation:
+- The uploaded MQ5 panel's draggable chart-side SL line is not connected in this step. SL is controlled through presets, exact price entry, and Breakeven +10 to avoid changing the stable chart/drawing engine.

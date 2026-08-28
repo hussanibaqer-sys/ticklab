@@ -1,0 +1,16 @@
+TickLab v1.13.0.166 — Universal Markers + Last-Used Folder Tools
+
+Built directly from v1.13.0.165.
+
+Changes:
+- Top-bar hover/pressed/focused/active marker made consistently visible on every DarkToolbarButton using the current theme TextBrush at controlled opacity. No blue accent is introduced.
+- Left drawing-toolbar hover/pressed/focused/active marker made consistently visible on every DrawingRailButton, including narrow folder-arrow buttons.
+- Every drawing toolbox category now uses the same split-button structure: the large/main area activates the category's last-used tool, while the small right chevron always opens that category folder.
+- Trend Lines and Fibonacci/Gann now also get the folder chevron; they no longer use the old special single-button category implementation.
+- Each category main button remembers and displays the most recently chosen tool icon from that category during the session, seeded from the chart's persisted RecentDrawingToolIds when available.
+- Media/Image category selections update the remembered category icon after a successful choice/place.
+
+Unchanged:
+- Drawing tool geometry/placement/editing behavior.
+- Chart, raw tick, seconds history, Find, Replay, FileBridge, MT5/MQL, indicators, workspaces and chart-type behavior.
+- Button order and existing click handlers outside the category split-button normalization.

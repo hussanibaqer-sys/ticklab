@@ -1,0 +1,24 @@
+TickLab v1.13.0.49 — First Test Checklist
+==========================================
+
+A. Full history regression
+1. Open the same symbol in two or more charts.
+2. Confirm each chart shows its normal complete saved window, not only 30 minutes and not only the current candle.
+3. Close/reopen TickLab with multiple saved chart panes.
+4. Click a restored secondary chart that initially has no candle array in memory.
+5. Confirm it loads the complete indexed local history for its own symbol/timeframe.
+6. Leave charts running, maximize/restore one chart, and confirm all older candles remain present.
+7. Confirm live candles continue at the right edge after the full history loads.
+
+B. Alert text layout
+1. Trigger a price alert with a normal title and message.
+2. Confirm no letters are cut at the top or bottom.
+3. Confirm the heading, title, message and OK button are fully visible.
+4. Trigger a second alert while the first popup remains open.
+5. Confirm the corner toast also shows complete text with proper top/bottom padding.
+6. Confirm the bell still lasts at least five seconds.
+
+C. Regression guard
+1. Confirm Code Editor, Demo Trading and Panel handles still open only their own panels.
+2. Confirm demo trading, history arrows, indicators, symbol favourites and alert-line removal behave exactly as in v1.13.0.48.
+3. Confirm MT5 connection and imported history files are unchanged.

@@ -1,0 +1,29 @@
+TickLab v1.13.0.97 — Static Validation
+
+PASS All 31 XAML files parse
+PASS csproj version 1.13.0.97
+PASS main title v1.13.0.97
+PASS dedicated Gann Box renderer exists
+PASS Gann Box uses nine Gann angle defaults
+PASS Gann Box dedicated arc family exists
+PASS Gann Fan reading formatter exists
+PASS Gann Fan 1/8 reading exists
+PASS Gann Fan 1/4 reading exists
+PASS Gann Fan 1/3 reading exists
+PASS Gann Fan 1/2 reading exists
+PASS Gann Box dedicated hit testing exists
+PASS flat chart context-menu style is applied
+PASS no-gutter chart MenuItem template exists
+PASS stateful selection ancestor contrast protection exists
+PASS quick-menu local foreground is cleared
+PASS Gann Square + Gann Square Fixed renderer unchanged
+PASS 35 protected MT5/History/Replay/Bridge/Gateway/Connector files unchanged
+PASS CandleChartControl.Drawing.cs delimiter balance
+PASS CandleChartControl.DrawingParity.cs delimiter balance
+PASS CandleChartControl.cs delimiter balance
+PASS MainWindow.xaml.cs delimiter balance
+PASS ApplicationThemeManager.cs delimiter balance
+
+TOTAL: 23 passed, 0 failed.
+
+Windows WPF compilation was not available in this environment.

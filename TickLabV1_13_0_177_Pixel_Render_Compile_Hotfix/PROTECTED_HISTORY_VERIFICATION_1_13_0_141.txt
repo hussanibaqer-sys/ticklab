@@ -1,0 +1,4 @@
+Protected history verification v1.13.0.141
+Base compared: v1.13.0.140.
+Result: every file under src/TickLab.App/Gateway/FileBridge is byte-for-byte unchanged.
+Therefore the v1.13.0.139 seconds direct timestamp seek, raw tick archive storage/format, FileBridge protocol, and persistent history implementation were not edited by this update.

@@ -1,0 +1,37 @@
+TickLab v1.13.0.152 — Exact Source Diff vs v1.13.0.151
+
+Functional source changes:
+- src/TickLab.App/Controls/CandleChartControl.RawTickDrawing.cs
+  v151: 988634e2808172c5293f6d733396b3190d5e93d7c911b326bfd65b1bb5d3ba45
+  v152: 583af1e07121504d01934bea8df8d58166e9c415511f111c4595ebd6ff6ca04c
+- src/TickLab.App/Controls/TickChartControl.cs
+  v151: 4f384ce2d455848f2af6a2cb361f80bb5f70b895e1fe96439c80cddd7d70955d
+  v152: 2184d849f424a1f680f336964c4bee693fc51ca0af6de36a29129c8437a5e59b
+- src/TickLab.App/MainWindow.RawTickChart.cs
+  v151: f22d62c81e7393b06a10e71b5239e17e74606fc82d3f0440e2a325312d31118e
+  v152: 845b828ee04d9287addd8853b2c245433724774603a12a157b2d78878c7e519f
+
+Version/title metadata changes:
+- src/TickLab.App/MainWindow.xaml
+  v151: 793b2c61d88041f5d50119f48321642204dff8c147263e0dff34d367ed20a696
+  v152: 63d07bad8999ccfe49f62e210d6d2095e4935ed348e60b62c467025e95032605
+- src/TickLab.App/TickLab.App.csproj
+  v151: 79f47c09509e8eb76b0ab25118753437ba1be678497f5c8bc9d2cc2b856f0ad9
+  v152: 0af07538815d41ef13b671eeb675bfcaa2584efc3a37428797a9a012c336ea85
+
+Protected source verified byte-for-byte unchanged:
+- src/TickLab.App/MainWindow.xaml.cs: c7b5c38abb74eded26ad3bb833e5cc44b67ed4ea14d0a3b1592bad9a834c561a
+- src/TickLab.App/MainWindow.AlertsReplay.cs: 3d8f734a63468dd1b81412cddb4edf4060df0aeb652414f8ec4295ab8a501b97
+- src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs: 6b41cde7e6995ac7dd5a82d53cefbe120b05b4a60b38941c6e377d0d90b8c3fa
+- src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs: 5d55646c2f2d09d26e2aa4af79092405ca8e32ba76658644148de5791d8e9aac
+- src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs: 4febbcd3fce68905a635f5ff8134995cf20f8ca4a99472ac2ad2471149665fc8
+- src/TickLab.App/Controls/CandleChartControl.Drawing.cs: 5793cf07f991de88a5f0fc5aa5afcebcfb35de7937fea529c2e6ae7b8b8893ae
+- src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs: 391b20dbfa464dbde7641a593c325cedb2dafa34c5f0bf11e7e89beb0f06cbc5
+
+MT5/MQL tree: byte-for-byte unchanged.
+
+Protected method bodies in MainWindow.RawTickChart.cs were also verified unchanged:
+- FindRawTickAsync
+- BuildTickFindPresentationWindowAsync
+- LoadOlderRawTicksAsync
+- LoadNewerRawTicksAsync

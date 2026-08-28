@@ -1,0 +1,13 @@
+TickLab v1.13.0.161 — Larger Search + Timeframes + Chart Icons
+
+Built directly from v1.13.0.160.
+
+Top-bar presentation changes only:
+- Symbol/search control is wider and its search/text/dropdown graphics are 50% larger.
+- Timeframe chip controls are 50% larger: widths, height, padding and type size scale by 1.5x.
+- Make Timeframe (+) button is 50% larger (30x28 -> 45x42) with a larger plus glyph.
+- Selected timeframe keeps a neutral same-theme PanelAlt fill and now has a subtle neutral bottom marker using BorderStrongBrush; no blue active marker/border.
+- Candles chart-type icon redrawn as canonical wick/body candlesticks.
+- Hollow Candles chart-type icon redrawn as clearly hollow wick/body candlesticks.
+
+No chart behavior, history, raw-tick, drawing, replay, bridge, MT5, indicator behavior, or button handlers were changed.

@@ -1,0 +1,12 @@
+TickLab v1.13.0.130 exact app-source scope vs v1.13.0.129
+
+FUNCTIONAL
+- src/TickLab.App/Windows/TradingViewLineSettingsWindow.xaml.cs
+  * Ignore visibility-range ValueChanged events while _loading is true.
+  * Null-guard every Visibility range label/slider pair independently.
+
+METADATA ONLY
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+
+NO OTHER src/ FILE DIFFERS FROM v1.13.0.129.

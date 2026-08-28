@@ -1,0 +1,8 @@
+TickLab v1.13.0.98 — First Test Checklist
+
+1. Open TickLabV1_13_0_95.sln in Visual Studio.
+2. Rebuild Solution.
+3. Confirm there is no DrawingLevel.LineWidth compile error.
+4. Confirm Gann Box still looks/behaves exactly as in v1.13.0.97 after compilation.
+5. Confirm Gann Fan readings remain visible and Gann Square / Gann Square Fixed remain unchanged.
+6. If nullable warnings remain, send the warning's file name and line number; they can then be fixed without touching unrelated code.

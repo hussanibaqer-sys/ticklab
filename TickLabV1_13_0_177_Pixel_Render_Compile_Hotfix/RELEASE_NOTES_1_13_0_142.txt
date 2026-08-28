@@ -1,0 +1,29 @@
+TickLab v1.13.0.142 — Find Candle True Direct Seek
+
+Purpose
+- Remove the remaining multi-minute work from old 1-second Find Candle searches.
+
+Root causes found in v1.13.0.141
+1. The target-local raw-tick reader could still rebuild replay_source_index.json by recursively enumerating every ticks_history_<symbol>_*.csv file when the requested timestamp was not already represented in the cache.
+2. After the requested seconds page was found, BuildLocalChartResult still synchronously calculated the absolute oldest bridge raw-tick boundary. That coverage calculation recursively enumerated the entire raw-history source tree.
+3. The focused lookup window was ±8 days, so even a cached index could return/check hundreds of historical source files for a request that only needs a local seconds page.
+
+v1.13.0.142 changes
+- Foreground 1-second Find Candle now calls ResolveReplayHistoricalSources with allowFullIndexRebuild=false.
+- A cache miss no longer triggers a full recursive raw-history index rebuild in the foreground Find path.
+- The MT5 bridge writes historical snapshots directly in the connector folder with millisecond start/end values in each filename. Find now probes only narrow decimal timestamp filename buckets surrounding the requested time, filters them by their encoded range, and merges the discovered local files into replay_source_index.json for future instant reuse.
+- The focused Find source search is reduced from ±8 days to a target-local ±4-hour minimum (or the bounded page requirement if larger).
+- Focused Find Candle no longer runs the global bridge historical-source coverage scan after locating the target. Normal seconds-chart launch/paging keeps the full boundary behavior.
+- No MT5/MQL bridge source file was changed.
+- v1.13.0.141 Tick Find, Finding-state contrast, 5000-visible-tick zoom ceiling and previous marker fixes remain present.
+
+Expected runtime effect
+- Searching a 1-second candle one month ago should no longer traverse the intervening month or enumerate the entire saved raw-tick history in the foreground.
+- Find should touch only the canonical local page plus the few raw-history snapshots around the requested timestamp.
+- A timestamp with no nearby stored raw ticks should fail quickly instead of widening into a multi-minute scan.
+
+Validation
+- TickLab.App.csproj and MainWindow.xaml XML parse successfully.
+- Modified C# files have balanced braces/parentheses in static validation.
+- MT5 folder is byte-for-byte unchanged from v1.13.0.141.
+- The ChatGPT environment does not provide dotnet/MSBuild/csc, so compile/runtime validation must be completed in Visual Studio on Windows.

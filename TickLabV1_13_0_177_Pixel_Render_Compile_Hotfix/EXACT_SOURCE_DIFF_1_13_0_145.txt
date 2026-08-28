@@ -1,0 +1,18 @@
+TickLab v1.13.0.145 changed files vs v1.13.0.144
+
+src/TickLab.App/Controls/CandleChartControl.cs
+- Raw Tick local renamed to rawDrawingObjectUnderPointer to eliminate enclosing-scope name collision.
+
+src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+- Raw Tick move local renamed priceDelta -> rawPriceDelta.
+- Raw Tick magnet locals renamed targetPoint/pointerDistance -> rawTargetPoint/rawPointerDistance.
+
+src/TickLab.App/Controls/TickChartControl.cs
+- Added FindTickIndexByTimestamp(long) shared binary-search helper.
+- ShowTimestamp reuses the helper.
+
+src/TickLab.App/TickLab.App.csproj
+- Version 1.13.0.145.
+
+src/TickLab.App/MainWindow.xaml
+- v1.13.0.145 compile-hotfix title.

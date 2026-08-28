@@ -1,0 +1,15 @@
+TickLab v1.13.0.164 — Search + Hover + Drawing Rail Polish
+
+Built directly from v1.13.0.163.
+
+Presentation-only scope:
+- Rebuilt the symbol/search control as one clean rounded Border so the outline has no doubled/broken corners.
+- Search outline uses a 1px theme border, 11px radius and normal WPF anti-aliasing for smooth curves.
+- DarkToolbarButton controls now use the same 42px vertical footprint as timeframe controls and show a clearly visible neutral hover/pressed/focus marker plus rounded hover outline.
+- No blue selection marker was added.
+- Left drawing rail folder/category and action glyphs are enlarged by 50% (20 -> 30; state variants scaled by the same factor).
+- Drawing rail hover/pressed/active visuals now follow the same neutral rounded-surface + bottom-marker language as the top bar.
+- Left drawing vector rendering no longer forces aliased/nearest-neighbour rendering, improving diagonal/curve quality at the larger size.
+- Persistent drawing rail state fills/borders use neutral PanelAlt/BorderStrong theme brushes rather than blue accent boxes.
+
+No drawing behavior, chart/history/tick/replay/Find/FileBridge/MT5 logic, control order, x:Names, or click handlers were changed.

@@ -1,0 +1,18 @@
+TickLab v1.13.0.147 — Seconds History Index Recovery
+
+Purpose
+- Restore older 1-second historical candles after Tick Chart/targeted raw lookup could leave only recent seconds discoverable.
+
+Root cause fixed
+- Target-local raw tick lookups could persist a partial replay_source_index.json containing only a narrow subset of ticks_history_*.csv snapshots.
+- Normal seconds-history paging could then reuse that partial cache as if it represented the full archive, leaving older intact raw history undiscovered.
+
+Changes
+- Complete raw-history filename cache now uses replay_source_index_v2.json and version 2.
+- Only a full history discovery is allowed to write the v2 index.
+- Target-local Find/Tick probes remain fast but are non-persistent; they can never replace/poison the complete history index.
+- Legacy/partial v1 replay_source_index.json is ignored by the complete-history path, forcing a clean full discovery when seconds paging needs it.
+- No raw ticks_history_*.csv file is modified or rewritten.
+- No 1-second candle aggregation logic changed; this is source-discovery/index isolation only.
+- v1.13.0.142 direct historical Find Candle behavior remains intact.
+- v1.13.0.146 Tick drawing/rendering code is otherwise unchanged.

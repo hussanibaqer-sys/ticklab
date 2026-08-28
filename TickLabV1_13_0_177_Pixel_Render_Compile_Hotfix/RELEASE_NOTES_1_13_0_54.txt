@@ -1,0 +1,25 @@
+TickLab v1.13.0.54 — Replay Range Selectors
+
+CHANGED ONLY IN REPLAY MODE
+- Replay line checkbox now places the replay selector automatically inside the candles currently visible on the chart instead of requiring a click and instead of anchoring to the latest/live candle.
+- Single replay mode uses one draggable solid yellow vertical line as the replay start.
+- Added Replay range option. With Replay range enabled, the same Replay line checkbox shows two independently draggable selectors: yellow = start, red = end.
+- Unticking Replay line removes all replay selectors. Right-click Remove replay line also clears the selector set.
+- Normal chart pan, scroll and zoom remain available away from the thin selector lines.
+- Moving or releasing either replay selector only changes the chosen candle. It does not load ticks or start replay.
+- Pressing Play is now the action that loads saved raw ticks from the yellow start line and begins tick-by-tick replay.
+- Replay range validates that the red end line is after the yellow start line.
+- Range tick reads are bounded to the end of the red-line candle. Replay automatically stops after the final raw tick belonging to that candle.
+- Step Tick and Step Candle remain bounded by the selected range.
+- Stopping replay restores the full pre-replay chart and viewport. Selector lines can be retained while choosing a new range.
+
+PRESERVED
+- Raw-tick OHLC/wick/spread/tick-volume candle construction.
+- Per-chart replay isolation and future-data protection for replay indicators.
+- Full-history restoration behavior.
+- Alerts, Demo Trading, right-side panels, drawings, symbol favourites, MT5 bridges and FileBridge history-storage formats were not intentionally changed.
+
+VALIDATION
+- Static source/XAML/event/replay regression checks: 684 passed, 0 failed.
+- Protected MT5 bridge and FileBridge hashes remain unchanged.
+- The generation environment has no Windows .NET/WPF compiler. Run Clean-Restore-Build.cmd on Windows with Visual Studio 2022 for the final compiler and visual test.

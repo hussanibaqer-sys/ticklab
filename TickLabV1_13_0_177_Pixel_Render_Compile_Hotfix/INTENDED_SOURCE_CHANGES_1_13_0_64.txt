@@ -1,0 +1,12 @@
+TickLab v1.13.0.64 intended source changes
+
+src/TickLab.App/MainWindow.ChartTypes.cs
+src/TickLab.App/MainWindow.ChartContexts.cs
+src/TickLab.App/MainWindow.AlertsReplay.cs
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/MainWindow.xaml.cs
+src/TickLab.App/TickLab.App.csproj
+src/TickLab.App/Controls/TickChartControl.cs
+src/TickLab.App/Controls/CandleChartControl.cs
+src/TickLab.App/Windows/MarketReplayWindow.cs
+src/TickLab.App/Core/Settings/ChartSettings.cs

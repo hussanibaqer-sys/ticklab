@@ -1,0 +1,3 @@
+*.mq5: PASS (4 files)
+*.mqh: PASS (0 files)
+*.ex5: PASS (0 files)

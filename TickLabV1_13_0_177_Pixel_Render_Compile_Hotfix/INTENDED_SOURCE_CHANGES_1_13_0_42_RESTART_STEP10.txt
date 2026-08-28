@@ -1,0 +1,14 @@
+Intended source changes from v1.13.0.41
+
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/MainWindow.xaml.cs
+- src/TickLab.App/MainWindow.CodeEditor.cs
+- src/TickLab.App/Settings/ColorDisplayHelper.cs
+- src/TickLab.App/Windows/DrawingColorPickerWindow.xaml.cs
+- src/TickLab.App/TickLab.App.csproj
+- TickLabV1_13_0_41.sln renamed to TickLabV1_13_0_42.sln
+- VERSION.txt
+- Clean-Restore-Build.cmd
+- release/validation metadata
+
+No MT5 or FileBridge source file was intentionally changed.

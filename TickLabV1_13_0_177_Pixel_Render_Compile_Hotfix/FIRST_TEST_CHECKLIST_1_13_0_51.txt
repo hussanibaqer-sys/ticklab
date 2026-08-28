@@ -1,0 +1,20 @@
+TickLab v1.13.0.51 — First Test Checklist
+
+1. Build
+- Run Clean-Restore-Build.cmd.
+- Confirm the title shows v1.13.0.51.
+
+2. Exact regression test
+- Open an M1 chart with saved history.
+- Press Refresh History and confirm the full chart appears.
+- Wait for several new live ticks and at least one new M1 candle.
+- Confirm the chart never collapses to one candle.
+- Confirm “Connect to MT5 to load candle history” does not flash while the bridge is connected.
+
+3. Multi-chart check
+- Open two or more charts for the same symbol on different timeframes.
+- Refresh one chart, then click between charts while ticks arrive.
+- Confirm every chart preserves its history and continues updating.
+
+4. Regression boundary
+- Confirm alerts, Demo Trading, panel handles, indicators and drawings behave exactly as in v1.13.0.50.

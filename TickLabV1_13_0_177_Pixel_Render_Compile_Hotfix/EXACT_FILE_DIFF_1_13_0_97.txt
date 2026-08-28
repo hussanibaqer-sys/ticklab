@@ -1,0 +1,13 @@
+TickLab v1.13.0.97 — exact changes vs v1.13.0.96
+
+VERSION.txt
+src/TickLab.App/App.xaml
+src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+src/TickLab.App/Controls/CandleChartControl.cs
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/MainWindow.xaml.cs
+src/TickLab.App/Settings/ApplicationThemeManager.cs
+src/TickLab.App/TickLab.App.csproj
+
+Source/version files changed: 9

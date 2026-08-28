@@ -1,0 +1,3 @@
+Files /mnt/data/v146pristine/TickLabV1_13_0_146_Raw_Tick_Smooth_Render/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs and /mnt/data/TickLabV1_13_0_147_Seconds_History_Index_Recovery/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs differ
+Files /mnt/data/v146pristine/TickLabV1_13_0_146_Raw_Tick_Smooth_Render/src/TickLab.App/MainWindow.xaml and /mnt/data/TickLabV1_13_0_147_Seconds_History_Index_Recovery/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/v146pristine/TickLabV1_13_0_146_Raw_Tick_Smooth_Render/src/TickLab.App/TickLab.App.csproj and /mnt/data/TickLabV1_13_0_147_Seconds_History_Index_Recovery/src/TickLab.App/TickLab.App.csproj differ

@@ -1,0 +1,43 @@
+TickLab v1.13.0.37 — Restart Step 6
+
+Base
+- TickLab v1.13.0.36 Restart Step 5A Compile Hotfix.
+
+Chart appearance
+- Fixed colour swatch identity so Chart Settings colour choices can be changed again while raw codes stay hidden.
+- Preserved colour-name hover tooltips and immediate settings preview.
+- Added a separately configurable Ask price line: on/off, line colour, ticket text colour, width and style.
+
+Indicator context actions
+- Added Refresh, Properties, Move/Add to Window, Move/Attach to Chart and Remove to price-chart indicator menus.
+- Added matching move actions to built-in and TickScript indicator pane menus.
+- Existing Place Address and Connect Address properties remain the destination/source mechanism.
+
+Demo Trading panel
+- Reworked the right-side handle into a thin, centred, vertical DEMO TRADING control.
+- The handle supports direct click, keyboard activation and left/right drag gestures.
+- Demo account remains clearly isolated and simulation-only.
+
+MT5-style simulated execution
+- Market Buy enters at Ask; market Sell enters at Bid.
+- Buy positions are valued/closed and trigger SL/TP using Bid.
+- Sell positions are valued/closed and trigger SL/TP using Ask.
+- Live position price, floating P/L, balance, equity, realized P/L and margin estimate update from chart Bid/Ask.
+- No SL/No TP, visible SL/TP presets, exact prices, live order preview and validation messages are supported.
+- Running positions support add/change/remove SL/TP, point or exact-price editing, draggable SL/TP chart lines and immediate manual close.
+
+Pending simulated orders
+- Added Buy Limit, Sell Limit, Buy Stop, Sell Stop, Buy Stop Limit and Sell Stop Limit.
+- Added entry, stop-limit, optional SL/TP, expiration, modify and cancel controls.
+- Pending orders persist separately and convert to simulated positions when triggered.
+
+Floating chart transfer
+- New charts opened without a workspace now show a large blue MOVE TO WORKSPACE handle.
+- Dragging that handle uses the existing highlighted workspace drop-target flow and does not replace ordinary title-bar window movement.
+
+Protected systems
+- MT5 and FileBridge source files remain byte-for-byte unchanged from v1.13.0.36.
+- No real broker order API was added.
+
+Environment limitation
+- Static validation was completed in Linux. The environment has no dotnet executable and cannot perform a Windows WPF build or runtime test. Visual Studio 2022 / .NET 8 on Windows is required.

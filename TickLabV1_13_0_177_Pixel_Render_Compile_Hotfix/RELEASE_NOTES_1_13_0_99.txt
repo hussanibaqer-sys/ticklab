@@ -1,0 +1,33 @@
+TickLab v1.13.0.99 — Gann Box / Fan / Menu Contrast Final Correction
+
+Surgical scope from v1.13.0.98 only.
+
+GANN BOX
+- Rebuilt Gann Box as the TradingView ratio matrix shown in the user's latest reference photo.
+- Gann Box no longer reuses Gann Square fan/arc/diagonal geometry.
+- Default ratio grid: 0, 0.25, 0.382, 0.5, 0.618, 0.75, 1.
+- Draws vertical + horizontal ratio bands so cell colours blend like the reference.
+- Draws ratio readings on top/bottom and left/right edges.
+- Hit-testing follows the geometry actually rendered by Gann Box.
+- Gann Square and Gann Square Fixed renderer block remains byte-for-byte unchanged from v1.13.0.98.
+
+GANN FAN
+- Geometry/colours remain unchanged.
+- Master Level readings switch is authoritative for 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1 labels.
+- Default Prices on levels is OFF for newly created Gann Fan tools so the reference ratio labels are not crowded by prices.
+- Prices remain independently available through the existing control.
+
+RIGHT-CLICK CHART MENU
+- Added a dedicated flat ContextMenu template with no legacy icon/check gutter.
+- Existing chart right-click commands are unchanged.
+
+HOVER / SELECTION CONTRAST
+- ComboBoxItem now has an explicit template whose displayed text follows the trigger-controlled Foreground.
+- Hover state uses MenuHoverBrush + TextBrush.
+- Selected state uses SelectionBrush + SelectionTextBrush.
+- Prevents selectable edit/settings rows from falling back to a system foreground that can become white on a light highlight.
+
+PROTECTED AREAS
+- No MT5, history, replay, bridge, gateway or connector source was changed.
+- Fibonacci renderer/settings controls were not changed in this patch.
+- Gann Square and Gann Square Fixed rendering was not changed.

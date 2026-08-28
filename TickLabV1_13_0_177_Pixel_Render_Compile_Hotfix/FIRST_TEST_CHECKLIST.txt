@@ -1,0 +1,14 @@
+TickLab v1.13.0.9 first test checklist
+
+1. Extract to C:\TickLab\TickLabV1_13_0_9 outside OneDrive.
+2. Open TickLabV1_13_0_9.sln in Visual Studio 2022.
+3. Clean and rebuild Release | Any CPU.
+4. Confirm all workspaces and partitions restore.
+5. Double-click the price scale and time scale once; verify the correct scale resets and no chart disappears.
+6. Open Chart Settings and test several colour swatches; verify the chart colour exactly matches the selected swatch.
+7. Cancel Chart Settings; verify all preview colours reverse.
+8. Test Dark and Light themes; chart colours must remain unchanged.
+9. Hover and press toolbar, tab and window buttons; verify neutral hover and a subtle pressed impression.
+10. Zoom out; verify the chart stops at 1,500 candles.
+11. At normal density, verify approximately three pixels separate candle bodies.
+12. Scroll and zoom multiple charts to confirm smooth rendering.

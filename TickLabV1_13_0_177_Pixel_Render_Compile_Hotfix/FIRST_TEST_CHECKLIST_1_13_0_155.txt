@@ -1,0 +1,10 @@
+TickLab v1.13.0.155 — First Test Checklist
+
+1. Open 1s, 15s, 30s and 45s. Synthetic charts should be disabled/locked.
+2. Create a custom seconds timeframe. Synthetic charts should also be locked.
+3. On 1m or higher, verify Heikin Ashi/Renko/Line Break/Kagi/Point & Figure/Range are still selectable.
+4. On a synthetic 1m+ chart, switch to 1s. Chart should become normal Candles and load using the untouched v152 seconds path.
+5. Verify normal 1s history scroll left/right.
+6. Verify Tick Chart smoothness + drawings remain as v152.
+7. Verify Tick Find, Find Candle and Replay.
+8. Leave MT5 live long enough for watchdog/integrity agents to run.

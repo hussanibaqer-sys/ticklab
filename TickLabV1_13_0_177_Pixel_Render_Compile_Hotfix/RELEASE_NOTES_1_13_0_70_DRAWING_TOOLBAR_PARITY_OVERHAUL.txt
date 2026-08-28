@@ -1,0 +1,60 @@
+TickLab v1.13.0.78 — Drawing Toolbar Parity Overhaul
+
+Scope
+-----
+This release replaces the price-chart left drawing/tool system with a substantially deeper TradingView-style interaction and settings model while preserving TickLab-owned artwork and the rest of the application.
+
+Left drawing rail
+-----------------
+- Reorganized around cursor, trend/line, Fibonacci/Gann, patterns, prediction/measurement, geometry, annotation and media groups.
+- Added dedicated Zoom In and Drawing Sync controls alongside Measure, Magnet, Keep Drawing, Lock, Hide, Object Tree, Undo/Redo and Remove.
+- Category rail icons use the active/recent tool for that group.
+- TickLab-owned vector icons use pixel snapping, layout rounding, aliased edge mode and nearest-neighbor bitmap scaling.
+- Drawing rail, tool flyout, favorites and drawing settings explicitly remove blur/shadow effects.
+- Drawing rail/flyout active, hover and text colors now use TickLab light/dark theme resources.
+
+Drawing behavior and geometry
+-----------------------------
+- Trend Line / Info Line / Trend Angle: midpoint, angle/stat labels, price labels, text and endpoint arrows.
+- Ray / Extended Line / Horizontal / Vertical / Cross Line: dedicated extension and label behavior.
+- Flat Top/Bottom and Disjoint Channel now have their own geometry rather than generic Parallel Channel behavior.
+- Regression Trend: selectable source, independent upper/lower deviations, base/up/down visibility and styles, extend-right, Pearson's R.
+- Anchored VWAP: selected source plus up to three configurable standard-deviation bands with independent level styling.
+- Fibonacci tools use editable levels/colors/styles instead of hardcoded ratios where applicable.
+- Trend-Based Fib Extension and Trend-Based Fib Time now use all three anchors.
+- Classic, Schiff, Modified Schiff and Inside Pitchfork have distinct origins/geometry.
+- Gann Box/Square/Fixed Square/Fan have dedicated grid/fan/arc settings.
+- Circle is a true screen-space circle; Path is independently smoothed from Polyline.
+- Pattern drawings include dedicated labels/guides and harmonic leg ratios.
+- Long/Short Position calculates account-risk quantity, leverage cap, R:R, TP/SL P&L and projected balances.
+- Forecast has dedicated target/stop/stat behavior.
+- Bars Pattern / Ghost Feed project OHLC geometry. Bars Pattern supports bar-stick or source-line modes plus mirror/flip.
+- Volume Profile distributes volume through candle high-low price rows and calculates up/down volume, POC and value area.
+- Pin, Table, Signpost, Price Label/Note and Anchored Note have dedicated rendering.
+- Cycle count, sine cycles and sector angle/radius are configurable.
+
+Settings and persistence
+------------------------
+- Style, Text & Labels, Coordinates, Levels & Options, Visibility and Templates are preserved per drawing.
+- Full RGB colors plus opacity, line style/width, fill, text/background and level/component colors.
+- Exact broker-server date/time/price anchor editing.
+- Horizontal/vertical text alignment is now functional.
+- Exact minimum and maximum timeframe visibility is now enforced in addition to broad timeframe groups.
+- Tool-specific defaults are merged safely into older persisted drawings/templates.
+- New drawings inherit the selected drawing synchronization mode.
+
+Synchronization
+---------------
+- Per-drawing Current Chart / Same Symbol / Same Symbol + Timeframe / Current Layout / Global scopes now control propagation.
+- Synchronized copies are no longer re-broadcast recursively from target charts.
+- Local drawings on target charts are preserved when remote synchronized copies update.
+
+Compatibility / scope note
+--------------------------
+This is a TickLab-owned implementation intended to closely reproduce the functional interaction model of modern chart drawing tools. It does not copy TradingView proprietary icons/branding pixel-for-pixel. Online social-post/idea objects and a separate drawing engine directly inside independent indicator panes are not claimed as part of this price-chart toolbar overhaul.
+
+Protected systems
+-----------------
+- MT5 sources unchanged.
+- Gateway/FileBridge sources unchanged.
+- Replay, recorder, demo trading, MT5 history/reporting and raw-tick systems are outside this change and preserved.

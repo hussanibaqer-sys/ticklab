@@ -1,0 +1,41 @@
+TickLab v1.13.0.108 — FIRST TEST CHECKLIST
+
+Before Build
+1. Open TickLabV1_13_0_108.sln.
+2. If Visual Studio reports project.assets.json missing, run Restore NuGet Packages once (or: dotnet restore TickLabV1_13_0_108.sln).
+3. Build/Rebuild, then F5.
+
+A. Anchored VWAP
+1. Select Anchored VWAP and click one candle.
+2. Confirm VWAP begins at that exact candle and continues forward.
+3. Confirm blue main VWAP plus one visible upper/lower deviation-band pair.
+4. Open Settings: Band #1 can be switched off/on; colours/multipliers update live.
+5. Click the VWAP far from its original anchor: the tool must reselect and quick edit must appear.
+6. Click either deviation band: same parent tool must reselect.
+
+B. Fixed Range Volume Profile
+1. Place FRVP with two anchors over a visible candle range.
+2. Confirm horizontal volume histogram appears for only that selected range.
+3. Confirm default placement Left and Width 30% of the selected box.
+4. Inputs tab: test Rows Layout, Row Size, Up/Down vs Total, Value Area Volume, Extend Right.
+5. Style tab: independently change colour AND transparency for Up Volume, Down Volume, Value Area Up, Value Area Down.
+6. Toggle and recolour VAH, VAL and POC.
+7. Toggle Developing POC, Developing VA and Histogram Box.
+8. Turn Values on; test Values colour and transparency.
+9. Coordinates tab: edit #1/#2 bar numbers and confirm range moves to those loaded bars.
+10. Click directly on histogram bars, POC, VAH and VAL: each must select the same FRVP object and restore quick edit.
+
+C. Anchored Volume Profile
+1. Click one candle to anchor the profile.
+2. Confirm calculation starts at that anchor and continues forward.
+3. Confirm default profile placement is Right.
+4. Confirm it uses the same dedicated Inputs/Style controls as FRVP.
+5. Coordinates tab should show one #1 (bar) field.
+6. Click a histogram row or POC/VA line far from the anchor: parent tool must reselect.
+
+Regression / Freeze
+- Long/Short Position unchanged from v1.13.0.106/v107 behavior.
+- Position Forecast unchanged.
+- Bars Pattern and Ghost Feed unchanged from v1.13.0.107.
+- Price/Date/Date+Price Range unchanged.
+- Fib/Gann, Patterns, Elliott, Cycles, MT5, history and replay unchanged.

@@ -1,0 +1,6 @@
+Exact source diff versus v1.13.0.108
+
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/TickLab.App.csproj
+
+Expected: version/title metadata only. Functional drawing source unchanged.

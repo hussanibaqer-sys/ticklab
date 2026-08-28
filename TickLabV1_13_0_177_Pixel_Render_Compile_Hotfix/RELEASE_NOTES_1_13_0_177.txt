@@ -1,0 +1,9 @@
+TickLab v1.13.0.177 — Pixel Render Compile Hotfix
+Built from: v1.13.0.176 — Pixel-Perfect Rail + Lock Geometry
+
+- Fixes compile error: TransformedGeometry type/namespace not found.
+- Replaces TransformedGeometry with standard WPF Geometry.Clone() + Geometry.Transform = ScaleTransform.
+- Preserves v1.13.0.176 direct final-size vector rendering at 30/33 px.
+- Preserves rebuilt geometric Lock/Unlock icons.
+- Preserves stronger Favorites/lower-rail hover marker from v1.13.0.175.
+- No intentional chart/drawing behavior changes.

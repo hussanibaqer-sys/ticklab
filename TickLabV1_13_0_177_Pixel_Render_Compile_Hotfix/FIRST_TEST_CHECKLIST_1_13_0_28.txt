@@ -1,0 +1,75 @@
+TickLab v1.13.0.28 — First Windows Test Checklist
+
+PREPARATION
+[ ] Keep v1.13.0.26 and v1.13.0.27 unchanged as rollback folders.
+[ ] Extract v1.13.0.28 outside OneDrive/Dropbox/network folders.
+[ ] Delete bin and obj folders.
+[ ] Open TickLabV1_13_0_28.sln in Visual Studio 2022.
+[ ] Clean Solution and Rebuild Solution with .NET 8 desktop development installed.
+[ ] Do not replace/recompile the working MT5 bridge.
+
+REGRESSION STARTUP
+[ ] F5 opens TickLab normally with no XAML or C# exception.
+[ ] Existing MT5 connection and live/history data still work.
+[ ] Candle right-edge zoom/scroll remains stable.
+[ ] Older/newer history paging remains directional and does not stick or jump.
+
+DIRECT INDICATOR PLACEMENT
+[ ] Divide a workspace into at least two partitions.
+[ ] Open Indicators and select one built-in indicator.
+[ ] Click Place in Workspace.
+[ ] Select Workspace → Partition and confirm the indicator appears there directly.
+[ ] Repeat with one TickScript indicator.
+[ ] Test an occupied destination: Cancel changes nothing; Swap/Replace follows the existing protected workspace behavior.
+[ ] The direct pane visibly shows Not connected, a Connect button and a disabled Sync control.
+
+CONNECT
+[ ] Click Connect.
+[ ] The target list clearly shows Workspace → Partition → Chart.
+[ ] Choose a price chart.
+[ ] The pane header shows the chosen workspace/partition/chart, symbol and timeframe.
+[ ] Indicator values load without attaching the pane inside the price chart.
+[ ] Change chooses a different source chart without moving the indicator pane.
+[ ] Closing the source chart leaves the indicator pane open and disconnected.
+
+SCALES AND NAVIGATION
+[ ] The direct indicator has a visible bottom time scale and a right-side value scale.
+[ ] Value-scale width aligns with the price chart scale.
+[ ] Vertical wheel/drag changes only the indicator's vertical scale.
+[ ] Vertical double-click resets only the indicator scale.
+[ ] Divider dragging is smooth and uses the narrow 9px strip.
+[ ] With Sync ON, horizontal wheel/drag follows the source chart.
+[ ] With Sync ON, source chart horizontal wheel/drag follows in the indicator pane.
+[ ] With Sync ON, crosshair time follows in both directions.
+[ ] Vertical scale stays independent while Sync is ON.
+[ ] With Sync OFF, indicator horizontal zoom/scroll remains local and the source chart does not move.
+
+REPLAY
+[ ] With Sync ON, starting/stepping replay on the connected chart updates the direct indicator from replay candles.
+[ ] Turn Sync OFF during replay; the direct pane returns to/keeps the original non-replay data and local horizontal viewport.
+[ ] Turn Sync ON again; it follows the chart's current replay position.
+[ ] Stopping replay restores live/history indicator data.
+
+COLOURS AND PROPERTIES
+[ ] Open Properties for every representative indicator family: line, oscillator, bands/cloud, histogram, volume and TickScript.
+[ ] Modify every applicable plot/series/positive/negative/signal/level/fill/label colour.
+[ ] Modify fill opacity where available.
+[ ] Colours update immediately and survive application restart.
+
+RIGHT-CLICK AND ROUTING
+[ ] Right-click a direct built-in indicator: Properties, Reset, Refresh, Connect/Copy/Move and Remove are available.
+[ ] Right-click a direct TickScript indicator: Properties, code editor, Reset, Refresh, Connect/Copy/Move and Remove are available.
+[ ] Copy to another chart leaves the workspace indicator unchanged.
+[ ] Move to another chart adds it there and removes the workspace pane only after success.
+[ ] Cancel a route operation and confirm nothing is removed.
+
+PERSISTENCE
+[ ] Place an indicator in a workspace and another in a floating pane.
+[ ] Connect each to different embedded/floating price charts.
+[ ] Set one Sync ON and one Sync OFF.
+[ ] Change colours and local horizontal zoom/scroll.
+[ ] Close TickLab normally and reopen.
+[ ] Pane position, source chart, Sync state, colours, settings and local viewport restore correctly.
+
+PASS CONDITION
+Do not replace the stable version until all applicable checks pass. If Visual Studio reports an error, copy the exact error code, file, line and full message.

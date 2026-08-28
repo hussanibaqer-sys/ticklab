@@ -1,0 +1,183 @@
+<Window x:Class="TickLab.Desktop.Windows.ConnectionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TickLab — MT5 Connection"
+        Width="1080"
+        Height="700"
+        MinWidth="900"
+        MinHeight="600"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource WindowBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource DarkHeaderBrush}">
+            <Grid Margin="18,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border Width="32" Height="32" CornerRadius="8" Background="{StaticResource AccentBrush}" VerticalAlignment="Center">
+                    <TextBlock Text="T" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="11,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="TickLab" Foreground="White" FontWeight="SemiBold" FontSize="17"/>
+                    <TextBlock Text="MT5 connection and permanent history" Foreground="#BDBDBD" FontSize="11"/>
+                </StackPanel>
+                <TextBlock Grid.Column="2" Text="v1.13.0.21" Foreground="#8DB2FF" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="MT5 Connection" Style="{StaticResource PageTitle}"/>
+                        <TextBlock Margin="0,5,0,0" Foreground="{StaticResource MutedTextBrush}"
+                                   Text="Choose a TickLab bridge, then import the instrument currently open on the main chart."/>
+                    </StackPanel>
+                    <Button x:Name="RefreshButton" Grid.Column="1" Style="{StaticResource SoftAccentButton}"
+                            Width="122" Content="↻  Refresh list" Click="RefreshButton_Click"/>
+                </Grid>
+
+
+                <Border Grid.Row="1" Style="{StaticResource CardBorder}" Margin="0,16,0,16" Padding="14">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="AutoDetectButton" Style="{StaticResource AccentButton}" Width="132" Margin="0"
+                                Content="Auto Detect" Click="AutoDetectButton_Click"/>
+                        <Button x:Name="BrowseFolderButton" Grid.Column="1" Style="{StaticResource SoftAccentButton}" Width="132" Margin="10,0,0,0"
+                                Content="Browse Folder" Click="BrowseFolderButton_Click"/>
+                        <StackPanel Grid.Column="2" Margin="16,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="Bridge location" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="BridgeFolderText" Margin="0,3,0,0" Foreground="{StaticResource MutedTextBrush}"
+                                       Text="Automatic detection is active" TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <UniformGrid Grid.Row="2" Columns="3" Margin="0,0,0,16">
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,12,0" Padding="16">
+                        <StackPanel>
+                            <TextBlock Text="BRIDGE STATUS" Foreground="{StaticResource MutedTextBrush}" FontSize="11" FontWeight="SemiBold"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,9,0,0">
+                                <Ellipse Width="10" Height="10" Fill="{StaticResource PositiveBrush}" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="StatusText" Margin="8,0,0,0" Text="Searching for TickLab bridges..." FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,12,0" Padding="16">
+                        <StackPanel>
+                            <TextBlock Text="ACTIVE CHART INSTRUMENT" Foreground="{StaticResource MutedTextBrush}" FontSize="11" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="ChartInstrumentText" Margin="0,9,0,0" Text="Main chart instrument: —" FontSize="16" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Padding="16">
+                        <StackPanel>
+                            <TextBlock Text="SELECTED CONNECTION" Foreground="{StaticResource MutedTextBrush}" FontSize="11" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="SelectedText" Margin="0,9,0,0" Text="No connection selected" FontSize="14" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <UniformGrid Grid.Row="3" Columns="3" Margin="0,0,0,16">
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,12,0" Padding="17">
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <Border Width="38" Height="38" CornerRadius="8" Background="{StaticResource AccentSoftBrush}" VerticalAlignment="Top">
+                                <TextBlock Text="⇩" Foreground="{StaticResource AccentBrush}" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                <Button x:Name="ImportHistoryButton" Style="{StaticResource AccentButton}" Margin="0" Content="Import History" IsEnabled="False" Click="ImportHistoryButton_Click"/>
+                                <TextBlock Margin="0,9,0,0" Foreground="{StaticResource MutedTextBrush}" TextWrapping="Wrap"
+                                           Text="Imports every available native MT5 candle timeframe permanently and synchronizes available raw ticks."/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,12,0" Padding="17">
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <Border Width="38" Height="38" CornerRadius="8" Background="{StaticResource AccentSoftBrush}" VerticalAlignment="Top">
+                                <TextBlock Text="↻" Foreground="{StaticResource AccentBrush}" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                <Button x:Name="RefreshHistoryButton" Style="{StaticResource AccentButton}" Margin="0" Content="Refresh History" IsEnabled="False" Click="RefreshHistoryButton_Click"/>
+                                <TextBlock Margin="0,9,0,0" Foreground="{StaticResource MutedTextBrush}" TextWrapping="Wrap"
+                                           Text="Choose refresh-all, one timeframe, M1, ticks-only, verify/repair, generated-cache rebuild, or open the candle-file manager."/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource CardBorder}" Padding="17">
+                        <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <Border Width="38" Height="38" CornerRadius="8" Background="{StaticResource AccentSoftBrush}" VerticalAlignment="Top">
+                                <TextBlock Text="▤" Foreground="{StaticResource AccentBrush}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                <Button x:Name="HistoryButton" Style="{StaticResource AccentButton}" Margin="0" Content="Tick History" IsEnabled="False" Click="HistoryButton_Click"/>
+                                <TextBlock Margin="0,9,0,0" Foreground="{StaticResource MutedTextBrush}" TextWrapping="Wrap"
+                                           Text="Open permanent three-month raw-tick folders, refresh ticks, build missing candles, copy folders or protected-delete them."/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+
+                <Border Grid.Row="4" Style="{StaticResource CardBorder}" Padding="0">
+                    <Grid>
+                        <Grid.RowDefinitions><RowDefinition Height="48"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+                        <Grid Margin="16,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                            <TextBlock Text="Available TickLab bridges" Style="{StaticResource SectionTitle}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="Double-click to connect" Foreground="{StaticResource MutedTextBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+                        <DataGrid x:Name="ConnectorsGrid" Grid.Row="1"
+                                  AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"
+                                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
+                                  HeadersVisibility="Column" RowHeaderWidth="0" GridLinesVisibility="Horizontal"
+                                  SelectionChanged="ConnectorsGrid_SelectionChanged" MouseDoubleClick="ConnectorsGrid_MouseDoubleClick">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Connection" Width="2*" Binding="{Binding DisplayName}"/>
+                                <DataGridTextColumn Header="Bridge" Width="1.2*" Binding="{Binding BridgeVersion}"/>
+                                <DataGridTextColumn Header="Broker" Width="1.35*" Binding="{Binding Broker}"/>
+                                <DataGridTextColumn Header="Server" Width="1.35*" Binding="{Binding Server}"/>
+                                <DataGridTextColumn Header="MT5 chart" Width="1.1*" Binding="{Binding Symbol}"/>
+                                <DataGridTextColumn Header="Timeframe" Width="*" Binding="{Binding Timeframe}"/>
+                                <DataGridTextColumn Header="State" Width="1.4*" Binding="{Binding ConnectionState}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="5" Margin="0,17,0,0">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <Border Padding="12,8" Background="#EAF3FF" BorderBrush="#C8DBFF" BorderThickness="1" CornerRadius="7">
+                        <TextBlock Foreground="#365A92" Text="ⓘ  Live and history use separate V300 Live and V305 History roles. Import buttons activate only when the History Worker is online."/>
+                    </Border>
+                    <Button Grid.Column="1" Width="104" Margin="14,0,7,0" Content="Cancel" Click="CancelButton_Click"/>
+                    <Button x:Name="ConnectButton" Grid.Column="2" Style="{StaticResource AccentButton}" Width="124" Margin="0" Content="Connect" IsEnabled="False" Click="ConnectButton_Click"/>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

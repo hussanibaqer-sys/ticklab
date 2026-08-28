@@ -1,0 +1,91 @@
+TickLab v1.13.0.87 — Folder 1 Interaction Parity Pass
+======================================================
+Base: v1.13.0.86 — Drawing Selection / Construction / Background Fix
+Scope: ONLY Folder 1 (LINES / CHANNELS / PITCHFORKS) interaction/parity corrections.
+
+IMPORTANT STATUS
+----------------
+This package is a strict Folder-1 correction pass. Folder 1 is NOT declared finished yet.
+It must still be compared in Windows against the user-provided reference videos tool-by-tool.
+Folder 2 and later toolbox folders were not advanced.
+
+KEY CORRECTIONS
+---------------
+1. Drawing input priority / reliable activation
+   - An armed drawing tool or an active drawing gesture now receives chart pointer input before
+     demo-trading, alert, replay-marker and similar chart overlays can consume the click.
+   - Existing drawings under the pointer get drawing-object selection/context handling before
+     generic chart overlay/context actions.
+   - This targets the reported failure where a tool looked selected but the first chart click did
+     not actually start its construction.
+
+2. Construction state / first anchor / live preview
+   - Construction anchors use the reference-style hollow blue/white control-point treatment.
+   - Committed points stay visible during construction.
+   - Live geometry is rendered during construction instead of relying on a misleading generic
+     dashed guide once enough anchors exist for the real tool preview.
+
+3. Parallel Channel
+   - 3-point workflow retained.
+   - Point 1 and Point 2 define the first edge.
+   - Point 3 controls channel price/vertical offset relative to Point 2; its independent time/X
+     position no longer skews the channel.
+   - Third edit handle follows the rendered offset point.
+   - Dragging Point 2 keeps the offset anchor synchronized.
+   - Hit testing and bounds use the visible channel rails/body.
+   - Reference-like channel levels/background defaults were added.
+
+4. Regression Trend
+   - Visible regression baseline / upper / lower rails and filled body are now used for selection
+     and hit testing instead of relying only on raw anchor geometry.
+   - Rendering geometry is shared by display and selection for better reselect reliability.
+   - Upper region uses blue treatment; lower region uses red/pink treatment; center regression line
+     uses the dedicated base-line styling.
+   - Regression source/deviation/Pearson behavior remains available.
+
+5. Flat Top/Bottom Channel and Disjoint Channel
+   - Dedicated 3-point construction/rendering replaces generic parallelogram-style assumptions.
+   - Channel level interpolation/background behavior is supported.
+
+6. Pitchfork variants
+   - Original, Schiff, Modified Schiff and Inside variants now have distinct geometry handling.
+   - Settings include a Style selector for switching the four variants.
+   - Reference-oriented pitchfork level/color defaults were tightened.
+
+7. Folder-1 Settings / mini-control support
+   - Channel settings expose level rows with enable, ratio/level, color and width plus Background.
+   - Pitchfork settings expose the four style variants.
+   - Existing live settings update, lock, transparency and Place as Background behavior from v1.13.0.86
+     is preserved for continued parity testing.
+
+8. Folder-1 default visual treatment
+   - Folder-1 line/channel defaults were tightened toward the blue reference visual language.
+   - Channel/regression/pitchfork fill defaults were separated from simple-line defaults.
+
+PROTECTED SCOPE
+---------------
+The source diff against v1.13.0.86 is intentionally limited to these 9 files:
+- src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+- src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+- src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+- src/TickLab.App/Windows/TradingViewLineSettingsWindow.xaml
+- src/TickLab.App/Windows/TradingViewLineSettingsWindow.xaml.cs
+
+No MT5 bridge/history/replay source files were changed in this pass.
+No broker attachment or real order/trade placement was added.
+
+VALIDATION
+----------
+Custom static source validator: 590 passed / 0 failed.
+All XAML parsed, x:Name uniqueness/event-handler checks passed, tool IDs were unique, and the
+expected exact source-diff scope was verified.
+
+BUILD LIMITATION
+----------------
+The current build environment does not contain the Windows/.NET build toolchain, so this package
+has NOT been compiled here. The first user-side action must be the Windows compile followed by the
+Folder-1 interaction checklist included in this package.

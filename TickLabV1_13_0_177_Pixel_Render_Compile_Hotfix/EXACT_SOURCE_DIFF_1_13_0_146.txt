@@ -1,0 +1,20 @@
+TickLab v1.13.0.146 changed files vs v1.13.0.145
+
+1. src/TickLab.App/Controls/TickChartControl.cs
+- Stop raw renderer repaint on ordinary external pointer/crosshair movement.
+- Cache TickLayout / visible price-range computation.
+- Cache Bid/Ask/Mid DrawingGroup by data + viewport + price range + appearance settings.
+- Add dense envelope-preserving first/min/max/last bucket line rendering.
+- Skip redundant drag invalidations when viewport/range did not actually change.
+
+2. src/TickLab.App/Controls/CandleChartControl.RawTickDrawing.cs
+- Reuse sequential visible-slot array instead of Enumerable.Range(...).ToArray() per overlay render.
+
+3. src/TickLab.App/TickLab.App.csproj
+- Version 1.13.0.146.
+
+4. src/TickLab.App/MainWindow.xaml
+- v1.13.0.146 Raw Tick Smooth Render title.
+
+5. RELEASE_NOTES_1_13_0_146.txt
+- Release summary and protected behavior.

@@ -1,0 +1,8 @@
+TickLab v1.13.0.36 Restart Step 5A intended source changes
+
+Files src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs and src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs differ
+Files src/TickLab.App/MainWindow.DemoTrading.cs and src/TickLab.App/MainWindow.DemoTrading.cs differ
+Files src/TickLab.App/MainWindow.IndependentIndicators.cs and src/TickLab.App/MainWindow.IndependentIndicators.cs differ
+Files src/TickLab.App/MainWindow.IndicatorManagement.cs and src/TickLab.App/MainWindow.IndicatorManagement.cs differ
+Files src/TickLab.App/MainWindow.xaml and src/TickLab.App/MainWindow.xaml differ
+Files src/TickLab.App/TickLab.App.csproj and src/TickLab.App/TickLab.App.csproj differ

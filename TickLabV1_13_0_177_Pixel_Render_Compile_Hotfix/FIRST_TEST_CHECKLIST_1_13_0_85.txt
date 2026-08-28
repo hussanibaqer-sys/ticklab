@@ -1,0 +1,14 @@
+TickLab v1.13.0.85 first test checklist
+
+1. Compile in Visual Studio.
+2. Cross: both horizontal and vertical guides follow the cursor.
+3. Demonstration: Alt-drag slowly and very fast; stroke stays continuous with no isolated circles/gaps.
+4. Magic: burst spreads broadly across the visible chart, remains opaque/full-colour, then particles fall off-screen without evaporating.
+5. Lines/Channels/Pitchforks: rapidly click several tools; each selected tool must activate reliably.
+6. Start a two-point and three-point drawing: first anchor appears immediately and the current preview anchor remains visible before completion.
+7. Select a line: quick bar shows a clear colour swatch, width, style, transparency, lock and settings controls.
+8. Change quick-bar colour/width/style/transparency: drawing changes live.
+9. Open Settings > Style: check colour/style/width/arrows/Extend/Transparency/Middle point/Price labels and applicable channel/pitchfork settings.
+10. Move Transparency: 0% is opaque; increasing it makes the drawing more transparent, live before OK.
+11. Check Text / Coordinates / Visibility tabs where applicable.
+12. Visibility includes Ticks, Seconds, Minutes, Hours, Days, Weeks, Months, Ranges and min/max interval controls.

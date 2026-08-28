@@ -1,0 +1,53 @@
+TickLab v1.13.0.7 — Validation Report
+=====================================
+
+SOURCE VALIDATION
+- Static checks passed: 724
+- Static checks failed: 0
+- All XAML documents parsed successfully.
+- All XAML event handlers were resolved against their matching C# class/partial class.
+- All C# files passed delimiter, string and comment structural balancing.
+- MainWindow and CandleChartControl partial files contain no duplicate method signatures.
+- XAML names do not collide with code-behind members.
+- All required v1.13.0.7 solution, source, workspace and documentation files are present.
+
+INDEPENDENT CHART CONTEXT CHECKS
+- Every price chart has an independent symbol, timeframe, candle source, viewport and indicator stack.
+- Clicking a chart or its partition activates that chart without consuming drawing input.
+- Top-bar timeframe changes route only to the active chart context.
+- Custom timeframe changes route only to the active chart context.
+- Indicator add/remove/evaluation routes to the selected chart and its local indicator host.
+- The primary chart and dynamically created workspace charts use the same chart-context system.
+- Workspace synchronization no longer broadcasts one chart's candles/timeframe to every pane.
+
+DRAWING CHECKS
+- Pen, Brush, Highlighter and other drawing tools are armed on every chart control.
+- Drawing input works on any chart pane, not only Chart 1.
+- Drawing documents synchronize to every open chart showing the same symbol.
+- Drawing synchronization is independent of timeframe and protected against recursive updates.
+- Charts with a different symbol do not receive the synchronized drawings.
+
+WINDOW CONTROL AND EDITOR CHECKS
+- Docked chart/workspace controls use compact modern glyph buttons.
+- Detached chart/workspace caption controls use compact rounded hover styles.
+- Close controls retain their warning/confirmation behavior where required.
+- A separate slideable and resizable Code Editor panel is present on the right side.
+- The Code Editor supports Indicator/EA type selection, source editing, compile/save,
+  opening the full editor and opening the scripts folder.
+
+PERSISTENT WORKSPACE CHECKS
+- Existing v1.13.0.6 workspace pages, partition layouts, docking, detach/attach and ID reuse remain present.
+- Atomic autosave and backup recovery remain present.
+- Active chart identity and per-chart state participate in workspace preference capture/restore.
+
+PROTECTED COMPONENTS
+- Live Bridge V300 SHA-256 unchanged:
+  a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+- History Bridge V305 SHA-256 unchanged:
+  1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+- Marker V109 SHA-256 unchanged:
+  f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+LIMITATION
+- This Linux environment does not contain the Windows .NET 8/WPF build toolchain.
+- Visual Studio 2022 Release -> Rebuild Solution remains the final compiler and interactive UI test.

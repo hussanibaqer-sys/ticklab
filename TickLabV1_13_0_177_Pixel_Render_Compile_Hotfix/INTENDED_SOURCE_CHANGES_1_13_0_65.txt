@@ -1,0 +1,15 @@
+TickLab v1.13.0.65 intended source changes
+
+Desktop app only:
+- src/TickLab.App/Windows/MarketReplayWindow.cs — add ultra replay speeds through 30000x.
+- src/TickLab.App/MainWindow.AlertsReplay.cs — accept 30000x and increase turbo tick budget.
+- src/TickLab.App/Controls/TickChartControl.cs — ~3-inch right blank area and latest Bid/Ask horizontal price lines.
+- src/TickLab.App/MainWindow.xaml — top-right REC button and version title.
+- src/TickLab.App/MainWindow.xaml.cs — recorder shutdown hook.
+- src/TickLab.App/MainWindow.ScreenRecorder.cs — capture TickLab WPF surface.
+- src/TickLab.App/Windows/ScreenRecorderWindow.cs — recorder/screenshot UI and Recordings list.
+- src/TickLab.App/Core/Recording/MjpegAviWriter.cs — dependency-free MJPEG AVI writer.
+- src/TickLab.App/Core/Recording/RecordingMetadata.cs — descriptions/metadata.
+- src/TickLab.App/TickLab.App.csproj — version only.
+
+Protected MT5 EA and Gateway/FileBridge sources are intentionally unchanged.

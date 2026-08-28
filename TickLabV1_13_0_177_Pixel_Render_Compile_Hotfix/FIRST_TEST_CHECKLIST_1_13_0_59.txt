@@ -1,0 +1,19 @@
+TickLab v1.13.0.59 — first Replay compact-tab test
+
+1. Close old TickLab processes.
+2. Run Clean-Restore-Build.cmd or Visual Studio 2022 Release Rebuild.
+3. Open Replay. Confirm the full Replay window appears normally.
+4. Confirm Speed is a WHITE button with BLACK text and shows the chosen value, e.g. Speed 1×.
+5. Click Speed and choose 5×. Confirm the button immediately reads Speed 5×.
+6. Place the yellow Replay line and press Play.
+7. EXPECT: Replay starts successfully and the Replay window automatically collapses to the compact tab.
+8. EXPECT compact tab only: Play/Pause, Reverse, Forward, Speed, Line, Range, Expand icon.
+9. Confirm Play/Pause works from the compact tab.
+10. Confirm Reverse and Forward work from the compact tab.
+11. Confirm changing Speed in compact mode updates the displayed value.
+12. Toggle Line and Range and confirm the state is preserved when expanded.
+13. Click the Expand icon. Confirm the full Replay window returns without changing replay state.
+14. In the full window click Compact. Confirm it returns to the small tab.
+15. While expanded during a running replay, click Reverse/Forward. Confirm the window stays expanded until you manually compact it.
+16. Confirm the chart still keeps its replay-start horizontal position and does not snap candles to the far-right corner.
+17. Confirm screen recording has NOT been added in this build.

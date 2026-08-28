@@ -1,0 +1,30 @@
+TickLab v1.13.0.10 — Exact Colour System Repair
+================================================
+
+Scope
+-----
+This release implements only Step 1 of the planned feature sequence: repair of
+all colour-selection behavior. Replay, alerts, and additional chart types are
+not introduced in this package.
+
+Fixed
+-----
+- Rebuilt the shared colour picker with a professional Paint-style 70-colour
+  palette, exact RGB fields, hexadecimal input, and current/new previews.
+- Each visible swatch and its clicked value now come from the same immutable
+  colour entry, preventing index or display/value mismatches.
+- Added theme-protected exact-colour visual scopes. Light/dark application
+  theming can no longer repaint white, grey, black, or other neutral swatches.
+- Protected chart-settings swatches, drawing-settings previews, quick drawing
+  colour buttons, and current/new colour previews from theme recolouring.
+- Added a post-load exact-colour restoration guard for global/third-party
+  styles.
+- Fixed selected-swatch outlines to use the contrast of that swatch rather than
+  the currently selected colour.
+- Cancel continues to restore the original colour; OK remains the only commit.
+- Existing 1,500-candle maximum zoom-out and 3-pixel candle spacing are retained.
+
+Build note
+----------
+A Windows Visual Studio Clean/Rebuild is still required for the final WPF
+compiler and visual check.

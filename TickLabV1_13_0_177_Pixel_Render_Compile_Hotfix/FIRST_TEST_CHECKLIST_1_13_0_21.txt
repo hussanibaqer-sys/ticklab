@@ -1,0 +1,12 @@
+TickLab v1.13.0.21 first test
+
+1. Build and open XAUUSD M1. Confirm default candles behave exactly like v1.13.0.20.
+2. Test every Chart Type while repeatedly zooming in/out and dragging. Confirm the right edge and visible range do not disappear/return.
+3. Open Indicators. Confirm 38 built-ins grouped as Trend, Oscillators, Volumes and Bill Williams.
+4. Add Moving Average, Bollinger Bands, Ichimoku and Fractals to the main chart.
+5. Add RSI, MACD, ADX and Stochastic to separate panes. Resize panes and verify shared zoom/crosshair.
+6. Open each indicator Properties window and test Parameters, Levels, Scale, Visualization and Style.
+7. Save/reopen workspace and a floating chart. Confirm indicators return on the correct chart.
+8. Save/load a chart template containing indicators.
+9. Create an indicator alert for an RSI or MACD line.
+10. Start market replay and confirm indicators do not display future values.

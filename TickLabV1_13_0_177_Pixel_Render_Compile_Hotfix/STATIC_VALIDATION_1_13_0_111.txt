@@ -1,0 +1,60 @@
+TickLab v1.13.0.111 — Folder 5 Geometry TradingView Parity
+Static validation: 35 passed, 0 failed.
+Environment limitation: Windows WPF/MSBuild is unavailable in this Linux container, so Visual Studio compile/runtime remains the final gate.
+
+[PASS] All 31 XAML files parse
+[PASS] All 150 C# files have balanced delimiters
+[PASS] Only intended source files changed
+TickLab.App/Controls/CandleChartControl.Drawing.cs
+TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+TickLab.App/Core/Drawing/DrawingToolIconFactory.cs
+TickLab.App/MainWindow.xaml
+TickLab.App/MainWindow.xaml.cs
+TickLab.App/TickLab.App.csproj
+[PASS] Arrow Marker is exactly two-click
+[PASS] Arrow Mark Up remains one-click
+[PASS] Arrow Mark Down remains one-click
+[PASS] Arrow Mark Down palette icon points downward
+[PASS] Arrow Marker uses scalable rotatable polygon
+[PASS] Arrow Marker body/edge hit testing exists
+[PASS] Path remains multi-anchor straight polyline
+[PASS] Path double-click completion avoids duplicate endpoint
+[PASS] Path ends in arrowhead
+[PASS] Path arrowhead hit testing exists
+[PASS] Arc remains three-point construction
+[PASS] Arc uses endpoint/control/endpoint quadratic geometry
+[PASS] Arc closes chord and fills background
+[PASS] Arc quick edit exposes fill transparency
+[PASS] Arc fill is selectable
+[PASS] Curve completes on second endpoint click
+[PASS] Curve auto-generates one middle control
+[PASS] Curve visible curve is directly selectable
+[PASS] Double Curve completes on second endpoint click
+[PASS] Double Curve auto-generates two middle controls
+[PASS] Double Curve renders one cubic curve, not doubled offset line
+[PASS] Double Curve visible curve is directly selectable
+[PASS] Directional one-point marker shaft/head hit testing exists
+[PASS] Version is 1.13.0.111
+[PASS] Window title is v1.13.0.111 Folder 5
+[PASS] BuildArrowMarkerPolygon has exactly one declaration
+declarations=1
+[PASS] CreateArcGeometry has exactly one declaration
+declarations=1
+[PASS] SampleQuadraticBezier has exactly one declaration
+declarations=1
+[PASS] SampleCubicBezier has exactly one declaration
+declarations=1
+[PASS] DistanceToPolylineSamples has exactly one declaration
+declarations=1
+[PASS] PointInPolygon has exactly one declaration
+declarations=1
+[PASS] GetArrowHeadPoints has exactly one declaration
+declarations=1
+
+Changed source files vs v1.13.0.110:
+ - TickLab.App/Controls/CandleChartControl.Drawing.cs
+ - TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+ - TickLab.App/Core/Drawing/DrawingToolIconFactory.cs
+ - TickLab.App/MainWindow.xaml
+ - TickLab.App/MainWindow.xaml.cs
+ - TickLab.App/TickLab.App.csproj

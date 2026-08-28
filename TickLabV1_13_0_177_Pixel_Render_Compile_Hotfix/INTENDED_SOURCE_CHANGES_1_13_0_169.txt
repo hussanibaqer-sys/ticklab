@@ -1,0 +1,3 @@
+Files /mnt/data/tl168work/TickLabV1_13_0_168_Crisp_Drawing_Tool_Icons/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs and /mnt/data/tl169work/TickLabV1_13_0_169_Crisp_Action_Rail_Icons/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs differ
+Files /mnt/data/tl168work/TickLabV1_13_0_168_Crisp_Drawing_Tool_Icons/src/TickLab.App/MainWindow.xaml and /mnt/data/tl169work/TickLabV1_13_0_169_Crisp_Action_Rail_Icons/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/tl168work/TickLabV1_13_0_168_Crisp_Drawing_Tool_Icons/src/TickLab.App/TickLab.App.csproj and /mnt/data/tl169work/TickLabV1_13_0_169_Crisp_Action_Rail_Icons/src/TickLab.App/TickLab.App.csproj differ

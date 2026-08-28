@@ -1,0 +1,27 @@
+TickLab v1.13.0.172 — Compact Rail + Stronger Measure Icon
+
+Base:
+- Built directly from v1.13.0.171 — Human-Centered Rail Balance.
+- v1.13.0.157 Final Baseline remains the permanent functional rollback baseline.
+
+Drawing-rail size/balance polish:
+- Expanded left drawing rail reduced from 68 px to 53 px: a 15-DIP reduction, approximately 3.97 mm at WPF's standard 96-DPI unit scale.
+- Visible rail buttons remain 36 px wide and are centered with exactly 8.5 px visible breathing room on both left and right.
+- Folder primary buttons are also 36 px wide, matching the lower action buttons.
+- Folder split host is 44.5 px: 36 px visible primary button + 8.5 px hover-only chevron lane.
+- The chevron therefore borrows the normal right-side 8.5 px breathing room only while hovered; hidden arrows no longer affect the visible balance.
+- Bottom collapse control uses the same 8.5 px left origin.
+- Collapsed rail remains 14 px.
+
+Measure icon correction:
+- Rebuilt Measure from the fragile diagonal outline into a larger, continuous ruler silhouette.
+- Ruler body is closed and clear, with deliberate graduated tick marks.
+- It retains the global one-pixel visual stroke normalization so it stays crisp rather than becoming heavy.
+- Icon remains 30 px overall, matching the other lower drawing-rail icons.
+
+Preserved:
+- v1.13.0.171 human-centered arrow-overlap behavior.
+- v1.13.0.169/v1.13.0.168 one-pixel icon system and prior geometry corrections.
+- v1.13.0.167 hover-only folder chevrons/theme-aware hover treatment.
+- v1.13.0.166 universal markers / last-used folder tools.
+- No chart/drawing placement/editing, raw tick, seconds, Find, Replay, FileBridge/MT5, indicator, workspace or chart-type behavior changed.

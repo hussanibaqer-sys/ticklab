@@ -1,0 +1,360 @@
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Controls/TickChartControl.cs /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Controls/TickChartControl.cs
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Controls/TickChartControl.cs	2026-08-09 17:21:00.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Controls/TickChartControl.cs	2026-08-15 18:53:21.661328245 +0000
+@@ -17,6 +17,11 @@
+     // of clean breathing room to the right of the newest raw tick.
+     private const double DefaultRightBlankSpace = 288.0;
+     private const int MinimumVisibleTicks = 1;
++    // User-facing raw Tick Chart safety ceiling: never squeeze more than
++    // 1,600 individual ticks into the visible chart frame. History remains
++    // available through normal horizontal panning/paging.
++    private const int MaximumVisibleTicks = 1600;
++    private const double WheelZoomStep = 1.08;
+     private const double MaximumZoomFactor = 100.0;
+ 
+     private static readonly Brush MidBrush =
+@@ -140,8 +145,8 @@
+         if (_horizontalAuto)
+         {
+             _horizontalReferenceCount = Math.Max(_horizontalReferenceCount, _ticks.Count);
+-            _viewStart = 0;
+-            _viewCount = _ticks.Count;
++            _viewCount = GetMaximumVisibleCount(_ticks.Count);
++            _viewStart = Math.Max(0, _ticks.Count - _viewCount);
+         }
+         else
+         {
+@@ -186,8 +191,8 @@
+         RaiseViewChanged();
+     }
+ 
+-    public void ZoomIn() => ZoomBoth(0.82);
+-    public void ZoomOut() => ZoomBoth(1.22);
++    public void ZoomIn() => ZoomBoth(1.0 / WheelZoomStep);
++    public void ZoomOut() => ZoomBoth(WheelZoomStep);
+ 
+     public void ZoomBoth(
+         double factor,
+@@ -268,8 +273,8 @@
+         int count = EffectiveTickCount;
+         _horizontalReferenceCount = count;
+         _horizontalAuto = true;
+-        _viewStart = 0;
+-        _viewCount = count;
++        _viewCount = GetMaximumVisibleCount(count);
++        _viewStart = Math.Max(0, count - _viewCount);
+         InvalidateVisual();
+         RaiseViewChanged();
+     }
+@@ -284,12 +289,13 @@
+ 
+     public void FitAll()
+     {
+-        _horizontalReferenceCount = EffectiveTickCount;
++        int count = EffectiveTickCount;
++        _horizontalReferenceCount = count;
+         _verticalReferenceSpan = 0;
+         _horizontalAuto = true;
+         _verticalAuto = true;
+-        _viewStart = 0;
+-        _viewCount = EffectiveTickCount;
++        _viewCount = GetMaximumVisibleCount(count);
++        _viewStart = Math.Max(0, count - _viewCount);
+         InvalidateVisual();
+         RaiseViewChanged();
+     }
+@@ -300,7 +306,7 @@
+         if (count <= 0)
+             return;
+         _horizontalAuto = false;
+-        _viewCount = Math.Clamp(visibleCount, GetMinimumVisibleCount(count), Math.Max(1, count));
++        _viewCount = Math.Clamp(visibleCount, GetMinimumVisibleCount(count), GetMaximumVisibleCount(count));
+         _viewStart = Math.Max(0, count - _viewCount);
+         _horizontalReferenceCount = Math.Max(_horizontalReferenceCount, _viewCount);
+         _verticalAuto = true;
+@@ -516,8 +522,48 @@
+         if (!TryCreateLayout(out TickLayout layout))
+             return;
+ 
++        // Match the regular candle chart's configured wheel behavior. In
++        // Scroll mode the visible tick count stays fixed and the wheel pans
++        // through history; it must never masquerade as horizontal zoom-out.
++        if (Settings.ScrollWheelMode == ChartScrollWheelMode.Scroll)
++        {
++            EnsureHorizontalViewport();
++            int count = EffectiveTickCount;
++            int oldStart = _viewStart;
++            double wheelSteps = Math.Max(0.25, Math.Abs(e.Delta) / 120.0);
++            int tickShift = Math.Max(
++                1,
++                (int)Math.Round(_viewCount * 0.12 * wheelSteps));
++
++            _horizontalAuto = false;
++            _viewStart += e.Delta > 0 ? tickShift : -tickShift;
++            _viewStart = Math.Clamp(
++                _viewStart,
++                0,
++                Math.Max(0, count - _viewCount));
++
++            if (_viewStart != oldStart)
++            {
++                InvalidateVisual();
++                ViewChanged?.Invoke(this, EventArgs.Empty);
++                if (_viewStart < oldStart)
++                    RequestOlderHistoryIfNeeded(force: false);
++            }
++            else if (e.Delta < 0)
++            {
++                // At the oldest loaded edge, ask for the next history page
++                // without changing the zoom density.
++                RequestOlderHistoryIfNeeded(force: true);
++            }
++
++            e.Handled = true;
++            return;
++        }
++
+         Point mouse = e.GetPosition(this);
+-        double factor = e.Delta > 0 ? 0.84 : 1.19;
++        // Smaller proportional steps make both axes feel continuous and also
++        // respect high-resolution wheel/touchpad deltas.
++        double factor = Math.Pow(WheelZoomStep, -e.Delta / 120.0);
+ 
+         if (IsPriceScale(mouse, layout))
+         {
+@@ -601,7 +647,7 @@
+             {
+                 double span =
+                     _dragStartMaximum - _dragStartMinimum;
+-                double factor = Math.Exp(dy / 170.0);
++                double factor = Math.Exp(dy / 240.0);
+                 double newSpan = ClampVerticalSpan(
+                     span * factor,
+                     layout);
+@@ -617,7 +663,7 @@
+             case DragMode.TimeScale:
+             {
+                 int count = EffectiveTickCount;
+-                double factor = Math.Exp(dx / 240.0);
++                double factor = Math.Exp(dx / 360.0);
+                 int newCount = Math.Clamp(
+                     (int)Math.Round(
+                         _dragStartViewCount * factor),
+@@ -682,8 +728,8 @@
+ 
+         if (_horizontalAuto)
+         {
+-            _viewStart = 0;
+-            _viewCount = count;
++            _viewCount = GetMaximumVisibleCount(count);
++            _viewStart = Math.Max(0, count - _viewCount);
+             return;
+         }
+ 
+@@ -794,9 +840,14 @@
+             TopMargin,
+             width,
+             height);
+-        double rightBlank = Math.Min(
+-            DefaultRightBlankSpace,
+-            Math.Max(0.0, plot.Width * 0.45));
++        // Future/right breathing room belongs only to the live edge. The
++        // instant the user pans into history, reclaim the complete plot width
++        // so an accidental scroll cannot leave a persistent empty right gap.
++        double rightBlank = IsAtLatest
++            ? Math.Min(
++                DefaultRightBlankSpace,
++                Math.Max(0.0, plot.Width * 0.45))
++            : 0.0;
+ 
+         layout = new TickLayout(
+             plot,
+@@ -840,7 +891,9 @@
+ 
+     private static int GetMaximumVisibleCount(
+         int availableCount) =>
+-        Math.Max(1, availableCount);
++        availableCount > 0
++            ? Math.Min(MaximumVisibleTicks, availableCount)
++            : 0;
+ 
+     private double ClampVerticalSpan(
+         double proposedSpan,
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.RawTickChart.cs /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.RawTickChart.cs
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.RawTickChart.cs	2026-08-09 17:20:58.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.RawTickChart.cs	2026-08-15 18:52:11.180046442 +0000
+@@ -6,7 +6,7 @@
+ 
+ public partial class MainWindow
+ {
+-    private const int RawTickInitialVisibleCount = 2500;
++    private const int RawTickInitialVisibleCount = 1600;
+     private const int RawTickReadLimit = 150_000;
+ 
+     private void WireRawTickChartControl(ChartRuntimeContext context)
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml	2026-08-15 18:24:21.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml	2026-08-15 18:52:11.187612643 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.139 — Find Candle Direct Seek / Marker / Seconds History"
++        Title="TickLab v1.13.0.140 — Find Loading + Tick Chart Navigation"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml.cs /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml.cs
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml.cs	2026-08-15 18:28:11.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/MainWindow.xaml.cs	2026-08-15 18:52:11.186755444 +0000
+@@ -126,6 +126,7 @@
+     private DetachedChartWindow? _activeDetachedChartWindow;
+     private HistoryImportProgressWindow? _historyProgressWindow;
+     private CandleMarkerWindow? _markerWindow;
++    private bool _findCandleInProgress;
+     private TickScriptEditorWindow? _scriptEditorWindow;
+     private IndicatorsWindow? _indicatorsWindow;
+     private DrawingObjectTreeWindow? _drawingObjectTreeWindow;
+@@ -728,15 +729,33 @@
+ 
+     private async Task FindCandleAsync(MarkerDraft draft)
+     {
+-        await CreateMarkerAsync(draft, sendToMt5: false);
+-        CandleMarker? marker = _candleMarkers.FirstOrDefault(item =>
+-            string.Equals(item.Symbol, draft.Symbol, StringComparison.OrdinalIgnoreCase) &&
+-            string.Equals(item.Timeframe, draft.Timeframe, StringComparison.OrdinalIgnoreCase) &&
+-            item.StartUnix == draft.StartUnix);
+-        if (marker is null)
++        if (_findCandleInProgress)
++        {
++            _markerWindow?.SetStatus("Find Candle is already finding a candle. Finish the current search before starting another.");
+             return;
+-        _markerWindow?.SetStatus("Candle found. Loading and centering it on the chart…");
+-        await GoToMarkerAsync(marker);
++        }
++
++        _findCandleInProgress = true;
++        _markerWindow?.SetFindingState(true);
++        _markerWindow?.SetStatus("Finding candle…");
++        try
++        {
++            await CreateMarkerAsync(draft, sendToMt5: false);
++            CandleMarker? marker = _candleMarkers.FirstOrDefault(item =>
++                string.Equals(item.Symbol, draft.Symbol, StringComparison.OrdinalIgnoreCase) &&
++                string.Equals(item.Timeframe, draft.Timeframe, StringComparison.OrdinalIgnoreCase) &&
++                item.StartUnix == draft.StartUnix);
++            if (marker is null)
++                return;
++
++            _markerWindow?.SetStatus("Candle found. Loading and centering it on the chart…");
++            await GoToMarkerAsync(marker);
++        }
++        finally
++        {
++            _findCandleInProgress = false;
++            _markerWindow?.SetFindingState(false);
++        }
+     }
+ 
+     private static string GetMarkerTimeframeCode(TimeframeDefinition timeframe) =>
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/TickLab.App.csproj /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/TickLab.App.csproj
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/TickLab.App.csproj	2026-08-15 18:24:21.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/TickLab.App.csproj	2026-08-15 18:52:11.187760594 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.139</Version>
+-    <AssemblyVersion>1.13.0.139</AssemblyVersion>
+-    <FileVersion>1.13.0.139</FileVersion>
++    <Version>1.13.0.140</Version>
++    <AssemblyVersion>1.13.0.140</AssemblyVersion>
++    <FileVersion>1.13.0.140</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml	2026-08-09 17:21:00.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml	2026-08-15 18:52:11.180121254 +0000
+@@ -107,8 +107,18 @@
+                     <TextBlock Text="Uses the symbol, server date, time and timeframe above. It only loads and centres the candle; it never imports or exports history."
+                                Foreground="#C4B5FD" TextWrapping="Wrap" Margin="0,3,10,0"/>
+                 </StackPanel>
+-                <Button Grid.Column="1" Content="Find candle" Background="#7C3AED"
+-                        Click="FindButton_Click" VerticalAlignment="Center"/>
++                <Button x:Name="FindButton" Grid.Column="1" Background="#7C3AED"
++                        Click="FindButton_Click" VerticalAlignment="Center" MinWidth="112">
++                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
++                        <TextBlock x:Name="FindSpinner" Text="↻" FontSize="17" FontWeight="SemiBold"
++                                   Visibility="Collapsed" Margin="0,0,6,0" RenderTransformOrigin="0.5,0.5">
++                            <TextBlock.RenderTransform>
++                                <RotateTransform x:Name="FindSpinnerRotate" Angle="0"/>
++                            </TextBlock.RenderTransform>
++                        </TextBlock>
++                        <TextBlock x:Name="FindButtonText" Text="Find candle" VerticalAlignment="Center"/>
++                    </StackPanel>
++                </Button>
+             </Grid>
+         </Border>
+ 
+diff -ruN /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml.cs /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml.cs
+--- /mnt/data/tl139base/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml.cs	2026-08-15 10:03:33.000000000 +0000
++++ /mnt/data/tl140/TickLabV1_13_0_139_FindCandle_DirectSeek_Marker_SecondsHistory/src/TickLab.App/Windows/CandleMarkerWindow.xaml.cs	2026-08-15 18:53:00.040309774 +0000
+@@ -2,6 +2,7 @@
+ using System.Windows;
+ using System.Windows.Input;
+ using System.Windows.Media;
++using System.Windows.Media.Animation;
+ using TickLab.Core.Market;
+ 
+ namespace TickLab.Desktop.Windows;
+@@ -19,6 +20,7 @@
+     private bool _allowClose;
+     private string _lastAutoNavigatedMarkerId = string.Empty;
+     private bool _markModeActive;
++    private bool _findInProgress;
+ 
+     public CandleMarkerWindow(bool receiveEnabled)
+     {
+@@ -102,6 +104,31 @@
+ 
+     public void SetStatus(string status) => StatusText.Text = status;
+ 
++    public void SetFindingState(bool finding)
++    {
++        _findInProgress = finding;
++        FindButton.IsEnabled = !finding;
++        FindButtonText.Text = finding ? "Finding…" : "Find candle";
++        FindSpinner.Visibility = finding ? Visibility.Visible : Visibility.Collapsed;
++
++        if (finding)
++        {
++            var animation = new DoubleAnimation(
++                0.0,
++                360.0,
++                new Duration(TimeSpan.FromMilliseconds(850)))
++            {
++                RepeatBehavior = RepeatBehavior.Forever
++            };
++            FindSpinnerRotate.BeginAnimation(RotateTransform.AngleProperty, animation);
++        }
++        else
++        {
++            FindSpinnerRotate.BeginAnimation(RotateTransform.AngleProperty, null);
++            FindSpinnerRotate.Angle = 0.0;
++        }
++    }
++
+     private void SymbolBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+     {
+         if (_symbolOptions.Count > 0)
+@@ -158,6 +185,9 @@
+ 
+     private void FindButton_Click(object sender, RoutedEventArgs e)
+     {
++        if (_findInProgress)
++            return;
++
+         if (TryReadDraft(out MarkerDraft? draft))
+             FindRequested?.Invoke(draft!);
+     }

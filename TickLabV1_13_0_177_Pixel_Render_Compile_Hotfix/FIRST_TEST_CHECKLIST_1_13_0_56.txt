@@ -1,0 +1,14 @@
+TickLab v1.13.0.56 — first replay recovery test
+
+1. Close old TickLab processes.
+2. Run Clean-Restore-Build.cmd or Release Rebuild TickLabV1_13_0_56.sln.
+3. Open historical XAUUSD/XAUUSDr data with saved raw ticks.
+4. Tick Replay line and place the yellow line on a candle known to have raw ticks.
+5. Press Play once.
+   EXPECT: yellow candle and all candles to its right hide immediately.
+   EXPECT: first raw tick appears and the candle grows tick-by-tick without a quarter scan.
+6. Leave MT5/live feed running during replay. Press End Replay.
+   EXPECT: current live chart returns with ticks/candles received during replay.
+7. Test yellow/red Replay Range.
+   EXPECT: starts at yellow and auto-stops at red.
+8. If Replay cannot find ticks, copy the exact Replay status/error text; do not re-import or delete history.

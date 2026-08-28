@@ -1,0 +1,23 @@
+TickLab v1.13.0.47 exact source/file differences from v1.13.0.46
+
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: BUILD_README_1_13_0_47.txt
+Files Clean-Restore-Build.cmd and Clean-Restore-Build.cmd differ
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: FIRST_TEST_CHECKLIST_1_13_0_47.txt
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: INTENDED_SOURCE_CHANGES_1_13_0_47.txt
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: PROTECTED_MT5_FILEBRIDGE_VERIFICATION_1_13_0_47.txt
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: RELEASE_NOTES_1_13_0_47.txt
+Only in /mnt/data/ticklab_46_work/TickLabV1_13_0_46_History_SLTP_PnL_MultiChart_Live_Fix: TickLabV1_13_0_46.sln
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: TickLabV1_13_0_47.sln
+Only in /mnt/data/ticklab_47_work/TickLabV1_13_0_47_Alerts_Favourites_Rail_EntryDrag_Fix: VALIDATION_REPORT_1_13_0_47.txt
+Files VERSION.txt and VERSION.txt differ
+Files src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs and src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs differ
+Files src/TickLab.App/Controls/CandleChartControl.cs and src/TickLab.App/Controls/CandleChartControl.cs differ
+Files src/TickLab.App/MainWindow.AlertsReplay.cs and src/TickLab.App/MainWindow.AlertsReplay.cs differ
+Files src/TickLab.App/MainWindow.ChartContexts.cs and src/TickLab.App/MainWindow.ChartContexts.cs differ
+Files src/TickLab.App/MainWindow.DemoTrading.cs and src/TickLab.App/MainWindow.DemoTrading.cs differ
+Files src/TickLab.App/MainWindow.MultiChartLive.cs and src/TickLab.App/MainWindow.MultiChartLive.cs differ
+Files src/TickLab.App/MainWindow.xaml and src/TickLab.App/MainWindow.xaml differ
+Files src/TickLab.App/TickLab.App.csproj and src/TickLab.App/TickLab.App.csproj differ
+Files src/TickLab.App/Windows/SymbolPickerWindow.xaml and src/TickLab.App/Windows/SymbolPickerWindow.xaml differ
+Files src/TickLab.App/Windows/SymbolPickerWindow.xaml.cs and src/TickLab.App/Windows/SymbolPickerWindow.xaml.cs differ
+Only in tools: validate_source_1_13_0_47.py

@@ -1,0 +1,28 @@
+TickLab v1.13.0.122 — STATIC VALIDATION
+
+PASS | XAML parse | 31/31
+PASS | C# structural scan | 150 files, 0 failures
+PASS | Version file | 1.13.0.122
+PASS | Project version | 1.13.0.122
+PASS | Window title | v1.13.0.122
+PASS | Solution identity | TickLabV1_13_0_122.sln
+PASS | Build script identity | v122 solution
+PASS | Emoji keys unique | 1957 keys
+PASS | Unicode 17 base fully-qualified coverage | official=1914, missing=0
+PASS | Added coverage marker | present
+PASS | Frozen Controls/CandleChartControl.Drawing.cs | byte-identical to v121
+PASS | Frozen Controls/CandleChartControl.DrawingParity.cs | byte-identical to v121
+PASS | Frozen Core/Drawing/DrawingToolCatalog.cs | byte-identical to v121
+PASS | Frozen Windows/DrawingMediaPickerWindow.xaml.cs | byte-identical to v121
+
+App source files changed vs v1.13.0.121:
+ - Core/Drawing/DrawingMediaCatalog.cs
+ - MainWindow.xaml
+ - TickLab.App.csproj
+
+Emoji catalog calls: 1957
+Unique emoji marks: 1914
+Official Unicode 17 fully-qualified base forms (no skin-tone permutations): 1914
+Missing official base forms after fix: 0
+
+Runtime note: Windows WPF/MSBuild is not available in this Linux environment; Visual Studio runtime/compile remains the final gate.

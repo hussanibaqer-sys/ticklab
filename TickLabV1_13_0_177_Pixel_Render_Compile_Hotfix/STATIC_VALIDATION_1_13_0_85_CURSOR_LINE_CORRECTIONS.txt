@@ -1,0 +1,15 @@
+TickLab 1.13.0.85 Cursor + Folder 1 correction static validation
+XAML files parsed: 30
+C# files scanned: 149
+XAML event references checked: 428
+Missing XAML handlers: 0
+Drawing tool IDs found: 101; duplicates: 0
+Cross full guide: YES
+Demonstration interpolation / no spot renderer: YES
+Magic broad plot spread + opaque falling particles: YES
+Palette mouse-down activation: YES
+Live working construction anchors: YES
+Folder 1 quick swatch + transparency: YES
+Folder 1 full live Style/Text/Coordinates/Visibility settings: YES
+dotnet/MSBuild availability: NOT AVAILABLE IN THIS CONTAINER
+Result: STATIC PASS

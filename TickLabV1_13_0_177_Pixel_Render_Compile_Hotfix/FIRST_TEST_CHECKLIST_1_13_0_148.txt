@@ -1,0 +1,9 @@
+v1.13.0.148 first runtime test
+1. Confirm 1s historical candles still load correctly far beyond the recent period.
+2. Tick chart: drag horizontally/vertically continuously and compare smoothness with candle chart.
+3. Tick chart: wheel zoom repeatedly; confirm smooth motion and 5,000 visible-tick hard ceiling.
+4. Tick chart: drag price scale and time scale.
+5. Find Candle -> Tick: search a known old timestamp. Confirm it does not switch to an empty chart while searching.
+6. Confirm found tick is centered and has a visible vertical marker.
+7. Confirm marker can be removed and Live/End returns to current ticks.
+8. Confirm drawing engine/Measure/Inspector behavior is unchanged.

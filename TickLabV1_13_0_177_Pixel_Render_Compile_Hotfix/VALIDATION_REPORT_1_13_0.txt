@@ -1,0 +1,52 @@
+TickLab v1.13.0 — Validation Report
+===================================
+
+SOURCE VALIDATOR
+- 446/446 static checks passed.
+- 25 XAML files parsed successfully.
+- All referenced XAML event handlers were found in C# source.
+- All C# source files passed delimiter/string/comment structural balancing.
+- No duplicate x:Name values were found inside any XAML file.
+- Known prior compile-risk properties/tokens were absent:
+  - CharacterSpacing
+  - ambiguous unqualified WPF Path construction
+
+PREMIUM INTERFACE CHECKS
+- New two-tier application shell present.
+- Thin icon-only drawing rail present.
+- Integrated drawing tool list and drawing inspector present.
+- Full-height chart workspace present.
+- Fixed four-panel chart deck absent.
+- Old fixed Favorites host hidden; free draggable Favorites window retained.
+- Compact horizontal timeframe strip present.
+- High-DPI layout rounding, device-pixel snapping and ClearType present.
+
+DRAWING CHECKS
+- At least 95 unique drawing/media tools remain registered.
+- Live quick editor, templates, context menu, undo/redo and persistence retained.
+- Per-level Fibonacci FillColor and FillOpacity serialized.
+- Independent level zone colours and opacity rendered.
+- Level add/remove/reorder/reset and live preview retained.
+- Smooth Bezier pen/highlighter rendering present.
+- Freehand anchor simplification present.
+- Rounded freehand caps and joins present.
+
+STABILITY CHECKS
+- Workspace non-finite JSON sanitation retained.
+- Tick range filtering retained.
+- Cooperative tick cancellation retained.
+- Tick progress checkpointing retained.
+- 15-second startup foreground tick budget retained.
+- Owned Favorites-window startup guard retained.
+
+PROTECTED SHA-256
+- Live Bridge V300:
+  a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+- History Bridge V305:
+  1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+- Marker V109:
+  f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+LIMITATION
+The packaging environment does not contain the Windows .NET/WPF build toolchain.
+A Visual Studio 2022 Release rebuild is required for the final compiler and on-screen test.

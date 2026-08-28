@@ -1,0 +1,39 @@
+TickLab v1.13.0.41 — First Windows test checklist
+
+Colour palette
+[ ] Open Chart Settings > Chart background > colour picker.
+[ ] Confirm Near Black is visible and selects exact shade #080808.
+[ ] Hover Near Black for one second and confirm the tooltip says Near Black.
+
+SL/TP controls
+[ ] Open Demo Trading.
+[ ] Select None, then each SL preset and each TP preset.
+[ ] Confirm selected preset is dark blue with white text.
+[ ] Confirm all inactive None/preset buttons are white with black text.
+[ ] Check hover, pressed and disabled states for white-on-white text.
+
+Pending orders
+[ ] Open Pending Order.
+[ ] Confirm Type and Expiration fields are white/light with black text.
+[ ] Open both dropdowns and verify normal, hover, selected and disabled entries are readable.
+
+Middle slide handle
+[ ] Confirm the separate middle handle between Demo Trading and Code Editor is easy to click.
+[ ] Click to open/close the right workspace.
+[ ] Drag left/right to resize.
+[ ] Confirm it does not freeze after releasing outside the handle.
+
+Active trade levels
+[ ] Open one Buy and one Sell demo position.
+[ ] Confirm Entry label shows side, lot and running P/L only.
+[ ] Confirm Entry, SL and TP exact prices are shown on the price scale.
+[ ] Confirm SL/TP projected USD labels remain compact.
+[ ] Drag SL and TP and confirm the existing behavior still works.
+
+Trade history markings
+[ ] Close a demo trade.
+[ ] Confirm a line connects the entry point to the exit point.
+[ ] Confirm entry and exit endpoint markers are visible.
+[ ] Hover the line and verify direction, lot, entry/exit price/time, P/L, close reason and historical SL/TP.
+[ ] Restart TickLab and confirm the path restores.
+[ ] Delete selected/all history and confirm matching paths disappear.

@@ -1,0 +1,23 @@
+TickLab v1.13.0.139 FIRST TEST CHECKLIST
+
+A. Find Candle speed
+1. Open your normal symbol on 1s.
+2. Find a valid market timestamp about one month old.
+3. Confirm the chart jumps directly near that timestamp without progressively drawing/scanning all weeks between live and the target.
+4. Repeat on several old dates.
+
+B. Marker removal
+1. Find/mark a candle.
+2. Use Remove Marker. Confirm the thick marker, thin historical guide, and thin interactive yellow selector do not remain as ghosts.
+3. If a historical guide is visible, left-click it: it should visibly thicken/select. Press Delete/Backspace, or right-click > Remove Find Candle marker.
+4. If a thin Find Candle selection line is visible while Mark mode is active, press Delete/Backspace or right-click > Remove Find Candle selection.
+
+C. 1-second history scrolling
+1. Open 1s near live.
+2. Pan/scroll backward continuously.
+3. Confirm older 1s candles load in a deeper buffer and backward navigation requires far fewer visible loading pauses.
+4. Confirm the chart still stays within its bounded virtual-memory window.
+5. Return to End/Go Live and confirm live capture/history is still correct.
+
+Build note
+- This package was source-validated in the ChatGPT environment. The environment did not contain the .NET SDK, so run your normal Visual Studio Restore/Build on Windows before runtime testing.

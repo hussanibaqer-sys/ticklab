@@ -1,0 +1,14 @@
+TickLab v1.11.0.4 Validation Report
+
+Scope: workspace persistence JSON hotfix.
+
+Validated:
+- Named floating-point sentinel handling enabled for settings only.
+- Preferences sanitized before every save and after every load.
+- Non-finite positions normalize to the existing NaN/unset sentinel.
+- Invalid sizes normalize to safe defaults and bounds.
+- Invalid manual viewport ranges return to auto-scale.
+- Protected MT5 source SHA-256 values remain unchanged.
+- XAML parsing, event handlers, C# delimiter checks, and existing drawing/history checks pass.
+
+Note: final Windows WPF compilation must be completed in Visual Studio 2022.

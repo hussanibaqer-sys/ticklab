@@ -1,0 +1,26 @@
+TickLab v1.13.0.134 — Seconds On-Demand Raw Tick Paging
+
+Scope
+- Seconds-candle historical paging only (1s, 15s, 30s, 45s, custom seconds).
+- Keeps v1.13.0.133 1,600-candle page / 1,500 visible-candle contract.
+
+Fixes
+1. Seconds history boundary now includes historical Bridge raw-tick source coverage, not only already-indexed ticks.tlt coverage.
+2. A full first 1,600-candle page can no longer falsely declare itself to be the beginning of all stored seconds history while older raw tick files exist.
+3. Older seconds-page requests first read permanent ticks.tlt; if the page is short/missing, TickLab selects a bounded window of complete historical ticks_history_* source snapshots immediately before the requested boundary.
+4. Only those required historical snapshots are synchronized into the permanent canonical tick archive; recent/live files are excluded from this backward repair.
+5. Selected repair snapshots are imported as complete authoritative source files so range edges cannot be partially imported and then incorrectly marked fully synchronized.
+6. On-demand repair can force re-index selected historical snapshots even when an old tick_sync_state entry says the file is unchanged.
+7. After synchronization, the requested seconds candles are regenerated from permanent raw ticks and returned to the existing virtual candle window.
+
+Unchanged
+- 1,600 launch/history page size.
+- 1,500 maximum visible candle ceiling in CandleChartControl.
+- 12,000 rolling virtual candle buffer.
+- M1/H1/native candle history priority and reconstruction logic.
+- Raw Tick chart viewport (not part of this build).
+- Drawing tools, Favorites, Emoji, Measure, Rectangle geometry, top toolbar and quick-edit behavior.
+- MT5 connector/EA source files.
+
+Runtime note
+- Linux environment has no dotnet/WPF toolchain, so Windows Visual Studio remains the compile/runtime gate.

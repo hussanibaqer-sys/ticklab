@@ -1,0 +1,16 @@
+TickLab v1.13.0.25 validation report
+
+Scope: basic Candles chart at the 1,500-bar horizontal limit.
+
+Validated:
+- horizontal zoom core returns without changing visible count or right offset when already at either limit;
+- combined horizontal/vertical wheel zoom publishes one viewport event and one redraw;
+- vertical-only continuation leaves newest-candle anchor and X geometry unchanged;
+- compressed candle OHLC values always map to a drawable pixel row;
+- all XAML files parse and event handlers resolve;
+- CandleChartControl partial methods remain unique;
+- protected MT5 bridge hashes remain unchanged;
+- bridge-write regression checks pass.
+
+Static/source checks passed: 7,027.
+Windows Visual Studio is still required for final WPF compilation and live mouse-wheel testing.

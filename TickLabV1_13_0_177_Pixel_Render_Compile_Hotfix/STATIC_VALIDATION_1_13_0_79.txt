@@ -1,0 +1,22 @@
+TickLab v1.13.0.79 — Static Validation Report
+
+PASS: XAML XML parse — 29 files, 0 errors
+PASS: XAML event-handler references — 0 unresolved handlers
+PASS: C# delimiter/lexical scan — 148 files, 0 errors
+PASS: Drawing tool catalog IDs — 101 tools, 101 unique IDs
+PASS: Audited required tools — missing: none
+PASS: Emoji library — 1609 entries, 1609 unique; categories missing: none
+PASS: Image chart-object wiring — dialog + direct placement + drawing renderer present
+PASS: Drawing Favorites projection — tool right-click + chart/workspace On/Off + owner-frame clamp present
+PASS: No broker/order action in drawing flow — 0 prohibited-action matches
+PASS: Version stamp — 1.13.0.79 project + title
+PASS: Source package hygiene — 0 bin/obj directories
+
+Build environment limitation
+----------------------------
+This container does not have dotnet/MSBuild/C# compiler tooling installed, so a real WPF compile could not be executed here.
+The package therefore includes static XAML parsing, XAML event-reference checks, C# lexical/delimiter checks, catalog integrity checks and source-scope checks only.
+
+First Windows smoke test
+------------------------
+Run the included FIRST_TEST_CHECKLIST_1_13_0_79.txt on the normal TickLab Windows build machine before treating the release as compiled/verified.

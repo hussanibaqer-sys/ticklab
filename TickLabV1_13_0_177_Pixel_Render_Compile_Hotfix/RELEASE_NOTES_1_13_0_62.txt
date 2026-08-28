@@ -1,0 +1,27 @@
+TickLab v1.13.0.62 — Replay Completion + Line Pixels + Alert Bulk Delete
+
+Scope
+-----
+Replay completion timing and Replay/Alerts line-management UI only.
+
+Replay
+------
+1. Replay range completion now becomes authoritative immediately at the red boundary.
+   - IsPlaying is cleared and the replay timer stops before final redraw/indicator refresh work.
+   - The Play/Pause control therefore returns to Play immediately instead of remaining on Pause while final work runs.
+   - A replay slice that already reaches the selected red boundary no longer performs an unnecessary follow-up disk read.
+2. Expanded Replay window now has independent START and END pixel-thickness selectors (1–5 px).
+3. START/END colour and pixel thickness persist through chart/workspace settings.
+
+Alerts
+------
+1. Alert edit/settings window now includes Line appearance with colour and pixel thickness.
+2. Active Alerts window keeps quick Line colour and adds Line pixels.
+3. Active Alerts rows now have checkboxes. Tick any number of alerts and press Delete selected to remove them together with one confirmation.
+4. Per-alert pixel thickness is persisted and used by the chart alert-line renderer.
+
+Validation
+----------
+Static source validation: 716 passed, 0 failed.
+Protected MT5/FileBridge/.mq5 comparison against v1.13.0.61: 20 checked, 0 changed.
+Final Windows/.NET WPF compilation must still be run in Visual Studio 2022 on Windows.

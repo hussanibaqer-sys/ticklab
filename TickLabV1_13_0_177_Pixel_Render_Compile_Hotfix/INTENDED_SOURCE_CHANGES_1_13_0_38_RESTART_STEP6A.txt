@@ -1,0 +1,29 @@
+TickLab v1.13.0.38 intended source changes relative to v1.13.0.37
+
+Release identity
+- VERSION.txt
+- TickLabV1_13_0_38.sln (renamed from TickLabV1_13_0_37.sln)
+- Clean-Restore-Build.cmd
+- src/TickLab.App/TickLab.App.csproj
+- src/TickLab.App/MainWindow.xaml
+
+Indicator context-menu correction
+- src/TickLab.App/Controls/BuiltInIndicatorPlotControl.cs
+- src/TickLab.App/Controls/TickScriptIndicatorPlotControl.cs
+- src/TickLab.App/Controls/IndicatorPaneStackControl.cs
+- src/TickLab.App/Controls/CandleChartControl.Indicators.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/MainWindow.IndependentIndicators.cs
+- src/TickLab.App/MainWindow.IndicatorManagement.cs
+
+Validation/release documentation
+- tools/validate_source_1_13_0_38_restart_step6a.py
+- RELEASE_NOTES_1_13_0_38_RESTART_STEP6A.txt
+- BUILD_README_1_13_0_38_RESTART_STEP6A.txt
+- FIRST_TEST_CHECKLIST_1_13_0_38_RESTART_STEP6A.txt
+- VALIDATION_RUN_1_13_0_38_RESTART_STEP6A.txt
+- VALIDATION_REPORT_1_13_0_38_RESTART_STEP6A.txt
+- PROTECTED_MT5_FILEBRIDGE_VERIFICATION_1_13_0_38.txt
+- EXACT_FILE_DIFF_1_13_0_38.txt
+- SOURCE_MANIFEST_SHA256_1_13_0_38.txt

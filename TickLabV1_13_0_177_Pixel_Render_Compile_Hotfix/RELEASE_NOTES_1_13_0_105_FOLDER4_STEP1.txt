@@ -1,0 +1,53 @@
+TickLab v1.13.0.105 — Folder 4 Step 1 Position / Measurement Parity
+
+SCOPE
+This build intentionally freezes the rest of TickLab and changes only Step 1 of the Prediction & Measurement folder plus version/title metadata.
+
+TOOLS IN THIS PASS
+- Long Position
+- Short Position
+- Forecast / Projection
+- Price Range
+- Date Range
+- Date & Price Range
+
+LONG / SHORT POSITION
+- Target and Stop now use independent role colours.
+- Target and Stop have independent fill transparency controls (0 transparent -> 1 solid).
+- Added position-specific Style controls for Target colour, Stop colour, their transparency, text size, Stats mode, Price labels, and Compact stats mode.
+- Target, Stop and center position labels were rebuilt into separate TradingView-style information boxes instead of one generic block.
+- Stats calculate R:R, quantity, risk, target/stop movement, target/stop amount, and open PnL from the latest candle.
+- Existing legacy Profit/Loss levels remain readable through renderer fallback.
+
+FORECAST / PROJECTION
+- Replaced the simple connected projection with a quadratic curved forecast path controlled by the middle anchor.
+- Added start price/time label.
+- Added end result label with price change, percent, elapsed time, end price and end time.
+- Added SUCCESS / RESULT status bar control.
+
+PRICE RANGE
+- Added TradingView-style top/bottom boundaries and double-ended vertical measurement arrow.
+- Label can show exact price movement, percentage and point/pip movement.
+
+DATE RANGE
+- Added left/right time boundaries and double-ended horizontal measurement arrow.
+- Label can show bar count, elapsed time and range volume.
+- Uses real volume when available, otherwise tick volume.
+
+DATE & PRICE RANGE
+- Combines both vertical price and horizontal date measurement structures.
+- Combined label can show price change, percentage, points, bars, duration and volume.
+
+SELECTION / QUICK EDIT
+- Visible body/label/arrow areas of all six Step-1 tools are included in parent hit testing to reduce anchor hunting.
+- Prediction/Measurement quick edit now exposes line opacity and, where applicable, fill toggle/fill opacity/fill colour.
+- Long/Short keep Target and Stop fills independent in full Settings rather than collapsing them into one generic fill.
+
+FROZEN AREAS
+All source files outside the nine intended files listed in EXACT_SOURCE_DIFF_1_13_0_105.txt are byte-identical to v1.13.0.104. This includes source outside the shared drawing/settings files, including MT5/history/replay/gateway areas.
+
+VALIDATION LIMITATION
+This environment does not have dotnet/MSBuild installed, so the WPF project could not be compiled here. Static C#/XAML/source-scope checks passed; Windows Visual Studio compile and runtime behavior remain the user test gate.
+
+SOLUTION NAME
+- The solution file is now named TickLabV1_13_0_105.sln so the file name matches the delivered version.

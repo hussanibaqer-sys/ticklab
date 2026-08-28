@@ -1,0 +1,10 @@
+TickLab v1.13.0.12 — History Completion, Replay Indexing, Alerts and Floating Chart Repair
+
+- History import now confirms success with an OK button immediately after permanent files are saved, verified and committed.
+- Canonical tick indexing is limited to a short foreground budget; unfinished replay indexing continues from checkpoints in the background.
+- Replay indexes only the selected calendar-quarter tick range from already imported raw tick files and never repeats the MT5 download.
+- Replay recognizes candles already rendered inside the chart even when the runtime display cache is temporarily empty.
+- Every chart right-click menu includes Add Alert Here at the clicked price.
+- Newly opened floating charts show an explicit drag grip, a menu button, and Attach to Workspace / Make Workspace options.
+- Right-clicking a floating chart surface also exposes its workspace attachment options.
+- Exact colour mapping and all v1.13.0.11 workspace functionality are retained.

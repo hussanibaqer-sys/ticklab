@@ -1,0 +1,14 @@
+TickLab v1.13.0.86 first test checklist
+
+1. Compile TickLab on Windows.
+2. Select Trend Line. Click point #1 and do not move the mouse: a blue/white anchor must already be visible.
+3. Move the mouse: the moving preview point and live guide must be visible.
+4. For 3-point tools, verify point #1 and point #2 remain visible while placing point #3.
+5. Finish the drawing. Click empty chart: selection handles may disappear normally.
+6. Click the completed drawing again, including a visible Ray/Extended-Line extension: the drawing must reselect and handles must return.
+7. Select a line and move the quick transparency slider: left should be transparent; right should be fully solid; the chart must update live.
+8. Open full line settings and repeat the Transparent -> Solid test.
+9. Open settings for a non-line drawing and verify the same Transparent -> Solid direction.
+10. Enable “Place as background (behind candles)”: drawing body should render under candles while its selection handles remain usable when selected.
+11. Right-click a drawing and verify Place as background / Remove from background is available.
+12. Verify previous cursor fixes (Cross, Demonstration, Magic) still work.

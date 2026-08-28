@@ -1,0 +1,50 @@
+TickLab v1.13.0.42 — Restart Step 10
+Right Panels, Contrast and Default Background
+
+Base
+- Built only from TickLab v1.13.0.41 Restart Step 9.
+- Demo trading execution, Bid/Ask rules, P/L logic, order creation, SL/TP behavior, pending-order engine, persistence and history logic were not intentionally changed.
+
+Changes
+1. Price-chart width restored
+- Removed the 24-pixel layout column that permanently pushed the chart left.
+- The right-side controls are now root-level overlays and reserve zero chart width.
+
+2. Middle right-side panel handle repaired
+- Added a larger vertical PANEL handle at the top-right.
+- Click opens or closes the Drawings/Objects/Market workspace.
+- Drag left or right resizes it.
+- Enter/Space also toggles it.
+- The handle stays above slide-out panels and remains visible.
+
+3. Dedicated Code Editor slide handle
+- Added a separate vertical CODE EDITOR handle directly below PANEL.
+- Click opens/closes Code Editor.
+- Drag left/right opens, closes or resizes it.
+- Width is clamped between closed and the existing 760-pixel maximum.
+- Existing top toolbar Code Editor button is retained.
+
+4. Pending-order dropdown contrast
+- Type and Expiration popup entries use explicit black text.
+- Normal entries use white, hover uses light blue, selected uses pale blue, and disabled states remain readable.
+- The selected value shown after closing remains black on a light background.
+
+5. Demo scalp-panel contrast
+- Added explicit readable templates for Order, Open positions, Pending orders and Trade history tabs.
+- Added explicit black-on-light selection styles for open-position and pending-order rows.
+- Added explicit readable row, cell and column-header styles for Trade history.
+
+6. Exact launch-background colour
+- Added the chart renderer's launch/fallback shade #07101B as Default Chart Background.
+- Kept Near Black #080808 as a separate colour.
+- #07101B now shows its name instead of Custom colour and can be selected from the shared colour picker.
+
+Validation completed in this environment
+- 583 focused source/regression checks passed.
+- 9 duplicate-method checks passed.
+- 15 bridge-access checks passed.
+- 19 protected MT5/FileBridge files matched v1.13.0.41 byte-for-byte.
+- XAML XML parsing and event-handler checks passed.
+
+Limitation
+- This Linux environment does not contain Visual Studio or the .NET WPF SDK. A real Windows Visual Studio 2022/.NET 8 build and interaction test are still required.

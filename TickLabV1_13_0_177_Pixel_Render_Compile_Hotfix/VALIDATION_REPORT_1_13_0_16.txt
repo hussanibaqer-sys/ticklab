@@ -1,0 +1,22 @@
+TickLab v1.13.0.16 validation report
+
+Validated in the source environment:
+- Version and solution naming.
+- All XAML files parse as well-formed XML.
+- C# delimiter balance across all source files.
+- CandleChartControl partial methods have unique signatures.
+- Compact 3-pixel candle-gap target restored.
+- Shared physical-pixel slot-boundary renderer present.
+- Wick X is derived from final candle-body bounds.
+- Candle borders use inside physical-pixel strips instead of WPF outline Pen strokes.
+- Compressed candles use the same physical-pixel column for wick and body.
+- Uniform-gap raster simulation across 4 DPI scales, 5 plot widths, and detailed zoom ranges.
+- Step 5 TPO, Session Volume Profile and Volume Footprint checks retained.
+- Real-volume validation retained; no tick-volume substitution in real-volume charts.
+- Duplicate FindNearestCandleIndex regression check passed.
+- MT5 bridge write-access retry/fallback checks passed.
+- Protected MQL5 bridge source hashes unchanged.
+
+Limitations:
+- The Linux packaging environment does not include the Windows .NET/WPF compiler.
+- Final compilation, DPI appearance and live chart interaction must be tested in Visual Studio on Windows.

@@ -1,0 +1,20 @@
+TickLab v1.13.0.63 — First Windows/live test checklist
+
+BUILD
+1. Close all TickLab processes and Visual Studio build processes.
+2. Extract outside OneDrive when possible.
+3. Run Clean-Restore-Build.cmd or rebuild TickLabV1_13_0_63.sln in Visual Studio 2022 Release mode.
+
+ALERT CONTRAST
+4. Open Alerts in both dark and light app themes. Confirm tabs, lists, checkboxes, buttons, text boxes and dropdown text are readable with no white-on-white areas.
+
+RAW TICK CHART
+5. Confirm Tick appears directly before 1s in the timeframe bar.
+6. Select Tick. Confirm candles disappear and raw Bid/Ask tick lines appear.
+7. Confirm the bottom time scale and right price scale are visible.
+8. Wheel over the plot/time scale to zoom horizontally; wheel/drag the price scale to zoom vertically. Confirm you can zoom down to individual ticks.
+9. Drag left. Confirm older saved ticks load without jumping the current viewport. Continue left to page through the available permanent raw-tick archive.
+10. Press End / use the latest control and confirm the chart returns to live raw ticks.
+11. Confirm multiple raw ticks sharing one millisecond retain their original sequence.
+12. Open Chart Settings. Change Bid tick colour/pixels and Ask tick colour/pixels and confirm the Tick chart updates and persists.
+13. Switch back to 1s and other candle timeframes. Confirm normal candles, Replay, indicators, alerts and history remain unchanged.

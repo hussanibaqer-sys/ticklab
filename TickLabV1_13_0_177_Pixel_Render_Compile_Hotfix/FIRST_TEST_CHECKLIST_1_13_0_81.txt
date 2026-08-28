@@ -1,0 +1,48 @@
+TickLab v1.13.0.81 — First Test Checklist
+==========================================
+
+1. Clean build
+   - Close Visual Studio.
+   - Win+R -> paste:
+     cmd /c "cd /d C:\Users\baqer\OneDrive\Desktop\Ticklab V1.2\103\TickLabV1_13_0_81_TV_Parity_Toolbox && rmdir /s /q src\TickLab.App\bin 2>nul & rmdir /s /q src\TickLab.App\obj 2>nul"
+   - Reopen the solution/project and Build/Rebuild.
+
+2. Left rail
+   - Confirm compact TradingView-style rail and correct group order.
+   - Open each group from the small flyout segment; chart width must not change.
+   - Confirm reference section order and vector icons.
+   - Confirm non-favorite star appears on hover; favorite star stays visible.
+
+3. Reference shortcuts
+   - Alt+T Trendline
+   - Alt+H Horizontal line
+   - Alt+J Horizontal ray
+   - Alt+V Vertical line
+   - Alt+C Crossline
+   - Alt+F Fib retracement
+   - Alt+Shift+R Rectangle
+
+4. Drawing interaction
+   - Test one 1-point, one 2-point, one 3-point, one variable-point, Brush/Highlighter, Fibonacci, pattern, Long/Short, volume profile and range tool.
+   - During construction, check live preview and anchors.
+   - After completion, select/move/reshape and confirm handles.
+   - Confirm contextual toolbar appears beside the selected object and follows it when the chart/drawing moves.
+
+5. Settings
+   - Open Settings on simple line, channel, Fib, pattern, text, Long/Short and volume profile.
+   - Verify only applicable tabs/controls are visible and live preview works.
+
+6. Long/Short
+   - Verify risk/P&L/stats drawing only.
+   - Confirm there is no broker-connect/attach/order-send button in the drawing tool.
+
+7. Emoji/media
+   - Open Emojis; verify top categories, continuous sections, scrolling and bottom Emojis/Stickers/Icons tabs.
+   - Place emoji and resize/move it.
+   - Image -> Choose image -> preview -> transparency -> OK -> place -> move -> corner resize.
+
+8. Favorites
+   - Right-click tool -> Add to Favorites.
+   - Right-click empty chart/workspace -> Favorites Tabs On/Off.
+   - Drag favorites bar to every TickLab edge; it must never leave the application frame.
+   - Resize/move TickLab and confirm favorites bar stays fully visible.

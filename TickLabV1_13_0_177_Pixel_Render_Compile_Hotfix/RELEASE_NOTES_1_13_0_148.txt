@@ -1,0 +1,25 @@
+TickLab v1.13.0.148 — Tick Smooth + Find Final
+
+Final functional pass before UI polishing.
+
+1) Raw Tick Chart smoothness
+- Retains an overscanned Bid/Ask/Mid series snapshot during active pan/zoom and moves/scales it with a cheap affine transform instead of reconstructing thousands of tick segments every display frame.
+- Exact market geometry is rebuilt when interaction settles.
+- Wheel interaction is settled after a short idle interval; repeated wheel notches reuse the same retained snapshot.
+- Manual-price interaction skips the redundant 5,000-tick min/max scan because the manual range is already authoritative.
+- ViewChanged notifications are coalesced to render cadence instead of flooding the drawing overlay for every pointer event.
+- Tick theme brushes/pens are parsed/allocated once per settings change instead of repeatedly during OnRender.
+- Existing 5,000 visible-tick ceiling and 1,600 initial live view remain.
+
+2) Find Candle -> Tick parity/reliability
+- Tick Find searches first and opens/switches the Raw Tick chart only after a valid tick has been found, matching normal Find Candle behavior.
+- Fast target-local raw lookup remains non-persistent and cannot poison the complete seconds-history index.
+- Canonical cache is used as a secondary source.
+- If the target-local lookup misses, one complete v2 filename-index discovery is allowed, but the actual data read remains narrow around the requested timestamp so dense symbols cannot hit the record cap before the requested second.
+- Successful Tick Find loads the historical tick window, centers the exact found millisecond, sets the historical navigation anchor and draws the removable vertical Find Tick marker.
+- Failure leaves the current chart unchanged.
+
+Protection
+- v1.13.0.147 one-second historical recovery is protected: CanonicalTickArchiveStore.cs and the complete seconds-history discovery/index logic are unchanged.
+- MT5/MQL bridge files are unchanged.
+- Shared candle drawing engine on Tick Chart remains unchanged.

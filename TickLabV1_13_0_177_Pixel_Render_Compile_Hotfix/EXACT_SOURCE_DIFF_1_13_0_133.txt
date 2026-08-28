@@ -1,0 +1,19 @@
+TickLab v1.13.0.133 exact app-source diff vs v1.13.0.132
+
+Functional changes:
+1. TickLab.App/MainWindow.xaml.cs
+   - Seconds launch/reload cap = 1,600 candles.
+   - Real raw-tick archive boundary for initial seconds page.
+   - Built-in + custom seconds use the same virtual-page launch rule.
+
+2. TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+   - Previous-tick lookup now honors excluded/hidden segment keys during seconds-candle paging.
+
+Metadata only:
+3. TickLab.App/MainWindow.xaml
+   - v1.13.0.133 title.
+
+4. TickLab.App/TickLab.App.csproj
+   - v1.13.0.133 version metadata.
+
+All other files under src/ are byte-identical to v1.13.0.132.

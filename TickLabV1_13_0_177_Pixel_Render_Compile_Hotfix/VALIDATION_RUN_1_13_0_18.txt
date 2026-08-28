@@ -1,0 +1,3 @@
+V1.13.0.19 CHECKS PASSED: 1969
+V1.13.0.19 CHECKS FAILED: 0
+TickLab v1.13.0.19 400-bar full candle zoom validation passed.

@@ -1,0 +1,7 @@
+v1.13.0.112 vs v1.13.0.111 source diff
+
+TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+TickLab.App/MainWindow.xaml
+TickLab.App/TickLab.App.csproj
+
+Changed source file count: 3

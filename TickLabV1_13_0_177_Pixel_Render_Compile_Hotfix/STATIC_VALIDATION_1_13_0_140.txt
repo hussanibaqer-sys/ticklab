@@ -1,0 +1,13 @@
+TickLab v1.13.0.140 static validation
+
+XAML XML parse OK: src/TickLab.App/MainWindow.xaml
+XAML XML parse OK: src/TickLab.App/Windows/CandleMarkerWindow.xaml
+Brace/paren balance OK: src/TickLab.App/Controls/TickChartControl.cs
+Brace/paren balance OK: src/TickLab.App/MainWindow.RawTickChart.cs
+Brace/paren balance OK: src/TickLab.App/MainWindow.xaml.cs
+Brace/paren balance OK: src/TickLab.App/Windows/CandleMarkerWindow.xaml.cs
+Version markers: 3
+MaximumVisibleTicks=1600: True
+RawTickInitialVisibleCount=1600: True
+Find spinner state present: True
+dotnet/MSBuild unavailable in execution environment; Windows Visual Studio build still required.

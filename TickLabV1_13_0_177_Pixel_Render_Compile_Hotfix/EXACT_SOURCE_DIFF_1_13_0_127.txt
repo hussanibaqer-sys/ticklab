@@ -1,0 +1,7 @@
+TickLab v1.13.0.127 exact app source diff vs v1.13.0.126
+Changed source files: 5
+src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/MainWindow.xaml.cs
+src/TickLab.App/TickLab.App.csproj
+src/TickLab.App/Windows/DrawingMediaPickerWindow.xaml

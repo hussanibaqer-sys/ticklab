@@ -1,0 +1,13 @@
+TickLab v1.13.0.66 — First Test Checklist
+
+1. Clean/Rebuild in Visual Studio 2022 and launch TickLab.
+2. Open a fast live Tick or M1 chart and start Recorder.
+3. Leave recording on for 30-60 seconds while zooming/scrolling and while ticks are arriving.
+   EXPECTED: chart remains responsive; recorder may report skipped frames if the PC is overloaded, but TickLab must not freeze to protect recording FPS.
+4. Pause Recorder for a few seconds, Resume, then Stop.
+5. Choose Save and enter a description.
+6. From TickLab Recorder press Play, then also use Show in Folder and double-click the AVI.
+   EXPECTED: player should open the finalized AVI without the long multi-minute scan seen in v1.13.0.65.
+7. Take a Screenshot.
+   EXPECTED: PNG is saved at full TickLab capture resolution and appears in the Recordings list.
+8. Re-test Replay and Tick chart briefly to confirm no regression.

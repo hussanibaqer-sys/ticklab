@@ -1,0 +1,19 @@
+TickLab v1.13.0.111 — Folder 5 Geometry TradingView Parity
+
+Scope frozen to the six user-requested corrections:
+1. Arrow mark down palette icon now visibly points downward.
+2. Arrow Marker is a two-click tool: tail then tip. Distance controls size; endpoint movement controls rotation.
+3. Path remains a straight multi-anchor zig-zag, avoids duplicate final anchors on double-click, and renders an arrowhead at its final endpoint.
+4. Arc is a true 3-point endpoint/control/endpoint quadratic arc with a closing chord and filled background. Line color, background color, background transparency and pixel width are exposed through existing drawing controls; Arc fill transparency is also available in quick edit.
+5. Curve completes after exactly two endpoint clicks and auto-generates one draggable middle control handle.
+6. Double Curve completes after exactly two endpoint clicks and auto-generates two draggable middle controls. It now renders one cubic double-control curve instead of an offset duplicate line.
+
+Selection parity:
+- visible Curve/Double Curve strokes are hit-tested directly;
+- Arc curve/chord/fill are hit-tested;
+- Path arrowhead is hit-tested;
+- Arrow Marker body/edges are hit-tested;
+- one-click Arrow Mark Up/Down visible shaft/head are hit-tested.
+
+Freeze boundary:
+All source files outside the six intended implementation/version files are byte-identical to v1.13.0.110.

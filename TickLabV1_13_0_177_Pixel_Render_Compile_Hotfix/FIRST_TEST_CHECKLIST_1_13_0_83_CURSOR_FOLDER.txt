@@ -1,0 +1,18 @@
+TickLab v1.13.0.83 — first test checklist (Cursor folder)
+
+1. Compile on Windows/Visual Studio first. If any compiler error appears, send the exact error text.
+2. Click the top Cursor folder and compare its flyout against the reference video:
+   Cross, Dot, Arrow, Demonstration, Magic, separator, Eraser, separator, Values tooltip on long press.
+3. Hover each row: it should become black with white content and expose the favorite star at the far right.
+4. Cross: verify compact cross pointer; no full chart-spanning guide.
+5. Dot: verify full horizontal + vertical guides and a small intersection dot.
+6. Arrow: verify ordinary arrow without full chart guides.
+7. Demonstration: select it, hold Alt, drag a spiral. Verify thick pink temporary ink and automatic fading.
+8. Magic: click in several chart locations. Verify each click starts a dense colorful emoji cluster that bursts outward and fades. Check fruit + money/gift + heart/flower/sparkle mix.
+9. Eraser: click an existing drawing and verify that drawing is removed.
+10. Toggle Values tooltip on long press OFF, close/reopen the cursor flyout and verify state remains OFF; turn it ON again.
+11. With tooltip ON, hold the left mouse button still on a candle for about half a second. Verify the floating candle-values card appears and closes on release/movement.
+12. Right-click a cursor tool and verify Add/Remove Favorites still works; verify the floating Favorites bar remains constrained inside TickLab.
+13. Confirm no real-broker attach or real-order action appears anywhere in these tools.
+
+Do not judge later toolbox folders from this build; this version is specifically for validating/fixing Cursor Folder 0 before proceeding.

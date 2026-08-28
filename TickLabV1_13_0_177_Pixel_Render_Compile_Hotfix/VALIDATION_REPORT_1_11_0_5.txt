@@ -1,0 +1,31 @@
+TickLab v1.11.0.5 validation report
+
+Issue reproduced from supplied stack trace
+- OperationCanceledException originated at CanonicalTickArchiveStore.ImportSourceFile while startup/manual tick finalization cancelled a broad source scan.
+
+Root causes fixed
+1. Recent-tail requests enumerated and parsed historical 30-minute CSV files outside the requested time range.
+2. includeHistorical=true also parsed old daily live CSV files outside the requested range.
+3. cancellation used ThrowIfCancellationRequested inside user code, causing Visual Studio user-unhandled breaks.
+4. completed source-file progress was not saved when cancellation unwound the sync operation.
+
+Corrections
+- Historical filenames are range-filtered from their encoded start/end millisecond timestamps.
+- Daily live filenames are range-filtered from their encoded yyyyMMdd date.
+- Canonical tick cancellation is cooperative and no longer throws OperationCanceledException.
+- Completed source files are checkpointed before returning from a cancelled foreground pass.
+- Startup foreground tick finalization budget is 15 seconds; manual operations retain the longer budget.
+- Chart launch is released after the foreground budget.
+
+Validation
+- Static source checks: 455 passed, 0 failed.
+- Historical range-filter sample checks passed.
+- CanonicalTickArchiveStore contains no ThrowIfCancellationRequested call.
+- ZIP integrity tested after packaging.
+
+Protected MT5 SHA-256
+- Live V300: a3cf40709e7bf6ea68baa9cfbb40a84b6fb906488b6e24f2a2577bf62a9eec3e
+- History V305: 1d17ee364e0425b26c4cff2c69f333c20bd748b9e7ba000816dd915005695ccf
+- Marker V109: f8db1d0d23fad1a96412cbaff7b9a4206344fb9ad67e60fe2c9e77cf2e003bd4
+
+A real Windows Visual Studio Release build is still required.

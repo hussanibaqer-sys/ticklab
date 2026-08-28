@@ -1,0 +1,39 @@
+TickLab v1.13.0.39 Restart Step 7 static validation run
+
+STEP7 CHECKS PASSED: 779
+STEP7 CHECKS FAILED: 0
+
+DUPLICATE-METHOD CHECKS PASSED: 9
+DUPLICATE-METHOD CHECKS FAILED: 0
+
+BRIDGE-WRITE CHECKS PASSED: 15
+BRIDGE-WRITE CHECKS FAILED: 0
+
+Protected MT5/FileBridge files: 19 passed, 0 failed.
+
+Checks include:
+- Release identity and solution/build-script target.
+- All WPF XAML files parse and have unique x:Name values.
+- XAML event handlers resolve in source, including the Demo Trading mouse-capture recovery handler.
+- C# punctuation balance using a C# lexer.
+- All v1.13.0.38 indicator-context-menu regression checks.
+- Persistent, clamped and draggable right-side Demo Trading panel handle.
+- White/light scalp panel surfaces with black text and readable hover/selected states.
+- Rendered-live-candle-first Bid/Ask market binding.
+- Buy-at-Ask, Sell-at-Bid and correct Bid/Ask valuation/SL/TP rules.
+- Tick-size, tick-value, contract-size, lot-size and points-moved P/L formula paths.
+- Exact symbol/timeframe validation to prevent reused-pane price contamination.
+- Individual × close, Close Selected and Close All paths.
+- Exact-position SL/TP right-click modify-by-price, modify-by-points and remove paths.
+- Existing draggable SL/TP line update path.
+- Persistent historical Entry, Exit, SL and TP chart overlays.
+- Exact one-chart history routing and history exclusion from chart auto-scale.
+- Delete selected/all history and chart-marking controls.
+- Closed/profit/loss/breakeven/winning-total/losing-total/net statistics.
+- No real MT5 order API references.
+- Protected MT5/FileBridge byte comparison.
+- Absence of bin/obj directories.
+
+Not performed:
+- dotnet build: the dotnet executable is not installed in this Linux environment.
+- Windows WPF runtime test: requires Windows and Visual Studio 2022 / .NET 8.

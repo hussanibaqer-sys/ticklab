@@ -1,0 +1,29 @@
+TickLab v1.13.0.49 — Full History and Alert Text Hotfix
+========================================================
+
+ONLY TWO AREAS CHANGED
+
+1. FULL CHART HISTORY RESTORED
+- The rolling recent-M1 and recent-second files are now tail-repair inputs only.
+- A rolling file can no longer initialize an empty chart as a 30-minute chart.
+- A rolling repair can no longer remove or replace the indexed historical prefix already loaded in a chart.
+- The latest-only live stream no longer seeds empty restored secondary charts with only the current candle.
+- When an empty restored chart is activated, TickLab loads its complete indexed local chart window for that symbol/timeframe before normal live continuation.
+- Existing live integrity, multi-chart updates, indicators, panels, demo trading, alerts, drawings and workspaces were otherwise left unchanged.
+
+2. ALERT NOTIFICATION TEXT LAYOUT
+- Main alert popup now grows vertically to fit normal alert text.
+- Added larger top/bottom padding and explicit line height.
+- Long details use a bounded vertical scroll area instead of clipping.
+- Secondary alert toast also auto-sizes vertically and uses its actual rendered height for screen placement.
+- Five-second bell, alert trigger logic, alert-line editing and removal are unchanged.
+
+VALIDATION
+- 633 static/XAML/event/C# structure/regression checks passed.
+- 0 checks failed.
+- Protected MT5 bridge and FileBridge source hashes remain unchanged.
+- Synthetic history-tail invariants passed: empty charts are not seeded, older history is preserved, current-only charts are not expanded into a false 30-minute history, and genuinely newer tail candles append normally.
+
+LIMITATION
+The generation environment does not contain the Windows .NET/WPF compiler.
+Run Clean-Restore-Build.cmd or a Visual Studio 2022 Release rebuild on Windows for the final compiler and visual test.

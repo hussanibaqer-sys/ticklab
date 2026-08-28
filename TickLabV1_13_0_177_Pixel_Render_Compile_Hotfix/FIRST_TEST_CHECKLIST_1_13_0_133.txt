@@ -1,0 +1,18 @@
+TickLab v1.13.0.133 — First Windows Runtime Test
+
+1. Build/launch and confirm title shows v1.13.0.133.
+2. Open XAUUSD (or your normal test symbol) on 1s.
+3. Confirm launch is responsive and the chart does not try to materialize the entire raw-tick history at once.
+4. Zoom fully out: visible candle count must remain bounded by the same 1,500-candle ceiling as normal candle charts.
+5. Test wheel Zoom mode on 1s; behavior should match M1/H1.
+6. Switch toolbar wheel mode to Scroll; horizontal wheel scrolling should match M1/H1.
+7. Drag/pan left on 1s until the first loaded page is approached. TickLab should automatically load another ~1,600 older second candles.
+8. Continue left across several pages. History should continue instead of stopping after the launch page.
+9. Repeat steps 2-8 for 15s, 30s and 45s.
+10. If you have a custom seconds timeframe, repeat on that timeframe too.
+11. Press End / Go Live from deep history and confirm the latest window returns without loading an enormous seconds dataset.
+12. Hide a tick-history segment, then verify older seconds paging can skip that hidden segment rather than falsely declaring the beginning of history.
+13. Recheck M1 and H1 zoom/scroll/history paging to confirm they are unchanged.
+14. Recheck Favorites, top-bar icons, drawing selection/quick edit and Measure to confirm no regression.
+
+Note: Raw Tick chart viewport/paging is intentionally unchanged in v1.13.0.133. This build is seconds-candle parity only.

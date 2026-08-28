@@ -1,0 +1,14 @@
+TickLab v1.13.0.161 validation
+
+PASS: App.xaml, MainWindow.xaml and TickLab.App.csproj XML parse.
+PASS: Source diff allowlist contains only App.xaml, MainWindow.xaml, MainWindow.xaml.cs, TopBarIconFactory.cs and csproj metadata.
+PASS: Top-bar button x:Names/order/click handlers preserved from v1.13.0.160.
+PASS: Timeframe dimensions scale by 1.5x (31/39 -> 46.5/58.5; 28 -> 42; 7/2 padding -> 10.5/3; 10.5 -> 15.75 font).
+PASS: Make Timeframe button scales 30x28 -> 45x42.
+PASS: Search minimum width scales 150 -> 225 and search/text glyph sizes are enlarged.
+PASS: Selected timeframe uses neutral PanelAlt fill + neutral BorderStrong bottom marker; no blue active marker colors.
+PASS: Candles and Hollow Candles vector definitions only were redrawn; chart-type behavior file unchanged.
+PASS: Protected raw tick/history/replay/chart control sources unchanged.
+PASS: ZIP integrity checked after packaging.
+
+No dotnet/MSBuild compiler is available in the ChatGPT container. Windows Visual Studio runtime compilation remains authoritative.

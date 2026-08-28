@@ -1,0 +1,13 @@
+TickLab v1.13.0.136 — First Runtime Test
+
+1. Open Candle Markers / Find Candle.
+2. Confirm Timeframe now contains 1s, 15s, 30s and 45s plus the existing native MT5 timeframes.
+3. Choose 1s and enter a historical server date/time that exists in saved raw ticks.
+4. Click Find candle.
+5. Confirm TickLab loads and centers that exact 1-second candle.
+6. Without pressing End, switch chart timeframe to 15s, M1, M5, M30 and H1.
+7. Confirm every switch stays around the same historical market moment and selects/centers the containing candle instead of jumping to live.
+8. Switch back to 1s and confirm the same historical timestamp area is restored.
+9. Press End / return to latest.
+10. Change timeframe again and confirm normal latest/live timeframe switching resumes.
+11. Optional: mark a second-timeframe candle locally. MT5 Export should explain that second timeframes are TickLab-local rather than sending an invalid MT5 timeframe.

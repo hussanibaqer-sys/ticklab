@@ -1,0 +1,14 @@
+TickLab v1.13.0.78 static validation
+
+Result: 992 / 992 source checks passed.
+
+Additional checks performed:
+- All 27 XAML files parse successfully as XML.
+- All 145 C# files pass lexical bracket/string/comment structural validation.
+- Drawing-specific v70 checks cover catalog entries, specialized renderers, 3-anchor Fib behavior, pitchfork variants, Regression/AVWAP settings, circle/path geometry, pattern ratios, Long/Short calculations, Bars Pattern OHLC/modes, Volume Profile POC/value area, Pin/Table, cycle/sine/sector options, exact interval visibility, synchronization scope, sharp/no-effect drawing UI, and distinct cursor modes.
+- MT5 folder byte comparison against v1.13.0.69: unchanged.
+- Gateway/FileBridge byte comparison against v1.13.0.69: unchanged.
+- No bin/obj directories are included.
+
+Environment limitation:
+A Windows WPF/.NET compiler is not installed in the packaging container. Final compilation/runtime verification must be performed with Visual Studio 2022 on Windows.

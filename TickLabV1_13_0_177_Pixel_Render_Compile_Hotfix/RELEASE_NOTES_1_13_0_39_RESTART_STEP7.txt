@@ -1,0 +1,53 @@
+TickLab v1.13.0.39 — Restart Step 7 Demo Trading Reliability and History
+
+Purpose
+Repair the Demo Trading panel and simulated scalp engine, add exact running-trade SL/TP controls, and preserve completed demo trades as chart history markings and statistics.
+
+Changes in this release
+
+Demo panel reliability and readability
+- The thin vertical DEMO TRADING handle remains visible at the centre-right edge when the panel is closed.
+- The handle opens/closes by click and slides continuously by left/right drag.
+- Panel width is clamped to the current TickLab window so it cannot disappear fully beyond the right edge.
+- Window resizing and lost mouse capture safely re-clamp/snap the panel.
+- The demo/scalp panel uses a white/light surface with black text and readable hover/selected states.
+
+Live simulated execution and profit/loss
+- The demo engine reads the newest candle from the rendered chart before any copied display/history page.
+- Market Buy opens at live Ask; Market Sell opens at live Bid.
+- Buy positions are valued/closed and trigger SL/TP from live Bid.
+- Sell positions are valued/closed and trigger SL/TP from live Ask.
+- Position rows show entry, live Bid, live Ask, points moved, lot size, SL, TP and floating P/L.
+- P/L uses symbol point size, tick size, per-lot tick value/contract size and selected volume.
+- Positions refuse a reused pane whose symbol/timeframe no longer matches, preventing unrelated prices from being applied.
+- Existing pending-order, persistence, account, reset and history behavior is retained.
+
+Position closing and level modification
+- Every open position has an individual × close control.
+- Close Selected and Close All remain available.
+- Right-clicking an active Entry, SL or TP chart line opens the exact position menu.
+- SL and TP can be added or modified by exact price or points.
+- SL and TP can be removed/cancelled.
+- SL and TP lines remain draggable; releasing a line validates and saves only that exact position.
+- Manual close uses Bid for Buy and Ask for Sell and records Manual as the close reason.
+
+Persistent completed-trade chart markings
+- Closed demo trades restore on the matching symbol/timeframe chart.
+- Historical Entry, Exit, SL and TP markings show open/close time, direction, volume, realized P/L and close reason.
+- Historical markings use distinct muted styles and do not expand the live chart auto-scale.
+- A completed trade is drawn on one exact matching chart only, even if pane IDs are reused.
+
+History deletion and statistics
+- Delete selected history + markings removes one selected completed trade and its chart markings.
+- Delete ALL demo history + chart markings requires confirmation and removes completed history only.
+- Open positions and pending orders are not removed by history deletion.
+- History summary shows total closed, profitable, losing and breakeven trades, winning total, losing total and net realized P/L.
+- Statistics recalculate after deleting one or all completed trades.
+
+Safety boundary
+- Demo Trading remains strictly simulated.
+- No real MT5 order API is called.
+- MT5 bridge, FileBridge, history import and live-capture source files were not modified.
+
+Validation boundary
+Static source checks passed in the Linux environment. A real Windows Visual Studio 2022 / .NET 8 WPF clean build and runtime test are still required.

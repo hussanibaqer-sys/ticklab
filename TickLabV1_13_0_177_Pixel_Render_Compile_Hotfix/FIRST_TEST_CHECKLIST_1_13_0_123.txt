@@ -1,0 +1,15 @@
+TickLab v1.13.0.123 — FIRST TEST
+================================
+
+1. Open the Emoji folder. It should open quickly without the previous long pause.
+2. Open Smileys & People and confirm skin-tone variants are present (for example
+   waving hand tones and other people/hand variants).
+3. Confirm the newest Emoji 17 examples render as coloured artwork: distorted face,
+   fight cloud, hairy creature, ballet dancer, orca, landslide, trombone and treasure chest.
+4. Confirm all five ballet-dancer skin tones render in colour.
+5. Scroll rapidly through a long category; it should remain responsive and load rows
+   as they become visible rather than freezing while the whole catalog is built.
+6. Place an emoji on chart: body drag moves it; exactly four corner handles appear;
+   any corner resizes proportionally and stays sharp.
+7. Brief regression smoke test: Trend Line body/anchor drag, middle-click delete and
+   quick-menu Remove must remain exactly as v1.13.0.120.

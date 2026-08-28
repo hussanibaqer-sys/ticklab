@@ -1,0 +1,3 @@
+V1.13.0.17 CHECKS PASSED: 853716
+V1.13.0.17 CHECKS FAILED: 0
+TickLab v1.13.0.17 fixed-pitch candle geometry validation passed.

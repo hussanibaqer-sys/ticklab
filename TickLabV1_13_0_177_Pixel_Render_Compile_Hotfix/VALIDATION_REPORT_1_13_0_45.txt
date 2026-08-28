@@ -1,0 +1,587 @@
+TickLab v1.13.0.45 static validation
+
+Passed: 563
+Failed: 15
+
+PASS  v45 solution exists
+PASS  old v44 solution name removed
+PASS  build script targets v45
+PASS  XAML parses App.xaml
+PASS  unique x:Name App.xaml
+PASS  XAML parses MainWindow.xaml
+PASS  unique x:Name MainWindow.xaml
+PASS  handler MainWindow.xaml:DemoClosePositionButton_Click
+PASS  handler MainWindow.xaml:DemoBuyButton_Click
+PASS  handler MainWindow.xaml:RightWorkspaceHandle_PreviewMouseLeftButtonDown
+PASS  handler MainWindow.xaml:DrawingHideButton_Click
+PASS  handler MainWindow.xaml:DemoBreakevenButton_Click
+PASS  handler MainWindow.xaml:QuickDeleteButton_Click
+PASS  handler MainWindow.xaml:CodePanelButton_Click
+PASS  handler MainWindow.xaml:DemoPlacePendingButton_Click
+PASS  handler MainWindow.xaml:DrawingLockButton_Click
+PASS  handler MainWindow.xaml:InlineCodeOpenFolderButton_Click
+PASS  handler MainWindow.xaml:AlertsButton_Click
+PASS  handler MainWindow.xaml:QuickTemplateButton_Click
+PASS  handler MainWindow.xaml:DemoRemovePositionTpButton_Click
+PASS  handler MainWindow.xaml:RefreshButton_Click
+PASS  handler MainWindow.xaml:CodeEditorHandle_PreviewMouseLeftButtonUp
+PASS  handler MainWindow.xaml:ThemeButton_Click
+PASS  handler MainWindow.xaml:QuickFillToggle_Changed
+PASS  handler MainWindow.xaml:AddWorkspaceButton_Click
+PASS  handler MainWindow.xaml:QuickTextBox_TextChanged
+PASS  handler MainWindow.xaml:CodeEditorHandle_PreviewKeyDown
+PASS  handler MainWindow.xaml:RightWorkspaceHandle_PreviewKeyDown
+PASS  handler MainWindow.xaml:DemoTradeSlideButton_PreviewKeyDown
+PASS  handler MainWindow.xaml:CodeEditorHandle_PreviewMouseMove
+PASS  handler MainWindow.xaml:MarkersButton_Click
+PASS  handler MainWindow.xaml:RestoreToolButton_Click
+PASS  handler MainWindow.xaml:DemoResetButton_Click
+PASS  handler MainWindow.xaml:DrawingUndoButton_Click
+PASS  handler MainWindow.xaml:DemoEditPendingButton_Click
+PASS  handler MainWindow.xaml:DemoCancelPendingEditButton_Click
+PASS  handler MainWindow.xaml:OpenFolderButton_Click
+PASS  handler MainWindow.xaml:DemoApplyPositionLevelsButton_Click
+PASS  handler MainWindow.xaml:QuickLineStyleBox_SelectionChanged
+PASS  handler MainWindow.xaml:SettingsButton_Click
+PASS  handler MainWindow.xaml:DrawingRedoButton_Click
+PASS  handler MainWindow.xaml:QuickFillColorButton_Click
+PASS  handler MainWindow.xaml:DemoRemovePositionSlButton_Click
+PASS  handler MainWindow.xaml:DrawingToolbarScrollDownButton_Click
+PASS  handler MainWindow.xaml:MinimizeToolButton_Click
+PASS  handler MainWindow.xaml:MainWindow_PreviewMouseLeftButtonDown
+PASS  handler MainWindow.xaml:QuickLineColorButton_Click
+PASS  handler MainWindow.xaml:NewChartButton_Click
+PASS  handler MainWindow.xaml:DrawingRemoveSelectedButton_Click
+PASS  handler MainWindow.xaml:DemoTradeSlideButton_PreviewMouseMove
+PASS  handler MainWindow.xaml:InlineCodeNewEaButton_Click
+PASS  handler MainWindow.xaml:SymbolSearchBorder_MouseLeftButtonUp
+PASS  handler MainWindow.xaml:DemoShowHistoryOnChartCheckBox_Changed
+PASS  handler MainWindow.xaml:DemoTradeSlideButton_PreviewMouseLeftButtonDown
+PASS  handler MainWindow.xaml:InlineCodeNewIndicatorButton_Click
+PASS  handler MainWindow.xaml:RightWorkspaceHandle_PreviewMouseLeftButtonUp
+PASS  handler MainWindow.xaml:DrawingFavoritesButton_Click
+PASS  handler MainWindow.xaml:ConnectionsButton_Click
+PASS  handler MainWindow.xaml:ToolPartitionBorder_MouseRightButtonDown
+PASS  handler MainWindow.xaml:DemoTpPreset_Click
+PASS  handler MainWindow.xaml:MainWindow_Closing
+PASS  handler MainWindow.xaml:CloseCodePanelButton_Click
+PASS  handler MainWindow.xaml:CloseQuickEditButton_Click
+PASS  handler MainWindow.xaml:QuickEditSlider_MouseLeftButtonUp
+PASS  handler MainWindow.xaml:DemoOrderInput_Changed
+PASS  handler MainWindow.xaml:DivideWorkspaceButton_Click
+PASS  handler MainWindow.xaml:DemoCancelPendingButton_Click
+PASS  handler MainWindow.xaml:DemoTradeCloseButton_Click
+PASS  handler MainWindow.xaml:DemoDeleteSelectedHistoryButton_Click
+PASS  handler MainWindow.xaml:IndicatorsButton_Click
+PASS  handler MainWindow.xaml:QuickSettingsButton_Click
+PASS  handler MainWindow.xaml:QuickBackgroundColorButton_Click
+PASS  handler MainWindow.xaml:QuickLockButton_Click
+PASS  handler MainWindow.xaml:DrawingMeasureButton_Click
+PASS  handler MainWindow.xaml:DrawingObjectTreeButton_Click
+PASS  handler MainWindow.xaml:MainWindow_Loaded
+PASS  handler MainWindow.xaml:DrawingToolbarScrollUpButton_Click
+PASS  handler MainWindow.xaml:StayDrawingModeButton_Click
+PASS  handler MainWindow.xaml:CloseDrawingCategoryPaletteButton_Click
+PASS  handler MainWindow.xaml:CodeEditorHandle_PreviewMouseLeftButtonDown
+PASS  handler MainWindow.xaml:DemoTradeSlideButton_PreviewMouseLeftButtonUp
+PASS  handler MainWindow.xaml:RightWorkspaceHandle_PreviewMouseMove
+PASS  handler MainWindow.xaml:DemoDeleteAllHistoryButton_Click
+PASS  handler MainWindow.xaml:InlineCodeCompileButton_Click
+PASS  handler MainWindow.xaml:PlannedFeatureButton_Click
+PASS  handler MainWindow.xaml:DemoCloseSelectedButton_Click
+PASS  handler MainWindow.xaml:ChartTypeButton_Click
+PASS  handler MainWindow.xaml:CandleChart_Drop
+PASS  handler MainWindow.xaml:ReplayButton_Click
+PASS  handler MainWindow.xaml:TimeframeScrollViewer_PreviewMouseWheel
+PASS  handler MainWindow.xaml:DrawingMagnetButton_MouseRightButtonUp
+PASS  handler MainWindow.xaml:DemoCloseAllButton_Click
+PASS  handler MainWindow.xaml:DemoSlPreset_Click
+PASS  handler MainWindow.xaml:MainWindow_PreviewKeyDown
+PASS  handler MainWindow.xaml:DetachToolButton_Click
+PASS  handler MainWindow.xaml:DemoSellButton_Click
+PASS  handler MainWindow.xaml:CloseToolButton_Click
+PASS  handler MainWindow.xaml:CodeEditorSlideButton_Click
+PASS  handler MainWindow.xaml:DrawingToolbarCollapseButton_Click
+PASS  handler MainWindow.xaml:DrawingCategoryPaletteSearchBox_TextChanged
+PASS  handler MainWindow.xaml:QuickLineWidthBox_SelectionChanged
+PASS  handler MainWindow.xaml:RightWorkspaceToggleButton_Click
+PASS  handler MainWindow.xaml:DrawingBrushButton_Click
+PASS  handler MainWindow.xaml:MakeTimeframeButton_Click
+PASS  handler MainWindow.xaml:OpenFullCodeEditorButton_Click
+PASS  handler MainWindow.xaml:DrawingMagnetButton_Click
+PASS  XAML parses Windows/HistoryImportProgressWindow.xaml
+PASS  unique x:Name Windows/HistoryImportProgressWindow.xaml
+PASS  handler HistoryImportProgressWindow.xaml:MinimizeButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:CopyDiagnosticsButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:CompletionButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:QuickRefreshButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:HideButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:RetryChartLaunchButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:RestartAllButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:PauseButton_Click
+PASS  handler HistoryImportProgressWindow.xaml:Window_Closing
+PASS  XAML parses Windows/HistoryOperationOptionsWindow.xaml
+PASS  unique x:Name Windows/HistoryOperationOptionsWindow.xaml
+PASS  handler HistoryOperationOptionsWindow.xaml:StartDateToggle_Changed
+PASS  handler HistoryOperationOptionsWindow.xaml:CancelButton_Click
+PASS  handler HistoryOperationOptionsWindow.xaml:ContinueButton_Click
+PASS  XAML parses Windows/TimeframeBuilderWindow.xaml
+PASS  unique x:Name Windows/TimeframeBuilderWindow.xaml
+PASS  handler TimeframeBuilderWindow.xaml:GenerateButton_Click
+PASS  XAML parses Windows/ChartSettingsWindow.xaml
+PASS  unique x:Name Windows/ChartSettingsWindow.xaml
+PASS  handler ChartSettingsWindow.xaml:CancelButton_Click
+PASS  handler ChartSettingsWindow.xaml:ApplyButton_Click
+PASS  handler ChartSettingsWindow.xaml:SavePresetButton_Click
+PASS  handler ChartSettingsWindow.xaml:ExportPresetButton_Click
+PASS  handler ChartSettingsWindow.xaml:SettingControl_Changed
+PASS  handler ChartSettingsWindow.xaml:ResetButton_Click
+PASS  handler ChartSettingsWindow.xaml:LoadPresetButton_Click
+PASS  handler ChartSettingsWindow.xaml:ImportPresetButton_Click
+PASS  XAML parses Windows/TickHistoryWindow.xaml
+PASS  unique x:Name Windows/TickHistoryWindow.xaml
+PASS  handler TickHistoryWindow.xaml:SymbolsList_SelectionChanged
+PASS  handler TickHistoryWindow.xaml:CloseButton_Click
+PASS  handler TickHistoryWindow.xaml:BuildCandlesButton_Click
+PASS  handler TickHistoryWindow.xaml:DeleteSymbolFolder_Click
+PASS  handler TickHistoryWindow.xaml:OpenSelectedFolder_Click
+PASS  handler TickHistoryWindow.xaml:OpenSymbolFolder_Click
+PASS  handler TickHistoryWindow.xaml:OpenFolderButton_Click
+PASS  handler TickHistoryWindow.xaml:CopyFolder_Click
+PASS  handler TickHistoryWindow.xaml:SegmentVisibilityCheckBox_Click
+PASS  handler TickHistoryWindow.xaml:DeleteFolder_Click
+PASS  handler TickHistoryWindow.xaml:CopySymbolPath_Click
+PASS  handler TickHistoryWindow.xaml:CopySymbolFolder_Click
+PASS  handler TickHistoryWindow.xaml:BackButton_Click
+PASS  handler TickHistoryWindow.xaml:ShowAllSymbols_Click
+PASS  handler TickHistoryWindow.xaml:SymbolVisibilityCheckBox_Click
+PASS  handler TickHistoryWindow.xaml:HideAllSymbols_Click
+PASS  handler TickHistoryWindow.xaml:CopyPath_Click
+PASS  handler TickHistoryWindow.xaml:RefreshTicksButton_Click
+PASS  XAML parses Windows/HistoryManagementWindow.xaml
+PASS  unique x:Name Windows/HistoryManagementWindow.xaml
+PASS  handler HistoryManagementWindow.xaml:ImportExternalButton_Click
+PASS  handler HistoryManagementWindow.xaml:CloseButton_Click
+PASS  handler HistoryManagementWindow.xaml:ToggleExternalButton_Click
+PASS  handler HistoryManagementWindow.xaml:ExternalDatasetsGrid_SelectionChanged
+PASS  handler HistoryManagementWindow.xaml:OpenExternalFolderButton_Click
+PASS  handler HistoryManagementWindow.xaml:RescanExternalButton_Click
+PASS  handler HistoryManagementWindow.xaml:ApplyDisplayButton_Click
+PASS  handler HistoryManagementWindow.xaml:AddInstrumentButton_Click
+PASS  handler HistoryManagementWindow.xaml:DeleteSegmentButton_Click
+PASS  handler HistoryManagementWindow.xaml:DeleteExternalButton_Click
+PASS  handler HistoryManagementWindow.xaml:RecheckHistoryButton_Click
+PASS  handler HistoryManagementWindow.xaml:ApplyRangePriorityButton_Click
+PASS  handler HistoryManagementWindow.xaml:RescanFoldersButton_Click
+PASS  handler HistoryManagementWindow.xaml:DeleteAllButton_Click
+PASS  handler HistoryManagementWindow.xaml:RefreshSavedButton_Click
+PASS  handler HistoryManagementWindow.xaml:RemoveSavingButton_Click
+PASS  handler HistoryManagementWindow.xaml:ApplyWholePriorityButton_Click
+PASS  handler HistoryManagementWindow.xaml:DeleteDatasetButton_Click
+PASS  handler HistoryManagementWindow.xaml:DisplayModeRadioButton_Checked
+PASS  handler HistoryManagementWindow.xaml:DatasetsGrid_SelectionChanged
+PASS  handler HistoryManagementWindow.xaml:OpenFolderButton_Click
+PASS  handler HistoryManagementWindow.xaml:ClearRangePriorityButton_Click
+PASS  XAML parses Windows/DrawingMediaPickerWindow.xaml
+PASS  unique x:Name Windows/DrawingMediaPickerWindow.xaml
+PASS  handler DrawingMediaPickerWindow.xaml:MediaSearchBox_TextChanged
+PASS  handler DrawingMediaPickerWindow.xaml:MediaTabs_SelectionChanged
+PASS  handler DrawingMediaPickerWindow.xaml:CancelButton_Click
+PASS  XAML parses Windows/TickScriptEditorWindow.xaml
+PASS  unique x:Name Windows/TickScriptEditorWindow.xaml
+PASS  handler TickScriptEditorWindow.xaml:NewScriptButton_Click
+PASS  handler TickScriptEditorWindow.xaml:NewEaButton_Click
+PASS  handler TickScriptEditorWindow.xaml:DeleteButton_Click
+PASS  handler TickScriptEditorWindow.xaml:OpenFolderButton_Click
+PASS  handler TickScriptEditorWindow.xaml:NewIndicatorButton_Click
+PASS  handler TickScriptEditorWindow.xaml:CodeEditor_SelectionChanged
+PASS  handler TickScriptEditorWindow.xaml:ScriptList_SelectionChanged
+PASS  handler TickScriptEditorWindow.xaml:CodeEditor_TextChanged
+PASS  handler TickScriptEditorWindow.xaml:Window_PreviewKeyDown
+PASS  handler TickScriptEditorWindow.xaml:HelpButton_Click
+PASS  handler TickScriptEditorWindow.xaml:Metadata_Changed
+PASS  handler TickScriptEditorWindow.xaml:DiagnosticsGrid_MouseDoubleClick
+PASS  handler TickScriptEditorWindow.xaml:CompileButton_Click
+PASS  handler TickScriptEditorWindow.xaml:Window_Closing
+PASS  XAML parses Windows/DrawingObjectTreeWindow.xaml
+PASS  unique x:Name Windows/DrawingObjectTreeWindow.xaml
+PASS  handler DrawingObjectTreeWindow.xaml:FrontButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:RemoveButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:SettingsButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:LockButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:SearchBox_TextChanged
+PASS  handler DrawingObjectTreeWindow.xaml:BackButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:ShowHideButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:RefreshButton_Click
+PASS  handler DrawingObjectTreeWindow.xaml:ObjectsGrid_SelectionChanged
+PASS  XAML parses Windows/ExternalImportWindow.xaml
+PASS  unique x:Name Windows/ExternalImportWindow.xaml
+PASS  handler ExternalImportWindow.xaml:CancelButton_Click
+PASS  handler ExternalImportWindow.xaml:ImportButton_Click
+PASS  XAML parses Windows/PinPromptWindow.xaml
+PASS  unique x:Name Windows/PinPromptWindow.xaml
+PASS  handler PinPromptWindow.xaml:DeleteButton_Click
+PASS  handler PinPromptWindow.xaml:CancelButton_Click
+PASS  handler PinPromptWindow.xaml:PinBox_KeyDown
+PASS  XAML parses Windows/DrawingColorPickerWindow.xaml
+PASS  unique x:Name Windows/DrawingColorPickerWindow.xaml
+PASS  handler DrawingColorPickerWindow.xaml:ApplyButton_Click
+PASS  handler DrawingColorPickerWindow.xaml:HexBox_TextChanged
+PASS  handler DrawingColorPickerWindow.xaml:CancelButton_Click
+PASS  handler DrawingColorPickerWindow.xaml:ComponentBox_TextChanged
+PASS  XAML parses Windows/DetachedWorkspaceWindow.xaml
+PASS  unique x:Name Windows/DetachedWorkspaceWindow.xaml
+PASS  handler DetachedWorkspaceWindow.xaml:CloseButton_Click
+PASS  handler DetachedWorkspaceWindow.xaml:MinimizeButton_Click
+PASS  handler DetachedWorkspaceWindow.xaml:WindowDragBar_MouseRightButtonUp
+PASS  handler DetachedWorkspaceWindow.xaml:MaximizeButton_Click
+PASS  handler DetachedWorkspaceWindow.xaml:WindowDragBar_MouseLeftButtonDown
+PASS  XAML parses Windows/SymbolPickerWindow.xaml
+PASS  unique x:Name Windows/SymbolPickerWindow.xaml
+PASS  handler SymbolPickerWindow.xaml:SymbolsList_SelectionChanged
+PASS  handler SymbolPickerWindow.xaml:CancelButton_Click
+PASS  handler SymbolPickerWindow.xaml:SearchBox_KeyDown
+PASS  handler SymbolPickerWindow.xaml:SymbolsList_MouseDoubleClick
+PASS  handler SymbolPickerWindow.xaml:SearchBox_TextChanged
+PASS  handler SymbolPickerWindow.xaml:SelectButton_Click
+PASS  handler SymbolPickerWindow.xaml:RefreshButton_Click
+PASS  XAML parses Windows/ErrorDetailsWindow.xaml
+PASS  unique x:Name Windows/ErrorDetailsWindow.xaml
+PASS  handler ErrorDetailsWindow.xaml:OpenLogsButton_Click
+PASS  handler ErrorDetailsWindow.xaml:CloseButton_Click
+PASS  handler ErrorDetailsWindow.xaml:CopyButton_Click
+PASS  XAML parses Windows/TickScriptHelpWindow.xaml
+PASS  unique x:Name Windows/TickScriptHelpWindow.xaml
+PASS  handler TickScriptHelpWindow.xaml:CloseButton_Click
+PASS  XAML parses Windows/CandleHistoryWindow.xaml
+PASS  unique x:Name Windows/CandleHistoryWindow.xaml
+PASS  handler CandleHistoryWindow.xaml:SymbolsList_SelectionChanged
+PASS  handler CandleHistoryWindow.xaml:CloseButton_Click
+PASS  handler CandleHistoryWindow.xaml:DeleteSymbol_Click
+PASS  handler CandleHistoryWindow.xaml:CopyTimeframePath_Click
+PASS  handler CandleHistoryWindow.xaml:DeleteTimeframe_Click
+PASS  handler CandleHistoryWindow.xaml:OpenSymbolFolder_Click
+PASS  handler CandleHistoryWindow.xaml:OpenFolderButton_Click
+PASS  handler CandleHistoryWindow.xaml:CopyTimeframeFile_Click
+PASS  handler CandleHistoryWindow.xaml:TimeframeVisibilityCheckBox_Click
+PASS  handler CandleHistoryWindow.xaml:CopySymbolPath_Click
+PASS  handler CandleHistoryWindow.xaml:RefreshAllButton_Click
+PASS  handler CandleHistoryWindow.xaml:CopySymbolFolder_Click
+PASS  handler CandleHistoryWindow.xaml:BackButton_Click
+PASS  handler CandleHistoryWindow.xaml:ShowAllSymbols_Click
+PASS  handler CandleHistoryWindow.xaml:OpenTimeframeFolder_Click
+PASS  handler CandleHistoryWindow.xaml:SymbolVisibilityCheckBox_Click
+PASS  handler CandleHistoryWindow.xaml:HideAllSymbols_Click
+PASS  XAML parses Windows/DrawingFavoritesWindow.xaml
+PASS  unique x:Name Windows/DrawingFavoritesWindow.xaml
+PASS  handler DrawingFavoritesWindow.xaml:CloseButton_Click
+PASS  handler DrawingFavoritesWindow.xaml:MinimizeButton_Click
+PASS  handler DrawingFavoritesWindow.xaml:Grip_MouseLeftButtonDown
+PASS  handler DrawingFavoritesWindow.xaml:FavoritesPanel_Drop
+PASS  XAML parses Windows/DrawingToolPaletteWindow.xaml
+PASS  unique x:Name Windows/DrawingToolPaletteWindow.xaml
+PASS  handler DrawingToolPaletteWindow.xaml:CloseButton_Click
+PASS  handler DrawingToolPaletteWindow.xaml:Header_MouseLeftButtonDown
+PASS  handler DrawingToolPaletteWindow.xaml:SearchBox_TextChanged
+PASS  XAML parses Windows/IndicatorsWindow.xaml
+PASS  unique x:Name Windows/IndicatorsWindow.xaml
+PASS  handler IndicatorsWindow.xaml:CloseButton_Click
+PASS  handler IndicatorsWindow.xaml:AppliedRemoveMenu_Click
+PASS  handler IndicatorsWindow.xaml:IndicatorTabs_SelectionChanged
+PASS  handler IndicatorsWindow.xaml:RemoveButton_Click
+PASS  handler IndicatorsWindow.xaml:ApplyButton_Click
+PASS  handler IndicatorsWindow.xaml:IndicatorList_PreviewMouseMove
+PASS  handler IndicatorsWindow.xaml:AppliedRouteMenu_Click
+PASS  handler IndicatorsWindow.xaml:AppliedList_SelectionChanged
+PASS  handler IndicatorsWindow.xaml:AppliedPropertiesMenu_Click
+PASS  handler IndicatorsWindow.xaml:SearchBox_TextChanged
+PASS  handler IndicatorsWindow.xaml:IndicatorList_MouseDoubleClick
+PASS  handler IndicatorsWindow.xaml:BuiltInList_MouseDoubleClick
+PASS  handler IndicatorsWindow.xaml:OpenEditorButton_Click
+PASS  handler IndicatorsWindow.xaml:AppliedList_MouseDoubleClick
+PASS  XAML parses Windows/DetachedToolWindow.xaml
+PASS  unique x:Name Windows/DetachedToolWindow.xaml
+PASS  handler DetachedToolWindow.xaml:DockButton_Click
+PASS  XAML parses Windows/DrawingSettingsWindow.xaml
+PASS  unique x:Name Windows/DrawingSettingsWindow.xaml
+PASS  handler DrawingSettingsWindow.xaml:RemoveLevelButton_Click
+PASS  handler DrawingSettingsWindow.xaml:AddLevelButton_Click
+PASS  handler DrawingSettingsWindow.xaml:LevelColorButton_Click
+PASS  handler DrawingSettingsWindow.xaml:TextColorButton_Click
+PASS  handler DrawingSettingsWindow.xaml:FillColorButton_Click
+PASS  handler DrawingSettingsWindow.xaml:LineColorButton_Click
+PASS  handler DrawingSettingsWindow.xaml:SetDefaultTemplateButton_Click
+PASS  handler DrawingSettingsWindow.xaml:CancelButton_Click
+PASS  handler DrawingSettingsWindow.xaml:ApplyButton_Click
+PASS  handler DrawingSettingsWindow.xaml:ApplyTemplateButton_Click
+PASS  handler DrawingSettingsWindow.xaml:MoveLevelDownButton_Click
+PASS  handler DrawingSettingsWindow.xaml:DefaultsButton_Click
+PASS  handler DrawingSettingsWindow.xaml:MoveLevelUpButton_Click
+PASS  handler DrawingSettingsWindow.xaml:DeleteTemplateButton_Click
+PASS  handler DrawingSettingsWindow.xaml:LevelFillColorButton_Click
+PASS  handler DrawingSettingsWindow.xaml:ResetDrawingButton_Click
+PASS  handler DrawingSettingsWindow.xaml:ResetLevelsButton_Click
+PASS  handler DrawingSettingsWindow.xaml:BackgroundColorButton_Click
+PASS  XAML parses Windows/CandleMarkerWindow.xaml
+PASS  unique x:Name Windows/CandleMarkerWindow.xaml
+PASS  handler CandleMarkerWindow.xaml:CloseButton_Click
+PASS  handler CandleMarkerWindow.xaml:ClearExportedButton_Click
+PASS  handler CandleMarkerWindow.xaml:RemoveButton_Click
+PASS  handler CandleMarkerWindow.xaml:UseSelectedButton_Click
+PASS  handler CandleMarkerWindow.xaml:MarkerList_SelectionChanged
+PASS  handler CandleMarkerWindow.xaml:ExportButton_Click
+PASS  handler CandleMarkerWindow.xaml:GoToButton_Click
+PASS  handler CandleMarkerWindow.xaml:FindButton_Click
+PASS  handler CandleMarkerWindow.xaml:ReceiveToggle_Changed
+PASS  handler CandleMarkerWindow.xaml:SymbolBox_PreviewMouseLeftButtonDown
+PASS  handler CandleMarkerWindow.xaml:MarkButton_Click
+PASS  handler CandleMarkerWindow.xaml:MarkerList_MouseDoubleClick
+PASS  XAML parses Windows/ConnectionsWindow.xaml
+PASS  unique x:Name Windows/ConnectionsWindow.xaml
+PASS  handler ConnectionsWindow.xaml:RefreshHistoryButton_Click
+PASS  handler ConnectionsWindow.xaml:CancelButton_Click
+PASS  handler ConnectionsWindow.xaml:AutoDetectButton_Click
+PASS  handler ConnectionsWindow.xaml:ConnectorsGrid_SelectionChanged
+PASS  handler ConnectionsWindow.xaml:ImportHistoryButton_Click
+PASS  handler ConnectionsWindow.xaml:HistoryButton_Click
+PASS  handler ConnectionsWindow.xaml:ConnectButton_Click
+PASS  handler ConnectionsWindow.xaml:ConnectorsGrid_MouseDoubleClick
+PASS  handler ConnectionsWindow.xaml:BrowseFolderButton_Click
+PASS  handler ConnectionsWindow.xaml:RefreshButton_Click
+PASS  XAML parses Windows/DetachedChartWindow.xaml
+PASS  unique x:Name Windows/DetachedChartWindow.xaml
+PASS  handler DetachedChartWindow.xaml:CloseButton_Click
+PASS  handler DetachedChartWindow.xaml:MinimizeButton_Click
+PASS  handler DetachedChartWindow.xaml:ChartNumberBadge_PreviewMouseLeftButtonUp
+PASS  handler DetachedChartWindow.xaml:ChartNumberBadge_PreviewMouseLeftButtonDown
+PASS  handler DetachedChartWindow.xaml:WindowDragBar_MouseRightButtonUp
+PASS  handler DetachedChartWindow.xaml:MaximizeButton_Click
+PASS  handler DetachedChartWindow.xaml:WindowDragBar_MouseLeftButtonDown
+PASS  handler DetachedChartWindow.xaml:ChartNumberBadge_PreviewMouseMove
+PASS  handler DetachedChartWindow.xaml:WindowMenuButton_Click
+PASS  C# balanced MainWindow.MultiChartLive.cs
+PASS  C# balanced MainWindow.DemoTrading.cs
+PASS  C# balanced MainWindow.IndicatorRouting.cs
+PASS  C# balanced MainWindow.IndicatorManagement.cs
+PASS  C# balanced GlobalUsings.cs
+PASS  C# balanced App.xaml.cs
+PASS  C# balanced MainWindow.ChartAppearance.cs
+PASS  C# balanced MainWindow.ChartTypes.cs
+PASS  C# balanced MainWindow.IndependentIndicators.cs
+PASS  C# balanced MainWindow.AlertsReplay.cs
+PASS  C# balanced MainWindow.ChartContexts.cs
+PASS  C# balanced MainWindow.BuiltInIndicators.cs
+PASS  C# balanced MainWindow.Workspaces.cs
+PASS  C# balanced MainWindow.xaml.cs
+PASS  C# balanced MainWindow.CodeEditor.cs
+PASS  C# balanced Settings/CustomTimeframePreference.cs
+PASS  C# balanced Settings/WorkspacePreferences.cs
+PASS  C# balanced Settings/ThemeColorScope.cs
+PASS  C# balanced Settings/UserPreferences.cs
+PASS  C# balanced Settings/AlertStore.cs
+PASS  C# balanced Settings/ChartTemplateStore.cs
+PASS  C# balanced Settings/ApplicationThemeManager.cs
+PASS  C# balanced Settings/SettingsStore.cs
+PASS  C# balanced Settings/ColorDisplayHelper.cs
+PASS  C# balanced Controls/TickChartControl.cs
+PASS  C# balanced Controls/CandleChartControl.cs
+PASS  C# balanced Controls/CandleChartControl.Indicators.cs
+PASS  C# balanced Controls/CandleChartControl.Drawing.cs
+PASS  C# balanced Controls/ChartPaneControl.cs
+PASS  C# balanced Controls/CandleChartControl.DemoTrading.cs
+PASS  C# balanced Controls/CandleChartControl.Alerts.cs
+PASS  C# balanced Controls/WorkspaceSurfaceControl.cs
+PASS  C# balanced Controls/CandleSelectedEventArgs.cs
+PASS  C# balanced Controls/BuiltInIndicatorPlotControl.cs
+PASS  C# balanced Controls/IndicatorPaneStackControl.cs
+PASS  C# balanced Controls/CandleChartControl.ChartTypes.cs
+PASS  C# balanced Controls/IndicatorTimeScaleControl.cs
+PASS  C# balanced Controls/TickScriptIndicatorPlotControl.cs
+PASS  C# balanced Windows/DrawingSettingsWindow.xaml.cs
+PASS  C# balanced Windows/DetachedWorkspaceWindow.xaml.cs
+PASS  C# balanced Windows/ChartSettingsWindow.xaml.cs
+PASS  C# balanced Windows/SymbolPickerWindow.xaml.cs
+PASS  C# balanced Windows/ErrorDetailsWindow.xaml.cs
+PASS  C# balanced Windows/TickScriptIndicatorSettingsWindow.cs
+PASS  C# balanced Windows/PinPromptWindow.xaml.cs
+PASS  C# balanced Windows/OrderFlowSettingsWindow.cs
+PASS  C# balanced Windows/IndicatorRouteWindow.cs
+PASS  C# balanced Windows/DrawingColorPickerWindow.xaml.cs
+PASS  C# balanced Windows/TickHistoryWindow.xaml.cs
+PASS  C# balanced Windows/TickScriptEditorWindow.xaml.cs
+PASS  C# balanced Windows/AlertEditorWindow.cs
+PASS  C# balanced Windows/HistoryOperationOptionsWindow.xaml.cs
+PASS  C# balanced Windows/IndicatorsWindow.xaml.cs
+PASS  C# balanced Windows/DrawingObjectTreeWindow.xaml.cs
+PASS  C# balanced Windows/MarketReplayWindow.cs
+PASS  C# balanced Windows/IndicatorPlacementModels.cs
+PASS  C# balanced Windows/ConnectionsWindow.xaml.cs
+PASS  C# balanced Windows/CandleMarkerWindow.xaml.cs
+PASS  C# balanced Windows/SyntheticChartSettingsWindow.cs
+PASS  C# balanced Windows/WorkspacePartitionPickerWindow.cs
+PASS  C# balanced Windows/TickScriptHelpWindow.xaml.cs
+PASS  C# balanced Windows/BuiltInIndicatorSettingsWindow.cs
+PASS  C# balanced Windows/ExternalImportWindow.xaml.cs
+PASS  C# balanced Windows/DetachedToolWindow.xaml.cs
+PASS  C# balanced Windows/CandleHistoryWindow.xaml.cs
+PASS  C# balanced Windows/DrawingFavoritesWindow.xaml.cs
+PASS  C# balanced Windows/ChartTemplateDialogs.cs
+PASS  C# balanced Windows/AlertToastWindow.cs
+PASS  C# balanced Windows/AlertManagerWindow.cs
+PASS  C# balanced Windows/DemoTradeValuePromptWindow.cs
+PASS  C# balanced Windows/HistoryManagementWindow.xaml.cs
+PASS  C# balanced Windows/TimeframeBuilderWindow.xaml.cs
+PASS  C# balanced Windows/DrawingToolPaletteWindow.xaml.cs
+PASS  C# balanced Windows/HistoryImportProgressWindow.xaml.cs
+PASS  C# balanced Windows/AlertTriggeredWindow.cs
+PASS  C# balanced Windows/WorkspaceDecisionDialog.cs
+PASS  C# balanced Windows/DrawingMediaPickerWindow.xaml.cs
+PASS  C# balanced Windows/DetachedChartWindow.xaml.cs
+PASS  C# balanced Core/Drawing/DrawingModels.cs
+PASS  C# balanced Core/Drawing/DrawingMediaCatalog.cs
+PASS  C# balanced Core/Drawing/DrawingToolCatalog.cs
+PASS  C# balanced Core/Drawing/DrawingToolIconFactory.cs
+PASS  C# balanced Core/Settings/ScrollWheelMode.cs
+PASS  C# balanced Core/Settings/ChartViewportState.cs
+PASS  C# balanced Core/Settings/ChartSettings.cs
+PASS  C# balanced Core/Market/Mt5ServerClock.cs
+PASS  C# balanced Core/Market/TickStatistics.cs
+PASS  C# balanced Core/Market/SyntheticChartBuilder.cs
+PASS  C# balanced Core/Market/OrderFlowProfileBuilder.cs
+PASS  C# balanced Core/Market/Candle.cs
+PASS  C# balanced Core/Market/CandleAggregator.cs
+PASS  C# balanced Core/Market/CandleMarker.cs
+PASS  C# balanced Core/Market/TimeframeDefinition.cs
+PASS  C# balanced Core/Market/OrderFlowProfileModels.cs
+PASS  C# balanced Core/Market/MarketTick.cs
+PASS  C# balanced Core/Diagnostics/TickLabErrorReport.cs
+PASS  C# balanced Core/Diagnostics/TickLabErrorContext.cs
+PASS  C# balanced Core/Diagnostics/TickLabErrorSeverity.cs
+PASS  C# balanced Core/Diagnostics/TickLabErrorEngine.cs
+PASS  C# balanced Core/Indicators/IndicatorRouting.cs
+PASS  C# balanced Core/Indicators/BuiltInIndicatorModels.cs
+PASS  C# balanced Core/Indicators/BuiltInIndicatorEngine.cs
+PASS  C# balanced Core/Indicators/BuiltInIndicatorCatalog.cs
+PASS  C# balanced Core/Replay/MarketReplayEngine.cs
+PASS  C# balanced Core/History/HistoryIntegrityService.cs
+PASS  C# balanced Core/History/DataRangeCoordinator.cs
+PASS  C# balanced Core/Scripting/TickScriptKind.cs
+PASS  C# balanced Core/Scripting/TickScriptIndicatorAppearance.cs
+PASS  C# balanced Core/Scripting/TickScriptCompileResult.cs
+PASS  C# balanced Core/Scripting/TickScriptIndicatorRuntime.cs
+PASS  C# balanced Core/Scripting/TickScriptDiagnostic.cs
+PASS  C# balanced Core/Scripting/TickScriptStore.cs
+PASS  C# balanced Core/Scripting/TickScriptCompiler.cs
+PASS  C# balanced Core/Scripting/TickScriptEntry.cs
+PASS  C# balanced Core/Alerts/AlertLineOverlay.cs
+PASS  C# balanced Core/Alerts/AlertBellPlayer.cs
+PASS  C# balanced Core/Alerts/AlertModels.cs
+PASS  C# balanced Gateway/FileBridge/Mt5ProtocolModels.cs
+PASS  C# balanced Gateway/FileBridge/PersistentHistoryStore.cs
+PASS  C# balanced Gateway/FileBridge/Mt5FileBridgeClient.cs
+PASS  C# balanced Gateway/FileBridge/TemporaryHistoryStore.cs
+PASS  C# balanced Gateway/FileBridge/NativeCandleArchiveStore.cs
+PASS  C# balanced Gateway/FileBridge/MarkerExchangeService.cs
+PASS  C# balanced Gateway/FileBridge/TickArchiveCandleCache.cs
+PASS  C# balanced Gateway/FileBridge/Mt5HistoryStatus.cs
+PASS  C# balanced Gateway/FileBridge/CsvLineParser.cs
+PASS  C# balanced Gateway/FileBridge/Mt5SymbolInfo.cs
+PASS  C# balanced Gateway/FileBridge/ExternalHistoryStore.cs
+PASS  C# balanced Gateway/FileBridge/CanonicalTickArchiveStore.cs
+PASS  C# balanced Gateway/FileBridge/Mt5ConnectorSummary.cs
+PASS  C# balanced Gateway/FileBridge/LocalCandleHistoryCache.cs
+PASS  C# balanced Gateway/FileBridge/Mt5Paths.cs
+PASS  C# balanced Gateway/FileBridge/HistoryVisibilityStore.cs
+PASS  unique method DemoShowHistoryOnChartCheckBox_Changed
+PASS  unique method RefreshDemoTradeLines
+PASS  unique method MoveDemoTradeLine
+PASS  unique method DrawDemoTradeHistoryPaths
+PASS  unique method DrawDemoHistoryArrow
+PASS  unique method UpdateDemoTradeLines
+PASS  19 px right handle strip preserved
+PASS  CodeEditorSlideButton remains 24 px wide
+PASS  DemoTradeSlideButton remains 24 px wide
+PASS  RightWorkspaceToggleButton remains 24 px wide
+PASS  Code Editor handle height prevents final R clipping
+PASS  Code Editor handle text has safe line height and unclipped content
+PASS  history on chart checkbox present
+PASS  history toggle label
+PASS  history toggle handles both states
+PASS  history visibility persisted in account document
+PASS  history toggle restored at startup
+PASS  historical overlays obey toggle
+PASS  toggle updates persisted setting
+PASS  history remains symbol scoped across timeframes and charts
+PASS  detached mirror history/levels refresh without full data reload
+PASS  detached chart overlay-only update
+PASS  demo initialization gate exists
+PASS  history checkbox ignores InitializeComponent events
+PASS  demo save is blocked before account load completes
+PASS  demo initialization gate opens after UI restore
+PASS  status controls are null-safe during startup and teardown
+PASS  demo account backup and temporary fallback loading
+PASS  demo account backup created before replacement
+PASS  entry/exit arrow renderer present
+PASS  BUY/SELL/EXIT captions present
+PASS  history marker captions are explicit
+PASS  history connector made visible
+PASS  history tooltip hover retained
+PASS  holdable arrow buttons use RepeatButton
+PASS  both up and down arrows present
+PASS  new window and input maintain readable contrast
+PASS  entry line is draggable
+PASS  entry-line drag handled
+PASS  active positions remain symbol-wide
+PASS  chart lifecycle reprojects markings
+PASS  new/floating charts receive markings
+PASS  Buy Ask / Sell Bid entry
+PASS  live mark side
+PASS  Buy SL Bid
+PASS  Sell SL Ask
+PASS  Buy TP Bid
+PASS  Sell TP Ask
+PASS  no real order API OrderSend
+PASS  no real order API MqlTradeRequest
+PASS  no real order API MqlTradeResult
+PASS  no real order API CTrade
+PASS  no real order API trade.Buy
+PASS  no real order API trade.Sell
+PASS  no real order API OrderSendAsync
+PASS  protected unchanged MT5/TickLabCandleMarkerExchange_V109.mq5
+PASS  protected unchanged MT5/TickLabHistoryBridge_V305.mq5
+PASS  protected unchanged MT5/TickLabLiveBridge_V300.mq5
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/CsvLineParser.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/ExternalHistoryStore.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/HistoryVisibilityStore.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/LocalCandleHistoryCache.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/MarkerExchangeService.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/Mt5ConnectorSummary.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/Mt5HistoryStatus.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/Mt5Paths.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/Mt5ProtocolModels.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/Mt5SymbolInfo.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/NativeCandleArchiveStore.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/TemporaryHistoryStore.cs
+PASS  protected unchanged src/TickLab.App/Gateway/FileBridge/TickArchiveCandleCache.cs
+
+FAIL  version
+FAIL  assembly version
+FAIL  file version
+FAIL  VERSION file
+FAIL  window title
+FAIL  unique method ResolveEntryDragPreviewKind
+FAIL  arrow buttons repeat while held
+FAIL  missing SL/TP starts from entry price
+FAIL  price arrows use symbol point and digits
+FAIL  right-click menu advertises hold arrows
+FAIL  entry line explains direct drag
+FAIL  entry drag is direction-aware
+FAIL  entry drag shows live SL/TP preview
+FAIL  entry drag persists created level
+FAIL  entry drag retains market-side validation
+
+Compiler limitation: the generation environment has no dotnet/Windows WPF toolchain.
+Run Clean-Restore-Build.cmd in Visual Studio 2022 / Windows for the final compiler and display test.

@@ -1,0 +1,6 @@
+Source files changed from v1.13.0.101:
+TickLab.App/Controls/CandleChartControl.Drawing.cs
+TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+TickLab.App/MainWindow.xaml
+TickLab.App/TickLab.App.csproj

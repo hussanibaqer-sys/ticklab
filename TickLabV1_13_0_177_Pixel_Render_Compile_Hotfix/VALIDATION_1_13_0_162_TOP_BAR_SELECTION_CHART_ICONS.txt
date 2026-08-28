@@ -1,0 +1,25 @@
+XML parse PASS: src/TickLab.App/App.xaml
+XML parse PASS: src/TickLab.App/MainWindow.xaml
+XML parse PASS: src/TickLab.App/TickLab.App.csproj
+Changed source files: src/TickLab.App/TickLab.App.csproj, src/TickLab.App/MainWindow.xaml, src/TickLab.App/App.xaml, src/TickLab.App/Core/TopBarIconFactory.cs
+Source diff allowlist PASS
+Top-bar x:Name/order PASS
+Top-bar Click handlers PASS
+Protected byte compare PASS: src/TickLab.App/MainWindow.ChartTypes.cs
+Protected byte compare PASS: src/TickLab.App/MainWindow.xaml.cs
+Protected byte compare PASS: src/TickLab.App/MainWindow.RawTickChart.cs
+Protected byte compare PASS: src/TickLab.App/MainWindow.AlertsReplay.cs
+Protected byte compare PASS: src/TickLab.App/MainWindow.ChartContexts.cs
+Protected byte compare PASS: CanonicalTickArchiveStore.cs
+Protected byte compare PASS: PersistentHistoryStore.cs
+Protected byte compare PASS: Mt5FileBridgeClient.cs
+Protected byte compare PASS: TickChartControl.cs
+Protected byte compare PASS: TickChartControl.Drawing.cs
+Protected byte compare PASS: CandleChartControl.cs
+Protected byte compare PASS: CandleChartControl.Drawing.cs
+Protected byte compare PASS: CandleChartControl.DrawingParity.cs
+Protected byte compare PASS: CandleChartControl.RawTickDrawing.cs
+Version metadata PASS
+Top-bar marker neutral PASS
+Separated candle wick geometry PASS
+C# brace balance PASS: src/TickLab.App/Core/TopBarIconFactory.cs

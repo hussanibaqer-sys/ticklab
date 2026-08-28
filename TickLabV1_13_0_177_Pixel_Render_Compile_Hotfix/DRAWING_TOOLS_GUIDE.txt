@@ -1,0 +1,55 @@
+TickLab v1.13.0 Drawing Tools Guide
+======================================
+
+CATEGORY SHORTCUTS
+- Every left-rail category has two click areas.
+- Click the large icon to activate the last tool used from that category.
+- Click the small arrow to open the full category panel inside the chart.
+- Search the folder, click a tool once, then place it on the chart.
+- Drawing is one-shot by default. Enable Stay in Drawing Mode for repeated placement.
+- Right-click or Escape cancels the current tool.
+
+MEASURE
+- The ruler button is directly above Magnet.
+- Click the ruler and drag from A to B, or hold Shift and drag while a cursor tool is active.
+- TickLab displays price difference, points, percentage, bars and elapsed time.
+- Right-click or Escape clears it.
+
+MAGNET
+- Click Magnet to cycle Off, Weak and Strong.
+- The button appears recessed/darker when active.
+- With Magnet Off, hold Ctrl for temporary Strong magnet.
+- With Magnet Weak/Strong, hold Ctrl to temporarily turn it off.
+- The visible crosshair and active drawing anchor use the same snapped OHLC point.
+- Existing anchors and the whole drawing do not jump.
+
+FAVORITES
+- Open a category and click the large star beside a tool.
+- The horizontal Favorites bar opens automatically.
+- Drag its left grip to move the bar.
+- Drag tools left/right to reorder them.
+- Right-click a favorite to remove it.
+- The bar expands with additional tools and can be minimized or hidden.
+
+QUICK EDITOR
+- Single-click an existing drawing.
+- A compact horizontal editor appears.
+- Available controls adapt to the selected tool: line/fill/background color, pixels, style, opacity, fill, text, lock, templates, full settings and remove.
+- Changes are visible immediately.
+
+ADVANCED SETTINGS
+- Double-click a drawing, right-click > Settings, or press the quick editor Settings button.
+- Style, text, coordinates, visibility, levels, options and templates update as a live preview.
+- Apply commits all changes as one undo step.
+- Cancel restores the original drawing exactly.
+
+FIBONACCI/GANN LEVELS
+- Enable/disable, add, remove and reorder levels.
+- Edit each value, label, color, pixel width, line style, price label and ratio/value label independently.
+- Restore standard levels or save the complete setup as a template/default.
+
+SELECTION
+- Selected drawings show only compact anchor handles—no blue bounding rectangle.
+- Drag an anchor to modify that point.
+- Drag the body to move the entire unlocked drawing.
+- Shift constrains compatible movement/angles.

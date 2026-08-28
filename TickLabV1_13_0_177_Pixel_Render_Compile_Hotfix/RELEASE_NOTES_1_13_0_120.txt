@@ -1,0 +1,33 @@
+TickLab v1.13.0.120 — Drawing Interaction Lock-State Fix
+
+ROOT CAUSE
+- The four remaining failures shared one gate: global Lock All Drawings.
+- A stale saved Lock All value could be restored while the selected-object quick toolbar still displayed only the individual drawing lock state.
+- Result: drawings looked unlocked/selected, but whole-object drag, A/B/C anchor drag, middle-click remove, and quick-menu Remove were all silently blocked.
+
+FIX
+- Global Lock All is no longer restored from a stale previous session.
+- Selecting any real drawing tool clears stale global Lock All before construction.
+- Direct image placement also clears stale global Lock All.
+- Individual drawing IsLocked flags are NOT changed. Explicitly locked drawings remain protected.
+- The user can still explicitly enable Lock All during the current session.
+
+PRESERVED
+- v1.13.0.118 global drawing renderer is not changed.
+- v1.13.0.119 one-select -> one-draw behavior is preserved.
+- Blank-chart left-click deselection is preserved.
+- Drawing Inspector deletion remains preserved.
+- Middle-click delete handler, quick-menu owner resolution, body-drag and anchor-drag implementations are retained; this fix releases the stale gate that blocked them.
+- Callout tail geometry from v1.13.0.119 is unchanged.
+- No individual drawing-folder geometry/settings were modified.
+
+SOURCE SCOPE VS v1.13.0.119
+1. src/TickLab.App/Controls/CandleChartControl.Drawing.cs — functional lock-state recovery only.
+2. src/TickLab.App/MainWindow.xaml — version title only.
+3. src/TickLab.App/TickLab.App.csproj — version metadata only.
+
+VALIDATION
+- 31/31 XAML files parse.
+- 150 C# files scanned for structural delimiter balance.
+- 9/9 targeted interaction checks pass.
+- Windows WPF compilation/runtime still requires Visual Studio on Windows.

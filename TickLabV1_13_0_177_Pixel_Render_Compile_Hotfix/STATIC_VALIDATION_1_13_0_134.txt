@@ -1,0 +1,27 @@
+TickLab v1.13.0.134 Static Validation
+199/199 checks passed
+XAML files parsed: 31
+C# files structurally scanned: 154
+
+Changed source files:
+- TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs
+- TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs
+- TickLab.App/MainWindow.xaml
+- TickLab.App/MainWindow.xaml.cs
+- TickLab.App/TickLab.App.csproj
+
+Targeted checks:
+- PASS: csproj XML
+- PASS: bridge raw coverage
+- PASS: bounded source window
+- PASS: complete historical source import
+- PASS: force stale state repair
+- PASS: on-demand seconds reader
+- PASS: historical-only page repair
+- PASS: forced historical page repair
+- PASS: main uses on-demand reader
+- PASS: main boundary sees raw sources
+- PASS: page remains 1600
+- PASS: version 134
+- PASS: title 134
+- PASS: exact source diff scope — TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs, TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs, TickLab.App/MainWindow.xaml, TickLab.App/MainWindow.xaml.cs, TickLab.App/TickLab.App.csproj

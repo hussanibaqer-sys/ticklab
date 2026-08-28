@@ -1,0 +1,30 @@
+TickLab v1.13.0.133 — Seconds Chart Virtual Paging Parity
+
+Base: v1.13.0.132 Compile / Nullability Hotfix.
+Scope: second-based candle history/virtual viewport loading only.
+
+Implemented:
+- Every TimeframeUnit.Second chart (built-in and custom seconds) now launches on the normal bounded candle virtual-page model.
+- Second-chart full reloads are capped to ChartWindowPageRecords = 1,600 records instead of falling through to the old 600-record launch path or 8,000-record full reload path.
+- Existing CandleChartControl visual ceiling remains MaximumHorizontalVisibleCandles = 1,500.
+- Existing rolling virtual candle buffer remains ChartWindowMaximumRecords = 12,000.
+- Existing older/newer paging remains 1,600 candles per page.
+- Seconds still build from canonical saved raw ticks; source accuracy/storage policy is unchanged.
+- The initial second-chart history boundary now uses actual canonical raw-tick archive coverage (plus enabled external raw-tick manifest coverage), not the first candle of the current requested page.
+- This prevents 1s/15s/30s/45s/custom-seconds charts from falsely declaring all older history loaded immediately after launch.
+- Canonical seconds paging now skips hidden tick-history segment files while locating the previous available raw tick, preventing a hidden segment from falsely terminating older-history paging.
+
+Frozen / unchanged:
+- CandleChartControl.cs: all zoom, pan, wheel, visible-candle geometry and request-trigger mechanics unchanged.
+- CandleChartControl.Drawing.cs / DrawingParity.cs unchanged.
+- Raw Tick chart implementation unchanged in this version (handled separately).
+- Favorites/top bar/quick edit unchanged.
+- Emoji/Measure/Rectangle drawing behavior unchanged.
+- MT5 bridge protocol/import/write paths unchanged; only canonical tick archive read paging was adjusted for hidden-segment navigation.
+
+Validation:
+- 25/25 targeted static checks passed.
+- 31/31 XAML files parse.
+- 154 C# files structurally balanced.
+- Source diff limited to 4 intended files.
+- Windows Visual Studio compile/runtime remains the final gate because .NET/WPF SDK is unavailable in the Linux packaging environment.

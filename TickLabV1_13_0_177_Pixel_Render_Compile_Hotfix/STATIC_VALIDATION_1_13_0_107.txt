@@ -1,0 +1,14 @@
+TickLab v1.13.0.107 static validation
+Windows WPF/MSBuild runtime compile is not available in this Linux environment.
+C# files delimiter-scanned: 150; errors: 0
+XAML files XML-parsed: 31; errors: 0
+Source files changed vs v1.13.0.106: 6
+   TickLab.App/Controls/CandleChartControl.Drawing.cs
+   TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+   TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+   TickLab.App/Core/Drawing/DrawingToolCatalog.cs
+   TickLab.App/MainWindow.xaml
+   TickLab.App/TickLab.App.csproj
+Unexpected changed source files: []
+Missing intended changed source files: []
+PASS

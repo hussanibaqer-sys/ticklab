@@ -1,0 +1,46 @@
+TickLab v1.13.0.138 — Seconds Direct Raw History Repair
+
+Purpose
+- Fix the remaining one-page (~26–30 minute on 1s) historical seconds wall.
+- Make Find Candle/timeframe anchoring able to use historical seconds data before background canonical indexing has caught up.
+- Make Tick History show the ACTUAL stored tick timestamps instead of the nominal three-month folder dates.
+
+Changes
+1. Direct bounded historical source projection
+   - Second charts still prefer permanent canonical ticks.tlt.
+   - If the requested page is not complete there, TickLab can now build the bounded page directly from completed ticks_history_<symbol>_<start>_<end>.csv snapshots.
+   - Only the source files around the requested page are parsed; the whole archive is never projected into memory.
+   - Canonical ticks remain authoritative when both sources contain the same candle bucket.
+   - Hidden three-month tick folders remain respected.
+
+2. On-demand repair remains active
+   - Selected raw snapshots are still synchronized into ticks.tlt when possible.
+   - If canonical merge/checkpoint state is behind, direct source projection keeps the chart usable immediately.
+
+3. Find Candle seconds behavior
+   - Date/time is the navigation priority.
+   - A quiet exact second with no tick no longer causes Find Candle to fail if surrounding stored raw-tick history spans the requested time.
+   - The exact historical vertical anchor remains at the requested timestamp.
+
+4. Tick History accuracy
+   - The row still identifies its three-month storage folder.
+   - “Actual From” / “Actual To” now come from the first/last tick physically stored in ticks.tlt.
+   - This removes the misleading case where a Jul–Sep folder appeared to contain data from Jul 1 even when the actual file began later.
+
+Unchanged / protected
+- Drawing interaction engine and drawing parity.
+- Emoji vector assets.
+- Drawing tool catalog.
+- Chart-context timeframe-anchor implementation from v137.
+- MT5 FileBridge client protocol.
+- Replay engine.
+- Favorites/top-bar/Measure/Rectangle work.
+
+Runtime test
+1. Open Tick History and check Actual From/Actual To for the symbol.
+2. Open 1s and scroll left beyond the old ~30-minute wall.
+3. Find an older date/time on 1s; TickLab should generate a surrounding seconds window directly from raw tick snapshots if canonical indexing is behind.
+4. Find an old M1 time, then switch M1 -> 1s -> 15s -> M5. The chart should remain around the exact date/time anchor.
+
+Important diagnostic
+- If Tick History “Actual From” itself is Aug 14 and there are no older completed ticks_history_* source snapshots available in any matching connector root, then those older raw ticks are not physically present in TickLab’s current saved/indexable sources. In that case Refresh Tick Data can request the older range again from MT5 if the broker still provides it.

@@ -1,0 +1,22 @@
+XAML files parsed: 29; errors: 0
+C# files scanned: 148
+XAML event references checked: 368; missing handler names: 0
+Drawing tool IDs: 101; duplicates: 0
+Required tool trend-line: present
+Required tool fib-retracement: present
+Required tool long-position: present
+Required tool short-position: present
+Required tool brush: present
+Required tool highlighter: present
+Required tool image: present
+Required tool emojis: present
+Reference shortcut Alt+T: PASS
+Reference shortcut rectangle: PASS
+Favorites chart context: PASS
+Favorites owner clamp: PASS
+Selected object bounds API: PASS
+Context toolbar follows object: PASS
+No broker reference in drawing layer: PASS
+
+Static validation result: PASS
+Windows WPF compile: NOT RUN (dotnet/MSBuild unavailable in this environment).

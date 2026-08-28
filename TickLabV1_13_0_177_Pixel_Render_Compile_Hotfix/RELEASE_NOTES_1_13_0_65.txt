@@ -1,0 +1,15 @@
+TickLab v1.13.0.65 — Recorder + Ultra Replay
+
+Changes from v1.13.0.64:
+- Replay adds 5000x, 10000x, 15000x, 20000x, 25000x and 30000x speeds.
+- Ultra replay still processes each raw tick in order; redraw throttling remains separate from tick processing.
+- Raw Tick chart keeps about three inches (288 WPF DIPs) of default right-side breathing room after the newest tick.
+- Raw Tick chart draws the latest Bid and Ask horizontal price lines/tickets when their series are enabled.
+- Added a top-right REC button and TickLab Recorder window.
+- Recorder controls: Record, Pause/Resume, Stop, Screenshot, Play, Show in Folder and Delete.
+- Recorder captures the TickLab application surface to dependency-free MJPEG AVI at 15 FPS.
+- Recordings and PNG screenshots are stored in Videos\TickLab\Recordings and listed inside the recorder panel.
+- After stopping a recording, TickLab asks Save or Delete and accepts an optional description stored beside the media file.
+- Saved media opens through the Windows file association, so Windows Media Player or another installed player can play it.
+- No audio capture is added in this version; this is TickLab screen/video capture only.
+- MT5/FileBridge behavior is unchanged.

@@ -1,0 +1,9 @@
+TickLab v1.13.0.147 first runtime test
+
+1. Build/restore in Visual Studio.
+2. Open the same symbol on 1s that previously showed only roughly the recent 30-minute seconds area.
+3. Scroll backward well beyond the recent window.
+4. Confirm historical bars remain true 1-second candles and older pages become available.
+5. Test Find Candle on a known 1-second timestamp about one month old.
+6. Confirm the direct Find remains fast and centers the requested timestamp.
+7. Do not judge Tick Chart smoothness from this recovery build; v147 intentionally does not add further Tick performance changes.

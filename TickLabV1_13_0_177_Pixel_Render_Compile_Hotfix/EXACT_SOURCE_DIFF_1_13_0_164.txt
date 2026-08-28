@@ -1,0 +1,20 @@
+TickLab v1.13.0.164 source-change allowlist vs v1.13.0.163
+
+Changed functional/presentation source files only:
+1. src/TickLab.App/App.xaml
+   - stronger/consistent top-bar hover marker and 42 px top-button footprint
+   - drawing rail neutral hover/active marker style
+2. src/TickLab.App/MainWindow.xaml
+   - single smooth rounded search border
+   - RestoreToolButton moved onto DarkToolbarButton style
+   - version title
+3. src/TickLab.App/MainWindow.xaml.cs
+   - left drawing rail/category/action icon requested sizes scaled by 1.5x
+   - drawing rail persistent active colors switched from blue accent to neutral theme surface/border
+   - tiny category flyout area widened only enough to contain its 150% chevron cleanly
+4. src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs
+   - removed forced aliased / nearest-neighbor rendering so vector strokes anti-alias cleanly at 150% size
+5. src/TickLab.App/TickLab.App.csproj
+   - version metadata only
+
+No chart engine, drawing behavior, history, Tick, seconds, Find, Replay, FileBridge, MT5, workspace, alert, indicator, or chart-type logic was changed.

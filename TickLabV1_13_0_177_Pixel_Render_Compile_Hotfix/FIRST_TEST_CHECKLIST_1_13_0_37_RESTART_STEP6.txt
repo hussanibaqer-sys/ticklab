@@ -1,0 +1,41 @@
+TickLab v1.13.0.37 — Restart Step 6 first test
+
+Build
+1. Delete every bin and obj folder, then rebuild TickLabV1_13_0_37.sln.
+2. Confirm there are no compiler errors or new nullable warnings in the Step 6 files.
+
+Chart colours and Ask line
+3. Open Chart Settings and change background, candle, wick, Bid-line and Ask-line colours. Confirm each preview and saved change appears immediately.
+4. Confirm raw colour codes remain hidden and hovering a colour swatch shows its colour name.
+5. Toggle the Ask line on/off and change its colour, text colour, line width and style. Restart TickLab and confirm the settings persist.
+
+Indicators
+6. Right-click each type of indicator and test Refresh, Properties, Move/Add to Window, Move/Attach to Chart and Remove.
+7. Confirm only the selected indicator instance moves or is removed and its settings are preserved.
+
+Demo panel
+8. Confirm the thin vertical DEMO TRADING handle is centred on the right edge.
+9. Click the handle to open/close. Drag it left to open and right to close. Confirm it does not block other buttons.
+
+Market demo orders
+10. With live Bid/Ask moving, open a Buy and confirm entry uses Ask and current/close price uses Bid.
+11. Open a Sell and confirm entry uses Bid and current/close price uses Ask.
+12. Confirm open positions, current prices, floating P/L, equity and chart levels update continuously.
+13. Open trades with No SL and No TP. Then test every SL/TP preset and exact-price input.
+14. Confirm Buy SL/TP trigger on Bid and Sell SL/TP trigger on Ask.
+15. Modify, add and remove SL/TP while a trade is running using both position controls and draggable chart lines.
+16. Close any position with its × button and confirm balance, realized P/L and history update immediately.
+
+Pending demo orders
+17. Test Buy Limit, Sell Limit, Buy Stop, Sell Stop, Buy Stop Limit and Sell Stop Limit.
+18. Test GTC and specified expiration, Edit/Modify and Cancel.
+19. Confirm triggered pending orders become open positions and continue using correct Bid/Ask rules.
+
+Floating chart transfer
+20. Open New Chart with no workspace selected. Confirm the blue MOVE TO WORKSPACE handle is immediately visible.
+21. Drag it over empty workspace partitions and confirm the target highlights.
+22. Drop into a valid partition and confirm symbol, timeframe, viewport, indicators, drawings and settings remain.
+23. Drop outside a valid target and confirm the chart remains floating and unchanged.
+
+Regression
+24. Confirm MT5 connection, native/history imports, live candles, replay, drawings, workspaces and indicator Sync still work.

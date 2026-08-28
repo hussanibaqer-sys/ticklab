@@ -1,0 +1,51 @@
+TickLab v1.13.0.47 — First Test Checklist
+
+1. Build and launch
+[ ] Open TickLabV1_13_0_47.sln in Visual Studio 2022.
+[ ] Rebuild Release with zero compiler errors.
+[ ] Launch without a startup exception.
+
+2. Trade-history appearance
+[ ] Enable History on chart and close a demo trade.
+[ ] Entry arrow/caption is blue.
+[ ] Exit arrow/caption is red.
+[ ] BUY/SELL/EXIT text is about half the previous size.
+[ ] History remains visible on every matching-symbol chart and timeframe.
+
+3. Alert triggering
+[ ] Place a Price touches alert above or below the market.
+[ ] Let the live candle wick touch/cross the line without requiring the close to stop exactly on it.
+[ ] Confirm the bell sounds immediately.
+[ ] Confirm the desktop popup appears when Desktop popup is enabled.
+[ ] Repeat with another open chart selected; the original chart alert still triggers.
+
+4. Alert-line editing and removal
+[ ] Drag the alert horizontal line; the saved alert price changes.
+[ ] Right-click the line and choose Edit alert.
+[ ] Right-click the line and choose Remove alert; the rule and line both disappear.
+[ ] Create another alert, delete it in Alerts settings, and confirm its line disappears.
+
+5. Symbol favourites
+[ ] Open the symbol selector.
+[ ] Click ☆ beside several symbols; they become ★ and move to the top.
+[ ] Close and reopen TickLab; favourites remain at the top.
+[ ] Unstar one symbol; it returns to normal alphabetical/search ordering.
+
+6. Entry-line SL/TP drag
+[ ] Open a BUY demo position.
+[ ] Drag entry downward; NEW SL preview appears and SL is placed on release.
+[ ] Drag entry upward; NEW TP preview appears and TP is placed on release.
+[ ] Repeat on SELL and confirm the directions reverse.
+[ ] Entry label still shows direction, lot size and live USD P/L.
+[ ] Existing SL and TP lines remain draggable.
+
+7. Shared handle rail
+[ ] Click and drag Demo Trading handle left/right.
+[ ] Open Demo Trading fully; all three handles remain visible.
+[ ] Open Code Editor and Panel in sequence; all handles move together.
+[ ] No handle overlaps or hides beneath the Demo Trading panel.
+
+8. Regression
+[ ] All open charts continue receiving live candles simultaneously.
+[ ] SL/TP right-click arrows still move 50 points per click and repeat rapidly while held.
+[ ] MT5 bridge, history import and saved demo account remain functional.

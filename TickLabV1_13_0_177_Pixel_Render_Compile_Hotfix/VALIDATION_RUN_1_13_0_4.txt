@@ -1,0 +1,3 @@
+STATIC CHECKS PASSED: 609
+STATIC CHECKS FAILED: 0
+All TickLab v1.13.0.4 natural drawing and coloured media checks passed.

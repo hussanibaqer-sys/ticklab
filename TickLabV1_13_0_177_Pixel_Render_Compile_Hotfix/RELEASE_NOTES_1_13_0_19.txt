@@ -1,0 +1,10 @@
+TickLab v1.13.0.19 — Stable Viewport Wall Hotfix
+
+Fixed
+- The plot rectangle no longer shrinks or moves when integer candle pitch leaves unused pixels.
+- Price scale, time scale, grid, crosshair and drag surface stay fixed during zoom, pan and redraw.
+- Crisp integer-pixel candle spacing remains active inside the fixed viewport.
+- The newest/right-side anchor remains stable while zooming; older candles expand toward the left.
+- v1.13.0.18 full candle bodies through at least 400 visible bars remain included.
+- Alerts, Replay, standard charts, synthetic charts, TPO and volume-analysis charts remain included.
+- MT5 bridge protocol and MQL5 files are unchanged.

@@ -1,0 +1,27 @@
+<Window x:Class="TickLab.Desktop.Windows.TimeframeFavoritesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="122" Height="46" MinWidth="70" MinHeight="46" MaxHeight="46"
+        SizeToContent="Manual" WindowStyle="None" ResizeMode="NoResize"
+        ShowInTaskbar="False" Background="Transparent" AllowsTransparency="True" Topmost="False">
+    <Border Background="{DynamicResource PanelBrush}" BorderBrush="{DynamicResource BorderStrongBrush}" BorderThickness="1" CornerRadius="8" Effect="{x:Null}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+        <Grid Margin="3">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Width="27" Height="38" CornerRadius="6" Background="#0D1A2B" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                    MouseLeftButtonDown="Grip_MouseLeftButtonDown" MouseMove="Grip_MouseMove" MouseLeftButtonUp="Grip_MouseLeftButtonUp" ToolTip="Drag timeframe Favorites toolbar">
+                <Grid>
+                    <TextBlock Text="☆" Foreground="#F5B544" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="⋮" Foreground="#5E7189" FontSize="9" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                </Grid>
+            </Border>
+            <ScrollViewer x:Name="FavoritesScroll" Grid.Column="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="3,0,2,0"
+                          PreviewMouseWheel="FavoritesScroll_PreviewMouseWheel">
+                <StackPanel x:Name="FavoritesPanel" Orientation="Horizontal" AllowDrop="True" Drop="FavoritesPanel_Drop"/>
+            </ScrollViewer>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button x:Name="MinimizeButton" Width="23" Height="30" MinHeight="30" Padding="0" Margin="0" Content="—" Foreground="{DynamicResource MutedTextBrush}" Background="Transparent" BorderBrush="Transparent" ToolTip="Minimize" Click="MinimizeButton_Click"/>
+                <Button Width="23" Height="30" MinHeight="30" Padding="0" Margin="0" Content="×" Foreground="{DynamicResource MutedTextBrush}" Background="Transparent" BorderBrush="Transparent" ToolTip="Hide" Click="CloseButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,145 @@
+diff -ruN '--exclude=bin' '--exclude=obj' /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs
+--- /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs	2026-08-19 18:54:27.000000000 +0000
++++ /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/Core/Drawing/DrawingToolIconFactory.cs	2026-08-20 01:35:21.167656050 +0000
+@@ -667,11 +667,15 @@
+                 AddPath(canvas, "M12,3 L14.8,8.7 L21,9.6 L16.5,14 L17.6,20.3 L12,17.3 L6.4,20.3 L7.5,14 L3,9.6 L9.2,8.7 Z", stroke, 1.0, stroke);
+                 break;
+             case "measure":
+-                // Clean diagonal ruler: balanced body, crisp ticks, no heavy outer edge.
+-                AddPath(canvas, "M4.2,17.7 L17.7,4.2 L20.2,6.7 L6.7,20.2 Z", stroke, 1.0, Brushes.Transparent);
+-                AddLine(canvas, 8.0, 15.8, 9.9, 17.7, stroke, 1.0);
+-                AddLine(canvas, 10.9, 12.9, 12.8, 14.8, stroke, 1.0);
+-                AddLine(canvas, 13.8, 10.0, 15.7, 11.9, stroke, 1.0);
++                // Strong, continuous ruler silhouette. It keeps the one-pixel visual-stroke rule,
++                // but uses a larger closed body and deliberate graduated ticks so it does not
++                // look thin, fragmented or broken at the 30 px drawing-rail size.
++                AddRect(canvas, 3.5, 7.0, 17.0, 10.0, stroke, Brushes.Transparent, 1.0, 0.8);
++                AddLine(canvas, 7.0, 7.5, 7.0, 11.5, stroke, 1.0);
++                AddLine(canvas, 10.0, 7.5, 10.0, 10.0, stroke, 1.0);
++                AddLine(canvas, 13.0, 7.5, 13.0, 11.5, stroke, 1.0);
++                AddLine(canvas, 16.0, 7.5, 16.0, 10.0, stroke, 1.0);
++                AddLine(canvas, 19.0, 7.5, 19.0, 11.5, stroke, 1.0);
+                 break;
+             case "zoom":
+                 // Balanced magnifier with a lighter handle and centered plus sign.
+diff -ruN '--exclude=bin' '--exclude=obj' /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/MainWindow.xaml /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/MainWindow.xaml
+--- /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/MainWindow.xaml	2026-08-20 01:08:20.000000000 +0000
++++ /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/MainWindow.xaml	2026-08-20 01:35:21.154206410 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.171 — Human-Centered Rail Balance"
++        Title="TickLab v1.13.0.172 — Compact Rail + Stronger Measure Icon"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+@@ -107,7 +107,7 @@
+         <!-- Full-height charting workspace -->
+         <Grid Grid.Row="1">
+             <Grid.ColumnDefinitions>
+-                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="68"/>
++                <ColumnDefinition x:Name="DrawingToolbarColumn" Width="53"/>
+                 <ColumnDefinition x:Name="DrawingPaletteColumn" Width="0" MinWidth="0" MaxWidth="420"/>
+                 <ColumnDefinition x:Name="DrawingPaletteSplitterColumn" Width="0"/>
+                 <ColumnDefinition Width="*" MinWidth="420"/>
+@@ -133,8 +133,8 @@
+                             HorizontalAlignment="Left" Click="DrawingToolbarScrollUpButton_Click"/>
+                     <ScrollViewer x:Name="DrawingToolbarScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled"
+                                   CanContentScroll="False" PanningMode="VerticalOnly" Focusable="False">
+-                        <StackPanel x:Name="DrawingToolbarPanel" Width="46" HorizontalAlignment="Left" Margin="16,3,0,3">
+-                            <StackPanel x:Name="DrawingCategoryButtonsPanel" Width="46" HorizontalAlignment="Left"/>
++                        <StackPanel x:Name="DrawingToolbarPanel" Width="44.5" HorizontalAlignment="Left" Margin="8.5,3,0,3">
++                            <StackPanel x:Name="DrawingCategoryButtonsPanel" Width="44.5" HorizontalAlignment="Left"/>
+                             <Button x:Name="DrawingBrushButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Brush, pen and highlighter" Click="DrawingBrushButton_Click" Visibility="Collapsed"/>
+                             <Border Width="26" Height="1" Background="{DynamicResource BorderBrush}" Margin="5,4,0,6" HorizontalAlignment="Left" SnapsToDevicePixels="True"/>
+                             <Button x:Name="DrawingFavoritesButton" Style="{StaticResource DrawingRailButton}" HorizontalAlignment="Left" ToolTip="Favorites Tabs On/Off — drawing tools + timeframes" Click="DrawingFavoritesButton_Click"/>
+@@ -154,7 +154,7 @@
+                     <Button x:Name="DrawingToolbarScrollDownButton" Grid.Row="2" Style="{StaticResource DrawingRailButton}" Width="40" Height="20" MinHeight="20" Padding="0" Margin="0" Content="⌄" Visibility="Collapsed"
+                             ToolTip="Scroll drawing toolbar down" Foreground="#7890AA" Background="Transparent" BorderBrush="Transparent"
+                             HorizontalAlignment="Left" Click="DrawingToolbarScrollDownButton_Click"/>
+-                    <Button x:Name="DrawingToolbarCollapseButton" Grid.Row="3" Style="{StaticResource DrawingRailButton}" Width="36" Height="24" MinHeight="24" Padding="0" Margin="16,3,0,5" Content="‹"
++                    <Button x:Name="DrawingToolbarCollapseButton" Grid.Row="3" Style="{StaticResource DrawingRailButton}" Width="36" Height="24" MinHeight="24" Padding="0" Margin="8.5,3,0,5" Content="‹"
+                             Foreground="#A0A0A0" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left"
+                             Click="DrawingToolbarCollapseButton_Click"/>
+                 </Grid>
+diff -ruN '--exclude=bin' '--exclude=obj' /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/MainWindow.xaml.cs /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/MainWindow.xaml.cs
+--- /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/MainWindow.xaml.cs	2026-08-20 01:08:20.000000000 +0000
++++ /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/MainWindow.xaml.cs	2026-08-20 01:35:39.016051305 +0000
+@@ -7324,20 +7324,20 @@
+     {
+         var host = new Grid
+         {
+-            Width = 46,
++            Width = 44.5,
+             Height = 38,
+             Margin = new Thickness(0),
+             HorizontalAlignment = HorizontalAlignment.Left,
+             Background = Brushes.Transparent,
+             ToolTip = $"{shortcut.DisplayName} — {DrawingToolCatalog.CategoryName(category)}"
+         };
+-        host.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(35) });
+-        host.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(11) });
++        host.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(36) });
++        host.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(8.5) });
+ 
+         var primary = new Button
+         {
+             Style = (Style)FindResource("DrawingRailButton"),
+-            Width = 35,
++            Width = 36,
+             Height = 38,
+             MinHeight = 38,
+             Margin = new Thickness(0),
+@@ -7361,7 +7361,7 @@
+         var flyout = new Button
+         {
+             Style = (Style)FindResource("DrawingRailButton"),
+-            Width = 11,
++            Width = 8.5,
+             Height = 38,
+             MinHeight = 38,
+             Padding = new Thickness(0),
+@@ -7370,7 +7370,7 @@
+             BorderBrush = Brushes.Transparent,
+             BorderThickness = new Thickness(0),
+             Foreground = railBrush,
+-            Content = DrawingToolIconFactory.CreateActionIcon("chevron-right", 12, railBrush),
++            Content = DrawingToolIconFactory.CreateActionIcon("chevron-right", 8, railBrush),
+             Tag = _openDrawingCategory == category ? "Active" : null,
+             Visibility = Visibility.Hidden,
+             ToolTip = $"Open {DrawingToolCatalog.CategoryName(category)} folder",
+@@ -8817,7 +8817,7 @@
+ 
+     private void ApplyDrawingToolbarCollapsedState()
+     {
+-        DrawingToolbarColumn.Width = new GridLength(_drawingToolbarCollapsed ? 14 : 68);
++        DrawingToolbarColumn.Width = new GridLength(_drawingToolbarCollapsed ? 14 : 53);
+         Visibility railVisibility = _drawingToolbarCollapsed
+             ? Visibility.Collapsed
+             : Visibility.Visible;
+@@ -8836,7 +8836,7 @@
+         DrawingToolbarCollapseButton.Width = _drawingToolbarCollapsed ? 16 : 36;
+         DrawingToolbarCollapseButton.Margin = _drawingToolbarCollapsed
+             ? new Thickness(0, 3, 0, 5)
+-            : new Thickness(16, 3, 0, 5);
++            : new Thickness(8.5, 3, 0, 5);
+     }
+ 
+     private void RightWorkspaceToggleButton_Click(object sender, RoutedEventArgs e)
+diff -ruN '--exclude=bin' '--exclude=obj' /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/TickLab.App.csproj /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/TickLab.App.csproj
+--- /mnt/data/tl171/TickLabV1_13_0_171_Human_Centered_Rail_Arrows_Overlay_Gutter/src/TickLab.App/TickLab.App.csproj	2026-08-20 01:08:20.000000000 +0000
++++ /mnt/data/tl172/TickLabV1_13_0_172_Compact_Rail_Stronger_Measure_Icon/src/TickLab.App/TickLab.App.csproj	2026-08-20 01:35:21.167813092 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.171</Version>
+-    <AssemblyVersion>1.13.0.171</AssemblyVersion>
+-    <FileVersion>1.13.0.171</FileVersion>
++    <Version>1.13.0.172</Version>
++    <AssemblyVersion>1.13.0.172</AssemblyVersion>
++    <FileVersion>1.13.0.172</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>

@@ -1,0 +1,14 @@
+TickLab v1.13.0.157 — Final Baseline
+
+Purpose
+- Establish the user-confirmed v1.13.0.156 functional code as TickLab's final numbered baseline v1.13.0.157.
+- No feature, chart, history, drawing, workspace, replay, Find, bridge, agent, indicator, synthetic-chart, or rendering behavior is changed.
+
+Changes from v1.13.0.156
+- Version metadata only: 1.13.0.156 -> 1.13.0.157.
+- Main window title only: "TickLab v1.13.0.157 — Final Baseline".
+- VERSION.txt updated.
+
+Baseline rule
+- v1.13.0.157 is the permanent primary rollback/base version for all future TickLab work.
+- If any later change causes a regression, restore behavior from v1.13.0.157 first.

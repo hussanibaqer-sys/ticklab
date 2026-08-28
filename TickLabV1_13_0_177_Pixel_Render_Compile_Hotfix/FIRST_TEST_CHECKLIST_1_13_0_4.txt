@@ -1,0 +1,16 @@
+TickLab v1.13.0.4 first test checklist
+
+1. Extract to C:\TickLab\TickLabV1_13_0_4 outside OneDrive.
+2. Open TickLabV1_13_0_4.sln, select Release, Clean Solution, then Rebuild Solution.
+3. Open a drawing category, click the chart without selecting a tool, and confirm the category window closes.
+4. Draw slow and fast curves with Pen and Highlighter; confirm they are smooth without broken zigzag segments.
+5. Scroll the chart so blank future space is visible and draw far to the right of the newest candle.
+6. Restart TickLab and confirm future-space drawings restore in the same positions.
+7. Drag the right-workspace arrow handle fully left and right; confirm it follows the pointer and stops safely.
+8. Click the handle without dragging; confirm collapse/restore still works.
+9. Hold Shift and click point A, release Shift, then click point B.
+10. Confirm the completed measurement remains until the next chart click, then disappears.
+11. Open Icons, Stickers and Emoji; confirm the picker matches the dark TickLab theme.
+12. Search and scroll each media folder; confirm coloured previews appear.
+13. Place icons, stickers and faces on candles and in future chart space.
+14. Confirm DRAWINGS, OBJECTS, MARKET, favourites, undo/redo, chart zoom and MT5 data remain functional.

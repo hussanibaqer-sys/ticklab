@@ -1,0 +1,20 @@
+TickLab v1.13.0.1 — Validation Report
+
+Compile hotfix
+- Removed the duplicate CandleChartControl.DistanceToSegment(Point, Point, Point) declaration.
+- One shared implementation remains and serves all existing call sites.
+- Scanned all CandleChartControl partial files: no duplicate method signatures found.
+
+Source validation
+- Static checks passed: 447
+- Static checks failed: 0
+- XAML parsing and event-handler checks passed.
+- C# delimiter/balance checks passed.
+
+Protected components
+- TickLabLiveBridge_V300.mq5 unchanged.
+- TickLabHistoryBridge_V305.mq5 unchanged.
+- TickLabCandleMarkerExchange_V109.mq5 unchanged.
+
+Limitation
+- Windows WPF compilation was not available in this Linux environment. Visual Studio Release Rebuild remains the final compile test.

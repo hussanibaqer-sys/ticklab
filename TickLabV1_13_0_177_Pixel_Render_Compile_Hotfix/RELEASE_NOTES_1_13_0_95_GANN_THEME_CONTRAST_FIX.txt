@@ -1,0 +1,42 @@
+TickLab v1.13.0.95 — Gann Geometry / Theme Contrast Fix
+
+SCOPE
+- Focused correction from v1.13.0.94.
+- Uses the user's TradingView-vs-TickLab comparison image as the source of truth for the Gann Box family.
+- Does not intentionally change MT5, FileBridge, history, replay, gateway, or connector implementation source.
+- Preserves the working v1.13.0.93/v1.13.0.94 Fibonacci reading/price controls and the restored clean reading font.
+
+GANN BOX / GANN SQUARE FAMILY
+- Replaced the mismatched generic Gann Box renderer with the same reference construction family visible in the supplied comparison image.
+- Uses a 5-division grid with linked diagonal/fan construction.
+- Uses quarter-ellipse arc geometry that scales independently with the box width and height instead of drawing generic circles.
+- Restored the visible nested colored arc structure and reference-style fan rays.
+- Gann Box, Gann Square, and Fixed Gann Square now share the reference geometry family rather than unrelated renderers.
+- Fixed Gann Square remains the constrained variant: its display shape stays square and all four corner handles remain linked when resizing.
+- Hit testing/reselection follows the visible Gann grid, rays, and quarter-ellipse arcs.
+- Existing Gann readings remain wired through the same price/reading visibility system.
+
+TOOLBOX / EDIT / QUICK-EDIT THEME CONTRAST
+- Added dynamic control, menu, selection, grid, and disabled-text theme resources.
+- Light theme uses dark readable text on light controls; dark theme uses light readable text on dark controls.
+- Selected, hovered, active, popup, ComboBox, ListBox, DataGrid, menu, and tool-tip states now have explicit contrasting text/background resources.
+- Drawing Settings, Line Settings, Fib/Gann Settings, toolbox flyouts, tool rows, contextual menus, the drawing inspector, and object/edit workspace use active theme resources instead of forced white/dark surfaces.
+- The selected-object quick edit / lock / delete toolbar uses active theme resources.
+- The quick edit toolbar grip is draggable and movement is clamped inside the chart/application frame.
+
+FIBONACCI REGRESSION GUARDS
+- `Level readings` master control preserved.
+- `Prices on levels` master control preserved.
+- Per-level Price and Level reading controls preserved.
+- Add reading / Remove reading preserved.
+- Clean Segoe UI 10 single-pass chart reading renderer preserved; no text halo was reintroduced.
+
+VALIDATION
+- Static source validation: 649 passed, 0 failed.
+- All XAML files parsed by the validation script.
+- C# punctuation/bracket structure validated lexically.
+- Exact source-scope comparison confirms 12 TickLab.App source files changed relative to v1.13.0.94.
+- No protected MT5/Bridge/History/Replay/Gateway/Connector source path changed.
+
+IMPORTANT
+This environment does not contain the Windows WPF/.NET MSBuild toolchain, so the final Windows compile/runtime comparison must be performed on the user's PC. Folder 2 should not be considered frozen until the Gann geometry and theme behavior are visually tested in TickLab.

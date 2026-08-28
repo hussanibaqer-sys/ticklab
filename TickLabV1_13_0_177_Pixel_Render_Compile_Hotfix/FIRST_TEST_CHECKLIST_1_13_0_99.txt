@@ -1,0 +1,20 @@
+TickLab v1.13.0.99 — First runtime tests
+
+1. Draw a NEW Gann Box next to the latest TradingView reference photo.
+   Expected levels on both axes: 0 / 0.25 / 0.382 / 0.5 / 0.618 / 0.75 / 1.
+   It must be a coloured ratio grid, not the Gann Square arc/fan construction.
+
+2. Confirm Gann Square and Gann Square Fixed still behave exactly as in v1.13.0.98.
+
+3. Draw a NEW Gann Fan.
+   Expected visible ratio labels when Level readings is ON:
+   1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1.
+   Toggle Level readings OFF then ON.
+   Toggle Prices on levels independently.
+
+4. Right-click blank chart.
+   Confirm the unwanted white strip/gutter on the left is gone.
+
+5. Open drawing Edit/Settings and quick-edit dropdowns.
+   Hover/select Pixels/width/style choices in both Light and Dark themes.
+   Text must stay readable in normal, hover and selected states.

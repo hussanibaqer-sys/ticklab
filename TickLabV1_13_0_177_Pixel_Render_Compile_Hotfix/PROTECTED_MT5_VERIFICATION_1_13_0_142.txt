@@ -1,0 +1,1 @@
+PASS: MT5 folder byte-for-byte unchanged from v1.13.0.141.

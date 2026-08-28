@@ -1,0 +1,59 @@
+TickLab v1.13.0.90 — Folder 2 Fib / Gann Rebuild — Static Validation
+
+Result: 681 passed, 0 failed.
+
+Validated:
+- v1.13.0.90 solution/version/title/build-command identity
+- all XAML parses
+- every XAML x:Name is unique
+- all declared XAML event handlers resolve to code-behind methods
+- lexical C# bracket/structure balance across all app C# source
+- NumericOptions string switch has no duplicate case labels
+- drawing tool IDs remain unique
+- Folder 1 Disjoint Channel vertical point-3 lock and mirrored second-rail regression guards
+- Folder 2 settings remain modeless/non-blocking; Cancel/X restore and OK commit paths preserved
+- Fib/Gann settings and drawing-tool palette follow active TickLab theme resources
+- selected-object contextual toolbar no longer forces a white surface
+- dedicated crisp vector icons exist for core Fib/Gann tools and contextual actions
+- Level readings, Background bands, Readings outside frame, horizontal and vertical reading-position controls exist
+- per-level Price and Reading checkboxes exist
+- per-level colour control drives that level line and its background band colour
+- one overall Background gauge runs 0 transparent -> 1 completely solid
+- per-level fill opacity defers to the single overall background opacity
+- Fib Retracement colored bands use the line above each band
+- Trend-Based Fib Extension has a nonzero extension width, 3-point construction, levels, bands and readings
+- Fib Time Zone / Trend Fib Time colored bands and readings
+- Fib Circles nested colored level bands and readings
+- Fib Spiral colored ribbons/levels/readings
+- Fib Speed Resistance Arcs semicircular colored bands/readings
+- Fib Speed Fan and Pitchfan colored sectors/readings
+- Fib Wedge curved nested sector bands/readings
+- Gann Fan ratio geometry and visible-ray hit testing
+- Gann Square Fixed top-corner construction origin
+- Gann Square bottom-corner construction origin
+- Gann square quarter-arc geometry
+- Gann Box rebuilt as separate reference axes: horizontal/left 0, .382, .618, 1 and vertical/right .25, .5, .75
+- Gann Box erroneous fan disabled
+- Gann Box visible geometry hit testing matches displayed horizontal/vertical grid lines
+- multicolor reference-style level palette is present
+- all 15 Folder 2 tool IDs remain present
+- exact app-source diff vs clean v1.13.0.89: 11 intended files
+- no changed Bridge/History/Replay/MT5/Gateway/Connector implementation files
+
+Actual app-source diff vs v1.13.0.89:
+1. Controls/CandleChartControl.Drawing.cs
+2. Controls/CandleChartControl.DrawingParity.cs
+3. Core/Drawing/DrawingParityDefaults.cs
+4. Core/Drawing/DrawingToolIconFactory.cs
+5. MainWindow.xaml
+6. MainWindow.xaml.cs
+7. TickLab.App.csproj
+8. Windows/DrawingToolPaletteWindow.xaml
+9. Windows/DrawingToolPaletteWindow.xaml.cs
+10. Windows/TradingViewFibGannSettingsWindow.xaml
+11. Windows/TradingViewFibGannSettingsWindow.xaml.cs
+
+Environment limitation:
+- dotnet/MSBuild/Windows WPF compilation is not available in this Linux execution environment.
+- Therefore a Windows compile/runtime/video-parity pass is NOT claimed from static validation.
+- User Windows compile + visual interaction testing remains required before Folder 2 can be frozen and work moves to the next folder.

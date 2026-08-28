@@ -1,0 +1,56 @@
+TickLab v1.13.0.29 Restart Step 1 — First Windows Test Checklist
+
+CLEAN BUILD
+[ ] Extract to: C:\TickLab\TickLabV1_13_0_29_Restart_Step1
+[ ] Press Win + R and paste:
+    cmd /c for /d /r "C:\TickLab\TickLabV1_13_0_29_Restart_Step1" %d in (bin,obj) do @if exist "%d" rd /s /q "%d"
+[ ] Open TickLabV1_13_0_29.sln in Visual Studio 2022.
+[ ] Rebuild Solution. Stop and report every Error or Warning before runtime testing.
+
+A. EXISTING ON-CHART INDICATOR PATH — MUST REMAIN WORKING
+[ ] Click a price chart once.
+[ ] Open Indicators and select a built-in indicator.
+[ ] Click Properties & Apply.
+[ ] Confirm Place Address automatically shows the clicked chart.
+[ ] Confirm Connect Address shows and is locked to the same chart.
+[ ] Apply and confirm the indicator appears exactly as it did in v1.13.0.28.
+[ ] Repeat with a TickScript indicator.
+
+B. EMPTY WORKSPACE PLACEMENT
+[ ] Divide a workspace so at least one partition is empty.
+[ ] Single-click that empty partition.
+[ ] Open Indicators, select an indicator and click Properties & Apply.
+[ ] Confirm Place Address automatically shows that exact empty Workspace/Partition.
+[ ] Confirm Connect Address defaults to Not connected.
+[ ] Apply.
+[ ] Confirm the indicator pane occupies only that partition.
+[ ] Confirm its own time scale is visible.
+[ ] Confirm its own indicator-value scale is visible.
+[ ] Confirm the rest of the workspace and price chart are unchanged.
+
+C. MANUAL PLACE/CONNECT OVERRIDE
+[ ] Before Apply, change Place Address to another empty partition.
+[ ] Confirm the indicator appears at the manually selected address.
+[ ] Choose a Connect Address before Apply and confirm the indicator calculates from that chart.
+[ ] Leave Connect Address as Not connected and confirm the pane opens without chart data.
+[ ] Right-click/use Connect afterward and choose Workspace → Partition → Chart.
+[ ] Confirm the indicator begins calculating without moving from its Place Address.
+
+D. SYNC SEMANTICS
+[ ] With a connected independent indicator, turn Sync with Price Chart ON.
+[ ] Zoom, drag and scroll the price chart; confirm the indicator follows the same timestamps.
+[ ] Move the crosshair; confirm timestamp alignment.
+[ ] Turn Sync OFF.
+[ ] Zoom, drag and scroll the indicator independently.
+[ ] Confirm it still receives new market data and recalculates.
+[ ] Confirm turning Sync off does not disconnect the source chart.
+
+E. PROTECTED REGRESSION CHECK
+[ ] MT5 bridge connects as before.
+[ ] History and live candles load as before.
+[ ] Price chart zoom/scroll works as before.
+[ ] Existing drawings, replay and alerts still open.
+[ ] Close and reopen TickLab; confirm placed independent indicator and connection/Sync state restore.
+
+ROLLBACK
+[ ] Keep the protected v1.13.0.28 baseline ZIP unchanged until every item above passes.

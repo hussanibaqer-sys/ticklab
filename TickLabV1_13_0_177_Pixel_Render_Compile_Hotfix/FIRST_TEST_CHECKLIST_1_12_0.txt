@@ -1,0 +1,17 @@
+TickLab v1.12.0 first test checklist
+
+1. Extract to C:\TickLab\TickLabV1_12_0 (not OneDrive).
+2. Open TickLabV1_12_0.sln.
+3. Select Release and Rebuild Solution.
+4. Launch at 100%, 125% and 150% Windows display scaling.
+5. Confirm top command bar remains readable.
+6. Add one drawing favorite and confirm it appears in the horizontal bar.
+7. Drag two favorites left/right and restart TickLab.
+8. Open each left-rail category flyout and confirm it stays inside the chart.
+9. Draw several objects and verify they appear in the integrated Object Tree.
+10. Test Object Tree selection, eye, lock and right-click actions.
+11. Select a drawing and open compact editor/full settings.
+12. Test Fibonacci level colour/fill/opacity live preview.
+13. Test Measure and Magnet/Ctrl behavior.
+14. Open marker controls and verify markers stay behind candles.
+15. Leave TickLab open for at least 30 minutes and verify no lag/freeze.

@@ -1,0 +1,28 @@
+TickLab v1.13.0.6 first test checklist
+
+1. Extract to C:\TickLab\TickLabV1_13_0_6 outside OneDrive.
+2. Open TickLabV1_13_0_6.sln in Visual Studio 2022.
+3. Select Release and Any CPU, then Clean Solution and Rebuild Solution.
+4. On a clean settings profile, confirm Workspace 1 opens with Chart 1.
+5. Open Charts 2, 3 and 4; close 1 and 3; confirm the next charts reuse IDs 1 then 3.
+6. Click Divide and test Single, 2, 3, 4 and 6 partition layouts.
+7. Confirm empty partitions show centred numbers with thin solid borders.
+8. Double-click an empty partition and confirm a yellow selection frame appears.
+9. Open a chart and confirm it attaches to the selected partition and clears the frame.
+10. Drag a pane grip or floating chart number badge over an empty partition and confirm the magnetic yellow drop frame.
+11. Drop it and confirm the pane fills only that partition.
+12. Hover a pane and test partition maximize/restore, detach and close.
+13. Test the docked workspace minimize, maximize and close controls; confirm maximize fills only the central TickLab workspace frame and close asks for confirmation.
+14. Right-click a detached chart, choose Attach, and attach it to a numbered partition.
+15. Right-click a detached chart, choose Make Workspace, and test each layout; confirm the chart occupies Partition 1.
+16. Hover the top-left workspace hotspot and drag the whole workspace to a second monitor.
+17. Maximize the detached workspace and confirm it fills that monitor.
+18. Click Add Workspace several times and switch them from the bottom bar like pages.
+19. Close a workspace containing items and test Cancel, Detach items and Close all.
+20. Restart TickLab and confirm every workspace, layout, partition assignment and floating window returns.
+21. While TickLab is running, simulate an abrupt termination, relaunch, and confirm the latest safely saved state or backup restores.
+22. Disconnect the second monitor before relaunch and confirm detached windows return visibly on an available display.
+23. Confirm the right price scale is thinner and chart width is increased.
+24. Confirm the left rail has no duplicate TL logo, Favorites has no extra frame, and Brush opens Pen/Brush/Highlighter.
+25. Draw quickly and slowly with Pen and Highlighter and confirm strokes are smooth and continuous.
+26. Confirm Live Bridge V300, History Bridge V305 and Marker V109 remain unchanged and online.

@@ -1,0 +1,23 @@
+TickLab v1.13.0.5 first test checklist
+
+1. Extract to C:\TickLab\TickLabV1_13_0_5 outside OneDrive.
+2. Open TickLabV1_13_0_5.sln in Visual Studio 2022.
+3. Select Release, then Clean Solution and Rebuild Solution.
+4. Confirm one compact top bar contains New Chart, workspace commands, symbol search and all timeframe buttons.
+5. Confirm no duplicate custom minimize/maximize/close buttons exist for the main TickLab window.
+6. Confirm the bottom dock is slim and contains chart/window tabs, Add Chart and MT5 status only—no timeframe buttons.
+7. Confirm the connection indicator is at the far bottom-right.
+8. Confirm the TL + TickLab wordmark appears in the lower-left chart area.
+9. Click New Chart and confirm numbered chart 2 opens as a separate draggable Windows window.
+10. Confirm chart 2 contains only its compact title strip, chart, right price scale and bottom time scale.
+11. Confirm chart 2 has its own minimize, maximize/restore and close controls.
+12. Drag chart 2 onto a second display, maximize it, restore it, minimize it and reactivate it from the bottom dock.
+13. Create charts 3 and 4 and confirm numbering and bottom-dock selection remain correct.
+14. Change symbol/timeframe on the main chart and confirm open price-chart windows refresh without freezing.
+15. Open an indicator panel, detach it and confirm it appears in a numbered detached window and in the bottom selector.
+16. Close a detached indicator/tool window and confirm the tool can be restored to the main chart workspace.
+17. Drag Favorites toward every monitor edge and confirm it cannot disappear beyond the virtual desktop.
+18. Hide Favorites with the Favorites button, press it again and confirm it restores visibly.
+19. Drag the right workspace handle left and right and confirm its previous behaviour remains unchanged.
+20. Confirm the drawing toolbar, adjacent tool folder, Pen/Highlighter smoothing, future-space drawing, measurement and coloured media still work.
+21. Confirm Live Bridge V300, History Bridge V305 and Marker V109 remain unchanged and online.

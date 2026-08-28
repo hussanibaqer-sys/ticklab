@@ -1,0 +1,4 @@
+Changed source files vs v1.13.0.93:
+Files /mnt/data/ticklab_fontfix/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/Controls/CandleChartControl.Drawing.cs and /mnt/data/ticklab_work/v94/TickLabV1_13_0_94_Fib_Reading_Font_Restore/src/TickLab.App/Controls/CandleChartControl.Drawing.cs differ
+Files /mnt/data/ticklab_fontfix/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/MainWindow.xaml and /mnt/data/ticklab_work/v94/TickLabV1_13_0_94_Fib_Reading_Font_Restore/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/ticklab_fontfix/v93/TickLabV1_13_0_93_Fib_Readings_Controls_Fix/src/TickLab.App/TickLab.App.csproj and /mnt/data/ticklab_work/v94/TickLabV1_13_0_94_Fib_Reading_Font_Restore/src/TickLab.App/TickLab.App.csproj differ

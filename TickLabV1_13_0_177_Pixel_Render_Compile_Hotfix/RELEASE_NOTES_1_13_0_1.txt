@@ -1,0 +1,16 @@
+TickLab v1.13.0.1 — Duplicate Method Compile Hotfix
+
+Fixed
+- Removed the duplicate CandleChartControl.DistanceToSegment(Point, Point, Point) helper that caused CS0111.
+- Kept one shared implementation for both freehand simplification and drawing hit-testing.
+- Added a validation check that scans all CandleChartControl partial files for duplicate method signatures.
+
+Unchanged
+- Premium v1.13 interface and drawing behavior.
+- Live Bridge V300.
+- History Bridge V305.
+- Marker V109.
+- Permanent M1 and raw tick formats.
+
+Build note
+- Open TickLabV1_13_0_1.sln and perform a Release Rebuild in Visual Studio.

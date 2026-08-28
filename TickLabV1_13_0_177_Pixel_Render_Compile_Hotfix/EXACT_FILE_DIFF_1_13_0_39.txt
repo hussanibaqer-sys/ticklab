@@ -1,0 +1,30 @@
+TickLab v1.13.0.39 exact file difference from v1.13.0.38 Restart Step 6A
+
+Modified:
+- Clean-Restore-Build.cmd
+- VERSION.txt
+- src/TickLab.App/Controls/CandleChartControl.DemoTrading.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/MainWindow.DemoTrading.cs
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/TickLab.App.csproj
+
+Renamed:
+- TickLabV1_13_0_38.sln -> TickLabV1_13_0_39.sln
+
+Added for this release:
+- BUILD_README_1_13_0_39_RESTART_STEP7.txt
+- EXACT_FILE_DIFF_1_13_0_39.txt
+- FIRST_TEST_CHECKLIST_1_13_0_39_RESTART_STEP7.txt
+- INTENDED_SOURCE_CHANGES_1_13_0_39_RESTART_STEP7.txt
+- MANIFEST_VERIFICATION_1_13_0_39.txt
+- PROTECTED_MT5_FILEBRIDGE_VERIFICATION_1_13_0_39.txt
+- RELEASE_NOTES_1_13_0_39_RESTART_STEP7.txt
+- SOURCE_MANIFEST_SHA256_1_13_0_39.txt
+- VALIDATION_REPORT_1_13_0_39_RESTART_STEP7.txt
+- VALIDATION_RUN_1_13_0_39_RESTART_STEP7.txt
+- src/TickLab.App/Windows/DemoTradeValuePromptWindow.cs
+- tools/validate_source_1_13_0_39_restart_step7.py
+
+Protected MT5/FileBridge files changed: 0 of 19.

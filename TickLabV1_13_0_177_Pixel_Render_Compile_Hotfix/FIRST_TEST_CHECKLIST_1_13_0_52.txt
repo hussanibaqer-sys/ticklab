@@ -1,0 +1,45 @@
+TickLab v1.13.0.52 — First Test Checklist
+=========================================
+
+PREPARE
+1. Close every older TickLab process.
+2. Extract this version outside OneDrive when possible.
+3. Run Clean-Restore-Build.cmd or rebuild Release in Visual Studio 2022.
+4. Open a symbol whose raw ticks have already been imported.
+
+VERTICAL REPLAY LINE
+1. Open Replay on Chart 1.
+2. Press Set / drag replay line.
+3. Drag directly on the yellow line and confirm it moves candle by candle.
+4. Drag the chart from a place away from the yellow line.
+   Expected: the chart pans normally and the line does not capture the drag.
+5. Zoom with the mouse wheel.
+   Expected: zoom continues normally.
+6. Right-click the yellow line and select Remove replay line.
+   Expected: the line disappears immediately.
+
+RAW-TICK CANDLE FORMATION
+1. Place the replay line on a candle covered by saved raw ticks.
+2. Press Load ticks.
+   Expected: future candles disappear and the first raw tick forms the selected candle immediately.
+3. Press Step Tick several times.
+   Expected: body, wick, close, spread and tick volume change one raw tick at a time.
+4. Press Step Candle.
+   Expected: exactly one candle completes; the next candle's first tick is not consumed.
+5. Test Play/Pause at several speeds.
+   Expected: candles grow continuously from saved tick timing.
+
+CHART ISOLATION
+1. Keep Chart 1 in replay and open Chart 2 live.
+2. Click, pan and zoom Chart 2 repeatedly.
+   Expected: Chart 1 remains in replay and Chart 2 continues live.
+3. Attempt Refresh, Home, End or boundary paging on Chart 1.
+   Expected: TickLab refuses to load future chart windows while replay is active.
+4. Apply an indicator to Chart 1.
+   Expected: it recalculates only from replay-visible candles.
+
+RESTORE
+1. Stop replay or right-click/remove the replay line during replay.
+   Expected: the exact original chart history and viewport return.
+2. Confirm live ticks resume on that chart.
+3. Confirm no other chart, indicator, alert, drawing or Demo Trading state changed.

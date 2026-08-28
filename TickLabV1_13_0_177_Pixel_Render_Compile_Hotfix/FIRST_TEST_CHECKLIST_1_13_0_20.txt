@@ -1,0 +1,9 @@
+TickLab v1.13.0.20 first test
+
+1. Open a candle chart with about 100 bars visible.
+2. Place the mouse near the left third and zoom out to 400-450 bars.
+3. Confirm no blank strip opens or closes at the left edge.
+4. Zoom in and out repeatedly; the same candle under the pointer should remain stable.
+5. Confirm all bodies in the frame have one common width and every wick stays centred.
+6. Drag through history and confirm the fixed chart frame does not shift.
+7. Test alerts, replay and one chart type to confirm previous features remain available.

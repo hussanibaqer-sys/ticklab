@@ -1,0 +1,43 @@
+TickLab v1.13.0.44 — Trade History Toggle and Direct SL/TP Controls
+====================================================================
+
+RIGHT-SIDE HANDLE CORRECTION
+- Kept the synchronized three-handle rail and 24-pixel handle width.
+- Increased the CODE EDITOR handle height from 116 to 130 pixels.
+- Reduced its vertical line height slightly so the final R is fully visible.
+- Preserved the order CODE EDITOR → DEMO TRADING → PANEL and the two 38-pixel gaps.
+
+DEMO TRADE HISTORY ON PRICE CHART
+- Added a persistent "History on chart" checkbox in the Demo Trading header.
+- The checkbox shows or hides closed-trade history without hiding running positions, entry, SL or TP lines.
+- Closed trades remain symbol-scoped and appear on every timeframe and every chart using the same symbol.
+- New same-symbol charts receive saved history automatically after all prior charts were closed.
+- Added clearer MT5-style BUY/SELL entry arrows, EXIT arrows, captions and a dashed entry-to-exit connector.
+- Historical SL and TP paths remain available and history hover details remain supported.
+- Legacy detached mirror charts now receive overlay-only refreshes, avoiding candle-data reloads.
+
+SL / TP EDITING
+- Right-click Add/Modify SL or TP keeps manual exact-price entry.
+- Added holdable ▲ and ▼ buttons. Holding a button continuously changes the value.
+- For a missing SL/TP, exact-price editing starts from the position entry price.
+- Arrow step size uses the symbol point and displayed price digits.
+- Points mode also includes holdable one-point up/down adjustment.
+- New controls use readable dark/light contrast; no white text is placed on a white background.
+
+DIRECT ENTRY-LINE DRAG
+- The running position entry line can now be held and dragged to create a missing or replacement SL/TP.
+- BUY: drag below entry for SL; drag above entry for TP.
+- SELL: drag above entry for SL; drag below entry for TP.
+- A live NEW SL or NEW TP preview appears while dragging.
+- Release to place the level; afterward the SL/TP line remains independently draggable.
+- Existing market-side validation is preserved.
+
+PRESERVED
+- Demo trading remains simulation-only and cannot send broker orders.
+- Symbol-wide active trade and saved history persistence remains enabled.
+- MT5 bridge, history bridge, marker and FileBridge sources are unchanged.
+
+BUILD NOTE
+- Static/XAML/event/structure/protected-source validation passed.
+- The generation environment does not include the Windows .NET/WPF compiler.
+- Run Clean-Restore-Build.cmd on Windows with Visual Studio 2022 for the final Release compile and visual test.

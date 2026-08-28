@@ -1,0 +1,32 @@
+TickLab v1.13.0.66 — Recorder Performance + Playback Fix
+
+Scope
+- Recorder-only reliability/performance repair on top of v1.13.0.65.
+- Replay, Tick chart, alerts, demo trading, history and MT5/FileBridge behavior are preserved.
+
+Recorder lag fix
+- Video capture timer now runs at DispatcherPriority.ApplicationIdle so chart render/input has priority.
+- A bounded 2-frame channel separates WPF capture from video encoding.
+- JPEG compression and AVI file writing now run on a background worker instead of the TickLab UI thread.
+- If the encoder cannot keep up, recorder frames are skipped instead of building a queue that can freeze TickLab.
+- Recorder status reports skipped frames as "skipped to protect chart".
+- Large TickLab windows are capped to 1600x900 for video recording while preserving the whole window aspect ratio.
+- JPEG video quality changed from 82 to 72 to reduce CPU/disk pressure.
+- Screenshots retain a separate full-resolution capture path.
+
+AVI playback/startup fix
+- AVI now writes player-friendly AVIF_HASINDEX + AVIF_ISINTERLEAVED + AVIF_TRUSTCKTYPE flags.
+- Finalization patches measured maximum bytes/sec and suggested buffer sizes into both AVI main and stream headers.
+- Legacy idx1 remains present and indexed from the movi list in standard AVI layout.
+- Finalization no longer forces a physical Flush(true); normal flush/close is used after all index/header patches are complete.
+- Existing safe AVI size limit remains.
+
+Validation
+- Full source/static regression validator: 765 passed, 0 failed.
+- Independent media-container layout test: ffprobe recognized MJPEG, 640x360, 15/1 FPS, 15 frames, 1.000 s duration.
+- Gateway/FileBridge source tree unchanged versus v1.13.0.65.
+- No bin/obj folders included.
+
+Compiler note
+- This generation environment does not contain the Windows/.NET WPF compiler.
+- Run Clean-Restore-Build.cmd or Rebuild Solution in Visual Studio 2022 on Windows for the final compiler/runtime test.

@@ -1,0 +1,55 @@
+TickScript 1.1 quick guide
+
+Script declarations
+indicator("Name", overlay=false)
+strategy("Name", overlay=true)
+ea("Name", overlay=true)
+script("Name")
+scanner("Name")
+alertscript("Name")
+drawing("Name", overlay=true)
+chart("Name")
+library("Name")
+datatool("Name")
+
+RSI example
+indicator("RSI Test", overlay=false)
+
+length = input.int(14, "RSI Length")
+overbought = input.float(70, "Overbought")
+oversold = input.float(30, "Oversold")
+rsiValue = rsi(close, length)
+plot(rsiValue, "RSI")
+hline(overbought, "Overbought")
+hline(oversold, "Oversold")
+
+First executable indicator functions
+- rsi(source, length)
+- sma(source, length)
+- ema(source, length)
+- plot(value, label)
+- hline(number-or-input, label)
+- input.int and input.float default values
+
+Compiler-recognized functions
+Inputs: input.int, input.float, input.bool, input.string, input.source
+Indicators: sma, ema, rma, wma, vwma, rsi, atr, tr, stdev, highest,
+lowest, sum, change, roc, momentum
+Signals: crossover, crossunder, rising, falling
+Rendering: plot, plotshape, plotchar, hline, barcolor, bgcolor, fill
+Strategies: strategy.entry, strategy.exit, strategy.close, strategy.order,
+strategy.cancel, strategy.cancel_all, strategy.risk
+Other: alert, alertcondition, scan.result, drawing.line, drawing.box,
+drawing.label, chart.candle, chart.bar, data.output
+
+Compiler-recognized does not yet mean chart-executable. In v1.11.0 the first
+chart runtime executes RSI, SMA and EMA. The remaining functions are language
+and compiler foundations for later runtime phases.
+
+Keyboard
+F5 or Ctrl+S: compile and save
+Ctrl+N: new script of the selected type
+
+Safety
+Strategy and EA scripts are simulation/backtesting only. Live broker order APIs,
+sockets, DLL imports and external process access are blocked.

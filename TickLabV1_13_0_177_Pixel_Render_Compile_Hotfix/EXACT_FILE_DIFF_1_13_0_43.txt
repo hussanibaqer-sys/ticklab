@@ -1,0 +1,30 @@
+TickLab v1.13.0.43 — Exact Intended File Difference from v1.13.0.42
+
+RENAMED
+- TickLabV1_13_0_42.sln -> TickLabV1_13_0_43.sln
+
+MODIFIED
+- Clean-Restore-Build.cmd
+- VERSION.txt
+- src/TickLab.App/TickLab.App.csproj
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/MainWindow.DemoTrading.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/MainWindow.Workspaces.cs
+- src/TickLab.App/MainWindow.xaml.cs
+- src/TickLab.App/Windows/DetachedChartWindow.xaml.cs
+
+ADDED RELEASE/VALIDATION FILES
+- tools/validate_source_1_13_0_43.py
+- VALIDATION_REPORT_1_13_0_43.txt
+- RELEASE_NOTES_1_13_0_43.txt
+- BUILD_README_1_13_0_43.txt
+- FIRST_TEST_CHECKLIST_1_13_0_43.txt
+- INTENDED_SOURCE_CHANGES_1_13_0_43.txt
+- EXACT_FILE_DIFF_1_13_0_43.txt
+- PROTECTED_MT5_FILEBRIDGE_VERIFICATION_1_13_0_43.txt
+- SOURCE_MANIFEST_SHA256_1_13_0_43.txt
+
+PROTECTED / UNCHANGED
+- All MT5/*.mq5 files
+- All src/TickLab.App/Gateway/FileBridge/* files

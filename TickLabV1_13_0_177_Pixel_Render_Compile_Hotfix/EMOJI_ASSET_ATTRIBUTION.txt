@@ -1,0 +1,20 @@
+TickLab bundled emoji artwork attribution
+=========================================
+
+This TickLab build includes derived vector emoji artwork so Emoji-folder rendering does not depend on the Windows emoji font.
+
+1) Twemoji
+- Most bundled vector glyphs are derived from Twemoji Mozilla / Twitter Twemoji artwork (Twemoji v14-era coverage).
+- Twemoji graphics are distributed under Creative Commons Attribution 4.0 (CC BY 4.0).
+- Copyright Twitter, Inc and other contributors.
+
+2) Noto Color Emoji
+- Emoji sequences newer than the local Twemoji vector repertoire were rendered from Noto Color Emoji and converted into scalable vector paths for this TickLab asset bundle.
+- Noto Emoji copyright Google Inc. and contributors; upstream Noto Emoji sources are distributed under Apache-2.0 and font software under the SIL Open Font License as applicable.
+
+No .ttf, .otf, .woff, .woff2, or other font file is included in this TickLab package. Only derived SVG-path artwork is bundled.
+
+3) OpenMoji
+- A small set of Emoji 17 person/Smiley fallback vectors is sourced from OpenMoji 17 to replace low-quality traced fallback artwork.
+- OpenMoji artwork is licensed under Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0).
+- OpenMoji project, HfG Schwäbisch Gmünd and contributors.

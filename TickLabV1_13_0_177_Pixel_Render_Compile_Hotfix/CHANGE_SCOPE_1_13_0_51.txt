@@ -1,0 +1,10 @@
+TickLab v1.13.0.51 change scope
+
+Modified functional files:
+- src/TickLab.App/MainWindow.xaml.cs
+- src/TickLab.App/MainWindow.DataIntegrity.cs
+- src/TickLab.App/MainWindow.AtomicHistoryLive.cs
+- src/TickLab.App/MainWindow.MultiChartLive.cs
+
+Identity/validation/documentation files were updated for v1.13.0.51.
+No MT5 bridge, FileBridge storage, alert, demo-trading, panel, indicator or drawing implementation was modified.

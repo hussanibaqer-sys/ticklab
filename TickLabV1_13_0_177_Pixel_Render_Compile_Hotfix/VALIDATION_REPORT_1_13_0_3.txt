@@ -1,0 +1,26 @@
+TickLab v1.13.0.3 — Validation Report
+=======================================
+
+Source validation
+- Static checks passed: 460
+- Static checks failed: 0
+- XAML documents parsed successfully.
+- Referenced XAML event handlers were found.
+- C# delimiter, string and comment balancing passed.
+- Duplicate CandleChartControl method-signature scan passed.
+
+Adaptive workspace checks
+- Full-height centred drawing rail present.
+- Rail up/down scrolling controls present.
+- Adjacent scrollable category window present.
+- Category-window splitter present.
+- Right-workspace splitter present.
+- Right-workspace collapse/expand control present.
+
+Protected components
+- TickLabLiveBridge_V300.mq5 unchanged.
+- TickLabHistoryBridge_V305.mq5 unchanged.
+- TickLabCandleMarkerExchange_V109.mq5 unchanged.
+
+Limitation
+- Final Windows WPF compilation and on-screen behaviour must be verified with Visual Studio 2022 Release Rebuild.

@@ -1,0 +1,55 @@
+TickLab v1.13.0.89 — FIRST TEST CHECKLIST
+
+1) LAUNCH / SETTINGS FREEZE
+- Confirm title: TickLab v1.13.0.89 — Disjoint Vertical Lock / Fib-Gann Parity.
+- Draw any object, open Settings, then click/scroll the chart while Settings is still open.
+- TickLab must stay responsive; the settings window must NOT freeze/disable the main app.
+- Cancel/X must restore the original. OK must keep the edited values.
+
+2) DISJOINT CHANNEL — TEST FIRST
+- Place point 1 and point 2 at an obvious angle, e.g. about +45 degrees.
+- While placing point 3, move the mouse left/right: point 3 must stay vertically aligned with point 2 (same X/time).
+- Move the mouse up/down: point 3 must follow vertically.
+- The second rail must be the exact opposite/mirrored angle of the first rail, not a skewable parallel-channel clone.
+- After completion, drag the whole object horizontally and vertically and confirm it remains coherent.
+
+3) FOLDER 2 FLYOUT
+- Open Fibonacci/Gann folder.
+- It should use the light reference-style flyout, correct sections/order, compact rows/icons and favorites behavior.
+
+4) EVERY FOLDER 2 TOOL — COMPLETE CONSTRUCTION SEQUENCE
+For each tool, test:
+- selection reliably arms the tool;
+- first anchor appears immediately on click 1;
+- committed points remain visible;
+- live preview follows the pointer before the next click;
+- correct click count/order;
+- completed drawing remains selected with handles;
+- blank chart can deselect;
+- clicking the visible drawing reliably reselects it and restores handles.
+
+5) FIB VISUALS
+- Fib retracement/channel/extension: level lines must have distinct colors and labels/levels must remain live-editable.
+- Fib time tools: colored vertical level lines.
+- Fib circles: click a visible circle to reselect.
+- Fib Speed Resistance Arcs: SEMICIRCULAR colored bands, not complete circles.
+- Fib Wedge: nested curved colored sector bands, not straight cross-lines.
+- Fib Speed Resistance Fan / Gann Fan / Pitchfan: colored rays/zones as shown by the reference style.
+- Fib Spiral: click near the visible spiral itself and confirm reliable reselection.
+
+6) GANN
+- Gann box: multicolor grid/levels.
+- Gann square and Gann square fixed: displayed square must match its edit handles/bounds.
+- Open settings and test per-level line/fill colors live.
+
+7) FOLDER 2 SETTINGS
+- Click individual level line-color swatches and fill-color swatches.
+- Changes must appear LIVE on chart.
+- Test Reverse / Use one color where visible.
+- Test transparency from Transparent -> completely Solid.
+- Test Lock.
+- Test Place as background.
+- Main TickLab window must remain interactive while Settings is open.
+
+DO NOT MOVE TO FOLDER 3 YET
+Report any mismatch from the reference video, including tiny construction/handle/color/settings differences.

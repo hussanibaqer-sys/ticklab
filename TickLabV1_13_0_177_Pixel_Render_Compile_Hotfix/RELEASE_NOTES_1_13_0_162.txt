@@ -1,0 +1,11 @@
+TickLab v1.13.0.162 — Top Bar Selection + Chart Icon Geometry
+
+Built directly from v1.13.0.161.
+
+Presentation-only corrections:
+- Search/symbol tab now has a clearly visible rounded rectangular theme-aware outline.
+- DarkToolbarButton now shows the same neutral theme marker used by timeframe selection when a top-bar button is pressed, keyboard-focused, or persistently Tag=Active. No blue marker is used.
+- Candles chart-type icon redrawn with canonical separated upper/lower wicks and rectangular candle bodies. Wick strokes no longer run through the candle body.
+- Hollow Candles chart-type icon redrawn with the same canonical geometry and all bodies hollow/open.
+- No top-bar control was added, removed, moved, renamed, or rewired.
+- No chart-type behavior, history, tick, replay, drawing, bridge, MT5 or MQL behavior changed.

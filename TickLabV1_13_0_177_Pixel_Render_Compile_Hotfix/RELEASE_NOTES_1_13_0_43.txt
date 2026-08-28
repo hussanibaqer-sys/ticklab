@@ -1,0 +1,37 @@
+TickLab v1.13.0.43 — Shared Right Rail and Symbol-Wide Demo Trade Markings
+Date: 2026-08-06
+
+RIGHT-SIDE LAYOUT
+- Reserved a permanent 19-pixel chart-side strip (approximately 0.5 cm at standard 96-DPI scaling).
+- Replaced the three independent handles with one synchronized vertical rail.
+- Handle order is fixed: CODE EDITOR, DEMO TRADING, PANEL.
+- Each handle is 24 pixels wide (approximately 0.64 cm at 96 DPI, below the requested 0.70 cm limit).
+- Added 38-pixel gaps (approximately 1 cm at 96 DPI) between handles.
+- Flexible top and bottom rows keep equal free space above and below the handle group.
+- Right Workspace, Code Editor and Demo Trading occupy separate columns and cannot cover one another.
+- Opening or resizing any right-side panel moves the complete three-handle rail together because the rail remains attached to the left edge of the combined panel columns.
+
+DEMO TRADING CHART MARKINGS
+- Active positions are now synchronized by symbol rather than by pane and timeframe.
+- Entry, stop-loss and take-profit levels appear on every open chart showing the same symbol.
+- Saved trade-history entry, exit, historical SL and historical TP markings appear on every timeframe for the same symbol.
+- New charts immediately receive active and saved markings for their selected symbol.
+- Floating/detached workspace charts retain the same synchronized overlays.
+- Legacy standalone detached chart rendering also receives the current demo-trade overlays.
+- Dragging an active SL or TP from any same-symbol chart updates the shared position and refreshes every same-symbol chart.
+- Existing account persistence remains independent of chart windows, so closing all charts does not delete active positions or saved history.
+
+PRESERVED
+- MT5 live bridge, history bridge and candle marker MQL5 sources are unchanged.
+- FileBridge/history storage sources are unchanged.
+- Demo trading remains simulated only; no real-order API was added.
+- Existing panel content and working panel behavior were preserved outside the requested layout changes.
+
+VALIDATION
+- Static/source validation: 563 passed, 0 failed.
+- XAML parsed and named controls/event handlers were checked.
+- C# structural balance and changed-method uniqueness were checked.
+- Protected MT5 and FileBridge files were hash-compared against v1.13.0.42.
+
+LIMITATION
+- The Linux packaging environment does not contain the Windows WPF/.NET desktop build toolchain. A Visual Studio 2022 Release rebuild and on-screen interaction test remain the final compiler/display verification.

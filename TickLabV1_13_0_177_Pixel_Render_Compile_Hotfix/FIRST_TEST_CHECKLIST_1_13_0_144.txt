@@ -1,0 +1,28 @@
+TickLab v1.13.0.144 — First runtime test
+
+Build
+- Restore/build the solution in Visual Studio on Windows.
+- Confirm title: TickLab v1.13.0.144 — Shared Drawing Engine Tick Chart.
+
+Raw Tick drawing parity
+1. Open Tick timeframe.
+2. Select Trend Line once, draw one Trend Line, and confirm the tool returns according to the normal one-select/one-draw rule (unless Stay in Drawing Mode is enabled).
+3. Confirm first anchor appears immediately and live preview works.
+4. Click the completed line anywhere on its visible geometry; confirm the same quick-edit toolbar/settings behavior as candle charts.
+5. Middle-click/center-click the drawing; confirm it is removed exactly as on candle charts.
+6. Draw another object and open Drawing Inspector/Object Tree; confirm the Tick drawing appears there and can be selected/deleted from the inspector.
+7. Confirm Lock, Hide, Delete, Undo and Redo work through the normal toolbar/actions.
+8. Reopen/workspace restore and confirm Tick drawings persist as normal ChartDrawings.
+
+Measure / Crosshair
+9. Use the existing Measure tool on Tick Chart; confirm its current normal-chart visual design is preserved and the label reports ticks, elapsed time (including milliseconds when relevant), pips/points and price difference.
+10. Use Cross; confirm horizontal + vertical guides work and the Tick time label shows millisecond precision.
+
+Tick navigation protection
+11. Scroll backward well beyond 30 minutes and confirm contiguous saved tick history still loads.
+12. Confirm historical browsing does not leave unwanted right-side live blank space.
+13. Confirm horizontal zoom-out still stops at 5,000 visible ticks.
+14. Use Find Candle > Tick and confirm the requested tick centers and the vertical Find Tick marker remains visible/removable.
+
+Seconds protection
+15. Re-test the same old 1-second Find Candle case that was previously slow and confirm v1.13.0.142 direct-seek behavior remains fast.

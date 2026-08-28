@@ -1,0 +1,7 @@
+TickLab v1.13.0.60 source files changed from v1.13.0.59
+
+src/TickLab.App/Controls/CandleChartControl.cs
+src/TickLab.App/MainWindow.AlertsReplay.cs
+src/TickLab.App/MainWindow.xaml
+src/TickLab.App/TickLab.App.csproj
+src/TickLab.App/Windows/MarketReplayWindow.cs

@@ -1,0 +1,28 @@
+TickLab v1.13.0.118 — Global Drawing Render Restore
+
+SCOPE
+- Shared chart drawing render pipeline only.
+- No individual drawing-folder geometry, parity renderer, defaults, tool catalog, Fib/Gann logic, Pattern logic, Cycle logic, or Text/Annotation geometry was changed in this correction.
+
+ROOT CORRECTIONS
+1. Restored the shared VisibleDrawings / DrawDrawingLayer pipeline to the last proven working implementation from v1.13.0.112.
+   - visible drawings are enumerated through IsDrawingVisible
+   - visual-layer ordering is restored
+   - completed drawings route through DrawOneDrawing
+   - live construction preview routes through the same DrawOneDrawing path
+2. Removed the v1.13.0.117 diagnostic overlay/counter and the speculative Folder-6 interception from the common renderer.
+3. Fixed global Hide All Drawings state mismatch:
+   - Hide All state is displayed/toggled for the active chart, not blindly for the primary CandleChart instance.
+   - explicitly selecting a non-cursor drawing tool clears a stale Hide All state so a valid drawing cannot be created invisibly.
+   - direct image placement also clears stale Hide All state.
+
+FREEZE GUARANTEE
+- CandleChartControl.DrawingParity.cs is byte-for-byte unchanged from v1.13.0.117.
+- DrawingToolCatalog.cs is byte-for-byte unchanged from v1.13.0.117.
+- Therefore individual tool renderers/defaults are not modified by this build.
+
+VALIDATION
+- Shared DrawDrawingLayer block matches the v1.13.0.112 working implementation exactly.
+- 31/31 XAML files parse.
+- Changed C# files pass structural delimiter scan.
+- Windows WPF compile/runtime still requires Visual Studio on the user's PC because dotnet/MSBuild is unavailable in the packaging environment.

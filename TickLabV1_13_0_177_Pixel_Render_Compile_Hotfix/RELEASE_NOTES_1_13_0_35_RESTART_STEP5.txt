@@ -1,0 +1,36 @@
+TickLab v1.13.0.35 — Restart Step 5
+
+Implemented only the approved Step 5 changes on top of v1.13.0.34 Restart Step 4:
+
+1. Price-chart right-click menu
+   - Added Add Indicator… directly to every price-chart context menu.
+   - Opens the existing Indicator Selection window on the Built-in library tab.
+   - Applies the selected indicator to the exact chart that was right-clicked.
+
+2. Demo trading slide panel
+   - Moved the DEMO TRADE slide handle to the vertical centre of the right edge.
+   - Increased the panel width for readable controls and positions.
+   - Added a visible Floating P/L account card.
+
+3. Open demo positions
+   - Replaced the squeezed wide table with compact live position cards.
+   - Shows chart, symbol, timeframe, direction, lot, entry, current price, SL, TP and live floating P/L.
+   - Added a visible × button on every position card to close only that position.
+   - Keeps Close selected, Close all and Breakeven +10.
+
+4. Demo trade chart levels
+   - Adds Entry, Stop Loss and Take Profit lines to the exact source chart.
+   - Entry is visible but locked.
+   - SL and TP are draggable vertically.
+   - Releasing a line validates the level, updates only that demo position, persists it and refreshes the panel.
+   - Demo lines are included in automatic chart price fitting so they remain visible.
+
+5. Floating/new chart drag handle
+   - Enlarged and labelled the drag handle as “⠿ DRAG”.
+   - Available on charts opened when no workspace partition is selected.
+   - Drags the floating chart onto an empty workspace partition using the existing safe pane move flow.
+
+Safety
+- Demo trading remains fully simulated.
+- No real MT5 order APIs were added.
+- MT5/FileBridge source files were not intentionally changed.

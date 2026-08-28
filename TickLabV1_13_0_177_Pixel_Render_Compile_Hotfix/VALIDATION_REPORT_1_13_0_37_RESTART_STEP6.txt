@@ -1,0 +1,12 @@
+TickLab v1.13.0.37 Restart Step 6 validation report
+
+Result
+- Focused Step 6 source validation: PASS (648/648).
+- Duplicate-method regression validation: PASS (9/9).
+- Bridge-write-access regression validation: PASS (15/15).
+- WPF XAML parsing and handler-resolution checks: PASS.
+- Protected MT5/FileBridge comparison: PASS.
+- Source ZIP integrity: PASS (all archive entries decompressed successfully; no bad entry).
+
+Important boundary
+These are static/source checks. They do not prove Windows compilation or runtime behaviour. The Linux environment does not contain the dotnet executable and cannot run a WPF desktop application. A clean Windows Visual Studio 2022 / .NET 8 rebuild and the included first-test checklist remain mandatory.

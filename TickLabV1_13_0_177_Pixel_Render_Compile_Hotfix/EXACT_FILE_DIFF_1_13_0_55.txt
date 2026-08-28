@@ -1,0 +1,19 @@
+TickLab v1.13.0.55 exact file-difference summary relative to v1.13.0.54
+
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/Clean-Restore-Build.cmd and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/Clean-Restore-Build.cmd differ
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index: EXACT_FILE_DIFF_1_13_0_55.txt
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index: FIRST_TEST_CHECKLIST_1_13_0_55.txt
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index: INTENDED_SOURCE_CHANGES_1_13_0_55.txt
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index: RELEASE_NOTES_1_13_0_55.txt
+Only in /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors: TickLabV1_13_0_54.sln
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index: TickLabV1_13_0_55.sln
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index: VALIDATION_REPORT_1_13_0_55.txt
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/VERSION.txt and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/VERSION.txt differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/MainWindow.AlertsReplay.cs and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/MainWindow.AlertsReplay.cs differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/MainWindow.MultiChartLive.cs and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/MainWindow.MultiChartLive.cs differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/MainWindow.xaml and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/TickLab.App.csproj and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/TickLab.App.csproj differ
+Files /mnt/data/replay55/work/TickLabV1_13_0_54_Replay_Range_Selectors/src/TickLab.App/Windows/MarketReplayWindow.cs and /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/src/TickLab.App/Windows/MarketReplayWindow.cs differ
+Only in /mnt/data/replay55/work/TickLabV1_13_0_55_Instant_Replay_Index/tools: validate_source_1_13_0_55.py

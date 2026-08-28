@@ -1,0 +1,36 @@
+TickLab v1.13.0.37 Restart Step 6 intended source changes
+
+Release identity
+- TickLabV1_13_0_37.sln
+- VERSION.txt
+- Clean-Restore-Build.cmd
+- src/TickLab.App/TickLab.App.csproj
+- src/TickLab.App/MainWindow.xaml title
+
+Chart settings and Ask line
+- src/TickLab.App/Core/Settings/ChartSettings.cs
+- src/TickLab.App/Windows/ChartSettingsWindow.xaml.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+
+Indicator context actions
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/Controls/BuiltInIndicatorPlotControl.cs
+- src/TickLab.App/Controls/TickScriptIndicatorPlotControl.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/MainWindow.IndicatorManagement.cs
+
+Demo Trading
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/MainWindow.DemoTrading.cs
+
+Floating chart transfer handle
+- src/TickLab.App/Windows/DetachedChartWindow.xaml
+- src/TickLab.App/MainWindow.Workspaces.cs
+
+Validation and release documents
+- tools/validate_source_1_13_0_37_restart_step6.py
+- Step 6 build, test, release, diff, validation, protected-hash and manifest files.
+
+Explicitly protected
+- MT5/** unchanged.
+- src/TickLab.App/Gateway/FileBridge/** unchanged.

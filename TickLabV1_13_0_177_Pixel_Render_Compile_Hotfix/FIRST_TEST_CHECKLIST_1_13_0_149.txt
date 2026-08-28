@@ -1,0 +1,8 @@
+v1.13.0.149 first runtime test
+1. Open Tick Chart and set a recognizable horizontal/vertical zoom.
+2. Use Find Candle -> Tick on an old timestamp.
+3. Confirm zoom density remains the same after Find.
+4. Confirm the found tick is centered, not forced to the right edge.
+5. Confirm marker is the same solid warm-yellow style as candle Find.
+6. Scroll left into older ticks and right into newer ticks; both sides must continue paging.
+7. Recheck 1-second historical candles to confirm no regression.

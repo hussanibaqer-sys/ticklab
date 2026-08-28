@@ -1,0 +1,33 @@
+TickLab v1.13.0.137 — Static Validation
+
+Total checks: 25
+Passed: 25
+Failed: 0
+
+PASS — All XAML parses — 31 files
+PASS — All C# delimiters balanced — 154 files
+PASS — Version 1.13.0.137
+PASS — Seconds Find builds full 1600 page
+PASS — Seconds Find passes exact focus timestamp
+PASS — Exact typed timestamp preserved separately
+PASS — Timeframe changes use exact historical anchor
+PASS — Center load uses focusUnix
+PASS — On-demand raw tick reader has focus support
+PASS — Equal-count repaired page can replace stale page
+PASS — Newer seconds paging has forward focus
+PASS — Scroll-to-newest does not clear anchor
+PASS — Explicit End clears chart anchor
+PASS — Refresh preserves historical anchor
+PASS — Marker vertical lines render before drawing layers
+PASS — Historical cross-timeframe guide exists
+PASS — Marker labels remain separate from background line
+PASS — Computed navigation properties ignored in marker JSON
+PASS — Protected unchanged: Controls/CandleChartControl.Drawing.cs
+PASS — Protected unchanged: Controls/CandleChartControl.DrawingParity.cs
+PASS — Protected unchanged: Core/Drawing/DrawingToolCatalog.cs
+PASS — Protected unchanged: Controls/EmojiVectorAssets.cs
+PASS — Protected unchanged: Gateway/FileBridge/Mt5FileBridgeClient.cs
+PASS — Protected unchanged: Gateway/FileBridge/NativeCandleArchiveStore.cs
+PASS — Protected unchanged: Core/Replay/MarketReplayEngine.cs
+
+Environment note: .NET/WPF compiler/runtime is not installed in this Linux container; Windows Visual Studio remains the compile/runtime gate.

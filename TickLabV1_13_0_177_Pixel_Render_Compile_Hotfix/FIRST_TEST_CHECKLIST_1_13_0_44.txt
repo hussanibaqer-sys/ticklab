@@ -1,0 +1,47 @@
+TickLab v1.13.0.44 — First Test Checklist
+=========================================
+
+1. BUILD
+[ ] Extract the ZIP to a normal local folder, not OneDrive/cloud sync.
+[ ] Run Clean-Restore-Build.cmd or rebuild TickLabV1_13_0_44.sln in Visual Studio 2022 Release mode.
+[ ] Confirm zero compiler errors.
+
+2. RIGHT HANDLE RAIL
+[ ] Confirm CODE EDITOR shows every letter, including the final R.
+[ ] Confirm CODE EDITOR, DEMO TRADING and PANEL remain 24 pixels wide.
+[ ] Confirm their order and spacing remain unchanged.
+[ ] Open each right panel in sequence and confirm the complete rail moves together.
+
+3. HISTORY ON CHART
+[ ] Open Demo Trading and confirm the "History on chart" checkbox is visible in the header.
+[ ] Close a demo trade and confirm BUY/SELL and EXIT arrows appear on the matching-symbol price chart.
+[ ] Confirm a dashed line connects entry to exit.
+[ ] Untick "History on chart" and confirm closed-trade markings disappear only.
+[ ] Confirm running entry, SL and TP lines remain visible while history is off.
+[ ] Tick it again and confirm closed history returns.
+[ ] Change timeframe and confirm the same symbol history appears.
+[ ] Open a second chart of the same symbol and confirm history appears there.
+[ ] Close all charts, open a new chart of the same symbol and confirm saved history returns.
+[ ] Open a different symbol and confirm the other symbol's history does not appear.
+
+4. RIGHT-CLICK SL / TP
+[ ] Right-click a running entry/SL/TP line.
+[ ] Choose Add/Modify SL exact price and confirm the ▲ and ▼ buttons are visible.
+[ ] Hold an arrow and confirm the value repeats continuously.
+[ ] With no SL, confirm the initial exact value starts at entry price.
+[ ] Repeat for TP.
+[ ] Confirm manual typing still works.
+[ ] Confirm invalid buy/sell-side levels are rejected.
+
+5. ENTRY-LINE DRAG
+[ ] BUY: hold the entry line and drag downward; confirm NEW SL preview and release placement.
+[ ] BUY: hold the entry line and drag upward; confirm NEW TP preview and release placement.
+[ ] SELL: hold the entry line and drag upward; confirm NEW SL preview and release placement.
+[ ] SELL: hold the entry line and drag downward; confirm NEW TP preview and release placement.
+[ ] Drag the created SL/TP line again and confirm normal adjustment still works.
+[ ] Confirm the created level appears on every chart/timeframe of the same symbol.
+
+6. CONTRAST AND PERFORMANCE
+[ ] Confirm all new text is readable with no white-on-white combination.
+[ ] Open a detached/floating chart and confirm overlays update without candle reload flicker.
+[ ] Confirm no new lag while a demo position is running.

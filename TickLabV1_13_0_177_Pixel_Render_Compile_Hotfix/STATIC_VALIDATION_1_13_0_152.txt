@@ -1,0 +1,19 @@
+TickLab v1.13.0.152 — Static Validation
+
+PASS: C# delimiter/string/comment structural checks on:
+- TickChartControl.cs
+- CandleChartControl.RawTickDrawing.cs
+- MainWindow.RawTickChart.cs
+
+PASS: TickLab.App.csproj XML parse.
+PASS: MainWindow.xaml XML parse.
+PASS: required new cache/version/interaction symbols present.
+PASS: protected source byte comparisons vs v1.13.0.151.
+PASS: protected Tick Find/history paging method-body comparisons.
+PASS: MT5/MQL tree unchanged.
+PASS: GetRawTickAdditions old/new output equivalence across 10,000 randomized sorted-history cases.
+PASS: retained Tick viewport affine mapping across 10,000 randomized cases.
+
+Compiler note:
+No dotnet, MSBuild, csc or mcs executable is installed in the ChatGPT runtime.
+Windows Visual Studio compile/runtime testing remains authoritative.

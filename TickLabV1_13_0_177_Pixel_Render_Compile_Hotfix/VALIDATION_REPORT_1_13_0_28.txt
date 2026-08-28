@@ -1,0 +1,37 @@
+TickLab v1.13.0.28 — Validation Report
+
+RESULT
+- Main source validator: 7,167 passed, 0 failed.
+- CandleChartControl duplicate-method regression validator: 9 passed, 0 failed.
+- MT5 bridge write-access regression validator: 15 passed, 0 failed.
+- XAML/project XML parsing passed.
+- XAML event-handler lookup passed across MainWindow partial classes and window code-behind files.
+- C# lexical delimiter checks passed for 127 source files.
+- No bin, obj or .vs directories are included.
+
+FEATURES VERIFIED IN SOURCE
+- Separate “Properties & Add to Chart” and “Place in Workspace” actions.
+- Direct built-in and TickScript indicator workspace placement.
+- Empty and occupied Workspace → Partition targets with protected cancel/swap/replace handling.
+- Real independent WorkspacePaneKind.Indicator runtime contexts.
+- Connect/Change source selection through Workspace → Partition → Chart.
+- Visible Sync control disabled until a source chart is connected.
+- Sync-linked horizontal wheel, horizontal pan, crosshair and replay data.
+- Sync-off local horizontal viewport and original non-replay data during source replay.
+- Independent vertical scaling and vertical reset remain inside the plot controls.
+- Independent 24px time scale and 48px-aligned value scale.
+- Header and right-click Connect/Copy/Move routing.
+- Copy preserves the workspace indicator.
+- Move removes only after successful destination copy.
+- Source-chart removal safely disconnects the independent pane.
+- Embedded and floating source-chart restoration occurs in two phases.
+- Source id, Sync state, colours, indicator settings and independent viewport persistence.
+- Full built-in and TickScript colour-editing functionality from v1.13.0.27 remains present.
+- Per-chart/per-direction history paging isolation from v1.13.0.27 remains present.
+- v1.13.0.26 candle/right-edge behavior remains protected.
+
+PROTECTED MT5 FILES
+The main validator recalculated every hash listed in MT5_SOURCE_SHA256.txt. All protected MT5 source hashes matched. No MT5 bridge source was modified for v1.13.0.28.
+
+LIMITATION
+A real .NET 8 WPF compilation and live MT5 execution could not be performed in this Linux environment because no Windows WPF compiler/runtime is available. This package therefore still requires Visual Studio 2022 build validation and the included FIRST_TEST_CHECKLIST_1_13_0_28.txt on Windows before replacing the stable version.

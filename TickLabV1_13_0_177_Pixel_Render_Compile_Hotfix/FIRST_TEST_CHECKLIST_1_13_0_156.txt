@@ -1,0 +1,11 @@
+TickLab v1.13.0.156 — First Test Checklist
+
+1. Open a normal continuous Tick chart and note that nearby timestamps are continuous.
+2. Use Find -> Tick on a timestamp inside that same history.
+3. Confirm the found tick is centered/marked and the tick immediately left/right no longer jumps several hours.
+4. Repeat Find -> Tick on several dates/times, including zoomed-in and 5000-tick zoom-out views.
+5. Use the Candle/Find dialog with Tick selected and confirm the same behavior.
+6. Scroll older/newer after Find and confirm paging remains continuous.
+7. Verify normal 1s/15s/30s/45s charts.
+8. Verify Tick drawing smoothness, Replay, Candle Finder and the synthetic-seconds lock.
+9. Leave MT5 live long enough for watchdog/integrity agents to run.

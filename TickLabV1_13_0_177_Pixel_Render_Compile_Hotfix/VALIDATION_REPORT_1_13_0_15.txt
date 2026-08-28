@@ -1,0 +1,14 @@
+TickLab v1.13.0.15 validation report
+
+- Step 5 static/source checks: 442 passed, 0 failed.
+- Duplicate CandleChartControl method-signature checks: 9 passed, 0 failed.
+- MT5 bridge write-access regression checks: 15 passed, 0 failed.
+- All 28 XAML/project XML files parsed successfully as part of the Step 5 audit.
+- All C# source files passed lexical brace/parenthesis/bracket balance checks.
+- CandleChartControl partial classes contained no duplicate method signatures.
+- Protected MT5 bridge source hashes matched MT5_SOURCE_SHA256.txt.
+- Candle gap constant verified at 6.0 pixels; 1,500-candle maximum zoom-out retained.
+- TPO, Session Volume Profile and Volume Footprint enum/menu/renderer/settings/data-validation paths verified.
+- Volume profile and footprint builder verified to consume VolumeReal only.
+
+The Linux packaging environment does not contain the Windows .NET/WPF compiler. Final compiler, GPU/DPI rendering and live MT5 real-volume tests must be run in Visual Studio 2022 on Windows.

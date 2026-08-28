@@ -1,0 +1,9 @@
+TickLab v1.13.0.110 static validation
+
+PASS: 31 XAML files parsed with 0 XML errors.
+PASS: DrawingSettingsWindow XAML event handlers checked: 22 unique handlers, 0 missing.
+PASS: All 10 volume-profile style roles are present in the guarded mapping path.
+PASS: Old throwing VolumeProfileStyleRows().First(...) lookup removed.
+PASS: Volume-profile Values colour uses the same guarded picker helper.
+PASS: C# brace-count structural smoke check found no mismatch.
+NOTE: dotnet/MSBuild is not installed in this Linux environment, so Windows WPF compile/runtime is not claimed here.

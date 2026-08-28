@@ -1,0 +1,17 @@
+TickLab v1.13.0.24 first test — basic Candles only
+
+1. Open a normal Candles chart at the latest market position.
+2. Place the pointer anywhere inside the plot and zoom in repeatedly until only 1–5 bars fit.
+   Expected: at least the newest candle always remains visible.
+3. Zoom back out to 100, 400 and 1,500 visible slots.
+   Expected: the newest candle remains at the same approximate right-side position; it does not disappear and return.
+4. Repeat zoom in/out at least 20 times.
+   Expected: no cumulative left/right drift.
+5. Drag the bottom time scale in both directions.
+   Expected: same behavior as wheel zoom; no empty chart caused by future space.
+6. Leave the chart zoomed and wait for a new candle to open.
+   Expected: the viewport remains live and does not jump.
+7. Close and reopen TickLab.
+   Expected: saved future space is restored instead of being forced to zero.
+
+Do not evaluate other chart types in this hotfix. They will be audited only after the basic Candles chart is confirmed stable.

@@ -1,0 +1,16 @@
+TickLab v1.13.0.172 static validation
+
+PASS — version metadata = 1.13.0.172
+PASS — MainWindow title = TickLab v1.13.0.172 — Compact Rail + Stronger Measure Icon
+PASS — expanded DrawingToolbarColumn reduced from 68 px to 53 px
+PASS — 53 px rail is 15 DIPs smaller (~3.97 mm at 96 DPI)
+PASS — visible rail buttons = 36 px wide
+PASS — visible button origin = 8.5 px, yielding 8.5 px left + 8.5 px right gutters
+PASS — folder primary button widened to 36 px to match lower action buttons
+PASS — folder chevron lane = 8.5 px and remains hover-only
+PASS — folder host = 44.5 px = 36 px primary + 8.5 px hover chevron
+PASS — bottom collapse control aligned to 8.5 px visible gutter
+PASS — collapsed DrawingToolbarColumn remains 14 px
+PASS — Measure icon rebuilt as continuous ruler geometry with graduated ticks
+PASS — Measure icon retains normalized one-pixel visual strokes
+PASS — no chart/drawing engine behavior files modified beyond shared icon artwork

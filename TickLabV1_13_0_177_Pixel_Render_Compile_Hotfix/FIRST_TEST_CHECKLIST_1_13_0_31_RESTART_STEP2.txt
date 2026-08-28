@@ -1,0 +1,46 @@
+TickLab v1.13.0.31 Restart Step 2 — First Test Checklist
+
+BUILD
+[ ] Delete bin and obj folders.
+[ ] Open TickLabV1_13_0_31.sln.
+[ ] Rebuild Solution.
+[ ] Confirm zero compile errors.
+
+CONNECTION SELECTOR VISIBILITY
+[ ] Open a standalone indicator and click Connect/Change.
+[ ] Confirm chart options have white background and black text.
+[ ] Confirm hovered option is visible.
+[ ] Confirm selected option is visible.
+[ ] Open indicator Properties and confirm Place Address and Connect Address use the same readable colours.
+
+EXISTING CHART INDICATOR PROPERTIES
+[ ] Open Properties for a built-in indicator already on a price chart.
+[ ] Confirm Placement tab is present.
+[ ] Leave Place Address unchanged and press OK; confirm normal indicator behavior remains unchanged.
+[ ] Change Place Address to another price chart; confirm the selected indicator moves there.
+[ ] Change Place Address to an empty workspace; confirm it becomes a standalone indicator pane.
+[ ] Repeat for a TickScript indicator.
+
+EXISTING WORKSPACE INDICATOR PROPERTIES
+[ ] Open Properties for a standalone built-in indicator.
+[ ] Confirm current workspace/partition is preselected as Place Address.
+[ ] Change only Connect Address; confirm the pane stays in place and changes source chart.
+[ ] Select Not connected; confirm the pane remains and Sync turns off.
+[ ] Move the indicator to another empty workspace partition.
+[ ] Move it from workspace to a price chart.
+[ ] Repeat for a TickScript indicator.
+
+SYNC REGRESSION
+[ ] Sync ON still follows chart horizontal scroll, zoom, free drag, crosshair/time, and the relative vertical gesture.
+[ ] Sync OFF still receives live/history data but navigates independently.
+
+WORKSPACE CONTROLS
+[ ] Confirm Minimize, Maximize/Restore, and Close are at the bottom-right.
+[ ] Confirm they do not overlap Sync with Price Chart.
+[ ] Confirm they do not cover readable time-scale or value-scale labels.
+[ ] Test Minimize, Maximize/Restore, and Close.
+
+REGRESSION
+[ ] Existing on-chart indicator calculation still works.
+[ ] Standalone indicator time scale and value scale remain visible.
+[ ] MT5 connection, history, and live candles still work.

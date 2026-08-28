@@ -1,0 +1,21 @@
+TickLab v1.13.0.135 — Seconds Unlimited Raw Tick History
+
+Scope
+- Seconds-history paging only. No drawing/UI geometry changes.
+
+Fixes
+1. 1s/15s/30s/45s/custom-second charts have no artificial date-depth cutoff.
+2. Older page requests continue walking backward through raw-tick source windows until the requested bounded page is filled or the actual oldest stored tick is reached.
+3. Historical raw-tick discovery searches every valid MT5 Common-Files connector root for the same connector ID, with the active root preferred.
+4. Older bridge snapshots are indexed only in bounded page-sized windows; TickLab does not load/index an entire multi-year archive into the active chart.
+5. Seconds pages retain the actual stored raw-tick boundary on every older-page request.
+6. An empty seconds page no longer automatically marks AllOlderHistoryLoaded while the actual stored boundary is older than the current chart cursor.
+
+Preserved
+- 1,600-candle seconds page size.
+- 1,500 maximum visible candle ceiling.
+- 12,000 rolling candle virtual buffer.
+- Seconds candles remain generated from raw ticks, never reconstructed from M1.
+- M1/H1/native history rules unchanged.
+- Raw Tick chart unchanged.
+- Drawing/Favorites/Emoji/top-toolbar behavior unchanged.

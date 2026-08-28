@@ -1,0 +1,36 @@
+TickLab v1.13.0.15 — Crisp Candles + Step 5 TPO and Volume Analysis
+
+CANDLE RENDERING
+- Doubled the standard candle gap from 3 device-independent pixels to 6.
+- Candle bodies and borders are aligned to the actual monitor pixel grid at the current Windows DPI scale.
+- Candle borders and wicks now use flat line caps and mitered joins instead of rounded geometry.
+- Body edges use WPF guideline snapping to reduce half-pixel antialias blur.
+- The 1,500 visible-candle horizontal zoom-out limit remains unchanged.
+
+STEP 5 CHART TYPES
+- Time Price Opportunity (TPO / Market Profile)
+  - Uses candle time and price only; real volume is not required.
+  - Groups letters by broker-time session.
+  - Adjustable TPO bracket duration, session start hour and price-row count.
+- Session Volume Profile
+  - Uses only saved raw ticks with VolumeReal greater than zero.
+  - Shows session histograms, Point of Control and optional value-area shading.
+- Volume Footprint
+  - Uses only saved raw ticks with VolumeReal greater than zero.
+  - Uses MT5 BUY/SELL tick flags when available, then bid/ask and tick-rule classification.
+  - Displays bid x ask volume per price level when zoomed in and a compact delta view when zoomed out.
+
+DATA SAFETY
+- Session Volume Profile and Volume Footprint remain visible in the menu but do not activate when no real traded volume exists.
+- TickLab shows: "This chart requires real trade volume, but the connected broker is not providing it."
+- Tick volume is never labelled or substituted as real volume for Step 5 charts.
+- Only the visible saved-tick range is loaded, capped at 2,000,000 ticks per refresh.
+- Viewport changes refresh Step 5 data after a short debounce without blocking chart dragging.
+
+SETTINGS
+- Added per-chart TPO / volume settings.
+- Settings are preserved through existing workspace and chart-template persistence.
+
+BUILD
+- Open TickLabV1_13_0_15.sln in Visual Studio 2022.
+- Delete bin and obj, then Clean Solution and Rebuild Solution.

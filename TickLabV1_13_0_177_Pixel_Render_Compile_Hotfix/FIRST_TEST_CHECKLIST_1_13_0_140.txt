@@ -1,0 +1,46 @@
+TickLab v1.13.0.140 — First Runtime Test Checklist
+
+1) FIND CANDLE BUSY STATE
+- Open Find Candle.
+- Search an old 1-second timestamp that takes long enough to observe UI state.
+- Immediately confirm the button changes to “Finding…” with a rotating round-arrow.
+- Confirm the Find button cannot be clicked again until the first search finishes.
+- Rapid-double-click Find and confirm only one search starts.
+- Confirm button returns to “Find candle” after success/failure.
+
+2) PRESERVE v1.13.0.139 FIND CANDLE FIXES
+- Search a 1-second candle about a month back.
+- Confirm direct seek remains fast and does not sequentially generate/scan the whole month.
+- Remove marker and confirm no thin residual marker remains.
+- If any guide is intentionally left for fallback testing, confirm it can be selected and manually deleted.
+
+3) TICK CHART — SCROLL MODE
+- Switch the chart mouse-wheel toolbar control to Scroll mode.
+- On Raw Tick Chart, wheel backward.
+- Confirm the chart pans into older ticks without increasing the number of visible ticks.
+- Continue to the oldest loaded edge and confirm older tick history loads while the viewport stays at the same horizontal density.
+- Wheel forward toward live ticks and confirm normal forward panning.
+
+4) TICK CHART — RIGHT-SIDE SPACE
+- At live/latest ticks, confirm the normal right-side breathing room is visible.
+- Scroll backward into history.
+- Confirm the right-side blank space disappears and historical ticks use the full chart plot width.
+- Return to live/End and confirm the right-side live space returns.
+
+5) TICK CHART — 1600 LIMIT
+- Switch to Zoom mode.
+- Zoom horizontally out repeatedly over plot/time scale.
+- Confirm horizontal zoom stops at 1,600 visible ticks and never exceeds it.
+- Double-click/Fit Horizontal/Fit All and confirm they also never show more than 1,600 ticks.
+- Confirm total stored history is still scrollable; only visible-frame density is limited.
+
+6) TICK CHART — SMOOTH ZOOM
+- In Zoom mode, wheel over the plot and verify combined horizontal/vertical zoom is smoother.
+- Wheel over price scale and verify smooth vertical-only zoom.
+- Wheel over time scale and verify smooth horizontal-only zoom.
+- Drag price and time scales and verify reduced jumpiness.
+
+7) REGRESSION
+- Confirm normal candle chart remains unchanged.
+- Confirm live raw ticks keep arriving while browsing history without snapping the viewport back to live.
+- Confirm MT5 bridge/history/replay behavior remains normal.

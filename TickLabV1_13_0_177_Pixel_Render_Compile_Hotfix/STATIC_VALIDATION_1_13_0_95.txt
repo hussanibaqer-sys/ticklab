@@ -1,0 +1,14 @@
+passed=649 failed=0
+SOURCE_DIFF
+App.xaml
+Controls/CandleChartControl.Drawing.cs
+Controls/CandleChartControl.DrawingParity.cs
+Core/Drawing/DrawingParityDefaults.cs
+MainWindow.xaml
+MainWindow.xaml.cs
+Settings/ApplicationThemeManager.cs
+TickLab.App.csproj
+Windows/DrawingSettingsWindow.xaml
+Windows/DrawingSettingsWindow.xaml.cs
+Windows/TradingViewLineSettingsWindow.xaml
+Windows/TradingViewLineSettingsWindow.xaml.cs

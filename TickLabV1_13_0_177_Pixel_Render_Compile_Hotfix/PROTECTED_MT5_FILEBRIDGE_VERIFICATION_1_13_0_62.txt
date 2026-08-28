@@ -1,0 +1,7 @@
+TickLab v1.13.0.62 protected-source verification
+
+Compared against v1.13.0.61 baseline.
+Protected files checked: 20.
+Changed protected files: 0.
+All MT5 / FileBridge / .mq5 protected files are byte-for-byte unchanged.
+Only Replay completion/UI, alert UI/models/rendering, chart settings, version metadata and validation/docs were changed.

@@ -1,0 +1,43 @@
+TickLab v1.13.0.97 — Gann Box / Fan / Menu Contrast Fix
+
+SCOPE
+This is a surgical correction from v1.13.0.96. No Folder-1 work, Fibonacci controls, Gann Square, Gann Square Fixed, MT5 bridge/history/replay/gateway/connector implementation was intentionally changed.
+
+1. GANN BOX ONLY
+- Removed the accidental reuse of the Gann Square renderer for Gann Box.
+- Added a dedicated Gann Box renderer matching the supplied TradingView comparison more closely:
+  * equal time/price subdivisions,
+  * full nine-angle Gann family clipped inside the box,
+  * nested paired quarter-ellipse arc families,
+  * reference-like individual colors,
+  * background arc bands controlled by the existing Background opacity,
+  * dedicated hit testing for box grid, angle rays and arcs.
+- Gann Square and Gann Square Fixed rendering code remains unchanged.
+
+2. GANN FAN READINGS ONLY
+- Geometry is preserved.
+- Added explicit TradingView-style ratio labels: 1/8, 1/4, 1/3, 1/2, 1/1, 2/1, 3/1, 4/1, 8/1.
+- The existing Level readings / Prices on levels / per-level Reading / Price switches remain respected.
+- Reading placement is moved onto the visible ray body so labels are not lost at chart edges.
+
+3. CHART RIGHT-CLICK WHITE STRIP
+- Added a chart-only flat MenuItem template without the legacy WPF icon/check gutter.
+- Chart right-click menu padding is removed so the unexplained white strip on the left is no longer reserved.
+- Submenus remain supported.
+
+4. EDIT / SETTINGS / QUICK-EDIT HOVER CONTRAST
+- Fixed the root WPF precedence issue where theme code wrote local Foreground/Background values onto selectable controls.
+- Local values were overriding hover/selected style triggers, causing cases such as a light highlight with light text.
+- MenuItem, ComboBoxItem, ListBoxItem, DataGridCell, DataGridRow and TabItem now let the live style trigger own hover/selected colors.
+- TextBlock content inside those stateful controls inherits the correct live foreground instead of pinning a local color.
+- Quick-edit context menus no longer pin local item foreground/background values.
+
+VALIDATION
+- 31 XAML files parsed successfully.
+- 23 focused static checks passed, 0 failed.
+- Gann Square + Gann Square Fixed renderer verified unchanged.
+- 35 protected MT5/History/Replay/Bridge/Gateway/Connector files verified unchanged.
+- Changed C# files passed delimiter/structure sanity checks.
+
+LIMITATION
+This environment does not contain the Windows .NET/WPF compiler. Build in Visual Studio on Windows before runtime testing.

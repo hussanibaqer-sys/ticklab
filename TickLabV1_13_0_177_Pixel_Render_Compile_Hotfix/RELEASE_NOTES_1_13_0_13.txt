@@ -1,0 +1,28 @@
+TickLab v1.13.0.13 — Draggable Alert Lines, Replay Cleanup and Standard Chart Types
+
+Alert improvements
+- Every enabled price alert is shown as a draggable horizontal bell line on its chart.
+- Dragging the line changes the alert price and saves it on release.
+- Right-click price alerts default to a touch/cross-from-either-direction condition.
+- A triggered price alert opens a modal acknowledgement window stating “Market touched that price”.
+- The bell repeats until OK is pressed; OK stops the bell and closes the popup.
+
+Replay improvement
+- End Replay always removes the draggable vertical replay-start line, including when ticks were not loaded yet.
+- Loading replay keeps the selected start line until the replay is explicitly ended.
+
+Step 3: standard chart types
+- Candles
+- Hollow Candles
+- Bars
+- Volume Candles (real volume when present, otherwise broker tick volume)
+- Line
+- Line with Markers
+- Step Line
+- Area
+- HLC Area
+- Baseline
+- Columns
+- High-Low
+
+Chart type is changed from the top Chart Type button and is stored separately for every chart, workspace partition and detached chart. Templates and restart recovery retain the selected type.

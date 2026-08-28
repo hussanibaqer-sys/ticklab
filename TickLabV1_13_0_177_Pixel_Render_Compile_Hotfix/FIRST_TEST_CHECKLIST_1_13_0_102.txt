@@ -1,0 +1,24 @@
+TickLab v1.13.0.102 — First Test Checklist
+
+1. Draw XABCD and compare with the supplied TradingView screenshot:
+   - X/A/B/C/D tags are boxed and same color as the pattern line.
+   - ratio boxes use the same pattern color.
+   - dotted harmonic guides and light fill are visible.
+2. Draw Cypher and verify the same label/color/fill rules.
+3. Draw ABCD:
+   - A-B-C-D zig-zag.
+   - two dotted measurement guides and boxed ratios.
+4. Draw Triangle:
+   - MUST NOT be a crossed bow-tie.
+   - A-B-C-D solid zig-zag plus converging dotted boundaries and fill.
+5. Draw Three Drives:
+   - 1–6 markings follow the line color.
+   - drive ratio labels are visible.
+6. Draw Head and Shoulders:
+   - Left Shoulder / Head / Right Shoulder labels.
+   - dotted neckline.
+7. Change each pattern line color in quick edit/settings; all point and ratio labels must follow it immediately.
+8. Deselect and click solid lines, dotted guides, and filled pattern areas to verify reselection.
+9. Confirm Gann/Fib behavior from v1.13.0.101 is unchanged.
+
+Do not move to Elliott Waves until these six Patterns are accepted.

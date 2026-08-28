@@ -1,0 +1,9 @@
+PASS XML: src/TickLab.App/TickLab.App.csproj
+PASS XML: src/TickLab.App/MainWindow.xaml
+PASS balance: src/TickLab.App/MainWindow.xaml.cs braces 1325/1325 parens 4437/4437
+PASS balance: src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs braces 218/218 parens 941/941
+PASS token: src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs :: allowFullIndexRebuild: false
+PASS token: src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs :: FourHoursMilliseconds
+PASS token: src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs :: TimestampPrefixBucketMilliseconds = 10_000_000L
+PASS token: src/TickLab.App/MainWindow.xaml.cs :: includeBridgeHistoricalSourceCoverage: !focusUnix.HasValue
+PASS token: src/TickLab.App/TickLab.App.csproj :: 1.13.0.142

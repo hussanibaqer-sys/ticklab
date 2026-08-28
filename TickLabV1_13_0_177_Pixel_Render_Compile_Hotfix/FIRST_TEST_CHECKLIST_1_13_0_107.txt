@@ -1,0 +1,34 @@
+TickLab v1.13.0.107 — first runtime test checklist
+
+1. GHOST FEED CONSTRUCTION
+   - Select Ghost Feed.
+   - Single-click 5 or more turning points across the chart.
+   - Confirm synthetic ghost candles appear live between each point.
+   - Confirm the candles are NOT copies of the real chart candles underneath.
+   - Double-click at the final point.
+   - Confirm the drawing finishes without an extra duplicate final segment.
+
+2. GHOST FEED SELECTION
+   - Deselect the Ghost Feed.
+   - Click a candle body in the middle of the feed: the whole object must select and quick edit must return.
+   - Repeat on a wick far from the original construction points.
+   - Drag the complete selected object and verify all segments move together.
+
+3. BARS PATTERN CONSTRUCTION
+   - Click source start, source end, then projection placement.
+   - Confirm the projected blue line follows the selected historical bar-by-bar movement.
+   - Confirm the source range/time chips appear while selected.
+
+4. BARS PATTERN MOVE
+   - Deselect and click the middle of the projected line.
+   - Confirm selection/quick edit without finding an anchor.
+   - Drag the visible projected pattern.
+   - Confirm the copied shape stays identical and the historical source range does NOT move/change.
+
+5. PROJECTION INTO FUTURE
+   - Place a Bars Pattern close to/right of the latest candle.
+   - Confirm the projected line can continue into future chart space rather than stopping at the last loaded candle.
+
+6. FREEZE CHECK
+   - Briefly open Long Position, Short Position and Position Forecast and confirm v1.13.0.106 behavior is unchanged.
+   - Do not judge Step 3 volume/VWAP tools in this build; they are intentionally untouched.

@@ -1,0 +1,1 @@
+using System.Windows; namespace TickLab.Desktop.Windows; public partial class TickScriptHelpWindow : Window { public TickScriptHelpWindow(){InitializeComponent();} private void CloseButton_Click(object sender,RoutedEventArgs e)=>Close(); }

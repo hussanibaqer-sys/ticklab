@@ -1,0 +1,53 @@
+TickLab v1.13.0.119 — Drawing Interaction / Callout Fix
+
+SCOPE
+- Built from v1.13.0.118 Global Drawing Render Restore.
+- Global renderer from v1.13.0.118 is preserved.
+- Blank-chart left-click deselection is preserved.
+- Inspector deletion behavior confirmed working by the user is preserved.
+- No unrelated drawing-folder geometry/settings were modified.
+
+GLOBAL DRAWING INTERACTION
+1. One-shot placement restored by default
+- A stale persisted "Stay in drawing mode" state is no longer restored on startup/workspace restore.
+- Normal tool selection therefore creates one drawing and returns to the cursor after completion.
+- The existing optional Stay in drawing mode command remains available for an explicit current-session choice.
+- This restores the normal post-placement path where clicking a visible drawing selects it and starts body/anchor dragging rather than starting another drawing.
+
+2. Whole-drawing drag / A-B-C handle editing
+- Existing proven drag implementation is retained unchanged.
+- With one-shot placement restored, completed drawings return to cursor/select mode so body dragging and visible anchor/control-point dragging can receive the next left-click again.
+- Blank-chart left-click continues to deselect normally.
+
+3. Middle / wheel-button delete
+- Drawing middle-click hit-testing now gets first refusal before base chart mouse handling.
+- An unlocked drawing directly under the pointer is removed with one middle click.
+- Locked drawings and Lock All remain protected.
+- Existing double-middle-click scroll-wheel-mode switching remains available when the pointer is not over a removable drawing.
+
+4. Quick-edit Remove
+- The quick toolbar now resolves the actual chart instance that owns the drawing ID before deletion.
+- This prevents the delete button from silently targeting the primary CandleChart while the selected object belongs to another active/detached/multi-chart instance.
+- Existing lock protection remains unchanged.
+
+CALLOUT ONLY
+- The tail now attaches to a straight edge of the rounded bubble, avoiding rounded corners.
+- Tail base extends six pixels inside the bubble and is painted before the bubble so the overlap removes the visible gap/seam.
+- No other annotation geometry was changed.
+
+SOURCE SCOPE VS v1.13.0.118
+Functional files changed:
+- TickLab.App/Controls/CandleChartControl.Drawing.cs
+- TickLab.App/Controls/CandleChartControl.cs
+- TickLab.App/MainWindow.xaml.cs
+- TickLab.App/Controls/CandleChartControl.DrawingParity.cs (Callout method only)
+Metadata files changed:
+- TickLab.App/MainWindow.xaml
+- TickLab.App/TickLab.App.csproj
+
+VALIDATION
+- 31/31 XAML files parse successfully.
+- Changed C# files pass structural delimiter checks.
+- DrawingToolCatalog.cs is unchanged from v1.13.0.118.
+- Global DrawDrawingLayer / VisibleDrawings renderer is unchanged from v1.13.0.118.
+- Windows WPF compile/runtime test is still required on the user's Visual Studio machine.

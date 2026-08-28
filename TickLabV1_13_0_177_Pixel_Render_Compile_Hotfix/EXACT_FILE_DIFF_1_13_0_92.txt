@@ -1,0 +1,12 @@
+Exact TickLab.App source/project files changed from v1.13.0.91 to v1.13.0.92:
+- Controls/CandleChartControl.Drawing.cs
+- Controls/CandleChartControl.DrawingParity.cs
+- Controls/IndicatorPaneStackControl.cs
+- MainWindow.xaml
+- TickLab.App.csproj
+
+Protected implementation scopes unchanged:
+- src/TickLab.App/Gateway/FileBridge/**
+- src/TickLab.App/Core/History/**
+- src/TickLab.App/Core/Replay/**
+- MT5/**

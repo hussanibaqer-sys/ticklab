@@ -1,0 +1,13 @@
+TickLab v1.13.0.45 — First Test Checklist
+
+[ ] Before the first launch, copy this folder somewhere safe if it exists:
+    %LOCALAPPDATA%\TickLab\DemoTrading
+[ ] Extract the ZIP to a normal local folder outside OneDrive/cloud synchronization.
+[ ] Run Clean-Restore-Build.cmd or rebuild TickLabV1_13_0_45.sln in Visual Studio 2022 Release mode.
+[ ] Launch TickLab and confirm MainWindow opens without stopping in SetDemoStatus.
+[ ] Confirm History on chart retains its previous checked/unchecked state.
+[ ] Toggle History on chart off and on; confirm the app remains open and the setting persists after restart.
+[ ] Confirm running entry/SL/TP lines still appear on every chart/timeframe of the same symbol.
+[ ] Confirm saved trade history arrows and connector appear on every chart/timeframe of the same symbol.
+[ ] Close every chart, open a new chart for the same symbol, and confirm the overlays return.
+[ ] Confirm demo-account.json.bak is created after the next successful state save.

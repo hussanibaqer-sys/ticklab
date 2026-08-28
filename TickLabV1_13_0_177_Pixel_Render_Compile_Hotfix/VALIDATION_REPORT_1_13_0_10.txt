@@ -1,0 +1,9 @@
+TickLab v1.13.0.10 exact colour validation
+==========================================
+Palette entries: 70
+Unique RGB values: 70
+All XAML files: parsed successfully
+Theme-protected palette subtree: present
+Current/new preview protection: present
+Display/click mapping source: same PaletteColour entry
+Result: PASS

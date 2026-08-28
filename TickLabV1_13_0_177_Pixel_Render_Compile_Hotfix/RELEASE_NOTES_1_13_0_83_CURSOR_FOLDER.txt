@@ -1,0 +1,65 @@
+TickLab v1.13.0.83 — TV parity Folder 0: Cursor tools
+
+Scope
+-----
+This build intentionally focuses on the first audited TradingView drawing-tool folder only.
+It preserves the v1.13.0.82 Folder 1 line/channel work while rebuilding Cursor tools from the user's video reference.
+
+Cursor flyout rebuilt
+---------------------
+Visible order now follows the reference recording:
+  Cross
+  Dot
+  Arrow
+  Demonstration
+  Magic
+  --------
+  Eraser
+  --------
+  Values tooltip on long press [toggle]
+
+- Removed the legacy Object Selection row from the visible reference palette (legacy model ID remains compatible with saved workspaces).
+- White compact flyout, black active/hover row, vector icons, hover favorite star, and separate Eraser section.
+- Existing user-requested right-click Add/Remove Favorites remains available.
+
+Behavior rebuilt
+----------------
+Cross
+- Compact cross pointer rather than full-screen guide lines.
+
+Dot
+- Full horizontal/vertical chart guide with a small dot at the intersection.
+
+Arrow
+- Standard arrow pointer without crosshair guide lines.
+
+Demonstration
+- Pink demonstration pointer.
+- Hold Alt and drag to draw thick temporary pink ink.
+- Temporary ink fades automatically after a few seconds and is not saved as a normal drawing object.
+
+Magic
+- Magic-wand cursor.
+- Clicking the chart creates the dense emoji burst seen in the reference video.
+- Particles rapidly spread out from the click point, then fade automatically.
+- Burst includes fruit, money, gift, heart, flower, sparkle and similar colorful symbols.
+- Particles are temporary effects, not permanent drawing objects.
+
+Eraser
+- Eraser cursor graphic.
+- Clicking a drawing removes the hit drawing using the existing protected drawing-delete path.
+
+Values tooltip on long press
+- Toggle is present in the cursor flyout and persisted in the drawing workspace.
+- When enabled, press and hold on the chart to show a floating values card for the candle at that position.
+- Moving beyond the long-press tolerance or releasing the mouse dismisses it.
+
+Safety / exclusions
+-------------------
+- No broker connection or real-order placement path added.
+- Existing drawing/favorites/image/emoji behavior from the prior base remains in place.
+
+Build note
+----------
+The current Linux container does not contain Windows .NET/WPF MSBuild, so a true Windows compile could not be executed here.
+Static source/XAML/event validation and ZIP integrity checks are included separately.

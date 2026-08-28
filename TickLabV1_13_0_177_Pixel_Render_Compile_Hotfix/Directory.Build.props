@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+      <EnableWindowsTargeting>true</EnableWindowsTargeting>
+      <NoWarn>$(NoWarn);CS4014</NoWarn>
+  </PropertyGroup>
+</Project>

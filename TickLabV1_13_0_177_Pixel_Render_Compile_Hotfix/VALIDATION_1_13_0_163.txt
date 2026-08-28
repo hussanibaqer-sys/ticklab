@@ -1,0 +1,18 @@
+TickLab v1.13.0.163 validation scope
+
+Allowed functional source changes vs v1.13.0.162:
+1. src/TickLab.App/App.xaml — DarkToolbarButton mouse-over marker only.
+2. src/TickLab.App/Core/TopBarIconFactory.cs — Candles/HollowCandles vector geometry only.
+3. src/TickLab.App/MainWindow.xaml — version title only.
+4. src/TickLab.App/TickLab.App.csproj — version metadata only.
+5. This release/validation documentation.
+
+Static validation performed in ChatGPT runtime:
+- XML parse for App.xaml, MainWindow.xaml and TickLab.App.csproj.
+- Source diff allowlist against v1.13.0.162.
+- C# brace/parenthesis/bracket balance sanity check for TopBarIconFactory.cs.
+- Top-bar x:Name and Click handler sequence comparison.
+- Protected raw tick/history/replay/drawing/FileBridge/MT5 source byte comparison.
+- ZIP integrity test.
+
+Windows Visual Studio compile/runtime test remains authoritative because dotnet/MSBuild is not available in this environment.

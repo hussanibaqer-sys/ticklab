@@ -1,0 +1,34 @@
+TickLab v1.13.0.93 static validation
+Passed: 30
+Failed: 0
+
+PASS All 31 XAML files parse
+PASS Content="Level readings"
+PASS Content="Prices on levels"
+PASS Content="Add reading"
+PASS Content="Remove reading"
+PASS Header="Price"
+PASS Header="Level reading"
+PASS No obsolete Level readings examples in master control
+PASS AddReadingButton_Click wired in XAML
+PASS AddReadingButton_Click exists in code-behind
+PASS RemoveReadingButton_Click wired in XAML
+PASS RemoveReadingButton_Click exists in code-behind
+PASS ShowLevelReadings loaded
+PASS ShowLevelPrices loaded
+PASS Level master saves independently
+PASS Price master saves independently
+PASS Per-level price remains
+PASS Per-level reading remains
+PASS Add level remains
+PASS Remove level remains
+PASS Level value remains editable
+PASS Level color remains editable
+PASS Template refreshes masters
+PASS Defaults refresh masters
+PASS All XAML event handlers exist
+PASS Edited C# brace balance
+PASS Unchanged src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+PASS Unchanged src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+PASS Unchanged src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs
+PASS Protected scope unchanged: MT5

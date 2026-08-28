@@ -1,0 +1,15 @@
+TickLab v1.13.0.114 — STATIC VALIDATION
+
+Result: PASS
+
+- Source freeze boundary: exactly 4 intended files differ from v1.13.0.113.
+- 31 XAML files parsed successfully.
+- Folder 6 direct defensive renderer is wired before the general TradingView parity dispatcher.
+- All 10 Folder 6 tools are explicitly handled by the direct renderer.
+- Incomplete/stale 2-anchor annotation objects receive a visible fallback render position rather than disappearing.
+- Renderer exceptions are contained to the affected annotation and produce visible fallback geometry.
+- Drawing Inspector/Object Tree removal resolves the owning chart and explicit Remove can clean up stale/locked objects.
+- Left rail Remove Selected targets the active chart.
+- Previous-folder source is unchanged.
+
+Environment limitation: Windows WPF/MSBuild runtime compilation is not available in this Linux container; Visual Studio remains the final runtime gate.

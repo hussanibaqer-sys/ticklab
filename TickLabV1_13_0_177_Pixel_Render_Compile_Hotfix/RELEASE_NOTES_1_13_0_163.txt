@@ -1,0 +1,14 @@
+TickLab v1.13.0.163 — Top Bar Hover + Centered Candle Geometry
+
+Built directly from v1.13.0.162.
+
+Changes:
+- All DarkToolbarButton top-bar controls now show the same neutral bottom marker on mouse hover as the active/pressed feedback. This includes Make Timeframe, Alerts, Recorder, Screenshot, Settings, Chart Type and the other top-bar action buttons.
+- The marker remains theme-neutral via BorderStrongBrush; no blue highlight was introduced.
+- Candles chart-type icon redrawn from the user's supplied three-candle reference style.
+- Hollow Candles chart-type icon redrawn using the same geometry.
+- Every wick is mathematically tied to the exact horizontal center of its candle body.
+- Candle bodies use square corners and flat-ended wick segments for cleaner candlestick geometry.
+- Normal Candles use filled bodies; Hollow Candles use open bodies so the two chart types remain distinct.
+
+No button order, names, handlers, chart behavior, history, raw tick, replay, drawings, FileBridge or MT5/MQL behavior changed.

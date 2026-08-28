@@ -1,0 +1,36 @@
+TickLab v1.13.0.92 — Folder 2 Compile Fix
+
+Purpose
+- Compile-only correction on top of v1.13.0.91.
+- No intentional Fib/Gann geometry or behavior changes.
+
+Compile blockers fixed
+1. CS0136 duplicate local 'reverse'
+- The Gann Box hit-test branch now uses the scoped name boxReverse.
+- The later Gann Square/Gann Square Fixed branch retains reverse.
+
+2. CS0136 duplicate local 'origin'
+- The Gann Box hit-test branch now uses boxOrigin.
+- The later Gann Square/Gann Square Fixed branch retains origin.
+
+Warning cleanup
+- Made nullable Candle point access explicit before reading Point.
+- Made nullable level/fill-opacity branches explicit.
+- Replaced nullable price Value access with GetValueOrDefault after the existing visibility guard.
+- Added an explicit invocation path for OpenIndicatorEditorRequested so the event is no longer declaration-only.
+
+Safety
+- FileBridge, History, Replay and MT5 protected scopes are byte-for-byte unchanged from v1.13.0.91.
+- Source changes are limited to:
+  Controls/CandleChartControl.Drawing.cs
+  Controls/CandleChartControl.DrawingParity.cs
+  Controls/IndicatorPaneStackControl.cs
+  MainWindow.xaml
+  TickLab.App.csproj
+
+Validation available in this environment
+- All 31 XAML files parsed successfully.
+- Delimiter/structure checks passed on all three changed C# files.
+- Exact source-scope comparison passed.
+- Protected source comparison passed.
+- Windows .NET/WPF compiler is unavailable in this environment, so Visual Studio build remains the final compile gate.

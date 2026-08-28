@@ -1,0 +1,518 @@
+TickLab v1.13.0.107 — exact source diff vs v1.13.0.106
+Scope: Folder 4 Step 2 — Bars Pattern + Ghost Feed only, plus version/title metadata.
+
+Files /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.Drawing.cs and /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.Drawing.cs differ
+Files /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs and /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs differ
+Files /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs and /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs differ
+Files /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs and /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs differ
+Files /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/MainWindow.xaml and /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/MainWindow.xaml differ
+Files /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/TickLab.App.csproj and /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/TickLab.App.csproj differ
+
+Unified diffs:
+
+===== src/TickLab.App/Controls/CandleChartControl.Drawing.cs =====
+--- /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.Drawing.cs	2026-08-12 08:38:33.000000000 +0000
++++ /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.Drawing.cs	2026-08-12 09:01:23.785292120 +0000
+@@ -1225,12 +1225,27 @@
+         }
+         else
+         {
+-            IReadOnlyList<DrawingAnchor> anchors = _workingDrawing.Anchors.Append(next).ToArray();
+-            _workingDrawing = _workingDrawing with { Anchors = anchors };
+-            if (!tool.VariableAnchors && anchors.Count >= tool.MaximumAnchors)
+-                CompleteWorkingDrawing();
+-            else if (tool.VariableAnchors && e.ClickCount >= 2 && anchors.Count >= tool.MinimumAnchors)
++            // Ghost Feed follows TradingView Path construction: every single click
++            // commits another turning point and a double-click finishes. WPF sends
++            // the second MouseDown of a double-click at the same location, so avoid
++            // storing that duplicate endpoint before completion.
++            if (tool.Id == "ghost-feed" && tool.VariableAnchors && e.ClickCount >= 2 &&
++                _workingDrawing.Anchors.Count >= tool.MinimumAnchors)
++            {
++                Point lastPoint = AnchorToPoint(_workingDrawing.Anchors[^1], layout);
++                if (Distance(lastPoint, mouse) > 4.0)
++                    _workingDrawing = _workingDrawing with { Anchors = _workingDrawing.Anchors.Append(next).ToArray() };
+                 CompleteWorkingDrawing();
++            }
++            else
++            {
++                IReadOnlyList<DrawingAnchor> anchors = _workingDrawing.Anchors.Append(next).ToArray();
++                _workingDrawing = _workingDrawing with { Anchors = anchors };
++                if (!tool.VariableAnchors && anchors.Count >= tool.MaximumAnchors)
++                    CompleteWorkingDrawing();
++                else if (tool.VariableAnchors && e.ClickCount >= 2 && anchors.Count >= tool.MinimumAnchors)
++                    CompleteWorkingDrawing();
++            }
+         }
+         e.Handled = true;
+         InvalidateVisual();
+@@ -2186,6 +2201,24 @@
+             return;
+         }
+ 
++        // Bars Pattern owns two immutable source-range anchors plus one placement
++        // anchor. Dragging the visible copied pattern must move the projection only;
++        // otherwise the source candle range changes and the copied shape mutates.
++        if (_drawingDragMode == DrawingDragMode.Body && drawing.ToolId == "bars-pattern" &&
++            _dragStartAnchors.Count >= 3)
++        {
++            long projectionTimeDelta = current.StartUnix - _dragStartMouseAnchor.StartUnix;
++            double projectionPriceDelta = current.Price - _dragStartMouseAnchor.Price;
++            DrawingAnchor[] anchors = _dragStartAnchors.ToArray();
++            anchors[2] = anchors[2] with
++            {
++                StartUnix = SafeTimestampOffset(anchors[2].StartUnix, projectionTimeDelta),
++                Price = anchors[2].Price + projectionPriceDelta
++            };
++            _drawings[index] = drawing with { Anchors = anchors, UpdatedAt = DateTimeOffset.UtcNow };
++            return;
++        }
++
+         long timeDelta = current.StartUnix - _dragStartMouseAnchor.StartUnix;
+         double priceDelta = current.Price - _dragStartMouseAnchor.Price;
+         if (Keyboard.Modifiers.HasFlag(ModifierKeys.Shift))
+@@ -4361,6 +4394,33 @@
+             return patternBest;
+         }
+ 
++        if (drawing.ToolId == "bars-pattern")
++        {
++            IReadOnlyList<Point> projected = GetBarsPatternProjectedPoints(drawing, layout);
++            double patternDistance = double.MaxValue;
++            for (int i = 1; i < projected.Count; i++)
++                patternDistance = Math.Min(patternDistance, DistanceToSegment(point, projected[i - 1], projected[i]));
++            return patternDistance;
++        }
++
++        if (drawing.ToolId == "ghost-feed")
++        {
++            IReadOnlyList<GhostFeedVisualBar> bars = BuildGhostFeedVisualBars(drawing, layout);
++            double ghostDistance = double.MaxValue;
++            foreach (GhostFeedVisualBar bar in bars)
++            {
++                // The complete visible body is a selection target, not just the
++                // original construction anchors. Wick clicks resolve to the same
++                // parent Ghost Feed object as body clicks.
++                Rect hitBody = Inflate(bar.Body, 3.5);
++                if (hitBody.Contains(point))
++                    return 0;
++                ghostDistance = Math.Min(ghostDistance, DistanceToSegment(point, bar.WickTop, bar.WickBottom));
++                ghostDistance = Math.Min(ghostDistance, DistanceToRect(point, hitBody));
++            }
++            return ghostDistance;
++        }
++
+         if (geometry == DrawingGeometryKind.Cycles && points.Length >= 2)
+         {
+             double spacing = Math.Abs(points[1].X - points[0].X);
+@@ -4776,6 +4836,28 @@
+         if (points.Length == 0) return Rect.Empty;
+         Rect bounds = Bounds(points);
+         DrawingGeometryKind geometry = DrawingToolCatalog.Find(drawing.ToolId)?.Geometry ?? DrawingGeometryKind.Line;
++        if (drawing.ToolId == "bars-pattern")
++        {
++            IReadOnlyList<Point> projected = GetBarsPatternProjectedPoints(drawing, layout);
++            if (projected.Count > 0)
++                bounds = Bounds(projected);
++        }
++        else if (drawing.ToolId == "ghost-feed")
++        {
++            IReadOnlyList<GhostFeedVisualBar> bars = BuildGhostFeedVisualBars(drawing, layout);
++            if (bars.Count > 0)
++            {
++                var visualPoints = new List<Point>(bars.Count * 4);
++                foreach (GhostFeedVisualBar bar in bars)
++                {
++                    visualPoints.Add(bar.WickTop);
++                    visualPoints.Add(bar.WickBottom);
++                    visualPoints.Add(bar.Body.TopLeft);
++                    visualPoints.Add(bar.Body.BottomRight);
++                }
++                bounds = Bounds(visualPoints);
++            }
++        }
+         if (drawing.ToolId is "gann-square" or "gann-square-fixed" && points.Length >= 2)
+         {
+             Point adjusted = GetGannDisplaySecondPoint(drawing, points[0], points[1]);
+
+===== src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs =====
+--- /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs	2026-08-12 08:40:15.000000000 +0000
++++ /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs	2026-08-12 09:00:36.308981965 +0000
+@@ -207,9 +207,12 @@
+                     DrawParitySector(dc, drawing, points, pen, fill, textBrush);
+                 return true;
+             case "bars-pattern":
+-            case "ghost-feed":
+                 if (points.Length >= 3)
+-                    DrawParityBarsPattern(dc, layout, drawing, points, pen, drawing.ToolId == "ghost-feed");
++                    DrawParityBarsPattern(dc, layout, drawing, pen);
++                return true;
++            case "ghost-feed":
++                if (points.Length >= 2)
++                    DrawParityGhostFeed(dc, layout, drawing, pen);
+                 return true;
+             case "fixed-volume-profile":
+             case "anchored-volume-profile":
+@@ -2669,67 +2672,213 @@
+             DrawParityLabel(dc, $"r {radius:0.##} px", Mid(center, points[1]) + new Vector(4, -16), textBrush, drawing.Style, true);
+     }
+ 
+-    private void DrawParityBarsPattern(DrawingContext dc, ChartLayout layout, ChartDrawing drawing, Point[] points, Pen pen, bool ghost)
++    private void DrawParityBarsPattern(DrawingContext dc, ChartLayout layout, ChartDrawing drawing, Pen pen)
+     {
+-        if (Candles.Count == 0) return;
+-        int start = FindNearestCandleIndex(drawing.Anchors[0].StartUnix);
+-        int end = FindNearestCandleIndex(drawing.Anchors[1].StartUnix);
++        IReadOnlyList<Point> pattern = GetBarsPatternProjectedPoints(drawing, layout);
++        if (pattern.Count < 2)
++            return;
++
++        var geometry = new StreamGeometry();
++        using (StreamGeometryContext ctx = geometry.Open())
++        {
++            ctx.BeginFigure(pattern[0], false, false);
++            for (int i = 1; i < pattern.Count; i++)
++                ctx.LineTo(pattern[i], true, false);
++        }
++        geometry.Freeze();
++
++        var patternPen = new Pen(
++            CreateDrawingBrush(drawing.Style.LineColor, drawing.Style.Opacity),
++            Math.Max(1.5, pen.Thickness));
++        patternPen.StartLineCap = PenLineCap.Round;
++        patternPen.EndLineCap = PenLineCap.Round;
++        patternPen.LineJoin = PenLineJoin.Round;
++        if (patternPen.CanFreeze) patternPen.Freeze();
++
++        dc.PushClip(new RectangleGeometry(layout.Plot));
++        dc.DrawGeometry(null, patternPen, geometry);
++        dc.Pop();
++
++        if (_selectedDrawingIds.Contains(drawing.Id))
++        {
++            // TradingView shows hollow endpoint circles on the copied pattern and a
++            // highlighted source-time range while the Bars Pattern is selected.
++            var handlePen = new Pen(CreateDrawingBrush(drawing.Style.LineColor, 1.0), 1.6);
++            dc.DrawEllipse(Brushes.White, handlePen, pattern[0], 7.0, 7.0);
++            dc.DrawEllipse(Brushes.White, handlePen, pattern[^1], 7.0, 7.0);
++            DrawBarsPatternSourceRange(dc, layout, drawing);
++        }
++    }
++
++    private IReadOnlyList<Point> GetBarsPatternProjectedPoints(ChartDrawing drawing, ChartLayout layout)
++    {
++        if (Candles.Count == 0 || drawing.Anchors.Count < 3)
++            return Array.Empty<Point>();
++
++        int start = Math.Clamp(FindNearestCandleIndex(drawing.Anchors[0].StartUnix), 0, Candles.Count - 1);
++        int end = Math.Clamp(FindNearestCandleIndex(drawing.Anchors[1].StartUnix), 0, Candles.Count - 1);
+         if (start > end) (start, end) = (end, start);
+-        start = Math.Clamp(start, 0, Candles.Count - 1);
+-        end = Math.Clamp(end, 0, Candles.Count - 1);
+-        if (end - start < 1) return;
+-        int destinationIndex = Math.Clamp(FindNearestCandleIndex(drawing.Anchors[2].StartUnix), 0, Candles.Count - 1);
+-        double sourceBase = Candles[start].Open;
+-        double destinationPrice = drawing.Anchors[2].Price;
++        if (end - start < 1)
++            return Array.Empty<Point>();
++
+         bool mirror = ParityFlag(drawing, "Mirror", false);
+         bool flip = ParityFlag(drawing, "Flip", false);
+-        double alpha = ghost ? Math.Clamp(ParityOption(drawing, "Opacity", 0.38), 0.08, 0.9) : drawing.Style.Opacity;
+-        Pen wickPen = new(CreateDrawingBrush(drawing.Style.LineColor, alpha), Math.Max(0.75, pen.Thickness * 0.75));
+-        Brush bodyBrush = CreateDrawingBrush(drawing.Style.LineColor, alpha * 0.55);
+-        double slot = Math.Max(2, Math.Abs(AnchorToPoint(new DrawingAnchor(Candles[Math.Min(Candles.Count - 1, Math.Max(1, destinationIndex))].StartUnix, destinationPrice), layout).X -
+-                                      AnchorToPoint(new DrawingAnchor(Candles[Math.Max(0, destinationIndex - 1)].StartUnix, destinationPrice), layout).X));
+-        double bodyWidth = Math.Clamp(slot * 0.62, 2, 10);
+-        int mode = (int)Math.Clamp(ParityOption(drawing, "Mode", 0), 0, 6);
+-        int count = end - start + 1;
+-        Point? previousLine = null;
+-        for (int n = 0; n < count; n++)
++        int mode = (int)Math.Clamp(ParityOption(drawing, "Mode", 4), 0, 6);
++        int firstValueIndex = mirror ? end : start;
++        double sourceBase = BarsPatternSourceValue(Candles[firstValueIndex], mode);
++        double destinationPrice = drawing.Anchors[2].Price;
++        double destinationSlot = DrawingTimestampToTimelineSlot(drawing.Anchors[2].StartUnix);
++        double sourceFirstSlot = GetCandleTimelineSlot(start);
++        double sign = flip ? -1.0 : 1.0;
++        var result = new List<Point>(end - start + 1);
++
++        for (int n = 0; n <= end - start; n++)
+         {
+             int sourceIndex = mirror ? end - n : start + n;
+-            int targetIndex = destinationIndex + n;
+-            if (targetIndex < 0 || targetIndex >= Candles.Count) break;
+-            Candle c = Candles[sourceIndex];
+-            double sign = flip ? -1 : 1;
+-            double o = destinationPrice + (c.Open - sourceBase) * sign;
+-            double h = destinationPrice + (c.High - sourceBase) * sign;
+-            double l = destinationPrice + (c.Low - sourceBase) * sign;
+-            double cl = destinationPrice + (c.Close - sourceBase) * sign;
+-            if (flip && h < l) (h, l) = (l, h);
+-            double x = AnchorToPoint(new DrawingAnchor(Candles[targetIndex].StartUnix, o), layout).X;
+-            double yo = PriceToY(o, layout), yh = PriceToY(h, layout), yl = PriceToY(l, layout), yc = PriceToY(cl, layout);
+-            if (mode == 0)
+-            {
+-                dc.DrawLine(wickPen, new Point(x, yh), new Point(x, yl));
+-                Rect body = new(x - bodyWidth / 2, Math.Min(yo, yc), bodyWidth, Math.Max(1, Math.Abs(yc - yo)));
+-                dc.DrawRectangle(bodyBrush, wickPen, body);
+-            }
+-            else
+-            {
+-                double projected = mode switch
+-                {
+-                    1 => o,
+-                    2 => h,
+-                    3 => l,
+-                    4 => cl,
+-                    5 => (h + l) / 2.0,
+-                    6 => (h + l + cl) / 3.0,
+-                    _ => cl
+-                };
+-                Point currentLine = new(x, PriceToY(projected, layout));
+-                if (previousLine.HasValue)
+-                    dc.DrawLine(wickPen, previousLine.Value, currentLine);
+-                previousLine = currentLine;
++            int spacingIndex = start + n;
++            double sourceValue = BarsPatternSourceValue(Candles[sourceIndex], mode);
++            double price = destinationPrice + (sourceValue - sourceBase) * sign;
++            double slotOffset = GetCandleTimelineSlot(spacingIndex) - sourceFirstSlot;
++            long timestamp = DrawingTimelineSlotToTimestamp(destinationSlot + slotOffset);
++            result.Add(AnchorToPoint(new DrawingAnchor(timestamp, price), layout));
++        }
++        return result;
++    }
++
++    private static double BarsPatternSourceValue(Candle candle, int mode) => mode switch
++    {
++        1 => candle.Open,
++        2 => candle.High,
++        3 => candle.Low,
++        5 => (candle.High + candle.Low) / 2.0,
++        6 => (candle.High + candle.Low + candle.Close) / 3.0,
++        _ => candle.Close
++    };
++
++    private void DrawBarsPatternSourceRange(DrawingContext dc, ChartLayout layout, ChartDrawing drawing)
++    {
++        if (Candles.Count == 0 || drawing.Anchors.Count < 2)
++            return;
++        int start = Math.Clamp(FindNearestCandleIndex(drawing.Anchors[0].StartUnix), 0, Candles.Count - 1);
++        int end = Math.Clamp(FindNearestCandleIndex(drawing.Anchors[1].StartUnix), 0, Candles.Count - 1);
++        if (start > end) (start, end) = (end, start);
++
++        double x1 = AnchorToPoint(new DrawingAnchor(Candles[start].StartUnix, drawing.Anchors[0].Price), layout).X;
++        double x2 = AnchorToPoint(new DrawingAnchor(Candles[end].StartUnix, drawing.Anchors[1].Price), layout).X;
++        double left = Math.Max(layout.Plot.Left, Math.Min(x1, x2));
++        double right = Math.Min(layout.Plot.Right, Math.Max(x1, x2));
++        if (right <= left) return;
++
++        double height = 24.0;
++        double top = layout.Plot.Bottom - height;
++        Brush rangeBrush = CreateDrawingBrush(drawing.Style.LineColor, 0.20);
++        Brush labelBrush = CreateDrawingBrush(drawing.Style.LineColor, 0.92);
++        dc.DrawRectangle(rangeBrush, null, new Rect(left, top, right - left, height));
++
++        string startText = Candles[start].StartTime.ToLocalTime().ToString("dd MMM yy  HH:mm", CultureInfo.CurrentCulture);
++        string endText = Candles[end].StartTime.ToLocalTime().ToString("dd MMM yy  HH:mm", CultureInfo.CurrentCulture);
++        DrawBarsPatternTimeChip(dc, startText, left, top, labelBrush, alignRight: false, layout.Plot);
++        DrawBarsPatternTimeChip(dc, endText, right, top, labelBrush, alignRight: true, layout.Plot);
++    }
++
++    private void DrawBarsPatternTimeChip(DrawingContext dc, string text, double x, double y, Brush background, bool alignRight, Rect plot)
++    {
++        FormattedText formatted = CreateText(text, 10.5, Brushes.White);
++        double width = formatted.Width + 14.0;
++        double left = alignRight ? x - width : x;
++        left = Math.Clamp(left, plot.Left, Math.Max(plot.Left, plot.Right - width));
++        Rect box = new(left, y, width, 24.0);
++        dc.DrawRoundedRectangle(background, null, box, 3, 3);
++        dc.DrawText(formatted, new Point(box.Left + 7, box.Top + 4));
++    }
++
++    private readonly record struct GhostFeedVisualBar(Point WickTop, Point WickBottom, Rect Body, bool Up);
++
++    private IReadOnlyList<GhostFeedVisualBar> BuildGhostFeedVisualBars(ChartDrawing drawing, ChartLayout layout)
++    {
++        if (drawing.Anchors.Count < 2)
++            return Array.Empty<GhostFeedVisualBar>();
++
++        double chartRange = Math.Max(1e-12, layout.MaximumPrice - layout.MinimumPrice);
++        double slotWidth = layout.Plot.Width / Math.Max(1, layout.SlotCount);
++        double bodyWidth = Math.Clamp(slotWidth * 0.66, 2.0, 10.0);
++        double previousClose = drawing.Anchors[0].Price;
++        int ordinal = 0;
++        var bars = new List<GhostFeedVisualBar>();
++
++        for (int segment = 0; segment < drawing.Anchors.Count - 1 && bars.Count < 4096; segment++)
++        {
++            DrawingAnchor a = drawing.Anchors[segment];
++            DrawingAnchor b = drawing.Anchors[segment + 1];
++            double slotA = DrawingTimestampToTimelineSlot(a.StartUnix);
++            double slotB = DrawingTimestampToTimelineSlot(b.StartUnix);
++            double slotSpan = slotB - slotA;
++            int steps = Math.Clamp((int)Math.Round(Math.Abs(slotSpan)), 1, 512);
++            double delta = b.Price - a.Price;
++            double wiggle = Math.Max(chartRange * 0.0012, Math.Abs(delta) * 0.035);
++
++            for (int step = 1; step <= steps && bars.Count < 4096; step++)
++            {
++                double t = step / (double)steps;
++                bool atAnchor = step == steps;
++                double center = a.Price + delta * t;
++                double oscillation = atAnchor ? 0.0 : wiggle *
++                    (0.62 * Math.Sin((ordinal + 1) * 1.73 + segment * 0.91) +
++                     0.38 * Math.Sin((ordinal + 1) * 0.67 + segment * 1.37));
++                double close = center + oscillation;
++                double open = previousClose;
++                double wickBase = Math.Max(chartRange * 0.00065, Math.Abs(close - open) * 0.30);
++                double wickVariation = 0.65 + 0.45 * Math.Abs(Math.Sin((ordinal + 2) * 1.19));
++                double wick = wickBase * wickVariation;
++                double high = Math.Max(open, close) + wick;
++                double low = Math.Min(open, close) - wick * (0.75 + 0.25 * Math.Abs(Math.Sin((ordinal + 3) * 0.83)));
++                double slot = slotA + slotSpan * t;
++                long timestamp = DrawingTimelineSlotToTimestamp(slot);
++                double x = AnchorToPoint(new DrawingAnchor(timestamp, close), layout).X;
++                double yOpen = PriceToY(open, layout);
++                double yClose = PriceToY(close, layout);
++                double yHigh = PriceToY(high, layout);
++                double yLow = PriceToY(low, layout);
++                Rect body = new(
++                    x - bodyWidth / 2.0,
++                    Math.Min(yOpen, yClose),
++                    bodyWidth,
++                    Math.Max(1.25, Math.Abs(yClose - yOpen)));
++                bars.Add(new GhostFeedVisualBar(
++                    new Point(x, yHigh),
++                    new Point(x, yLow),
++                    body,
++                    close >= open));
++                previousClose = close;
++                ordinal++;
+             }
+         }
++        return bars;
++    }
++
++    private void DrawParityGhostFeed(DrawingContext dc, ChartLayout layout, ChartDrawing drawing, Pen pen)
++    {
++        IReadOnlyList<GhostFeedVisualBar> bars = BuildGhostFeedVisualBars(drawing, layout);
++        if (bars.Count == 0)
++            return;
++
++        double alpha = Math.Clamp(ParityOption(drawing, "Opacity", 0.38), 0.05, 1.0) * drawing.Style.Opacity;
++        var upPen = new Pen(CreateDrawingBrush("#089981", Math.Min(1.0, alpha * 1.75)), Math.Max(0.9, pen.Thickness * 0.80));
++        var downPen = new Pen(CreateDrawingBrush("#F05261", Math.Min(1.0, alpha * 1.75)), Math.Max(0.9, pen.Thickness * 0.80));
++        Brush upFill = CreateDrawingBrush("#089981", Math.Min(0.42, alpha * 0.42));
++        Brush downFill = CreateDrawingBrush("#F05261", Math.Min(0.46, alpha * 0.46));
++
++        dc.PushClip(new RectangleGeometry(layout.Plot));
++        foreach (GhostFeedVisualBar bar in bars)
++        {
++            if (bar.Body.Right < layout.Plot.Left - 4 || bar.Body.Left > layout.Plot.Right + 4)
++                continue;
++            Pen candlePen = bar.Up ? upPen : downPen;
++            Brush candleFill = bar.Up ? upFill : downFill;
++            dc.DrawLine(candlePen, bar.WickTop, bar.WickBottom);
++            dc.DrawRectangle(candleFill, candlePen, bar.Body);
++        }
++        dc.Pop();
+     }
+ 
+     private void DrawParityVolumeProfile(DrawingContext dc, ChartLayout layout, ChartDrawing drawing, Point[] points, Pen pen)
+
+===== src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs =====
+--- /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs	2026-08-12 08:36:39.000000000 +0000
++++ /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingParityDefaults.cs	2026-08-12 08:59:38.577890692 +0000
+@@ -178,7 +178,7 @@
+             case "bars-pattern":
+                 Add("Mirror", 0);
+                 Add("Flip", 0);
+-                Add("Mode", 0); // 0 bars, 1 open, 2 high, 3 low, 4 close, 5 hl2, 6 hlc3
++                Add("Mode", 4); // TradingView reference: connected close-price pattern by default
+                 break;
+             case "ghost-feed":
+                 Add("Opacity", 0.38);
+@@ -474,7 +474,7 @@
+         "WidthPercent" => "Maximum profile width as percent of chart width",
+         "Mirror" => "1 mirrors Bars Pattern candle order",
+         "Flip" => "1 vertically flips Bars Pattern",
+-        "Mode" => "Bars Pattern mode: 0 Bar sticks, 1 Open line, 2 High line, 3 Low line, 4 Close line, 5 HL2 line, 6 HLC3 line",
++        "Mode" => "Bars Pattern source: 0/4 Close, 1 Open, 2 High, 3 Low, 5 HL2, 6 HLC3",
+         "Count" => "Number of repeated cycle guides",
+         "Cycles" => "Number of sine-wave cycles between the two anchors",
+         "ShowAngle" => "1 displays the sector angle",
+
+===== src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs =====
+--- /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs	2026-08-12 08:36:39.000000000 +0000
++++ /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/Core/Drawing/DrawingToolCatalog.cs	2026-08-12 08:59:38.577714560 +0000
+@@ -244,6 +244,30 @@
+             };
+         }
+ 
++        if (tool.Geometry == DrawingGeometryKind.BarsPattern)
++        {
++            return new DrawingStyle
++            {
++                LineColor = "#2962FF",
++                FillColor = "#2962FF",
++                LineWidth = 2.0,
++                Opacity = 1.0,
++                FillOpacity = 0.0
++            };
++        }
++
++        if (tool.Geometry == DrawingGeometryKind.GhostFeed)
++        {
++            return new DrawingStyle
++            {
++                LineColor = "#2962FF",
++                FillColor = "#2962FF",
++                LineWidth = 1.2,
++                Opacity = 1.0,
++                FillOpacity = 0.0
++            };
++        }
++
+         if (tool.Category == DrawingToolCategory.TrendLine)
+         {
+             bool pitchfork = tool.Geometry == DrawingGeometryKind.Pitchfork;
+@@ -451,7 +475,7 @@
+         Add("short-position", "Short position", DrawingToolCategory.PredictionMeasurement, "S", DrawingGeometryKind.Position, 3, 3, text: true, fill: true, levels: true);
+         Add("position-forecast", "Position forecast", DrawingToolCategory.PredictionMeasurement, "P", DrawingGeometryKind.Position, 2, 2, text: true, fill: true);
+         Add("bars-pattern", "Bars pattern", DrawingToolCategory.PredictionMeasurement, "▥", DrawingGeometryKind.BarsPattern, 3, 3);
+-        Add("ghost-feed", "Ghost feed", DrawingToolCategory.PredictionMeasurement, "👻", DrawingGeometryKind.GhostFeed, 3, 3);
++        Add("ghost-feed", "Ghost feed", DrawingToolCategory.PredictionMeasurement, "👻", DrawingGeometryKind.GhostFeed, 2, 256, variable: true);
+         Add("sector", "Sector", DrawingToolCategory.PredictionMeasurement, "◔", DrawingGeometryKind.Sector, 3, 3, fill: true);
+         // VOLUME BASED
+         Add("anchored-vwap", "Anchored VWAP", DrawingToolCategory.PredictionMeasurement, "V", DrawingGeometryKind.AnchoredVwap, 1, 1, levels: true);
+
+===== src/TickLab.App/MainWindow.xaml =====
+--- /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/MainWindow.xaml	2026-08-12 08:36:39.000000000 +0000
++++ /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/MainWindow.xaml	2026-08-12 09:01:51.586735705 +0000
+@@ -3,7 +3,7 @@
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:TickLab.Desktop.Controls"
+         xmlns:settings="clr-namespace:TickLab.Desktop.Settings"
+-        Title="TickLab v1.13.0.106 — Folder 4 Step 1 Long/Short + Forecast Correction"
++        Title="TickLab v1.13.0.107 — Folder 4 Step 2 Bars Pattern + Ghost Feed Parity"
+         Width="1560" Height="920" MinWidth="1080" MinHeight="690"
+         WindowStartupLocation="CenterScreen"
+         Background="{StaticResource WindowBrush}"
+
+===== src/TickLab.App/TickLab.App.csproj =====
+--- /mnt/data/ticklab_step2_base/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/TickLab.App.csproj	2026-08-12 08:36:39.000000000 +0000
++++ /mnt/data/ticklab_step2/TickLabV1_13_0_106_Folder4_Step1_LongShort_Forecast_Correction/src/TickLab.App/TickLab.App.csproj	2026-08-12 09:01:51.586274440 +0000
+@@ -8,9 +8,9 @@
+     <LangVersion>12.0</LangVersion>
+     <AssemblyName>TickLab</AssemblyName>
+     <RootNamespace>TickLab.Desktop</RootNamespace>
+-    <Version>1.13.0.106</Version>
+-    <AssemblyVersion>1.13.0.106</AssemblyVersion>
+-    <FileVersion>1.13.0.106</FileVersion>
++    <Version>1.13.0.107</Version>
++    <AssemblyVersion>1.13.0.107</AssemblyVersion>
++    <FileVersion>1.13.0.107</FileVersion>
+     <RestoreIgnoreFailedSources>true</RestoreIgnoreFailedSources>
+     <Deterministic>true</Deterministic>
+   </PropertyGroup>

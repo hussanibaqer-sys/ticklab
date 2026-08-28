@@ -1,0 +1,28 @@
+TickLab v1.13.0.144 changed TickLab.App source files vs v1.13.0.143
+
+Changed source files: 13
+- src/TickLab.App/Controls/CandleChartControl.Drawing.cs
+- src/TickLab.App/Controls/CandleChartControl.DrawingParity.cs
+- src/TickLab.App/Controls/CandleChartControl.RawTickDrawing.cs
+- src/TickLab.App/Controls/CandleChartControl.cs
+- src/TickLab.App/Controls/ChartPaneControl.cs
+- src/TickLab.App/Controls/TickChartControl.Drawing.cs
+- src/TickLab.App/Controls/TickChartControl.cs
+- src/TickLab.App/Core/Drawing/DrawingModels.cs
+- src/TickLab.App/MainWindow.ChartContexts.cs
+- src/TickLab.App/MainWindow.RawTickChart.cs
+- src/TickLab.App/MainWindow.xaml
+- src/TickLab.App/MainWindow.xaml.cs
+- src/TickLab.App/TickLab.App.csproj
+
+Scope summary:
+- Existing CandleChartControl drawing engine adapted to Raw Tick coordinates; no second drawing object engine.
+- TickChartControl.Drawing.cs reduced to Find Tick marker-only behavior.
+- Toolbar drawing commands route to ChartRuntimeContext.Chart for both candle and Tick mode.
+- Version/title bumped to v1.13.0.144.
+
+Protected files byte-identical vs v1.13.0.143:
+- src/TickLab.App/Gateway/FileBridge/PersistentHistoryStore.cs: PASS  2c0c652c81c91dc1a580c785441f0837411fa035a20863b24bb714482a14bbc8
+- src/TickLab.App/Gateway/FileBridge/CanonicalTickArchiveStore.cs: PASS  b16980a183c901db01f15609be3261baf6e58d055f38990c83f57026e9b06547
+- src/TickLab.App/Gateway/FileBridge/Mt5FileBridgeClient.cs: PASS  4febbcd3fce68905a635f5ff8134995cf20f8ca4a99472ac2ad2471149665fc8
+- MT5 tree: PASS  1fbb5498676498445019670f55526139e1e6995b0e277560c604ac8ac89a2336

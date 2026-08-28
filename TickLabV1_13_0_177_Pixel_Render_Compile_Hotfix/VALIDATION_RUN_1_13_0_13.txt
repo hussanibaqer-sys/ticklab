@@ -1,0 +1,4 @@
+STATIC CHECKS PASSED: 404
+STATIC CHECKS FAILED: 0
+Regression baseline checks passed: 881
+All TickLab v1.13.0.13 alert, replay-line and standard chart-type checks passed.

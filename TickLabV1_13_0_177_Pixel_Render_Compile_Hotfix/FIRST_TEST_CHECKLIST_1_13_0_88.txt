@@ -1,0 +1,49 @@
+TickLab v1.13.0.88 — FIRST TEST CHECKLIST
+========================================
+
+1. BUILD / LAUNCH
+- Run Clean-Restore-Build.cmd.
+- Confirm title: TickLab v1.13.0.88 — Pitchfork / Settings Stability.
+
+2. SETTINGS FREEZE — TEST THIS FIRST
+- Draw any Folder-1 tool.
+- Open its Settings.
+- Confirm the settings window opens AND the TickLab chart/main window is still responsive.
+- Pan/hover/select on the chart while Settings remains open.
+- Change color/width/opacity and confirm live update.
+- Press Cancel (and separately test X): drawing must return to its original state.
+- Reopen Settings, change something, press OK: change must remain.
+- Repeat once with a tool outside Folder 1 to verify the generic settings path also does not block TickLab.
+
+3. ORIGINAL / SCHIFF / MODIFIED SCHIFF PITCHFORK
+- First click: A appears immediately.
+- Second click: A-B red segment is visible.
+- Before third click: live construction toward C is visible.
+- Third click: completed fork remains selected with handles.
+- A-B red segment MUST still be visible after completion.
+
+4. INSIDE PITCHFORK — IMPORTANT
+- A-B red segment remains visible.
+- After C, the short midpoint(A-B)-to-C construction leg is visible.
+- Fork direction follows midpoint(A-B) -> C.
+- Fork mouth is B-C.
+- Median begins midway between B and C and runs parallel to midpoint(A-B) -> C.
+- Colored rails are parallel and look like the reference video; it must NOT look like a simply narrowed normal pitchfork.
+
+5. PITCHFORK COLORS / SETTINGS
+- Open Settings > Style.
+- Median is red by default.
+- Confirm level rows: 0.25 / 0.382 / 0.5 / 0.618 / 0.75 / 1 / 1.5 / 1.75 / 2.
+- Confirm the rows visibly use different colors.
+- Confirm 0.5 and 1 are enabled by default.
+- Click a level color swatch, change its color, and verify the chart updates live.
+- Enable Use one color and confirm all fork rails/background use the median color; turn it off and individual colors return.
+- Confirm Extend lines and Background controls work.
+
+6. DISJOINT CHANNEL
+- Draw the first line at roughly +45 degrees.
+- Place point 3 horizontally.
+- Second rail should be the opposite/mirrored angle, roughly -45 degrees, not a same-angle parallel line.
+- After completion, drag the full object horizontally and vertically.
+
+Do not move to Folder 2 if any item above differs materially from the reference video.

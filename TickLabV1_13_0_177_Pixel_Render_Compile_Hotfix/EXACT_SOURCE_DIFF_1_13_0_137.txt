@@ -1,0 +1,9 @@
+TickLab v1.13.0.137 — source files changed from v1.13.0.136
+
+Controls/CandleChartControl.cs
+Core/Market/CandleMarker.cs
+Gateway/FileBridge/PersistentHistoryStore.cs
+MainWindow.xaml
+MainWindow.xaml.cs
+TickLab.App.csproj
+Windows/CandleMarkerWindow.xaml.cs

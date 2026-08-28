@@ -1,0 +1,13 @@
+TickLab v1.13.0.112 — Path Sharp Segments / Arrow Hotfix
+
+Validation:
+- Path parity renderer contains no QuadraticBezierTo or BezierTo calls.
+- Every Path anchor is rendered with a straight LineTo segment.
+- Path pen uses miter joins and flat caps for sharp TradingView-style turns.
+- Final Path endpoint explicitly renders DrawArrowHead from the final segment.
+- Changed CandleChartControl.DrawingParity.cs passes structural delimiter validation.
+- All 31 XAML files parse successfully.
+- Exactly 3 source files differ from v1.13.0.111: Path renderer, app version, window title.
+- No Arc, Curve, Double Curve, Arrow Marker, volume-profile, MT5, history, replay, or other functional source was changed.
+
+Windows WPF/MSBuild runtime compilation remains the user-side final gate.

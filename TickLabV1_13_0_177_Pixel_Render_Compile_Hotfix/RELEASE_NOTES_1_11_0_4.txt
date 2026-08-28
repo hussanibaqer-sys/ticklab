@@ -1,0 +1,14 @@
+TickLab v1.11.0.4 — Ten-minute freeze hotfix
+
+Desktop-only changes:
+- Workspace autosave is now dirty-only, debounced, and written on a background thread.
+- Full drawing workspace JSON is no longer serialized and written every two seconds.
+- Drawing changes no longer rebuild the complete left toolbar.
+- Removed duplicate raw-tick synchronization from the pending-candle flush path.
+- Live integrity runs at a controlled interval and has a 45-second timeout.
+- Pending candle writes have a 30-second timeout and are requeued safely.
+- Live UI refresh reduced from 20 to 10 frames per second to prevent UI queue saturation.
+- Maintenance cadence reduced from every second to every two seconds.
+- Repeated workspace-save failures are logged without opening modal warning windows.
+
+Protected MT5 files are unchanged.

@@ -1,0 +1,13 @@
+TickLab v1.13.0.65 first test checklist
+
+1. Rebuild solution in Visual Studio 2022.
+2. Replay: confirm new 5000x through 30000x speeds appear and work.
+3. Tick chart: confirm approximately 3 inches of blank space remains to the right of the newest tick.
+4. Tick chart: confirm latest Bid and Ask horizontal lines/tickets are visible by default.
+5. Top-right REC: open recorder, Record, Pause, Resume, Stop.
+6. On Stop: enter a description and Save; confirm recording appears in list.
+7. Double-click/Play the AVI and confirm Windows opens it with the default player.
+8. Show in Folder and confirm file in Videos\TickLab\Recordings.
+9. Screenshot: save PNG and confirm it appears in the same list/folder.
+10. Stop a second recording and choose Delete; confirm it is removed.
+11. Verify candle charts, Replay range selectors, Alerts, Demo Trading and MT5 bridge still behave normally.

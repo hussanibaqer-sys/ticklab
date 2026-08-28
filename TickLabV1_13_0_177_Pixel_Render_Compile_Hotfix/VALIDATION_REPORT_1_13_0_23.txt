@@ -1,0 +1,15 @@
+TickLab v1.13.0.24 validation report
+
+Scope: basic/default candle chart horizontal zoom stability only.
+
+Passed:
+- 6,446 static, XAML, geometry, right-boundary and regression checks.
+- Mouse-wheel horizontal zoom preserves the exact right timeline boundary.
+- Bottom time-scale drag preserves the exact right timeline boundary.
+- Earliest-history zoom allows empty space on the left instead of shifting candles toward the right.
+- Vertical mouse-anchor zoom remains unchanged.
+- All XAML parsed and event handlers resolved.
+- Duplicate-method and bridge-write regressions passed.
+- Protected MT5/MQL5 bridge hashes remained unchanged.
+
+Limitation: the Linux build environment does not contain the Windows .NET/WPF compiler. Final compilation and on-screen interaction testing must run in Visual Studio on Windows.

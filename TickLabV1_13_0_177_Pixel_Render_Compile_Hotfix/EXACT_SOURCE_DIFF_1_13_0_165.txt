@@ -1,0 +1,16 @@
+Functional source files changed from v1.13.0.164:
+1. src/TickLab.App/App.xaml
+   - Remove top-toolbar and drawing-rail visible outline borders.
+   - Keep hover/pressed/active surface shading and bottom marker.
+2. src/TickLab.App/MainWindow.xaml
+   - Version title.
+   - Search glyph/text brushes made DynamicResource theme-aware.
+   - Drawing rail scroll/collapse buttons use borderless DrawingRailButton template.
+3. src/TickLab.App/MainWindow.xaml.cs
+   - Live theme switch immediately rebuilds top/timeframe/drawing toolbar visuals.
+   - Category split flyout uses borderless DrawingRailButton style.
+   - Removed obsolete explicit drawing-rail BorderBrush state assignments.
+4. src/TickLab.App/TickLab.App.csproj
+   - Version metadata only.
+
+No other source files changed.

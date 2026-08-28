@@ -1,0 +1,31 @@
+TickLab v1.11.1.1 Validation Report
+
+Scope
+- Drawing Favorites owned-window startup crash hotfix.
+- Main desktop source only; protected MT5 sources were not modified.
+
+Root cause confirmed
+- MainWindow constructor called BuildDrawingToolbar().
+- BuildDrawingToolbar called RefreshDrawingFavoritesWindow().
+- With saved favorites present, that path constructed DrawingFavoritesWindow before MainWindow_Loaded and before the owner had a WPF presentation source.
+- WPF raised System.InvalidOperationException during OpenDrawingFavoritesWindow.
+
+Corrections
+- Owned drawing windows are enabled only in MainWindow_Loaded.
+- Creation waits for IsLoaded and PresentationSource.FromVisual(this).
+- Pre-load open requests are deferred at DispatcherPriority.Loaded.
+- Deferred callbacks stop during shutdown.
+- Existing saved favorites still restore after startup.
+- Adding the first favorite after startup still opens the horizontal Favorites bar.
+
+Validation
+- Static project checks: 491 passed, 0 failed.
+- XAML parse and event-handler checks passed through tools/validate_source.py.
+- C# delimiter and duplicate-signature checks passed through tools/validate_source.py.
+- No bin, obj, or .vs folders are included.
+- Live Bridge V300 SHA-256 unchanged.
+- History Bridge V305 SHA-256 unchanged.
+- Marker V109 SHA-256 unchanged.
+
+Limitation
+- The Linux build environment does not include the Windows WPF/.NET SDK, so Visual Studio Release rebuild and runtime testing on Windows are still required.

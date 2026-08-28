@@ -1,0 +1,16 @@
+TickLab v1.13.0.165 static validation
+
+PASS — App.xaml parses as XML.
+PASS — MainWindow.xaml parses as XML.
+PASS — TickLab.App.csproj parses as XML.
+PASS — MainWindow.xaml.cs delimiter structural sanity.
+PASS — exact source diff allowlist vs v1.13.0.164: only App.xaml, MainWindow.xaml, MainWindow.xaml.cs, TickLab.App.csproj.
+PASS — protected Raw Tick/history/replay/chart-control/service files byte-identical to v1.13.0.164.
+PASS — MT5 tree byte-identical to v1.13.0.164.
+PASS — top-bar shared template surface BorderThickness=0; hover/pressed/active uses background + bottom marker only.
+PASS — drawing-rail shared template surface BorderThickness=0; hover/pressed/active uses background + bottom marker only.
+PASS — search/symbol Border retains rounded BorderThickness=1 outline.
+PASS — live theme swap now rebuilds timeframe and drawing-toolbar visual content immediately after theme resources are applied.
+PASS — search glyph/text/dropdown use DynamicResource theme brushes.
+
+Runtime note: dotnet/MSBuild/csc are unavailable in the ChatGPT Linux runtime. Compile/runtime validation remains authoritative in Visual Studio on Windows.

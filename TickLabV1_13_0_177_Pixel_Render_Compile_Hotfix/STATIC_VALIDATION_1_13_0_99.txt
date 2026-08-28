@@ -1,0 +1,17 @@
+Passed: 16/16
+PASS: All 31 XAML files parse
+PASS: Version 1.13.0.99
+PASS: Gann Box default contains 0.25
+PASS: Gann Box default contains 0.382
+PASS: Gann Box default contains 0.5
+PASS: Gann Box default contains 0.618
+PASS: Gann Box default contains 0.75
+PASS: Gann Box renderer has no Gann Square arc call
+PASS: Gann Box renderer has no fan-angle target
+PASS: Gann Box renders four-edge readings
+PASS: Gann Fan master Level readings is authoritative
+PASS: Flat chart ContextMenu template exists
+PASS: Flat chart ContextMenu style is applied
+PASS: ComboBoxItem explicit contrast template exists
+PASS: DrawingLevel.LineWidth compile regression absent
+PASS: Gann Square / Fixed renderer block byte-for-byte unchanged
